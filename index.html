@@ -3,153 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>My PCB Repair Data</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f2f4f7;
+
+*{
+    box-sizing:border-box;
 }
 
-header {
-    background: #1f2937;
-    color: white;
-    padding: 25px 15px;
-    text-align: center;
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    background:#f2f4f7;
+    color:#222;
 }
 
-header h1 {
-    margin: 0;
+header{
+    background:#1f2937;
+    color:white;
+    padding:25px 15px;
+    text-align:center;
 }
 
-.search {
-    padding: 15px;
-    text-align: center;
-    background: white;
+header h1{
+    margin:0;
+    font-size:28px;
 }
 
-.search input {
-    width: 90%;
-    max-width: 600px;
-    padding: 14px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+header p{
+    margin:8px 0 0;
 }
 
-.container {
-    padding: 15px;
-    max-width: 900px;
-    margin: auto;
+.search{
+    padding:15px;
+    text-align:center;
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    margin: 12px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.search input{
+    width:95%;
+    max-width:600px;
+    padding:14px;
+    font-size:16px;
+    border:1px solid #ccc;
+    border-radius:8px;
 }
 
-.card h2 {
-    margin-top: 0;
+.container{
+    padding:15px;
+    max-width:900px;
+    margin:auto;
 }
 
-.card p {
-    color: #555;
+.card{
+    background:white;
+    padding:20px;
+    margin:12px 0;
+    border-radius:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    cursor:pointer;
+    transition:0.2s;
 }
 
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
-    background: #2563eb;
-    color: white;
+.card:hover{
+    transform:translateY(-2px);
 }
 
-footer {
-    text-align: center;
-    padding: 25px;
-    color: #666;
+.card h2{
+    margin-top:0;
 }
+
+.card p{
+    color:#555;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    color:#666;
+}
+
+.no-result{
+    text-align:center;
+    padding:30px;
+    display:none;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>🔧 My PCB Repair Data</h1>
-    <p>AC • Refrigerator • Washing Machine • EEPROM • BIN Files</p>
+
+<h1>🔧 My PCB Repair Data</h1>
+
+<p>
+AC • Refrigerator • Washing Machine • EEPROM • BIN Files
+</p>
+
 </header>
 
+
 <div class="search">
-    <input
-        type="text"
-        id="searchBox"
-        placeholder="Search PCB, IC, error code..."
-        onkeyup="searchData()">
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search PCB, IC, error code..."
+autocomplete="off">
+
 </div>
+
 
 <div class="container" id="dataList">
 
-    <div class="card">
-        <h2>❄️ AC PCB</h2>
-        <p>Inverter AC PCB repair information, circuits and faults.</p>
-    </div>
 
-    <div class="card">
-        <h2>🧊 Refrigerator PCB</h2>
-        <p>Inverter refrigerator PCB information and troubleshooting.</p>
-    </div>
+<div class="card">
 
-    <div class="card">
-        <h2>🧺 Washing Machine PCB</h2>
-        <p>Washing machine PCB repair information and error codes.</p>
-    </div>
+<h2>❄️ AC PCB</h2>
 
-    <div class="card">
-        <h2>💾 EEPROM / BIN Files</h2>
-        <p>EEPROM data, backup files and BIN files.</p>
-    </div>
-
-    <div class="card">
-        <h2>⚠️ Error Codes</h2>
-        <p>AC, refrigerator and washing machine error codes.</p>
-    </div>
-
-    <div class="card">
-        <h2>📷 PCB Photos</h2>
-        <p>PCB photographs, component locations and identification.</p>
-    </div>
-
-    <div class="card">
-        <h2>📄 Service Manuals</h2>
-        <p>Service manuals and technical documents.</p>
-    </div>
+<p>
+Inverter AC PCB repair information, circuits and faults.
+</p>
 
 </div>
 
+
+<div class="card">
+
+<h2>🧊 Refrigerator PCB</h2>
+
+<p>
+Inverter refrigerator PCB information and troubleshooting.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>🧺 Washing Machine PCB</h2>
+
+<p>
+Washing machine PCB repair information and error codes.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>🔥 Induction Cooktop</h2>
+
+<p>
+Induction cooktop PCB repair data, circuits and faults.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>🌬️ Chimney PCB</h2>
+
+<p>
+Chimney PCB repair information and troubleshooting.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>💾 EEPROM / BIN Files</h2>
+
+<p>
+EEPROM data, backup files and BIN files.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>⚠️ Error Codes</h2>
+
+<p>
+AC, refrigerator and washing machine error codes.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>📷 PCB Photos</h2>
+
+<p>
+PCB photographs, component locations and identification.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>📄 Service Manuals</h2>
+
+<p>
+Service manuals and technical documents.
+</p>
+
+</div>
+
+
+<div class="no-result" id="noResult">
+
+No matching data found.
+
+</div>
+
+
+</div>
+
+
 <footer>
-    My Personal PCB Repair Database
+
+My Personal PCB Repair Database
+
 </footer>
 
+
 <script>
-function searchData() {
-    let input = document.getElementById("searchBox");
-    let filter = input.value.toLowerCase();
-    let cards = document.querySelectorAll(".card");
 
-    cards.forEach(function(card) {
-        let text = card.innerText.toLowerCase();
+const searchBox =
+document.getElementById("searchBox");
 
-        if (text.includes(filter)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
+const cards =
+document.querySelectorAll(".card");
+
+const noResult =
+document.getElementById("noResult");
+
+
+searchBox.addEventListener("input",function(){
+
+    const searchText =
+    this.value.trim().toLowerCase();
+
+    let found = false;
+
+    cards.forEach(function(card){
+
+        const text =
+        card.innerText.toLowerCase();
+
+        if(text.includes(searchText)){
+
+            card.style.display="";
+            found=true;
+
+        }else{
+
+            card.style.display="none";
+
         }
+
     });
-}
+
+    if(found){
+
+        noResult.style.display="none";
+
+    }else{
+
+        noResult.style.display="block";
+
+    }
+
+});
+
 </script>
 
 </body>
