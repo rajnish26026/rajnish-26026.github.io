@@ -28,7 +28,7 @@ header{
 
 header h1{
     margin:0;
-    font-size:28px;
+    font-size:27px;
 }
 
 header p{
@@ -36,9 +36,9 @@ header p{
 }
 
 .search{
+    background:white;
     padding:15px;
     text-align:center;
-    background:white;
     position:sticky;
     top:0;
     z-index:10;
@@ -54,43 +54,49 @@ header p{
 }
 
 .container{
-    padding:15px;
     max-width:900px;
     margin:auto;
+    padding:15px;
 }
 
-.card{
+.folder{
     background:white;
-    padding:20px;
     margin:12px 0;
+    padding:20px;
     border-radius:10px;
     box-shadow:0 2px 6px rgba(0,0,0,0.1);
     cursor:pointer;
-    transition:0.2s;
 }
 
-.card:hover{
+.folder:hover{
     transform:translateY(-2px);
 }
 
-.card h2{
-    margin-top:0;
+.folder h2{
+    margin:0;
+    font-size:20px;
 }
 
-.card p{
-    color:#555;
-}
-
-footer{
-    text-align:center;
-    padding:25px;
+.folder p{
+    margin:8px 0 0;
     color:#666;
 }
 
-.no-result{
+.back{
+    display:none;
+    margin-bottom:15px;
+    padding:12px 16px;
+    background:#2563eb;
+    color:white;
+    border:0;
+    border-radius:7px;
+    font-size:16px;
+}
+
+.empty{
     text-align:center;
     padding:30px;
-    display:none;
+    color:#777;
 }
 
 </style>
@@ -103,7 +109,7 @@ footer{
 <h1>🔧 My PCB Repair Data</h1>
 
 <p>
-AC • Refrigerator • Washing Machine • EEPROM • BIN Files
+Personal PCB Repair Database
 </p>
 
 </header>
@@ -114,179 +120,217 @@ AC • Refrigerator • Washing Machine • EEPROM • BIN Files
 <input
 type="text"
 id="searchBox"
-placeholder="Search PCB, IC, error code..."
+placeholder="Search folders..."
 autocomplete="off">
 
 </div>
 
 
-<div class="container" id="dataList">
+<div class="container">
+
+<button
+class="back"
+id="backButton"
+onclick="showMainFolders()">
+
+← Back
+
+</button>
 
 
-<div class="card">
-
-<h2>❄️ AC PCB</h2>
-
-<p>
-Inverter AC PCB repair information, circuits and faults.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>🧊 Refrigerator PCB</h2>
-
-<p>
-Inverter refrigerator PCB information and troubleshooting.
-</p>
+<div id="folderList"></div>
 
 </div>
-
-
-<div class="card">
-
-<h2>🧺 Washing Machine PCB</h2>
-
-<p>
-Washing machine PCB repair information and error codes.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>🔥 Induction Cooktop</h2>
-
-<p>
-Induction cooktop PCB repair data, circuits and faults.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>🌬️ Chimney PCB</h2>
-
-<p>
-Chimney PCB repair information and troubleshooting.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>💾 EEPROM / BIN Files</h2>
-
-<p>
-EEPROM data, backup files and BIN files.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>⚠️ Error Codes</h2>
-
-<p>
-AC, refrigerator and washing machine error codes.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>📷 PCB Photos</h2>
-
-<p>
-PCB photographs, component locations and identification.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>📄 Service Manuals</h2>
-
-<p>
-Service manuals and technical documents.
-</p>
-
-</div>
-
-
-<div class="no-result" id="noResult">
-
-No matching data found.
-
-</div>
-
-
-</div>
-
-
-<footer>
-
-My Personal PCB Repair Database
-
-</footer>
 
 
 <script>
 
+/* =====================================
+   MAIN CATEGORIES
+===================================== */
+
+const mainFolders = [
+
+"AC PCB",
+"Refrigerator PCB",
+"Washing Machine PCB",
+"Induction Cooktop",
+"Chimney PCB"
+
+];
+
+
+/* =====================================
+   COMMON SUBFOLDERS
+===================================== */
+
+const subFolders = [
+
+"Circuit Diagrams",
+"EEPROM BIN Files",
+"Error Codes",
+"Inverter AC",
+"Non Inverter AC",
+"PDF",
+"Photos",
+"Remote Photos",
+"Sensor Details",
+"Test Points"
+
+];
+
+
+/* =====================================
+   DISPLAY
+===================================== */
+
+const folderList =
+document.getElementById("folderList");
+
+const backButton =
+document.getElementById("backButton");
+
 const searchBox =
 document.getElementById("searchBox");
 
-const cards =
-document.querySelectorAll(".card");
 
-const noResult =
-document.getElementById("noResult");
+let currentFolders = mainFolders;
 
 
-searchBox.addEventListener("input",function(){
+/* =====================================
+   SHOW MAIN FOLDERS
+===================================== */
 
-    const searchText =
+function showMainFolders(){
+
+    currentFolders = mainFolders;
+
+    backButton.style.display="none";
+
+    searchBox.value="";
+
+    displayFolders();
+
+}
+
+
+/* =====================================
+   SHOW SUBFOLDERS
+===================================== */
+
+function openFolder(folderName){
+
+    currentFolders = subFolders;
+
+    backButton.style.display="block";
+
+    searchBox.value="";
+
+    displayFolders(folderName);
+
+}
+
+
+/* =====================================
+   DISPLAY FOLDERS
+===================================== */
+
+function displayFolders(parentName=""){
+
+    folderList.innerHTML="";
+
+    currentFolders.forEach(function(folder){
+
+        const div =
+        document.createElement("div");
+
+        div.className="folder";
+
+        div.innerHTML=`
+
+        <h2>📁 ${folder}</h2>
+
+        <p>
+        ${parentName
+        ? parentName+" → "+folder
+        : "Open folder"}
+        </p>
+
+        `;
+
+
+        if(currentFolders === mainFolders){
+
+            div.onclick=function(){
+
+                openFolder(folder);
+
+            };
+
+        }
+        else{
+
+            div.onclick=function(){
+
+                alert(
+                "This folder is ready for your files:\n\n"
+                + parentName
+                + " → "
+                + folder
+                );
+
+            };
+
+        }
+
+
+        folderList.appendChild(div);
+
+    });
+
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+searchBox.addEventListener(
+"input",
+function(){
+
+    const text =
     this.value.trim().toLowerCase();
 
-    let found = false;
+    const folders =
+    document.querySelectorAll(".folder");
 
-    cards.forEach(function(card){
+    folders.forEach(function(folder){
 
-        const text =
-        card.innerText.toLowerCase();
+        const name =
+        folder.innerText.toLowerCase();
 
-        if(text.includes(searchText)){
+        if(name.includes(text)){
 
-            card.style.display="";
-            found=true;
+            folder.style.display="block";
 
-        }else{
+        }
+        else{
 
-            card.style.display="none";
+            folder.style.display="none";
 
         }
 
     });
 
-    if(found){
-
-        noResult.style.display="none";
-
-    }else{
-
-        noResult.style.display="block";
-
-    }
-
 });
+
+
+/* =====================================
+   START
+===================================== */
+
+showMainFolders();
 
 </script>
 
