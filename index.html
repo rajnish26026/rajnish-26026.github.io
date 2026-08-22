@@ -1,108 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>My PCB Repair Data</title>
 
 <style>
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,sans-serif;
-    margin:0;
-    background:#f2f4f7;
-    color:#222;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f4f7;
+    color: #222;
 }
 
-header{
-    background:#1f2937;
-    color:white;
-    padding:25px 15px;
-    text-align:center;
+header {
+    background: #1f2937;
+    color: white;
+    padding: 22px 15px;
+    text-align: center;
 }
 
-header h1{
-    margin:0;
-    font-size:27px;
+header h1 {
+    margin: 0;
+    font-size: 27px;
 }
 
-header p{
-    margin:8px 0 0;
+header p {
+    margin: 8px 0 0;
 }
 
-.search{
-    background:white;
-    padding:15px;
-    text-align:center;
-    position:sticky;
-    top:0;
-    z-index:10;
+.search-area {
+    background: white;
+    padding: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
 }
 
-.search input{
-    width:95%;
-    max-width:600px;
-    padding:14px;
-    font-size:16px;
-    border:1px solid #ccc;
-    border-radius:8px;
+.search-box {
+    width: 95%;
+    max-width: 650px;
+    display: block;
+    margin: auto;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:15px;
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 15px;
 }
 
-.folder{
-    background:white;
-    margin:12px 0;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    cursor:pointer;
+.path {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #555;
+    word-break: break-word;
 }
 
-.folder:hover{
-    transform:translateY(-2px);
+.back-button {
+    display: none;
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 11px 16px;
+    border-radius: 7px;
+    font-size: 15px;
+    margin-bottom: 12px;
 }
 
-.folder h2{
-    margin:0;
-    font-size:20px;
+.folder {
+    background: white;
+    margin: 10px 0;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.09);
+    cursor: pointer;
 }
 
-.folder p{
-    margin:8px 0 0;
-    color:#666;
+.folder:active {
+    transform: scale(.99);
 }
 
-.back{
-    display:none;
-    margin-bottom:15px;
-    padding:12px 16px;
-    background:#2563eb;
-    color:white;
-    border:0;
-    border-radius:7px;
-    font-size:16px;
+.folder-title {
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.empty{
-    text-align:center;
-    padding:30px;
-    color:#777;
+.folder-path {
+    margin-top: 6px;
+    color: #777;
+    font-size: 13px;
+}
+
+.file-placeholder {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    color: #777;
+}
+
+.search-results {
+    margin-top: 15px;
+}
+
+.result {
+    background: white;
+    padding: 16px;
+    margin: 10px 0;
+    border-radius: 9px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.08);
+    cursor: pointer;
+}
+
+.result-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.result-path {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #666;
+}
+
+.no-results {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    color: #777;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #777;
+    font-size: 14px;
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -115,234 +176,753 @@ Personal PCB Repair Database
 </header>
 
 
-<div class="search">
+<div class="search-area">
 
 <input
-type="text"
-id="searchBox"
-placeholder="Search folders..."
-autocomplete="off">
+    id="searchBox"
+    class="search-box"
+    type="search"
+    placeholder="Search anywhere: IC, error code, brand, model..."
+    autocomplete="off">
 
 </div>
 
 
 <div class="container">
 
+
 <button
-class="back"
-id="backButton"
-onclick="showMainFolders()">
+    id="backButton"
+    class="back-button"
+    onclick="goBack()">
 
 ← Back
 
 </button>
 
 
-<div id="folderList"></div>
+<div
+    id="pathDisplay"
+    class="path">
+
+📁 Home
 
 </div>
 
 
+<div id="content"></div>
+
+
+</div>
+
+
+<footer>
+
+My Personal PCB Repair Database
+
+</footer>
+
+
+
 <script>
 
-/* =====================================
-   MAIN CATEGORIES
-===================================== */
 
-const mainFolders = [
+/* =========================================================
+   MASTER BRAND LIST
+   Used by Error Codes, Photos and Videos
+========================================================= */
 
-"AC",
-"Circuit Diagrams",
-"Electronic Components",
-"Error Codes",
-"Fridge",
-"Microwave Oven",
-"PCB Test Points",
-"PDF",
-"Photos",
-"Software Data",
-"Videos",
-"Washing Machine",
-"Induction Cooktop",
-"Chimney PCB",
-"R O PCB"
+const brands = [
 
-];
-
-
-/* =====================================
-   COMMON SUBFOLDERS
-===================================== */
-
-const subFolders = [
-
-"Circuit Diagrams",
-"EEPROM BIN Files",
-"Error Codes",
-"Inverter AC",
-"Non Inverter AC",
-"PDF",
-"Photos",
-"Remote Photos",
-"Sensor Details",
-"Test Points"
+    "LG",
+    "Samsung",
+    "Whirlpool",
+    "Godrej",
+    "Blue Star",
+    "IFB",
+    "Voltas",
+    "Hitachi",
+    "Haier",
+    "Daikin",
+    "Panasonic",
+    "Videocon",
+    "Mitsubishi HD",
+    "Mitsubishi Electric",
+    "O General",
+    "Lloyd",
+    "Sharp",
+    "Toshiba",
+    "Carrier",
+    "Reconnect / Amstard / Amazon Basics"
 
 ];
 
 
-/* =====================================
-   DISPLAY
-===================================== */
 
-const folderList =
-document.getElementById("folderList");
+/* =========================================================
+   BRAND FOLDER CREATOR
+========================================================= */
 
-const backButton =
-document.getElementById("backButton");
+function brandFolders() {
 
-const searchBox =
-document.getElementById("searchBox");
+    return brands.map(function(brand) {
 
-
-let currentFolders = mainFolders;
-
-
-/* =====================================
-   SHOW MAIN FOLDERS
-===================================== */
-
-function showMainFolders(){
-
-    currentFolders = mainFolders;
-
-    backButton.style.display="none";
-
-    searchBox.value="";
-
-    displayFolders();
-
-}
-
-
-/* =====================================
-   SHOW SUBFOLDERS
-===================================== */
-
-function openFolder(folderName){
-
-    currentFolders = subFolders;
-
-    backButton.style.display="block";
-
-    searchBox.value="";
-
-    displayFolders(folderName);
-
-}
-
-
-/* =====================================
-   DISPLAY FOLDERS
-===================================== */
-
-function displayFolders(parentName=""){
-
-    folderList.innerHTML="";
-
-    currentFolders.forEach(function(folder){
-
-        const div =
-        document.createElement("div");
-
-        div.className="folder";
-
-        div.innerHTML=`
-
-        <h2>📁 ${folder}</h2>
-
-        <p>
-        ${parentName
-        ? parentName+" → "+folder
-        : "Open folder"}
-        </p>
-
-        `;
-
-
-        if(currentFolders === mainFolders){
-
-            div.onclick=function(){
-
-                openFolder(folder);
-
-            };
-
-        }
-        else{
-
-            div.onclick=function(){
-
-                alert(
-                "This folder is ready for your files:\n\n"
-                + parentName
-                + " → "
-                + folder
-                );
-
-            };
-
-        }
-
-
-        folderList.appendChild(div);
+        return {
+            name: brand,
+            type: "folder",
+            children: {}
+        };
 
     });
 
 }
 
 
-/* =====================================
-   SEARCH
-===================================== */
 
-searchBox.addEventListener(
-"input",
-function(){
+/* =========================================================
+   PHOTOS
+========================================================= */
 
-    const text =
-    this.value.trim().toLowerCase();
+const photos = {
 
-    const folders =
-    document.querySelectorAll(".folder");
+    "AC": brandFolders(),
 
-    folders.forEach(function(folder){
+    "Fridge": brandFolders(),
 
-        const name =
-        folder.innerText.toLowerCase();
+    "Washing Machine": brandFolders(),
 
-        if(name.includes(text)){
+    "Microwave Oven": [],
 
-            folder.style.display="block";
+    "Induction": [],
 
-        }
-        else{
+    "RO": [],
 
-            folder.style.display="none";
+    "Chimney": [],
 
-        }
+    "Misc": []
 
-    });
+};
+
+
+
+/* =========================================================
+   VIDEOS
+========================================================= */
+
+const videos = {
+
+    "AC": brandFolders(),
+
+    "Fridge": brandFolders(),
+
+    "Washing Machine": brandFolders(),
+
+    "Microwave Oven": [],
+
+    "Induction": [],
+
+    "RO": [],
+
+    "Chimney": [],
+
+    "Misc": []
+
+};
+
+
+
+/* =========================================================
+   ERROR CODES
+========================================================= */
+
+const errorCodes = {};
+
+brands.forEach(function(brand) {
+
+    errorCodes[brand] = [];
 
 });
 
 
-/* =====================================
-   START
-===================================== */
 
-showMainFolders();
+/* =========================================================
+   SOFTWARE DATA
+========================================================= */
+
+const softwareData = {
+
+    "EEPROM Data": {
+
+        "AC": {
+
+            "Inverter Indoor PCB": [],
+
+            "Non Inverter Indoor PCB": [],
+
+            "Inverter ODU PCB": [],
+
+            "Non Inverter ODU PCB": []
+
+        },
+
+
+        "Fridge": {
+
+            "Single Door": {
+
+                "Inverter": [],
+
+                "Non Inverter": []
+
+            },
+
+            "Double Door": {
+
+                "Inverter": [],
+
+                "Non Inverter": []
+
+            },
+
+            "Triple Door": {
+
+                "Inverter": [],
+
+                "Non Inverter": []
+
+            },
+
+            "Side by Side": {
+
+                "Inverter": [],
+
+                "Non Inverter": []
+
+            },
+
+            "Fridge Signal Card": [],
+
+            "Fridge Inverter Card": []
+
+        },
+
+
+        "Washing Machine": {
+
+            "Inverter Top Load": [],
+
+            "Non Inverter Top Load": [],
+
+            "Inverter Front Load": [],
+
+            "Non Inverter Front Load": []
+
+        }
+
+    },
+
+
+    "MCU Data": {}
+
+};
+
+
+
+/* =========================================================
+   COMPLETE MAIN FOLDER STRUCTURE
+========================================================= */
+
+const database = {
+
+    "AC": {},
+
+    "Circuit Diagrams": {},
+
+    "Electronic Components": {},
+
+    "Error Codes": errorCodes,
+
+    "Fridge": {
+
+        "Circuit Diagrams": {},
+
+        "EEPROM BIN Files": {},
+
+        "Error Codes": {},
+
+        "Inverter PCB": {},
+
+        "Photos": {},
+
+        "Sensor Details": {},
+
+        "Signal PCB": {},
+
+        "Videos": {},
+
+        "Wiring Details": {}
+
+    },
+
+
+    "Microwave Oven": {
+
+        "MW Oven Touch": {},
+
+        "MW Oven Wiring": {}
+
+    },
+
+
+    "PCB Test Points": {},
+
+    "PDF": {},
+
+    "Photos": photos,
+
+    "Software Data": softwareData,
+
+    "Videos": videos,
+
+    "Washing Machine": {},
+
+    "Induction Cooktop": {},
+
+    "Chimney PCB": {},
+
+    "R O PCB": {}
+
+};
+
+
+
+/* =========================================================
+   CURRENT LOCATION
+========================================================= */
+
+let currentNode = database;
+
+let currentPath = [];
+
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const content =
+    document.getElementById("content");
+
+const backButton =
+    document.getElementById("backButton");
+
+const pathDisplay =
+    document.getElementById("pathDisplay");
+
+const searchBox =
+    document.getElementById("searchBox");
+
+
+
+/* =========================================================
+   CHECK WHETHER SOMETHING IS A FOLDER
+========================================================= */
+
+function isObject(value) {
+
+    return value !== null &&
+           typeof value === "object";
+
+}
+
+
+
+/* =========================================================
+   DISPLAY CURRENT FOLDER
+========================================================= */
+
+function displayCurrentFolder() {
+
+    content.innerHTML = "";
+
+    pathDisplay.innerHTML =
+        "📁 " +
+        (currentPath.length
+        ? currentPath.join(" → ")
+        : "Home");
+
+
+    if (currentPath.length === 0) {
+
+        backButton.style.display = "none";
+
+    } else {
+
+        backButton.style.display = "inline-block";
+
+    }
+
+
+    const keys = Object.keys(currentNode);
+
+
+    if (keys.length === 0) {
+
+        content.innerHTML = `
+
+        <div class="file-placeholder">
+
+        📂 This folder is currently empty.
+
+        <br><br>
+
+        Files will appear here after we connect
+        your Appwrite storage.
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    keys.forEach(function(name) {
+
+        createFolderElement(
+            name,
+            currentNode[name]
+        );
+
+    });
+
+}
+
+
+
+/* =========================================================
+   CREATE FOLDER
+========================================================= */
+
+function createFolderElement(name, node) {
+
+    const folder =
+        document.createElement("div");
+
+    folder.className = "folder";
+
+
+    folder.innerHTML = `
+
+        <div class="folder-title">
+
+            📁 ${escapeHTML(name)}
+
+        </div>
+
+        <div class="folder-path">
+
+            Tap to open
+
+        </div>
+
+    `;
+
+
+    folder.onclick = function() {
+
+        currentNode = node;
+
+        currentPath.push(name);
+
+        displayCurrentFolder();
+
+    };
+
+
+    content.appendChild(folder);
+
+}
+
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+function goBack() {
+
+    if (currentPath.length === 0) {
+
+        return;
+
+    }
+
+
+    currentPath.pop();
+
+
+    currentNode = database;
+
+
+    for (let i = 0;
+         i < currentPath.length;
+         i++) {
+
+        currentNode =
+            currentNode[currentPath[i]];
+
+    }
+
+
+    displayCurrentFolder();
+
+}
+
+
+
+/* =========================================================
+   GLOBAL SEARCH
+========================================================= */
+
+function searchDatabase(
+    node,
+    path,
+    searchText,
+    results
+) {
+
+    Object.keys(node).forEach(function(name) {
+
+        const fullPath =
+            path.concat(name);
+
+        const nameMatch =
+            name.toLowerCase()
+            .includes(searchText);
+
+
+        if (nameMatch) {
+
+            results.push({
+
+                name: name,
+
+                path: fullPath
+
+            });
+
+        }
+
+
+        if (isObject(node[name])) {
+
+            searchDatabase(
+                node[name],
+                fullPath,
+                searchText,
+                results
+            );
+
+        }
+
+    });
+
+}
+
+
+
+/* =========================================================
+   DISPLAY SEARCH RESULTS
+========================================================= */
+
+function performSearch(text) {
+
+    text =
+        text.trim().toLowerCase();
+
+
+    if (!text) {
+
+        displayCurrentFolder();
+
+        return;
+
+    }
+
+
+    const results = [];
+
+
+    searchDatabase(
+        database,
+        [],
+        text,
+        results
+    );
+
+
+    content.innerHTML = "";
+
+    pathDisplay.innerHTML =
+        "🔎 Search Results";
+
+
+    backButton.style.display =
+        "inline-block";
+
+
+    if (results.length === 0) {
+
+        content.innerHTML = `
+
+        <div class="no-results">
+
+            No matching folder found.
+
+            <br><br>
+
+            Your actual files will also become
+            searchable when Appwrite storage is connected.
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const heading =
+        document.createElement("div");
+
+    heading.style.marginBottom = "10px";
+
+    heading.innerHTML =
+        "<b>" +
+        results.length +
+        "</b> result(s) found";
+
+
+    content.appendChild(heading);
+
+
+    results.forEach(function(result) {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "result";
+
+
+        div.innerHTML = `
+
+            <div class="result-title">
+
+                📁 ${escapeHTML(result.name)}
+
+            </div>
+
+            <div class="result-path">
+
+                ${escapeHTML(
+                    result.path.join(" → ")
+                )}
+
+            </div>
+
+        `;
+
+
+        div.onclick = function() {
+
+            openSearchResult(result.path);
+
+        };
+
+
+        content.appendChild(div);
+
+    });
+
+}
+
+
+
+/* =========================================================
+   OPEN SEARCH RESULT
+========================================================= */
+
+function openSearchResult(path) {
+
+    currentNode = database;
+
+    currentPath = [];
+
+
+    for (let i = 0;
+         i < path.length;
+         i++) {
+
+        currentNode =
+            currentNode[path[i]];
+
+        currentPath.push(path[i]);
+
+    }
+
+
+    searchBox.value = "";
+
+    displayCurrentFolder();
+
+}
+
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(text) {
+
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =========================================================
+   SEARCH EVENT
+========================================================= */
+
+searchBox.addEventListener(
+    "input",
+    function() {
+
+        performSearch(this.value);
+
+    }
+);
+
+
+
+/* =========================================================
+   START WEBSITE
+========================================================= */
+
+displayCurrentFolder();
+
 
 </script>
 
 </body>
+
 </html>
