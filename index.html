@@ -3,9 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PCB REPAIR DATA</title>
 
@@ -21,10 +19,6 @@ body {
     background: #eef2f7;
     color: #1f2937;
 }
-
-/* =========================
-   HEADER
-========================= */
 
 header {
     background: #1f2937;
@@ -44,10 +38,6 @@ header p {
     font-size: 16px;
     font-weight: 700;
 }
-
-/* =========================
-   SEARCH
-========================= */
 
 .search-area {
     background: white;
@@ -74,19 +64,11 @@ header p {
     border-color: #2563eb;
 }
 
-/* =========================
-   MAIN CONTAINER
-========================= */
-
 .container {
     max-width: 950px;
     margin: auto;
     padding: 15px;
 }
-
-/* =========================
-   BREADCRUMB
-========================= */
 
 .path {
     background: #dbeafe;
@@ -102,10 +84,6 @@ header p {
     box-shadow: 0 2px 5px rgba(0,0,0,.08);
 }
 
-/* =========================
-   BACK BUTTON
-========================= */
-
 .back-button {
     display: none;
     border: none;
@@ -119,14 +97,6 @@ header p {
     cursor: pointer;
 }
 
-.back-button:active {
-    transform: scale(.97);
-}
-
-/* =========================
-   FOLDER CARDS
-========================= */
-
 .folder {
     background: white;
     margin: 11px 0;
@@ -135,12 +105,6 @@ header p {
     border: 2px solid #dbe3ee;
     box-shadow: 0 3px 8px rgba(0,0,0,.08);
     cursor: pointer;
-    transition: .15s ease;
-}
-
-.folder:hover {
-    border-color: #93c5fd;
-    box-shadow: 0 4px 12px rgba(37,99,235,.14);
 }
 
 .folder:active {
@@ -153,10 +117,6 @@ header p {
     color: #111827;
 }
 
-/* =========================
-   EMPTY FOLDER
-========================= */
-
 .file-placeholder {
     background: white;
     padding: 30px 20px;
@@ -166,45 +126,6 @@ header p {
     font-weight: 600;
 }
 
-/* =========================
-   SEARCH RESULTS
-========================= */
-
-.result {
-    background: white;
-    padding: 17px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 2px solid #e5e7eb;
-    box-shadow: 0 2px 6px rgba(0,0,0,.08);
-    cursor: pointer;
-}
-
-.result-title {
-    font-weight: 800;
-    font-size: 17px;
-}
-
-.result-path {
-    margin-top: 7px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #4b5563;
-    line-height: 1.5;
-}
-
-.no-results {
-    background: white;
-    padding: 30px;
-    text-align: center;
-    border-radius: 10px;
-    color: #777;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
 footer {
     text-align: center;
     padding: 30px 15px;
@@ -212,10 +133,6 @@ footer {
     font-size: 14px;
     font-weight: 600;
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 600px) {
 
@@ -239,19 +156,13 @@ footer {
         font-size: 17px;
     }
 
-    .path {
-        font-size: 14px;
-    }
-
 }
 
 </style>
-
 </head>
 
 
 <body>
-
 
 <header>
 
@@ -286,16 +197,81 @@ footer {
     </button>
 
 
-    <div
-        id="pathDisplay"
-        class="path">
+    <div id="pathDisplay" class="path">
 
         📁 Home
 
     </div>
 
 
-    <div id="content"></div>
+    <!--
+        MAIN HOME FOLDERS ARE DIRECTLY IN HTML.
+        They will ALWAYS be visible on Home.
+    -->
+
+    <div id="content">
+
+        <div class="folder" data-folder="AC">
+            <div class="folder-title">📁 AC</div>
+        </div>
+
+        <div class="folder" data-folder="Fridge">
+            <div class="folder-title">📁 Fridge</div>
+        </div>
+
+        <div class="folder" data-folder="Washing Machine">
+            <div class="folder-title">📁 Washing Machine</div>
+        </div>
+
+        <div class="folder" data-folder="Microwave Oven">
+            <div class="folder-title">📁 Microwave Oven</div>
+        </div>
+
+        <div class="folder" data-folder="Induction Cooktop">
+            <div class="folder-title">📁 Induction Cooktop</div>
+        </div>
+
+        <div class="folder" data-folder="Chimney PCB">
+            <div class="folder-title">📁 Chimney PCB</div>
+        </div>
+
+        <div class="folder" data-folder="R O PCB">
+            <div class="folder-title">📁 R O PCB</div>
+        </div>
+
+        <div class="folder" data-folder="Circuit Diagrams">
+            <div class="folder-title">📁 Circuit Diagrams</div>
+        </div>
+
+        <div class="folder" data-folder="Electronic Components">
+            <div class="folder-title">📁 Electronic Components</div>
+        </div>
+
+        <div class="folder" data-folder="Error Codes">
+            <div class="folder-title">📁 Error Codes</div>
+        </div>
+
+        <div class="folder" data-folder="PCB Test Points">
+            <div class="folder-title">📁 PCB Test Points</div>
+        </div>
+
+        <div class="folder" data-folder="PDF">
+            <div class="folder-title">📁 PDF</div>
+        </div>
+
+        <div class="folder" data-folder="Photos">
+            <div class="folder-title">📁 Photos</div>
+        </div>
+
+        <div class="folder" data-folder="Software Data">
+            <div class="folder-title">📁 Software Data</div>
+        </div>
+
+        <div class="folder" data-folder="Videos">
+            <div class="folder-title">📁 Videos</div>
+        </div>
+
+    </div>
 
 </div>
 
@@ -318,22 +294,18 @@ function makeFolders(names) {
     const result = {};
 
     names.forEach(function(name) {
-
         result[name] = {};
-
     });
 
     return result;
-
 }
 
 
 /* =========================================================
-   AC CATEGORIES
+   AC
 ========================================================= */
 
 const acTypes = [
-
     "Inverter Window",
     "Inverter Split",
     "Inverter Cassette",
@@ -342,101 +314,39 @@ const acTypes = [
     "Non Inverter Split",
     "Non Inverter Cassette",
     "Non Inverter Ductable"
-
 ];
-
-
-/* =========================================================
-   FRIDGE CATEGORIES
-========================================================= */
-
-const fridgeTypes = [
-
-    "Inverter Single Door",
-    "Inverter Double Door",
-    "Inverter Triple Door",
-    "Inverter Side by Side",
-    "Non Inverter Single Door",
-    "Non Inverter Double Door",
-    "Non Inverter Triple Door",
-    "Non Inverter Side by Side"
-
-];
-
-
-/* =========================================================
-   WASHING MACHINE CATEGORIES
-========================================================= */
-
-const washingMachineTypes = [
-
-    "Inverter Top Load",
-    "Inverter Front Load",
-    "Non Inverter Top Load",
-    "Non Inverter Front Load"
-
-];
-
-
-/* =========================================================
-   MICROWAVE CATEGORIES
-========================================================= */
-
-const microwaveTypes = [
-
-    "Inverter",
-    "Non Inverter"
-
-];
-
-
-/* =========================================================
-   AC
-========================================================= */
 
 const AC = {
 
-    "Circuit Diagrams":
-        makeFolders(acTypes),
+    "Circuit Diagrams": makeFolders(acTypes),
 
-    "EEPROM BIN Files":
-        makeFolders(acTypes),
+    "EEPROM BIN Files": makeFolders(acTypes),
 
-    "Error Codes":
-        makeFolders(acTypes),
+    "Error Codes": makeFolders(acTypes),
 
     "Inverter AC": {
-
         "Window": {},
         "Split": {},
         "Cassette": {},
         "Ductable": {}
-
     },
 
     "Non Inverter AC": {
-
         "Window": {},
         "Split": {},
         "Cassette": {},
         "Ductable": {}
-
     },
 
-    "PDF":
-        makeFolders(acTypes),
+    "PDF": makeFolders(acTypes),
 
-    "Photos":
-        makeFolders(acTypes),
+    "Photos": makeFolders(acTypes),
 
-    "Remote Photos":
-        makeFolders(acTypes),
+    "Remote Photos": makeFolders(acTypes),
 
-    "Sensor Details":
-        makeFolders(acTypes),
+    "Sensor Details": makeFolders(acTypes),
 
-    "Test Points":
-        makeFolders(acTypes)
+    "Test Points": makeFolders(acTypes)
 
 };
 
@@ -445,16 +355,24 @@ const AC = {
    FRIDGE
 ========================================================= */
 
+const fridgeTypes = [
+    "Inverter Single Door",
+    "Inverter Double Door",
+    "Inverter Triple Door",
+    "Inverter Side by Side",
+    "Non Inverter Single Door",
+    "Non Inverter Double Door",
+    "Non Inverter Triple Door",
+    "Non Inverter Side by Side"
+];
+
 const Fridge = {
 
-    "Circuit Diagrams":
-        makeFolders(fridgeTypes),
+    "Circuit Diagrams": makeFolders(fridgeTypes),
 
-    "EEPROM BIN Files":
-        makeFolders(fridgeTypes),
+    "EEPROM BIN Files": makeFolders(fridgeTypes),
 
-    "Error Codes":
-        makeFolders(fridgeTypes),
+    "Error Codes": makeFolders(fridgeTypes),
 
     "Inverter PCB": {
 
@@ -465,162 +383,126 @@ const Fridge = {
 
     },
 
-    "Photos":
-        makeFolders(fridgeTypes),
+    "Photos": makeFolders(fridgeTypes),
 
-    "Sensor Details":
-        makeFolders(fridgeTypes),
+    "Sensor Details": makeFolders(fridgeTypes),
 
-    "Signal PCB":
-        makeFolders(fridgeTypes),
+    "Signal PCB": makeFolders(fridgeTypes),
 
-    "Videos":
-        makeFolders(fridgeTypes),
+    "Videos": makeFolders(fridgeTypes),
 
-    "Wiring Details":
-        makeFolders(fridgeTypes)
+    "Wiring Details": makeFolders(fridgeTypes)
 
 };
 
 
 /* =========================================================
    WASHING MACHINE
-
-   IMPORTANT:
-   Remote Photos is intentionally NOT included.
+   NO REMOTE PHOTOS
 ========================================================= */
+
+const washingMachineTypes = [
+    "Inverter Top Load",
+    "Inverter Front Load",
+    "Non Inverter Top Load",
+    "Non Inverter Front Load"
+];
 
 const WashingMachine = {
 
-    "Circuit Diagrams":
-        makeFolders(washingMachineTypes),
+    "Circuit Diagrams": makeFolders(washingMachineTypes),
 
-    "EEPROM BIN Files":
-        makeFolders(washingMachineTypes),
+    "EEPROM BIN Files": makeFolders(washingMachineTypes),
 
-    "Error Codes":
-        makeFolders(washingMachineTypes),
+    "Error Codes": makeFolders(washingMachineTypes),
 
-    "Photos":
-        makeFolders(washingMachineTypes),
+    "Photos": makeFolders(washingMachineTypes),
 
-    "Test Points":
-        makeFolders(washingMachineTypes),
+    "Test Points": makeFolders(washingMachineTypes),
 
-    "Videos":
-        makeFolders(washingMachineTypes),
+    "Videos": makeFolders(washingMachineTypes),
 
-    "Wiring Details":
-        makeFolders(washingMachineTypes)
+    "Wiring Details": makeFolders(washingMachineTypes)
 
 };
 
 
 /* =========================================================
-   MICROWAVE OVEN
+   MICROWAVE
 ========================================================= */
+
+const microwaveTypes = [
+    "Inverter",
+    "Non Inverter"
+];
 
 const MicrowaveOven = {
 
-    "MW Oven Touch":
-        makeFolders(microwaveTypes),
+    "MW Oven Touch": makeFolders(microwaveTypes),
 
-    "MW Oven Wiring":
-        makeFolders(microwaveTypes)
+    "MW Oven Wiring": makeFolders(microwaveTypes)
 
 };
 
 
 /* =========================================================
-   INDUCTION COOKTOP
+   OTHER MAIN FOLDERS
 ========================================================= */
 
 const InductionCooktop = {
 
     "Circuit Diagrams": {},
-
     "Error Codes": {},
-
     "Photos": {},
-
     "Videos": {},
-
     "Test Points": {},
-
     "Wiring Details": {},
-
     "PDF": {}
 
 };
 
-
-/* =========================================================
-   CHIMNEY PCB
-========================================================= */
 
 const ChimneyPCB = {
 
     "Circuit Diagrams": {},
-
     "Error Codes": {},
-
     "Photos": {},
-
     "Videos": {},
-
     "Test Points": {},
-
     "Wiring Details": {},
-
     "PDF": {}
 
 };
 
-
-/* =========================================================
-   R O PCB
-========================================================= */
 
 const ROPCB = {
 
     "Circuit Diagrams": {},
-
     "Error Codes": {},
-
     "EEPROM BIN Files": {},
-
     "Photos": {},
-
     "Videos": {},
-
     "Test Points": {},
-
     "Wiring Details": {},
-
     "Sensor Details": {},
-
     "PDF": {}
 
 };
 
 
 /* =========================================================
-   CIRCUIT DIAGRAMS MAIN FOLDER
+   CIRCUIT DIAGRAMS
 ========================================================= */
 
 const CircuitDiagrams = {
 
-    "AC":
-        makeFolders(acTypes),
+    "AC": makeFolders(acTypes),
 
-    "Fridge":
-        makeFolders(fridgeTypes),
+    "Fridge": makeFolders(fridgeTypes),
 
-    "Washing Machine":
-        makeFolders(washingMachineTypes),
+    "Washing Machine": makeFolders(washingMachineTypes),
 
-    "Microwave Oven":
-        makeFolders(microwaveTypes),
+    "Microwave Oven": makeFolders(microwaveTypes),
 
     "Induction Cooktop": {},
 
@@ -637,14 +519,11 @@ const CircuitDiagrams = {
 
 const PCBTestPoints = {
 
-    "AC":
-        makeFolders(acTypes),
+    "AC": makeFolders(acTypes),
 
-    "Fridge":
-        makeFolders(fridgeTypes),
+    "Fridge": makeFolders(fridgeTypes),
 
-    "Washing Machine":
-        makeFolders(washingMachineTypes)
+    "Washing Machine": makeFolders(washingMachineTypes)
 
 };
 
@@ -655,14 +534,11 @@ const PCBTestPoints = {
 
 const Photos = {
 
-    "AC":
-        makeFolders(acTypes),
+    "AC": makeFolders(acTypes),
 
-    "Fridge":
-        makeFolders(fridgeTypes),
+    "Fridge": makeFolders(fridgeTypes),
 
-    "Washing Machine":
-        makeFolders(washingMachineTypes),
+    "Washing Machine": makeFolders(washingMachineTypes),
 
     "Microwave Oven": {},
 
@@ -683,14 +559,11 @@ const Photos = {
 
 const Videos = {
 
-    "AC":
-        makeFolders(acTypes),
+    "AC": makeFolders(acTypes),
 
-    "Fridge":
-        makeFolders(fridgeTypes),
+    "Fridge": makeFolders(fridgeTypes),
 
-    "Washing Machine":
-        makeFolders(washingMachineTypes),
+    "Washing Machine": makeFolders(washingMachineTypes),
 
     "Microwave Oven": {},
 
@@ -725,31 +598,23 @@ const SoftwareData = {
         "Fridge": {
 
             "Single Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Double Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Triple Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Side by Side": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Fridge Signal Card": {},
@@ -776,56 +641,39 @@ const SoftwareData = {
 
 /* =========================================================
    MAIN DATABASE
-
-   EXACT ORDER
 ========================================================= */
 
 const database = {
 
-    "AC":
-        AC,
+    "AC": AC,
 
-    "Fridge":
-        Fridge,
+    "Fridge": Fridge,
 
-    "Washing Machine":
-        WashingMachine,
+    "Washing Machine": WashingMachine,
 
-    "Microwave Oven":
-        MicrowaveOven,
+    "Microwave Oven": MicrowaveOven,
 
-    "Induction Cooktop":
-        InductionCooktop,
+    "Induction Cooktop": InductionCooktop,
 
-    "Chimney PCB":
-        ChimneyPCB,
+    "Chimney PCB": ChimneyPCB,
 
-    "R O PCB":
-        ROPCB,
+    "R O PCB": ROPCB,
 
-    "Circuit Diagrams":
-        CircuitDiagrams,
+    "Circuit Diagrams": CircuitDiagrams,
 
-    "Electronic Components":
-        {},
+    "Electronic Components": {},
 
-    "Error Codes":
-        {},
+    "Error Codes": {},
 
-    "PCB Test Points":
-        PCBTestPoints,
+    "PCB Test Points": PCBTestPoints,
 
-    "PDF":
-        {},
+    "PDF": {},
 
-    "Photos":
-        Photos,
+    "Photos": Photos,
 
-    "Software Data":
-        SoftwareData,
+    "Software Data": SoftwareData,
 
-    "Videos":
-        Videos
+    "Videos": Videos
 
 };
 
@@ -857,120 +705,70 @@ const searchBox =
 
 
 /* =========================================================
-   ESCAPE HTML
+   DISPLAY FOLDER
 ========================================================= */
 
-function escapeHTML(text) {
-
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =========================================================
-   SHOW CURRENT FOLDER
-========================================================= */
-
-function showCurrentFolder() {
+function displayFolder() {
 
     content.innerHTML = "";
 
-
-    /* Breadcrumb */
-
-    if (currentPath.length === 0) {
-
-        pathDisplay.textContent =
-            "📁 Home";
-
-        backButton.style.display =
-            "none";
-
-    } else {
-
-        pathDisplay.textContent =
-            "📁 " +
-            currentPath.join(" → ");
-
-        backButton.style.display =
-            "inline-block";
-
-    }
+    pathDisplay.textContent =
+        currentPath.length === 0
+        ? "📁 Home"
+        : "📁 " + currentPath.join(" → ");
 
 
-    /* Get current folders */
+    backButton.style.display =
+        currentPath.length === 0
+        ? "none"
+        : "inline-block";
 
-    const folderNames =
+
+    const names =
         Object.keys(currentNode);
 
 
-    /* Empty folder */
-
-    if (folderNames.length === 0) {
+    if (names.length === 0) {
 
         content.innerHTML = `
-
             <div class="file-placeholder">
-
                 📂 This folder is currently empty.
-
             </div>
-
         `;
 
         return;
-
     }
 
 
-    /* IMPORTANT:
-       Display every folder */
-
-    folderNames.forEach(function(folderName) {
+    names.forEach(function(name) {
 
         const folder =
             document.createElement("div");
 
-        folder.className =
-            "folder";
-
+        folder.className = "folder";
 
         folder.innerHTML = `
-
             <div class="folder-title">
-
-                📁 ${escapeHTML(folderName)}
-
+                📁 ${name}
             </div>
-
         `;
 
 
-        folder.addEventListener(
-            "click",
-            function() {
+        folder.onclick = function() {
 
-                currentNode =
-                    currentNode[folderName];
+            currentNode =
+                currentNode[name];
 
-                currentPath.push(
-                    folderName
-                );
+            currentPath.push(name);
 
-                showCurrentFolder();
+            displayFolder();
 
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
-            }
-        );
+        };
 
 
         content.appendChild(folder);
@@ -981,20 +779,24 @@ function showCurrentFolder() {
 
 
 /* =========================================================
-   APP BACK
+   BACK BUTTON
 ========================================================= */
+
+backButton.onclick = function() {
+
+    goBack();
+
+};
+
 
 function goBack() {
 
     if (currentPath.length === 0) {
-
         return;
-
     }
 
 
     currentPath.pop();
-
 
     currentNode = database;
 
@@ -1007,41 +809,20 @@ function goBack() {
     });
 
 
-    showCurrentFolder();
+    displayFolder();
 
 }
 
 
 /* =========================================================
-   PHONE / BROWSER BACK BUTTON
+   PHONE BACK BUTTON
 ========================================================= */
 
 window.addEventListener(
     "popstate",
     function() {
 
-        if (currentPath.length === 0) {
-
-            showCurrentFolder();
-
-            return;
-
-        }
-
-        currentPath.pop();
-
-        currentNode = database;
-
-
-        currentPath.forEach(function(name) {
-
-            currentNode =
-                currentNode[name];
-
-        });
-
-
-        showCurrentFolder();
+        goBack();
 
     }
 );
@@ -1058,53 +839,42 @@ function searchTree(
     results
 ) {
 
-    Object.keys(node).forEach(
-        function(name) {
+    Object.keys(node).forEach(function(name) {
 
-            const newPath =
-                path.concat(name);
-
-
-            if (
-                name
-                    .toLowerCase()
-                    .includes(text)
-            ) {
-
-                results.push({
-
-                    name: name,
-
-                    path: newPath
-
-                });
-
-            }
+        const newPath =
+            path.concat(name);
 
 
-            if (
-                node[name] &&
-                typeof node[name] === "object"
-            ) {
+        if (
+            name.toLowerCase().includes(text)
+        ) {
 
-                searchTree(
-                    node[name],
-                    newPath,
-                    text,
-                    results
-                );
-
-            }
+            results.push({
+                name: name,
+                path: newPath
+            });
 
         }
-    );
+
+
+        if (
+            node[name] &&
+            typeof node[name] === "object"
+        ) {
+
+            searchTree(
+                node[name],
+                newPath,
+                text,
+                results
+            );
+
+        }
+
+    });
 
 }
 
-
-/* =========================================================
-   PERFORM SEARCH
-========================================================= */
 
 function performSearch(text) {
 
@@ -1114,7 +884,7 @@ function performSearch(text) {
 
     if (!text) {
 
-        showCurrentFolder();
+        displayFolder();
 
         return;
 
@@ -1134,20 +904,70 @@ function performSearch(text) {
 
     content.innerHTML = "";
 
-
     pathDisplay.textContent =
         "🔎 Search Results";
 
 
-    backButton.style.display =
-        "inline-block";
+    results.forEach(function(result) {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "folder";
+
+
+        item.innerHTML = `
+
+            <div class="folder-title">
+
+                📁 ${result.name}
+
+            </div>
+
+            <div class="result-path">
+
+                ${result.path.join(" → ")}
+
+            </div>
+
+        `;
+
+
+        item.onclick = function() {
+
+            currentNode = database;
+
+            currentPath = [];
+
+
+            result.path.forEach(function(name) {
+
+                currentNode =
+                    currentNode[name];
+
+                currentPath.push(name);
+
+            });
+
+
+            searchBox.value = "";
+
+            displayFolder();
+
+        };
+
+
+        content.appendChild(item);
+
+    });
 
 
     if (results.length === 0) {
 
         content.innerHTML = `
 
-            <div class="no-results">
+            <div class="file-placeholder">
 
                 No matching folder found.
 
@@ -1155,103 +975,7 @@ function performSearch(text) {
 
         `;
 
-        return;
-
     }
-
-
-    const heading =
-        document.createElement("div");
-
-    heading.style.fontWeight =
-        "800";
-
-    heading.style.marginBottom =
-        "10px";
-
-    heading.textContent =
-        results.length +
-        " result(s) found";
-
-
-    content.appendChild(heading);
-
-
-    results.forEach(
-        function(result) {
-
-            const item =
-                document.createElement("div");
-
-            item.className =
-                "result";
-
-
-            item.innerHTML = `
-
-                <div class="result-title">
-
-                    📁 ${escapeHTML(
-                        result.name
-                    )}
-
-                </div>
-
-                <div class="result-path">
-
-                    ${escapeHTML(
-                        result.path.join(" → ")
-                    )}
-
-                </div>
-
-            `;
-
-
-            item.addEventListener(
-                "click",
-                function() {
-
-                    openPath(
-                        result.path
-                    );
-
-                }
-            );
-
-
-            content.appendChild(item);
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   OPEN SEARCH RESULT
-========================================================= */
-
-function openPath(path) {
-
-    currentNode = database;
-
-    currentPath = [];
-
-
-    path.forEach(function(name) {
-
-        currentNode =
-            currentNode[name];
-
-        currentPath.push(name);
-
-    });
-
-
-    searchBox.value = "";
-
-    showCurrentFolder();
 
 }
 
@@ -1264,22 +988,20 @@ searchBox.addEventListener(
     "input",
     function() {
 
-        performSearch(
-            this.value
-        );
+        performSearch(this.value);
 
     }
 );
 
 
 /* =========================================================
-   START APP
+   IMPORTANT:
+   DO NOT call displayFolder() on startup.
+   Home folders are already written directly
+   in the HTML above.
 ========================================================= */
-
-showCurrentFolder();
 
 </script>
 
 </body>
-
 </html>
