@@ -9,10 +9,6 @@
 
 <style>
 
-/* =========================================================
-   BASIC
-========================================================= */
-
 * {
     box-sizing: border-box;
 }
@@ -24,10 +20,7 @@ body {
     color: #26364a;
 }
 
-
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 
 header {
     background: linear-gradient(135deg, #123b67, #1769aa);
@@ -51,10 +44,7 @@ header p {
     opacity: .95;
 }
 
-
-/* =========================================================
-   SEARCH
-========================================================= */
+/* SEARCH */
 
 .search-area {
     background: white;
@@ -70,18 +60,13 @@ header p {
     max-width: 700px;
     display: block;
     margin: auto;
-
     padding: 14px 17px;
-
     border: 2px solid #cbd8e8;
     border-radius: 12px;
-
     font-size: 16px;
     font-weight: 600;
-
     color: #23415f;
     background: #f8fbff;
-
     outline: none;
 }
 
@@ -91,10 +76,7 @@ header p {
     box-shadow: 0 0 0 3px rgba(35,132,217,.12);
 }
 
-
-/* =========================================================
-   MAIN
-========================================================= */
+/* MAIN */
 
 .container {
     max-width: 1100px;
@@ -102,36 +84,21 @@ header p {
     padding: 16px;
 }
 
-
-/* =========================================================
-   CLICKABLE TREE / BREADCRUMB
-========================================================= */
+/* TREE / BREADCRUMB */
 
 .path {
     background: linear-gradient(135deg, #e5f2ff, #f3f9ff);
-
     border-left: 6px solid #2384d9;
-
     padding: 14px 16px;
-
     border-radius: 10px;
-
     margin-bottom: 14px;
-
     font-size: 16px;
     font-weight: 900;
-
     color: #174a7a;
-
     line-height: 1.8;
-
     word-break: break-word;
-
     box-shadow: 0 3px 9px rgba(24,78,125,.10);
 }
-
-
-/* HOME / TREE ITEMS */
 
 .path-home {
     color: #1769aa;
@@ -161,31 +128,19 @@ header p {
     padding: 0 5px;
 }
 
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
+/* BACK BUTTON */
 
 .back-button {
     display: none;
-
     border: none;
-
     background: linear-gradient(135deg, #287dcc, #1769aa);
-
     color: white;
-
     padding: 11px 19px;
-
     border-radius: 9px;
-
     font-size: 16px;
     font-weight: 800;
-
     margin-bottom: 13px;
-
     cursor: pointer;
-
     box-shadow: 0 3px 8px rgba(23,105,170,.25);
 }
 
@@ -197,24 +152,15 @@ header p {
     transform: scale(.97);
 }
 
-
-/* =========================================================
-   FOLDER GRID
-========================================================= */
+/* FOLDER GRID */
 
 #content {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
 }
 
-
-/* =========================================================
-   PROFESSIONAL FOLDER BOX
-========================================================= */
+/* FOLDER BOX */
 
 .folder {
     min-height: 105px;
@@ -226,21 +172,15 @@ header p {
     );
 
     border: 2px solid #b9d7ee;
-
     border-radius: 14px;
-
     padding: 20px 15px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
-
     cursor: pointer;
-
     position: relative;
 
     box-shadow:
@@ -253,12 +193,8 @@ header p {
         background .15s ease;
 
     user-select: none;
-
     touch-action: manipulation;
 }
-
-
-/* hover */
 
 .folder:hover {
     border-color: #4c9bd2;
@@ -275,36 +211,22 @@ header p {
     transform: translateY(-2px);
 }
 
-
-/* click */
-
 .folder:active {
     transform: scale(.97);
 }
 
-
-/* =========================================================
-   FOLDER TEXT
-========================================================= */
+/* FOLDER TEXT */
 
 .folder-title {
     font-size: 18px;
-
     line-height: 1.35;
-
     font-weight: 900;
-
     color: #1769aa;
-
     word-break: normal;
-
     overflow-wrap: anywhere;
 }
 
-
-/*
-   SPECIAL COLOUR CLASSES
-*/
+/* SPECIAL COLOURS */
 
 .folder:nth-child(4n+1) .folder-title {
     color: #1769aa;
@@ -322,23 +244,15 @@ header p {
     color: #7651a8;
 }
 
-
-/* =========================================================
-   DRAG HANDLE
-========================================================= */
+/* DRAG HANDLE */
 
 .drag-handle {
     position: absolute;
-
     top: 7px;
     right: 9px;
-
     font-size: 13px;
-
     color: #8aabc3;
-
     cursor: grab;
-
     opacity: .75;
 }
 
@@ -346,23 +260,15 @@ header p {
     cursor: grabbing;
 }
 
-
-/* =========================================================
-   DRAGGING
-========================================================= */
+/* DRAGGING */
 
 .folder.dragging {
     opacity: .45;
-
     border-color: #2384d9;
-
     transform: scale(.97);
 }
 
-
-/* =========================================================
-   DROP TARGET
-========================================================= */
+/* DROP TARGET */
 
 .folder.drag-over {
     border-color: #1769aa;
@@ -371,68 +277,44 @@ header p {
         0 0 0 3px rgba(35,132,217,.18);
 }
 
-
-/* =========================================================
-   EMPTY / SEARCH
-========================================================= */
+/* EMPTY / SEARCH */
 
 .file-placeholder,
 .no-results {
     grid-column: 1 / -1;
 
     background: white;
-
     padding: 35px 20px;
-
     text-align: center;
-
     border-radius: 12px;
 
     color: #58718a;
-
     font-weight: 700;
 
     border: 2px solid #d5e3ef;
 }
 
-
-/* =========================================================
-   SEARCH RESULT PATH
-========================================================= */
+/* SEARCH RESULT PATH */
 
 .result-path {
     margin-top: 8px;
-
     font-size: 13px;
-
     font-weight: 700;
-
     color: #5b7892;
-
     line-height: 1.5;
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 footer {
     text-align: center;
-
     padding: 30px 15px;
-
     color: #688198;
-
     font-size: 14px;
-
     font-weight: 700;
 }
 
-
-/* =========================================================
-   TABLET
-========================================================= */
+/* TABLET */
 
 @media (max-width: 850px) {
 
@@ -443,11 +325,7 @@ footer {
 
 }
 
-
-/* =========================================================
-   MOBILE
-   3 BOXES IN ONE ROW
-========================================================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -469,43 +347,31 @@ footer {
     }
 
     #content {
-
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
-
         gap: 8px;
     }
 
     .folder {
-
         min-height: 105px;
-
         padding: 15px 7px;
-
         border-radius: 12px;
     }
 
     .folder-title {
-
         font-size: 15px;
-
         line-height: 1.3;
     }
 
     .drag-handle {
-
         font-size: 11px;
-
         top: 5px;
         right: 6px;
     }
 
 }
 
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
+/* VERY SMALL PHONES */
 
 @media (max-width: 380px) {
 
@@ -528,9 +394,7 @@ footer {
 
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -539,7 +403,6 @@ footer {
     <p>PCB REPAIR DATABASE</p>
 
 </header>
-
 
 <div class="search-area">
 
@@ -552,7 +415,6 @@ footer {
 
 </div>
 
-
 <div class="container">
 
     <button
@@ -564,17 +426,14 @@ footer {
 
     </button>
 
-
     <div
         id="pathDisplay"
         class="path">
     </div>
 
-
     <div id="content"></div>
 
 </div>
-
 
 <footer>
 
@@ -582,84 +441,58 @@ footer {
 
 </footer>
 
-
 <script>
 
-/* =========================================================
-   FOLDER CREATOR
-========================================================= */
+/* FOLDER CREATOR */
 
 function makeFolders(names) {
 
     const result = {};
 
     names.forEach(function(name) {
-
         result[name] = {};
-
     });
 
     return result;
-
 }
 
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
+/* CATEGORIES */
 
 const acTypes = [
-
     "Inverter Window",
     "Inverter Split",
     "Inverter Cassette",
     "Inverter Ductable",
-
     "Non Inverter Window",
     "Non Inverter Split",
     "Non Inverter Cassette",
     "Non Inverter Ductable"
-
 ];
 
-
 const fridgeTypes = [
-
     "Inverter Single Door",
     "Inverter Double Door",
     "Inverter Triple Door",
     "Inverter Side by Side",
-
     "Non Inverter Single Door",
     "Non Inverter Double Door",
     "Non Inverter Triple Door",
     "Non Inverter Side by Side"
-
 ];
-
 
 const washingMachineTypes = [
-
     "Inverter Top Load",
     "Inverter Front Load",
-
     "Non Inverter Top Load",
     "Non Inverter Front Load"
-
 ];
-
 
 const microwaveTypes = [
-
     "Inverter",
     "Non Inverter"
-
 ];
 
-
-/* =========================================================
-   AC
-========================================================= */
+/* AC */
 
 const AC = {
 
@@ -673,21 +506,17 @@ const AC = {
         makeFolders(acTypes),
 
     "Inverter AC": {
-
         "Window": {},
         "Split": {},
         "Cassette": {},
         "Ductable": {}
-
     },
 
     "Non Inverter AC": {
-
         "Window": {},
         "Split": {},
         "Cassette": {},
         "Ductable": {}
-
     },
 
     "PDF":
@@ -707,10 +536,7 @@ const AC = {
 
 };
 
-
-/* =========================================================
-   FRIDGE
-========================================================= */
+/* FRIDGE */
 
 const Fridge = {
 
@@ -724,12 +550,10 @@ const Fridge = {
         makeFolders(fridgeTypes),
 
     "Inverter PCB": {
-
         "Inverter Single Door": {},
         "Inverter Double Door": {},
         "Inverter Triple Door": {},
         "Inverter Side by Side": {}
-
     },
 
     "Photos":
@@ -749,10 +573,7 @@ const Fridge = {
 
 };
 
-
-/* =========================================================
-   WASHING MACHINE
-========================================================= */
+/* WASHING MACHINE */
 
 const WashingMachine = {
 
@@ -779,10 +600,7 @@ const WashingMachine = {
 
 };
 
-
-/* =========================================================
-   MICROWAVE
-========================================================= */
+/* MICROWAVE */
 
 const MicrowaveOven = {
 
@@ -794,10 +612,7 @@ const MicrowaveOven = {
 
 };
 
-
-/* =========================================================
-   INDUCTION
-========================================================= */
+/* INDUCTION */
 
 const InductionCooktop = {
 
@@ -811,10 +626,7 @@ const InductionCooktop = {
 
 };
 
-
-/* =========================================================
-   CHIMNEY
-========================================================= */
+/* CHIMNEY */
 
 const ChimneyPCB = {
 
@@ -828,10 +640,7 @@ const ChimneyPCB = {
 
 };
 
-
-/* =========================================================
-   RO
-========================================================= */
+/* RO */
 
 const ROPCB = {
 
@@ -847,10 +656,7 @@ const ROPCB = {
 
 };
 
-
-/* =========================================================
-   CIRCUIT DIAGRAMS
-========================================================= */
+/* CIRCUIT DIAGRAMS */
 
 const CircuitDiagrams = {
 
@@ -874,10 +680,7 @@ const CircuitDiagrams = {
 
 };
 
-
-/* =========================================================
-   PCB TEST POINTS
-========================================================= */
+/* PCB TEST POINTS */
 
 const PCBTestPoints = {
 
@@ -892,10 +695,7 @@ const PCBTestPoints = {
 
 };
 
-
-/* =========================================================
-   PHOTOS
-========================================================= */
+/* PHOTOS */
 
 const Photos = {
 
@@ -909,21 +709,14 @@ const Photos = {
         makeFolders(washingMachineTypes),
 
     "Microwave Oven": {},
-
     "Induction Cooktop": {},
-
     "Chimney PCB": {},
-
     "R O PCB": {},
-
     "Misc": {}
 
 };
 
-
-/* =========================================================
-   VIDEOS
-========================================================= */
+/* VIDEOS */
 
 const Videos = {
 
@@ -937,21 +730,14 @@ const Videos = {
         makeFolders(washingMachineTypes),
 
     "Microwave Oven": {},
-
     "Induction Cooktop": {},
-
     "Chimney PCB": {},
-
     "R O PCB": {},
-
     "Misc": {}
 
 };
 
-
-/* =========================================================
-   SOFTWARE DATA
-========================================================= */
+/* SOFTWARE DATA */
 
 const SoftwareData = {
 
@@ -969,31 +755,23 @@ const SoftwareData = {
         "Fridge": {
 
             "Single Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Double Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Triple Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Side by Side": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Fridge Signal Card": {},
@@ -1016,10 +794,7 @@ const SoftwareData = {
 
 };
 
-
-/* =========================================================
-   MAIN DATABASE
-========================================================= */
+/* MAIN DATABASE */
 
 const database = {
 
@@ -1049,19 +824,12 @@ const database = {
 
 };
 
-
-/* =========================================================
-   APP STATE
-========================================================= */
+/* APP STATE */
 
 let currentNode = database;
-
 let currentPath = [];
 
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
+/* ELEMENTS */
 
 const content =
     document.getElementById("content");
@@ -1075,15 +843,11 @@ const backButton =
 const searchBox =
     document.getElementById("searchBox");
 
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+/* ESCAPE HTML */
 
 function escapeHTML(text) {
 
     return String(text)
-
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
@@ -1092,23 +856,17 @@ function escapeHTML(text) {
 
 }
 
-
-/* =========================================================
-   URL PATH
-========================================================= */
+/* URL PATH */
 
 function encodePath(path) {
 
     return path
         .map(function(item) {
-
             return encodeURIComponent(item);
-
         })
         .join("/");
 
 }
-
 
 function decodePath() {
 
@@ -1129,13 +887,10 @@ function decodePath() {
     return raw
         .split("/")
         .map(function(item) {
-
             return decodeURIComponent(item);
-
         });
 
 }
-
 
 function setURLPath(path) {
 
@@ -1154,10 +909,7 @@ function setURLPath(path) {
 
 }
 
-
-/* =========================================================
-   REBUILD NODE
-========================================================= */
+/* REBUILD NODE */
 
 function rebuildFromPath(path) {
 
@@ -1165,7 +917,6 @@ function rebuildFromPath(path) {
         database;
 
     currentPath = [];
-
 
     for (
         let i = 0;
@@ -1202,54 +953,45 @@ function rebuildFromPath(path) {
 
 }
 
+/* TREE / BREADCRUMB
 
-/* =========================================================
-   TREE / BREADCRUMB
-   EVERY ITEM IS CLICKABLE
-========================================================= */
+   IMPORTANT:
+   Home is NOT displayed on the main page.
+*/
 
 function updatePath() {
 
     pathDisplay.innerHTML = "";
 
+    /*
+       Main page:
+       keep the tree completely empty.
+       No "Home" text.
+    */
 
-    const home =
-        document.createElement("span");
-
-    home.className =
-        "path-home";
-
-    home.textContent =
-        "Home";
-
-    home.addEventListener(
-        "click",
-        function() {
-
-            setURLPath([]);
-
-        }
-    );
-
-    pathDisplay.appendChild(home);
-
+    if (currentPath.length === 0) {
+        return;
+    }
 
     currentPath.forEach(
         function(name, index) {
 
-            const arrow =
-                document.createElement("span");
+            if (index > 0) {
 
-            arrow.className =
-                "path-arrow";
+                const arrow =
+                    document.createElement("span");
 
-            arrow.textContent =
-                "→";
+                arrow.className =
+                    "path-arrow";
 
-            pathDisplay.appendChild(
-                arrow
-            );
+                arrow.textContent =
+                    "→";
 
+                pathDisplay.appendChild(
+                    arrow
+                );
+
+            }
 
             const item =
                 document.createElement("span");
@@ -1259,7 +1001,6 @@ function updatePath() {
 
             item.textContent =
                 name;
-
 
             /*
                Touch/click any tree name
@@ -1283,7 +1024,6 @@ function updatePath() {
                 }
             );
 
-
             pathDisplay.appendChild(
                 item
             );
@@ -1293,10 +1033,7 @@ function updatePath() {
 
 }
 
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
+/* BACK BUTTON */
 
 function updateBackButton() {
 
@@ -1306,7 +1043,6 @@ function updateBackButton() {
         : "inline-block";
 
 }
-
 
 backButton.addEventListener(
     "click",
@@ -1331,10 +1067,7 @@ backButton.addEventListener(
     }
 );
 
-
-/* =========================================================
-   SAVED BOX ORDER
-========================================================= */
+/* SAVED BOX ORDER */
 
 function getOrderKey() {
 
@@ -1342,7 +1075,6 @@ function getOrderKey() {
         currentPath.join("|");
 
 }
-
 
 function getSavedOrder(names) {
 
@@ -1392,7 +1124,6 @@ function getSavedOrder(names) {
 
 }
 
-
 function saveOrder() {
 
     const names =
@@ -1405,27 +1136,19 @@ function saveOrder() {
         });
 
     localStorage.setItem(
-
         getOrderKey(),
-
         JSON.stringify(names)
-
     );
 
 }
 
-
-/* =========================================================
-   DRAG AND DROP
-========================================================= */
+/* DRAG AND DROP */
 
 let draggedFolder = null;
-
 
 function enableDragging(folder) {
 
     folder.draggable = true;
-
 
     folder.addEventListener(
         "dragstart",
@@ -1443,7 +1166,6 @@ function enableDragging(folder) {
 
         }
     );
-
 
     folder.addEventListener(
         "dragend",
@@ -1470,7 +1192,6 @@ function enableDragging(folder) {
         }
     );
 
-
     folder.addEventListener(
         "dragover",
         function(event) {
@@ -1491,7 +1212,6 @@ function enableDragging(folder) {
         }
     );
 
-
     folder.addEventListener(
         "dragleave",
         function() {
@@ -1503,7 +1223,6 @@ function enableDragging(folder) {
         }
     );
 
-
     folder.addEventListener(
         "drop",
         function(event) {
@@ -1514,7 +1233,6 @@ function enableDragging(folder) {
                 "drag-over"
             );
 
-
             if (
                 !draggedFolder ||
                 draggedFolder === folder
@@ -1522,16 +1240,13 @@ function enableDragging(folder) {
                 return;
             }
 
-
             const rect =
                 folder.getBoundingClientRect();
-
 
             const after =
                 event.clientY >
                 rect.top +
                 rect.height / 2;
-
 
             if (after) {
 
@@ -1547,7 +1262,6 @@ function enableDragging(folder) {
 
             }
 
-
             saveOrder();
 
         }
@@ -1555,10 +1269,7 @@ function enableDragging(folder) {
 
 }
 
-
-/* =========================================================
-   SHOW CURRENT FOLDER
-========================================================= */
+/* SHOW CURRENT FOLDER */
 
 function showCurrentFolder() {
 
@@ -1568,14 +1279,11 @@ function showCurrentFolder() {
 
     updateBackButton();
 
-
     let folderNames =
         Object.keys(currentNode);
 
-
     folderNames =
         getSavedOrder(folderNames);
-
 
     if (
         folderNames.length === 0
@@ -1598,21 +1306,17 @@ function showCurrentFolder() {
 
     }
 
-
     folderNames.forEach(
         function(folderName) {
 
             const folder =
                 document.createElement("div");
 
-
             folder.className =
                 "folder";
 
-
             folder.dataset.name =
                 folderName;
-
 
             folder.innerHTML = `
 
@@ -1631,21 +1335,13 @@ function showCurrentFolder() {
 
             `;
 
-
             folder.addEventListener(
                 "click",
-                function(event) {
+                function() {
 
-                    /*
-                       Ignore click after dragging.
-                    */
-
-                    if (
-                        draggedFolder
-                    ) {
+                    if (draggedFolder) {
                         return;
                     }
-
 
                     openFolder(
                         folderName
@@ -1654,11 +1350,9 @@ function showCurrentFolder() {
                 }
             );
 
-
             enableDragging(
                 folder
             );
-
 
             content.appendChild(
                 folder
@@ -1669,10 +1363,7 @@ function showCurrentFolder() {
 
 }
 
-
-/* =========================================================
-   OPEN FOLDER
-========================================================= */
+/* OPEN FOLDER */
 
 function openFolder(folderName) {
 
@@ -1687,10 +1378,7 @@ function openFolder(folderName) {
 
 }
 
-
-/* =========================================================
-   PHONE / BROWSER BACK
-========================================================= */
+/* PHONE / BROWSER BACK */
 
 window.addEventListener(
     "hashchange",
@@ -1699,18 +1387,14 @@ window.addEventListener(
         const path =
             decodePath();
 
-
         rebuildFromPath(
             path
         );
 
-
         searchBox.value =
             "";
 
-
         showCurrentFolder();
-
 
         window.scrollTo({
 
@@ -1723,10 +1407,7 @@ window.addEventListener(
     }
 );
 
-
-/* =========================================================
-   SEARCH TREE
-========================================================= */
+/* SEARCH TREE */
 
 function searchTree(
     node,
@@ -1742,13 +1423,11 @@ function searchTree(
         return;
     }
 
-
     Object.keys(node).forEach(
         function(name) {
 
             const newPath =
                 path.concat(name);
-
 
             if (
                 name
@@ -1759,13 +1438,11 @@ function searchTree(
                 results.push({
 
                     name: name,
-
                     path: newPath
 
                 });
 
             }
-
 
             if (
                 node[name] &&
@@ -1786,16 +1463,12 @@ function searchTree(
 
 }
 
-
-/* =========================================================
-   SEARCH
-========================================================= */
+/* SEARCH */
 
 function performSearch(text) {
 
     text =
         text.trim().toLowerCase();
-
 
     if (!text) {
 
@@ -1805,9 +1478,7 @@ function performSearch(text) {
 
     }
 
-
     const results = [];
-
 
     searchTree(
         database,
@@ -1816,9 +1487,7 @@ function performSearch(text) {
         results
     );
 
-
     content.innerHTML = "";
-
 
     pathDisplay.innerHTML = `
 
@@ -1830,9 +1499,7 @@ function performSearch(text) {
 
     `;
 
-
     updateBackButton();
-
 
     if (
         results.length === 0
@@ -1855,17 +1522,14 @@ function performSearch(text) {
 
     }
 
-
     results.forEach(
         function(result) {
 
             const item =
                 document.createElement("div");
 
-
             item.className =
                 "folder";
-
 
             item.innerHTML = `
 
@@ -1893,7 +1557,6 @@ function performSearch(text) {
 
             `;
 
-
             item.addEventListener(
                 "click",
                 function() {
@@ -1908,7 +1571,6 @@ function performSearch(text) {
                 }
             );
 
-
             content.appendChild(
                 item
             );
@@ -1918,10 +1580,7 @@ function performSearch(text) {
 
 }
 
-
-/* =========================================================
-   SEARCH EVENT
-========================================================= */
+/* SEARCH EVENT */
 
 searchBox.addEventListener(
     "input",
@@ -1934,19 +1593,14 @@ searchBox.addEventListener(
     }
 );
 
-
-/* =========================================================
-   START APPLICATION
-========================================================= */
+/* START APPLICATION */
 
 const initialPath =
     decodePath();
 
-
 rebuildFromPath(
     initialPath
 );
-
 
 showCurrentFolder();
 
