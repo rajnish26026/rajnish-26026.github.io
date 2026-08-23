@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>PCB REPAIR DATA</title>
 
@@ -19,9 +22,9 @@
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #eef4fb;
-    color: #26364a;
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    color: #1e293b;
 }
 
 
@@ -30,11 +33,10 @@ body {
 ========================================================= */
 
 header {
-    background: linear-gradient(135deg, #123b67, #1769aa);
+    background: #172033;
     color: white;
     padding: 22px 15px;
     text-align: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,.15);
 }
 
 header h1 {
@@ -46,9 +48,8 @@ header h1 {
 
 header p {
     margin: 8px 0 0;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
-    opacity: .95;
 }
 
 
@@ -71,93 +72,120 @@ header p {
     display: block;
     margin: auto;
 
-    padding: 14px 17px;
+    padding: 14px 16px;
 
-    border: 2px solid #cbd8e8;
+    border: 2px solid #d1d5db;
     border-radius: 12px;
 
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
-
-    color: #23415f;
-    background: #f8fbff;
 
     outline: none;
 }
 
 .search-box:focus {
-    border-color: #2384d9;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(35,132,217,.12);
+    border-color: #2563eb;
 }
 
 
 /* =========================================================
-   MAIN
+   MAIN CONTAINER
 ========================================================= */
 
 .container {
     max-width: 1100px;
     margin: auto;
-    padding: 16px;
+    padding: 15px;
 }
 
 
 /* =========================================================
-   CLICKABLE TREE / BREADCRUMB
+   CLICKABLE TREE PATH
 ========================================================= */
 
 .path {
-    background: linear-gradient(135deg, #e5f2ff, #f3f9ff);
 
-    border-left: 6px solid #2384d9;
+    background: #dbeafe;
 
-    padding: 14px 16px;
+    border-left: 6px solid #2563eb;
+
+    padding: 13px 15px;
 
     border-radius: 10px;
 
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 
     font-size: 16px;
-    font-weight: 900;
 
-    color: #174a7a;
+    font-weight: 900;
 
     line-height: 1.8;
 
     word-break: break-word;
 
-    box-shadow: 0 3px 9px rgba(24,78,125,.10);
+    box-shadow:
+        0 3px 8px rgba(0,0,0,.08);
 }
 
 
-/* HOME / TREE ITEMS */
+/*
+   Every tree level is clickable.
+*/
 
-.path-home {
-    color: #1769aa;
+.path-link {
+
+    color: #1d4ed8;
+
     font-weight: 900;
+
     cursor: pointer;
+
+    text-decoration: none;
+
+    padding: 3px 5px;
+
+    border-radius: 6px;
+
+    transition: .15s ease;
 }
 
-.path-home:hover {
-    color: #0b4e87;
-    text-decoration: underline;
+.path-link:hover {
+
+    background: #bfdbfe;
+
+    color: #1e40af;
 }
 
-.path-item {
-    color: #2878b9;
+.path-link:active {
+
+    transform: scale(.96);
+}
+
+
+/*
+   Current folder
+*/
+
+.path-current {
+
+    color: #1e293b;
+
     font-weight: 900;
-    cursor: pointer;
+
+    padding: 3px 5px;
 }
 
-.path-item:hover {
-    color: #0b5b98;
-    text-decoration: underline;
-}
+
+/*
+   Arrow between tree levels
+*/
 
 .path-arrow {
-    color: #6b9bc4;
+
+    color: #2563eb;
+
     font-weight: 900;
+
     padding: 0 5px;
 }
 
@@ -167,33 +195,38 @@ header p {
 ========================================================= */
 
 .back-button {
+
     display: none;
 
     border: none;
 
-    background: linear-gradient(135deg, #287dcc, #1769aa);
+    background: #2563eb;
 
     color: white;
 
-    padding: 11px 19px;
+    padding: 11px 20px;
 
     border-radius: 9px;
 
     font-size: 16px;
+
     font-weight: 800;
 
-    margin-bottom: 13px;
+    margin-bottom: 14px;
 
     cursor: pointer;
 
-    box-shadow: 0 3px 8px rgba(23,105,170,.25);
+    box-shadow:
+        0 3px 7px rgba(0,0,0,.15);
 }
 
 .back-button:hover {
-    background: linear-gradient(135deg, #1769aa, #0f568e);
+
+    background: #1d4ed8;
 }
 
 .back-button:active {
+
     transform: scale(.97);
 }
 
@@ -203,33 +236,36 @@ header p {
 ========================================================= */
 
 #content {
+
     display: grid;
 
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
 
-    gap: 14px;
+    gap: 15px;
+
+    align-items: stretch;
 }
 
 
 /* =========================================================
-   PROFESSIONAL FOLDER BOX
+   FOLDER BOX
 ========================================================= */
 
 .folder {
-    min-height: 105px;
 
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #edf7ff
-    );
+    min-height: 145px;
 
-    border: 2px solid #b9d7ee;
+    padding: 18px 12px;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
-    padding: 20px 15px;
+    border: 2px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,.12);
+
+    cursor: pointer;
 
     display: flex;
 
@@ -239,111 +275,67 @@ header p {
 
     text-align: center;
 
-    cursor: pointer;
+    user-select: none;
+
+    -webkit-user-select: none;
 
     position: relative;
 
-    box-shadow:
-        0 4px 10px rgba(35,99,145,.10);
+    overflow: hidden;
 
     transition:
-        transform .15s ease,
-        box-shadow .15s ease,
-        border-color .15s ease,
-        background .15s ease;
-
-    user-select: none;
-
-    touch-action: manipulation;
-}
-
-
-/* hover */
-
-.folder:hover {
-    border-color: #4c9bd2;
-
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #e3f3ff
-    );
-
-    box-shadow:
-        0 7px 18px rgba(35,110,170,.18);
-
-    transform: translateY(-2px);
-}
-
-
-/* click */
-
-.folder:active {
-    transform: scale(.97);
+        transform .18s ease,
+        box-shadow .18s ease,
+        opacity .18s ease;
 }
 
 
 /* =========================================================
-   FOLDER TEXT
+   BOX SHINE
 ========================================================= */
 
-.folder-title {
-    font-size: 18px;
+.folder::before {
 
-    line-height: 1.35;
+    content: "";
 
-    font-weight: 900;
-
-    color: #1769aa;
-
-    word-break: normal;
-
-    overflow-wrap: anywhere;
-}
-
-
-/*
-   SPECIAL COLOUR CLASSES
-*/
-
-.folder:nth-child(4n+1) .folder-title {
-    color: #1769aa;
-}
-
-.folder:nth-child(4n+2) .folder-title {
-    color: #287a56;
-}
-
-.folder:nth-child(4n+3) .folder-title {
-    color: #8a5a12;
-}
-
-.folder:nth-child(4n+4) .folder-title {
-    color: #7651a8;
-}
-
-
-/* =========================================================
-   DRAG HANDLE
-========================================================= */
-
-.drag-handle {
     position: absolute;
 
-    top: 7px;
-    right: 9px;
+    top: -45%;
 
-    font-size: 13px;
+    left: -25%;
 
-    color: #8aabc3;
+    width: 150%;
 
-    cursor: grab;
+    height: 100%;
 
-    opacity: .75;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.30),
+            transparent 60%
+        );
+
+    pointer-events: none;
 }
 
-.folder:active .drag-handle {
-    cursor: grabbing;
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.folder:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 9px 20px rgba(0,0,0,.18);
+}
+
+.folder:active {
+
+    transform:
+        scale(.97);
 }
 
 
@@ -352,32 +344,54 @@ header p {
 ========================================================= */
 
 .folder.dragging {
+
     opacity: .45;
 
-    border-color: #2384d9;
-
-    transform: scale(.97);
-}
-
-
-/* =========================================================
-   DROP TARGET
-========================================================= */
-
-.folder.drag-over {
-    border-color: #1769aa;
+    transform:
+        scale(.96);
 
     box-shadow:
-        0 0 0 3px rgba(35,132,217,.18);
+        0 2px 5px rgba(0,0,0,.10);
 }
 
 
 /* =========================================================
-   EMPTY / SEARCH
+   FOLDER TEXT
+========================================================= */
+
+/*
+   Deep navy instead of pure black.
+*/
+
+.folder-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    line-height: 1.35;
+
+    color: #1e293b;
+
+    max-width: 100%;
+
+    word-break: break-word;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   EMPTY FOLDER
 ========================================================= */
 
 .file-placeholder,
 .no-results {
+
     grid-column: 1 / -1;
 
     background: white;
@@ -386,13 +400,16 @@ header p {
 
     text-align: center;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
-    color: #58718a;
+    color: #64748b;
+
+    font-size: 17px;
 
     font-weight: 700;
 
-    border: 2px solid #d5e3ef;
+    box-shadow:
+        0 3px 9px rgba(0,0,0,.08);
 }
 
 
@@ -401,15 +418,26 @@ header p {
 ========================================================= */
 
 .result-path {
-    margin-top: 8px;
+
+    margin-top: 9px;
 
     font-size: 13px;
 
     font-weight: 700;
 
-    color: #5b7892;
+    color: #475569;
 
     line-height: 1.5;
+}
+
+
+/* =========================================================
+   SEARCH RESULT BOX
+========================================================= */
+
+.search-result {
+
+    min-height: 125px;
 }
 
 
@@ -418,15 +446,16 @@ header p {
 ========================================================= */
 
 footer {
+
     text-align: center;
 
     padding: 30px 15px;
 
-    color: #688198;
+    color: #64748b;
 
     font-size: 14px;
 
-    font-weight: 700;
+    font-weight: 600;
 }
 
 
@@ -437,8 +466,21 @@ footer {
 @media (max-width: 850px) {
 
     #content {
+
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
+
+        gap: 13px;
+    }
+
+    .folder {
+
+        min-height: 140px;
+    }
+
+    .folder-title {
+
+        font-size: 19px;
     }
 
 }
@@ -446,80 +488,107 @@ footer {
 
 /* =========================================================
    MOBILE
-   3 BOXES IN ONE ROW
 ========================================================= */
 
 @media (max-width: 600px) {
 
     header h1 {
+
         font-size: 24px;
+
     }
 
     header p {
-        font-size: 13px;
+
+        font-size: 14px;
+
     }
 
     .container {
-        padding: 11px;
+
+        padding: 12px;
+
     }
 
-    .path {
-        font-size: 14px;
-        padding: 12px;
-    }
+
+    /*
+       THREE BOXES PER ROW
+    */
 
     #content {
 
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
 
-        gap: 8px;
+        gap: 9px;
+
     }
+
 
     .folder {
 
-        min-height: 105px;
+        min-height: 135px;
 
-        padding: 15px 7px;
+        padding: 12px 7px;
 
-        border-radius: 12px;
+        border-radius: 13px;
+
     }
+
 
     .folder-title {
 
-        font-size: 15px;
+        font-size: 16px;
 
-        line-height: 1.3;
+        line-height: 1.35;
+
     }
 
-    .drag-handle {
 
-        font-size: 11px;
+    .path {
 
-        top: 5px;
-        right: 6px;
+        font-size: 14px;
+
+        padding: 11px 10px;
+
+    }
+
+
+    .back-button {
+
+        font-size: 15px;
+
+        padding: 10px 16px;
+
     }
 
 }
 
 
 /* =========================================================
-   VERY SMALL PHONES
+   SMALL PHONE
 ========================================================= */
 
 @media (max-width: 380px) {
 
     #content {
-        gap: 6px;
+
+        gap: 7px;
+
     }
 
     .folder {
-        min-height: 100px;
-        padding: 13px 5px;
+
+        min-height: 125px;
+
+        padding: 10px 5px;
+
     }
 
     .folder-title {
+
         font-size: 14px;
+
     }
 
 }
@@ -555,6 +624,7 @@ footer {
 
 <div class="container">
 
+
     <button
         id="backButton"
         class="back-button"
@@ -565,13 +635,20 @@ footer {
     </button>
 
 
+    <!--
+       CLICKABLE TREE
+       Home is intentionally NOT displayed.
+    -->
+
     <div
         id="pathDisplay"
-        class="path">
+        class="path"
+        style="display:none;">
     </div>
 
 
     <div id="content"></div>
+
 
 </div>
 
@@ -997,6 +1074,7 @@ const SoftwareData = {
             },
 
             "Fridge Signal Card": {},
+
             "Fridge Inverter Card": {}
 
         },
@@ -1023,31 +1101,74 @@ const SoftwareData = {
 
 const database = {
 
-    "AC": AC,
-    "Fridge": Fridge,
-    "Washing Machine": WashingMachine,
-    "Microwave Oven": MicrowaveOven,
-    "Induction Cooktop": InductionCooktop,
-    "Chimney PCB": ChimneyPCB,
-    "R O PCB": ROPCB,
+    "AC":
+        AC,
 
-    "Circuit Diagrams": CircuitDiagrams,
+    "Fridge":
+        Fridge,
 
-    "Electronic Components": {},
+    "Washing Machine":
+        WashingMachine,
 
-    "Error Codes": {},
+    "Microwave Oven":
+        MicrowaveOven,
 
-    "PCB Test Points": PCBTestPoints,
+    "Induction Cooktop":
+        InductionCooktop,
 
-    "PDF": {},
+    "Chimney PCB":
+        ChimneyPCB,
 
-    "Photos": Photos,
+    "R O PCB":
+        ROPCB,
 
-    "Software Data": SoftwareData,
+    "Circuit Diagrams":
+        CircuitDiagrams,
 
-    "Videos": Videos
+    "Electronic Components":
+        {},
+
+    "Error Codes":
+        {},
+
+    "PCB Test Points":
+        PCBTestPoints,
+
+    "PDF":
+        {},
+
+    "Photos":
+        Photos,
+
+    "Software Data":
+        SoftwareData,
+
+    "Videos":
+        Videos
 
 };
+
+
+/* =========================================================
+   BOX COLOURS
+========================================================= */
+
+const boxColors = [
+
+    "#dbeafe",
+    "#dcfce7",
+    "#fef3c7",
+    "#fce7f3",
+    "#ede9fe",
+    "#cffafe",
+    "#ffedd5",
+    "#e0e7ff",
+    "#d1fae5",
+    "#fef9c3",
+    "#fae8ff",
+    "#e0f2fe"
+
+];
 
 
 /* =========================================================
@@ -1085,49 +1206,72 @@ function escapeHTML(text) {
     return String(text)
 
         .replace(/&/g, "&amp;")
+
         .replace(/</g, "&lt;")
+
         .replace(/>/g, "&gt;")
+
         .replace(/"/g, "&quot;")
+
         .replace(/'/g, "&#039;");
 
 }
 
 
 /* =========================================================
-   URL PATH
+   ENCODE PATH
 ========================================================= */
 
 function encodePath(path) {
 
     return path
+
         .map(function(item) {
 
             return encodeURIComponent(item);
 
         })
+
         .join("/");
 
 }
 
+
+/* =========================================================
+   DECODE PATH
+========================================================= */
 
 function decodePath() {
 
     const hash =
         window.location.hash;
 
-    if (!hash || hash === "#") {
+
+    if (
+        !hash ||
+        hash === "#"
+    ) {
+
         return [];
+
     }
+
 
     const raw =
         hash.substring(1);
 
+
     if (!raw) {
+
         return [];
+
     }
 
+
     return raw
+
         .split("/")
+
         .map(function(item) {
 
             return decodeURIComponent(item);
@@ -1137,17 +1281,25 @@ function decodePath() {
 }
 
 
+/* =========================================================
+   CHANGE URL
+========================================================= */
+
 function setURLPath(path) {
 
     const newHash =
         encodePath(path);
 
+
     if (
         window.location.hash.substring(1)
         === newHash
     ) {
+
         return;
+
     }
+
 
     window.location.hash =
         newHash;
@@ -1176,8 +1328,10 @@ function rebuildFromPath(path) {
         const name =
             path[i];
 
+
         if (
             !currentNode ||
+
             !Object.prototype.hasOwnProperty.call(
                 currentNode,
                 name
@@ -1193,6 +1347,7 @@ function rebuildFromPath(path) {
 
         }
 
+
         currentNode =
             currentNode[name];
 
@@ -1204,92 +1359,164 @@ function rebuildFromPath(path) {
 
 
 /* =========================================================
-   TREE / BREADCRUMB
-   EVERY ITEM IS CLICKABLE
+   CLICKABLE TREE PATH
 ========================================================= */
 
 function updatePath() {
 
-    pathDisplay.innerHTML = "";
+    /*
+       At main screen there is no
+       Home text and no tree.
+    */
+
+    if (
+        currentPath.length === 0
+    ) {
+
+        pathDisplay.innerHTML = "";
+
+        pathDisplay.style.display =
+            "none";
+
+        return;
+
+    }
 
 
-    const home =
-        document.createElement("span");
+    pathDisplay.style.display =
+        "block";
 
-    home.className =
-        "path-home";
 
-    home.textContent =
-        "Home";
-
-    home.addEventListener(
-        "click",
-        function() {
-
-            setURLPath([]);
-
-        }
-    );
-
-    pathDisplay.appendChild(home);
+    let html = "";
 
 
     currentPath.forEach(
         function(name, index) {
 
-            const arrow =
-                document.createElement("span");
 
-            arrow.className =
-                "path-arrow";
+            /*
+               Add arrow
+            */
 
-            arrow.textContent =
-                "→";
+            if (
+                index > 0
+            ) {
 
-            pathDisplay.appendChild(
-                arrow
-            );
+                html += `
 
+                    <span class="path-arrow">
 
-            const item =
-                document.createElement("span");
+                        →
 
-            item.className =
-                "path-item";
+                    </span>
 
-            item.textContent =
-                name;
+                `;
+
+            }
 
 
             /*
-               Touch/click any tree name
-               to directly go to that level.
+               Current folder is not a link.
             */
 
-            item.addEventListener(
-                "click",
-                function() {
+            if (
+                index ===
+                currentPath.length - 1
+            ) {
 
-                    const targetPath =
-                        currentPath.slice(
-                            0,
-                            index + 1
-                        );
+                html += `
 
-                    setURLPath(
-                        targetPath
+                    <span class="path-current">
+
+                        ${escapeHTML(name)}
+
+                    </span>
+
+                `;
+
+            }
+
+            /*
+               All previous levels
+               are clickable.
+            */
+
+            else {
+
+                const parentPath =
+                    currentPath.slice(
+                        0,
+                        index + 1
                     );
 
-                }
-            );
 
+                html += `
 
-            pathDisplay.appendChild(
-                item
-            );
+                    <span
+                        class="path-link"
+                        data-path="${escapeHTML(
+                            encodePath(parentPath)
+                        )}">
+
+                        ${escapeHTML(name)}
+
+                    </span>
+
+                `;
+
+            }
 
         }
     );
+
+
+    pathDisplay.innerHTML =
+        html;
+
+
+    /*
+       Add click event to every
+       previous tree level.
+    */
+
+    const links =
+        pathDisplay.querySelectorAll(
+            ".path-link"
+        );
+
+
+    links.forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function() {
+
+                const encoded =
+                    link.dataset.path;
+
+
+                const path =
+                    encoded
+
+                        .split("/")
+
+                        .map(function(item) {
+
+                            return decodeURIComponent(
+                                item
+                            );
+
+                        });
+
+
+                setURLPath(
+                    path
+                );
+
+            }
+        );
+
+    });
 
 }
 
@@ -1300,71 +1527,84 @@ function updatePath() {
 
 function updateBackButton() {
 
-    backButton.style.display =
+    if (
         currentPath.length === 0
-        ? "none"
-        : "inline-block";
+    ) {
 
-}
+        backButton.style.display =
+            "none";
 
+    } else {
 
-backButton.addEventListener(
-    "click",
-    function() {
-
-        if (
-            currentPath.length === 0
-        ) {
-            return;
-        }
-
-        const parentPath =
-            currentPath.slice(
-                0,
-                currentPath.length - 1
-            );
-
-        setURLPath(
-            parentPath
-        );
+        backButton.style.display =
+            "inline-block";
 
     }
-);
+
+}
 
 
 /* =========================================================
-   SAVED BOX ORDER
+   STORAGE
 ========================================================= */
 
-function getOrderKey() {
+function getStorageKey() {
 
-    return "pcb-folder-order-" +
-        currentPath.join("|");
+    return "pcb_folder_order_" +
+        currentPath.join("||");
 
 }
 
 
-function getSavedOrder(names) {
+function getSavedOrder(folderNames) {
 
     try {
 
         const saved =
-            JSON.parse(
-                localStorage.getItem(
-                    getOrderKey()
-                )
+            localStorage.getItem(
+                getStorageKey()
             );
 
-        if (!Array.isArray(saved)) {
-            return names;
+
+        if (!saved) {
+
+            return folderNames;
+
         }
+
+
+        const savedNames =
+            JSON.parse(saved);
+
+
+        if (
+            !Array.isArray(savedNames)
+        ) {
+
+            return folderNames;
+
+        }
+
 
         const result = [];
 
-        saved.forEach(function(name) {
+
+        savedNames.forEach(function(name) {
 
             if (
-                names.includes(name) &&
+                folderNames.includes(name)
+            ) {
+
+                result.push(name);
+
+            }
+
+        });
+
+
+        folderNames.forEach(function(name) {
+
+            if (
                 !result.includes(name)
             ) {
 
@@ -1374,43 +1614,37 @@ function getSavedOrder(names) {
 
         });
 
-        names.forEach(function(name) {
-
-            if (!result.includes(name)) {
-                result.push(name);
-            }
-
-        });
 
         return result;
 
     } catch (error) {
 
-        return names;
+        return folderNames;
 
     }
 
 }
 
 
-function saveOrder() {
+function saveOrder(names) {
 
-    const names =
-        Array.from(
-            content.querySelectorAll(".folder")
-        ).map(function(folder) {
+    try {
 
-            return folder.dataset.name;
+        localStorage.setItem(
 
-        });
+            getStorageKey(),
 
-    localStorage.setItem(
+            JSON.stringify(names)
 
-        getOrderKey(),
+        );
 
-        JSON.stringify(names)
+    } catch (error) {
 
-    );
+        console.log(
+            "Folder order could not be saved."
+        );
+
+    }
 
 }
 
@@ -1422,136 +1656,140 @@ function saveOrder() {
 let draggedFolder = null;
 
 
-function enableDragging(folder) {
+function handleDragStart(event) {
 
-    folder.draggable = true;
+    draggedFolder =
+        event.currentTarget;
 
 
-    folder.addEventListener(
-        "dragstart",
-        function(event) {
+    draggedFolder.classList.add(
+        "dragging"
+    );
 
-            draggedFolder =
-                folder;
 
-            folder.classList.add(
-                "dragging"
+    event.dataTransfer.effectAllowed =
+        "move";
+
+
+    event.dataTransfer.setData(
+        "text/plain",
+        draggedFolder.dataset.name
+    );
+
+}
+
+
+function handleDragEnd() {
+
+    if (
+        draggedFolder
+    ) {
+
+        draggedFolder.classList.remove(
+            "dragging"
+        );
+
+    }
+
+
+    draggedFolder = null;
+
+
+    saveCurrentVisualOrder();
+
+}
+
+
+function handleDragOver(event) {
+
+    event.preventDefault();
+
+
+    if (
+        !draggedFolder
+    ) {
+
+        return;
+
+    }
+
+
+    const target =
+        event.currentTarget;
+
+
+    if (
+        target === draggedFolder
+    ) {
+
+        return;
+
+    }
+
+
+    const rect =
+        target.getBoundingClientRect();
+
+
+    const middle =
+        rect.left +
+        rect.width / 2;
+
+
+    if (
+        event.clientX < middle
+    ) {
+
+        content.insertBefore(
+            draggedFolder,
+            target
+        );
+
+    } else {
+
+        content.insertBefore(
+            draggedFolder,
+            target.nextSibling
+        );
+
+    }
+
+}
+
+
+function saveCurrentVisualOrder() {
+
+    const names = [];
+
+
+    const folders =
+        content.querySelectorAll(
+            ".folder"
+        );
+
+
+    folders.forEach(function(folder) {
+
+        if (
+            folder.dataset.name
+        ) {
+
+            names.push(
+                folder.dataset.name
             );
 
-            event.dataTransfer.effectAllowed =
-                "move";
-
         }
-    );
+
+    });
 
 
-    folder.addEventListener(
-        "dragend",
-        function() {
+    if (
+        names.length > 0
+    ) {
 
-            folder.classList.remove(
-                "dragging"
-            );
+        saveOrder(names);
 
-            document
-                .querySelectorAll(".folder")
-                .forEach(function(item) {
-
-                    item.classList.remove(
-                        "drag-over"
-                    );
-
-                });
-
-            draggedFolder = null;
-
-            saveOrder();
-
-        }
-    );
-
-
-    folder.addEventListener(
-        "dragover",
-        function(event) {
-
-            event.preventDefault();
-
-            if (
-                draggedFolder &&
-                draggedFolder !== folder
-            ) {
-
-                folder.classList.add(
-                    "drag-over"
-                );
-
-            }
-
-        }
-    );
-
-
-    folder.addEventListener(
-        "dragleave",
-        function() {
-
-            folder.classList.remove(
-                "drag-over"
-            );
-
-        }
-    );
-
-
-    folder.addEventListener(
-        "drop",
-        function(event) {
-
-            event.preventDefault();
-
-            folder.classList.remove(
-                "drag-over"
-            );
-
-
-            if (
-                !draggedFolder ||
-                draggedFolder === folder
-            ) {
-                return;
-            }
-
-
-            const rect =
-                folder.getBoundingClientRect();
-
-
-            const after =
-                event.clientY >
-                rect.top +
-                rect.height / 2;
-
-
-            if (after) {
-
-                folder.after(
-                    draggedFolder
-                );
-
-            } else {
-
-                folder.before(
-                    draggedFolder
-                );
-
-            }
-
-
-            saveOrder();
-
-        }
-    );
+    }
 
 }
 
@@ -1564,6 +1802,7 @@ function showCurrentFolder() {
 
     content.innerHTML = "";
 
+
     updatePath();
 
     updateBackButton();
@@ -1573,9 +1812,9 @@ function showCurrentFolder() {
         Object.keys(currentNode);
 
 
-    folderNames =
-        getSavedOrder(folderNames);
-
+    /*
+       Empty folder
+    */
 
     if (
         folderNames.length === 0
@@ -1584,23 +1823,38 @@ function showCurrentFolder() {
         const empty =
             document.createElement("div");
 
+
         empty.className =
             "file-placeholder";
+
 
         empty.textContent =
             "This folder is currently empty.";
 
+
         content.appendChild(
             empty
         );
+
 
         return;
 
     }
 
 
+    /*
+       Apply saved arrangement.
+    */
+
+    folderNames =
+        getSavedOrder(
+            folderNames
+        );
+
+
     folderNames.forEach(
-        function(folderName) {
+        function(folderName, index) {
+
 
             const folder =
                 document.createElement("div");
@@ -1614,14 +1868,22 @@ function showCurrentFolder() {
                 folderName;
 
 
+            folder.draggable =
+                true;
+
+
+            /*
+               Professional colours.
+            */
+
+            folder.style.background =
+                boxColors[
+                    index %
+                    boxColors.length
+                ];
+
+
             folder.innerHTML = `
-
-                <span class="drag-handle"
-                      title="Drag to move">
-
-                    ⋮⋮
-
-                </span>
 
                 <div class="folder-title">
 
@@ -1632,18 +1894,26 @@ function showCurrentFolder() {
             `;
 
 
+            /*
+               OPEN FOLDER
+            */
+
             folder.addEventListener(
                 "click",
-                function(event) {
-
-                    /*
-                       Ignore click after dragging.
-                    */
+                function() {
 
                     if (
-                        draggedFolder
+                        folder.classList.contains(
+                            "was-dragged"
+                        )
                     ) {
+
+                        folder.classList.remove(
+                            "was-dragged"
+                        );
+
                         return;
+
                     }
 
 
@@ -1655,8 +1925,54 @@ function showCurrentFolder() {
             );
 
 
-            enableDragging(
-                folder
+            /*
+               DRAG START
+            */
+
+            folder.addEventListener(
+                "dragstart",
+                handleDragStart
+            );
+
+
+            /*
+               DRAG END
+            */
+
+            folder.addEventListener(
+                "dragend",
+                function() {
+
+                    handleDragEnd();
+
+
+                    folder.classList.add(
+                        "was-dragged"
+                    );
+
+
+                    setTimeout(
+                        function() {
+
+                            folder.classList.remove(
+                                "was-dragged"
+                            );
+
+                        },
+                        300
+                    );
+
+                }
+            );
+
+
+            /*
+               DRAG OVER
+            */
+
+            folder.addEventListener(
+                "dragover",
+                handleDragOver
             );
 
 
@@ -1681,11 +1997,44 @@ function openFolder(folderName) {
             folderName
         );
 
+
     setURLPath(
         newPath
     );
 
 }
+
+
+/* =========================================================
+   APP BACK BUTTON
+========================================================= */
+
+backButton.addEventListener(
+    "click",
+    function() {
+
+        if (
+            currentPath.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const parentPath =
+            currentPath.slice(
+                0,
+                currentPath.length - 1
+            );
+
+
+        setURLPath(
+            parentPath
+        );
+
+    }
+);
 
 
 /* =========================================================
@@ -1739,7 +2088,9 @@ function searchTree(
         !node ||
         typeof node !== "object"
     ) {
+
         return;
+
     }
 
 
@@ -1773,10 +2124,15 @@ function searchTree(
             ) {
 
                 searchTree(
+
                     node[name],
+
                     newPath,
+
                     text,
+
                     results
+
                 );
 
             }
@@ -1810,19 +2166,28 @@ function performSearch(text) {
 
 
     searchTree(
+
         database,
+
         [],
+
         text,
+
         results
+
     );
 
 
     content.innerHTML = "";
 
 
+    pathDisplay.style.display =
+        "block";
+
+
     pathDisplay.innerHTML = `
 
-        <span class="path-item">
+        <span class="path-current">
 
             Search Results
 
@@ -1831,25 +2196,30 @@ function performSearch(text) {
     `;
 
 
-    updateBackButton();
+    backButton.style.display =
+        "none";
 
 
     if (
         results.length === 0
     ) {
 
-        const noResult =
+        const empty =
             document.createElement("div");
 
-        noResult.className =
+
+        empty.className =
             "no-results";
 
-        noResult.textContent =
+
+        empty.textContent =
             "No matching folder found.";
 
+
         content.appendChild(
-            noResult
+            empty
         );
+
 
         return;
 
@@ -1857,14 +2227,21 @@ function performSearch(text) {
 
 
     results.forEach(
-        function(result) {
+        function(result, index) {
 
             const item =
                 document.createElement("div");
 
 
             item.className =
-                "folder";
+                "folder search-result";
+
+
+            item.style.background =
+                boxColors[
+                    index %
+                    boxColors.length
+                ];
 
 
             item.innerHTML = `
@@ -1953,4 +2330,5 @@ showCurrentFolder();
 </script>
 
 </body>
+
 </html>
