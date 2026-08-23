@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PCB REPAIR DATA</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -20,8 +15,6 @@ body {
     color: #26364a;
 }
 
-/* HEADER */
-
 header {
     background: linear-gradient(135deg, #123b67, #1769aa);
     color: white;
@@ -29,22 +22,18 @@ header {
     text-align: center;
     box-shadow: 0 3px 12px rgba(0,0,0,.15);
 }
-
 header h1 {
     margin: 0;
     font-size: 28px;
     font-weight: 900;
     letter-spacing: .5px;
 }
-
 header p {
     margin: 8px 0 0;
     font-size: 15px;
     font-weight: 700;
     opacity: .95;
 }
-
-/* SEARCH */
 
 .search-area {
     background: white;
@@ -54,7 +43,6 @@ header p {
     z-index: 100;
     box-shadow: 0 2px 8px rgba(0,0,0,.10);
 }
-
 .search-box {
     width: 95%;
     max-width: 700px;
@@ -69,22 +57,17 @@ header p {
     background: #f8fbff;
     outline: none;
 }
-
 .search-box:focus {
     border-color: #2384d9;
     background: white;
     box-shadow: 0 0 0 3px rgba(35,132,217,.12);
 }
 
-/* MAIN */
-
 .container {
     max-width: 1100px;
     margin: auto;
     padding: 16px;
 }
-
-/* TREE / BREADCRUMB */
 
 .path {
     background: linear-gradient(135deg, #e5f2ff, #f3f9ff);
@@ -99,36 +82,20 @@ header p {
     word-break: break-word;
     box-shadow: 0 3px 9px rgba(24,78,125,.10);
 }
-
-.path-home {
-    color: #1769aa;
-    font-weight: 900;
-    cursor: pointer;
-}
-
-.path-home:hover {
-    color: #0b4e87;
-    text-decoration: underline;
-}
-
 .path-item {
     color: #2878b9;
     font-weight: 900;
     cursor: pointer;
 }
-
 .path-item:hover {
     color: #0b5b98;
     text-decoration: underline;
 }
-
 .path-arrow {
     color: #6b9bc4;
     font-weight: 900;
     padding: 0 5px;
 }
-
-/* BACK BUTTON */
 
 .back-button {
     display: none;
@@ -143,16 +110,10 @@ header p {
     cursor: pointer;
     box-shadow: 0 3px 8px rgba(23,105,170,.25);
 }
-
 .back-button:hover {
     background: linear-gradient(135deg, #1769aa, #0f568e);
 }
-
-.back-button:active {
-    transform: scale(.97);
-}
-
-/* FOLDER GRID */
+.back-button:active { transform: scale(.97); }
 
 #content {
     display: grid;
@@ -160,62 +121,31 @@ header p {
     gap: 14px;
 }
 
-/* FOLDER BOX */
-
 .folder {
     min-height: 105px;
-
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #edf7ff
-    );
-
+    background: linear-gradient(145deg, #ffffff, #edf7ff);
     border: 2px solid #b9d7ee;
     border-radius: 14px;
     padding: 20px 15px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
     cursor: pointer;
     position: relative;
-
-    box-shadow:
-        0 4px 10px rgba(35,99,145,.10);
-
-    transition:
-        transform .15s ease,
-        box-shadow .15s ease,
-        border-color .15s ease,
-        background .15s ease;
-
+    box-shadow: 0 4px 10px rgba(35,99,145,.10);
+    transition: transform .15s ease, box-shadow .15s ease,
+                border-color .15s ease, background .15s ease;
     user-select: none;
     touch-action: manipulation;
 }
-
 .folder:hover {
     border-color: #4c9bd2;
-
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #e3f3ff
-    );
-
-    box-shadow:
-        0 7px 18px rgba(35,110,170,.18);
-
+    background: linear-gradient(145deg, #ffffff, #e3f3ff);
+    box-shadow: 0 7px 18px rgba(35,110,170,.18);
     transform: translateY(-2px);
 }
-
-.folder:active {
-    transform: scale(.97);
-}
-
-/* FOLDER TEXT */
+.folder:active { transform: scale(.97); }
 
 .folder-title {
     font-size: 18px;
@@ -226,25 +156,10 @@ header p {
     overflow-wrap: anywhere;
 }
 
-/* SPECIAL COLOURS */
-
-.folder:nth-child(4n+1) .folder-title {
-    color: #1769aa;
-}
-
-.folder:nth-child(4n+2) .folder-title {
-    color: #287a56;
-}
-
-.folder:nth-child(4n+3) .folder-title {
-    color: #8a5a12;
-}
-
-.folder:nth-child(4n+4) .folder-title {
-    color: #7651a8;
-}
-
-/* DRAG HANDLE */
+.folder:nth-child(4n+1) .folder-title { color: #1769aa; }
+.folder:nth-child(4n+2) .folder-title { color: #287a56; }
+.folder:nth-child(4n+3) .folder-title { color: #8a5a12; }
+.folder:nth-child(4n+4) .folder-title { color: #7651a8; }
 
 .drag-handle {
     position: absolute;
@@ -255,46 +170,28 @@ header p {
     cursor: grab;
     opacity: .75;
 }
-
-.folder:active .drag-handle {
-    cursor: grabbing;
-}
-
-/* DRAGGING */
+.folder:active .drag-handle { cursor: grabbing; }
 
 .folder.dragging {
     opacity: .45;
     border-color: #2384d9;
     transform: scale(.97);
 }
-
-/* DROP TARGET */
-
 .folder.drag-over {
     border-color: #1769aa;
-
-    box-shadow:
-        0 0 0 3px rgba(35,132,217,.18);
+    box-shadow: 0 0 0 3px rgba(35,132,217,.18);
 }
 
-/* EMPTY / SEARCH */
-
-.file-placeholder,
-.no-results {
+.file-placeholder, .no-results {
     grid-column: 1 / -1;
-
     background: white;
     padding: 35px 20px;
     text-align: center;
     border-radius: 12px;
-
     color: #58718a;
     font-weight: 700;
-
     border: 2px solid #d5e3ef;
 }
-
-/* SEARCH RESULT PATH */
 
 .result-path {
     margin-top: 8px;
@@ -304,8 +201,6 @@ header p {
     line-height: 1.5;
 }
 
-/* FOOTER */
-
 footer {
     text-align: center;
     padding: 30px 15px;
@@ -314,149 +209,93 @@ footer {
     font-weight: 700;
 }
 
-/* TABLET */
-
 @media (max-width: 850px) {
-
-    #content {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-    }
-
+    #content { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* MOBILE */
-
 @media (max-width: 600px) {
-
-    header h1 {
-        font-size: 24px;
-    }
-
-    header p {
-        font-size: 13px;
-    }
-
-    .container {
-        padding: 11px;
-    }
-
-    .path {
-        font-size: 14px;
-        padding: 12px;
-    }
-
+    header h1 { font-size: 24px; }
+    header p { font-size: 13px; }
+    .container { padding: 11px; }
+    .path { font-size: 14px; padding: 12px; }
     #content {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 8px;
     }
-
     .folder {
         min-height: 105px;
         padding: 15px 7px;
         border-radius: 12px;
     }
-
     .folder-title {
         font-size: 15px;
         line-height: 1.3;
     }
-
     .drag-handle {
         font-size: 11px;
         top: 5px;
         right: 6px;
     }
-
 }
 
-/* VERY SMALL PHONES */
-
 @media (max-width: 380px) {
-
-    #content {
-        gap: 6px;
-    }
-
+    #content { gap: 6px; }
     .folder {
         min-height: 100px;
         padding: 13px 5px;
     }
-
-    .folder-title {
-        font-size: 14px;
-    }
-
+    .folder-title { font-size: 14px; }
 }
-
 </style>
-
 </head>
 
 <body>
 
 <header>
-
     <h1>PCB REPAIR DATA</h1>
-
     <p>PCB REPAIR DATABASE</p>
-
 </header>
 
 <div class="search-area">
-
     <input
         id="searchBox"
         class="search-box"
         type="search"
         placeholder="Search IC, error code, brand, model..."
         autocomplete="off">
-
 </div>
 
 <div class="container">
-
-    <button
-        id="backButton"
-        class="back-button"
-        type="button">
-
+    <button id="backButton" class="back-button" type="button">
         ← Back
-
     </button>
 
-    <div
-        id="pathDisplay"
-        class="path">
-    </div>
+    <div id="pathDisplay" class="path"></div>
 
     <div id="content"></div>
-
 </div>
 
 <footer>
-
     PCB REPAIR DATABASE
-
 </footer>
 
 <script>
 
-/* FOLDER CREATOR */
+/* =========================================================
+   FOLDER CREATOR
+   ========================================================= */
 
 function makeFolders(names) {
-
     const result = {};
-
     names.forEach(function(name) {
         result[name] = {};
     });
-
     return result;
 }
 
-/* CATEGORIES */
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
 
 const acTypes = [
     "Inverter Window",
@@ -492,7 +331,9 @@ const microwaveTypes = [
     "Non Inverter"
 ];
 
-/* AC */
+/* =========================================================
+   AC
+   ========================================================= */
 
 const AC = {
 
@@ -536,7 +377,9 @@ const AC = {
 
 };
 
-/* FRIDGE */
+/* =========================================================
+   FRIDGE
+   ========================================================= */
 
 const Fridge = {
 
@@ -573,7 +416,9 @@ const Fridge = {
 
 };
 
-/* WASHING MACHINE */
+/* =========================================================
+   WASHING MACHINE
+   ========================================================= */
 
 const WashingMachine = {
 
@@ -600,19 +445,41 @@ const WashingMachine = {
 
 };
 
-/* MICROWAVE */
+/* =========================================================
+   MICROWAVE
+   =========================================================
+   IMPORTANT:
+   The Non Inverter folder contains a special __DRIVE__
+   property. Clicking it opens the private Google Drive
+   folder. Other folders continue to work normally.
+   ========================================================= */
 
 const MicrowaveOven = {
 
-    "MW Oven Touch":
-        makeFolders(microwaveTypes),
+    "MW Oven Touch": {
 
-    "MW Oven Wiring":
-        makeFolders(microwaveTypes)
+        "Inverter": {},
+
+        "Non Inverter": {
+            "__DRIVE__":
+                "https://drive.google.com/drive/folders/1LCCNv6xJHYWrOpGqF5QbeSAMSSonWUks"
+        }
+
+    },
+
+    "MW Oven Wiring": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    }
 
 };
 
-/* INDUCTION */
+/* =========================================================
+   INDUCTION
+   ========================================================= */
 
 const InductionCooktop = {
 
@@ -626,7 +493,9 @@ const InductionCooktop = {
 
 };
 
-/* CHIMNEY */
+/* =========================================================
+   CHIMNEY
+   ========================================================= */
 
 const ChimneyPCB = {
 
@@ -640,7 +509,9 @@ const ChimneyPCB = {
 
 };
 
-/* RO */
+/* =========================================================
+   RO
+   ========================================================= */
 
 const ROPCB = {
 
@@ -656,7 +527,9 @@ const ROPCB = {
 
 };
 
-/* CIRCUIT DIAGRAMS */
+/* =========================================================
+   CIRCUIT DIAGRAMS
+   ========================================================= */
 
 const CircuitDiagrams = {
 
@@ -673,14 +546,14 @@ const CircuitDiagrams = {
         makeFolders(microwaveTypes),
 
     "Induction Cooktop": {},
-
     "Chimney PCB": {},
-
     "R O PCB": {}
 
 };
 
-/* PCB TEST POINTS */
+/* =========================================================
+   PCB TEST POINTS
+   ========================================================= */
 
 const PCBTestPoints = {
 
@@ -695,7 +568,9 @@ const PCBTestPoints = {
 
 };
 
-/* PHOTOS */
+/* =========================================================
+   PHOTOS
+   ========================================================= */
 
 const Photos = {
 
@@ -716,7 +591,9 @@ const Photos = {
 
 };
 
-/* VIDEOS */
+/* =========================================================
+   VIDEOS
+   ========================================================= */
 
 const Videos = {
 
@@ -737,19 +614,19 @@ const Videos = {
 
 };
 
-/* SOFTWARE DATA */
+/* =========================================================
+   SOFTWARE DATA
+   ========================================================= */
 
 const SoftwareData = {
 
     "EEPROM Data": {
 
         "AC": {
-
             "Inverter Indoor PCB": {},
             "Non Inverter Indoor PCB": {},
             "Inverter ODU PCB": {},
             "Non Inverter ODU PCB": {}
-
         },
 
         "Fridge": {
@@ -794,7 +671,9 @@ const SoftwareData = {
 
 };
 
-/* MAIN DATABASE */
+/* =========================================================
+   MAIN DATABASE
+   ========================================================= */
 
 const database = {
 
@@ -824,12 +703,16 @@ const database = {
 
 };
 
-/* APP STATE */
+/* =========================================================
+   APP STATE
+   ========================================================= */
 
 let currentNode = database;
 let currentPath = [];
 
-/* ELEMENTS */
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
 
 const content =
     document.getElementById("content");
@@ -843,7 +726,9 @@ const backButton =
 const searchBox =
     document.getElementById("searchBox");
 
-/* ESCAPE HTML */
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
 
 function escapeHTML(text) {
 
@@ -856,7 +741,9 @@ function escapeHTML(text) {
 
 }
 
-/* URL PATH */
+/* =========================================================
+   URL PATH
+   ========================================================= */
 
 function encodePath(path) {
 
@@ -909,13 +796,13 @@ function setURLPath(path) {
 
 }
 
-/* REBUILD NODE */
+/* =========================================================
+   REBUILD NODE
+   ========================================================= */
 
 function rebuildFromPath(path) {
 
-    currentNode =
-        database;
-
+    currentNode = database;
     currentPath = [];
 
     for (
@@ -935,11 +822,8 @@ function rebuildFromPath(path) {
             )
         ) {
 
-            currentNode =
-                database;
-
+            currentNode = database;
             currentPath = [];
-
             return;
 
         }
@@ -953,21 +837,34 @@ function rebuildFromPath(path) {
 
 }
 
-/* TREE / BREADCRUMB
+/* =========================================================
+   FIND DRIVE LINK FOR CURRENT NODE
+   ========================================================= */
 
+function getDriveLink(node) {
+
+    if (
+        node &&
+        typeof node === "object" &&
+        typeof node.__DRIVE__ === "string" &&
+        node.__DRIVE__.trim() !== ""
+    ) {
+        return node.__DRIVE__;
+    }
+
+    return null;
+
+}
+
+/* =========================================================
+   TREE / BREADCRUMB
    IMPORTANT:
-   Home is NOT displayed on the main page.
-*/
+   Home is NOT displayed on main page.
+   ========================================================= */
 
 function updatePath() {
 
     pathDisplay.innerHTML = "";
-
-    /*
-       Main page:
-       keep the tree completely empty.
-       No "Home" text.
-    */
 
     if (currentPath.length === 0) {
         return;
@@ -1002,11 +899,6 @@ function updatePath() {
             item.textContent =
                 name;
 
-            /*
-               Touch/click any tree name
-               to directly go to that level.
-            */
-
             item.addEventListener(
                 "click",
                 function() {
@@ -1033,7 +925,9 @@ function updatePath() {
 
 }
 
-/* BACK BUTTON */
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
 
 function updateBackButton() {
 
@@ -1067,7 +961,9 @@ backButton.addEventListener(
     }
 );
 
-/* SAVED BOX ORDER */
+/* =========================================================
+   SAVED BOX ORDER
+   ========================================================= */
 
 function getOrderKey() {
 
@@ -1142,7 +1038,9 @@ function saveOrder() {
 
 }
 
-/* DRAG AND DROP */
+/* =========================================================
+   DRAG AND DROP
+   ========================================================= */
 
 let draggedFolder = null;
 
@@ -1269,18 +1167,29 @@ function enableDragging(folder) {
 
 }
 
-/* SHOW CURRENT FOLDER */
+/* =========================================================
+   SHOW CURRENT FOLDER
+   ========================================================= */
 
 function showCurrentFolder() {
 
     content.innerHTML = "";
 
     updatePath();
-
     updateBackButton();
 
     let folderNames =
         Object.keys(currentNode);
+
+    /*
+       __DRIVE__ is a special internal property.
+       It must never be displayed as a folder.
+    */
+
+    folderNames =
+        folderNames.filter(function(name) {
+            return name !== "__DRIVE__";
+        });
 
     folderNames =
         getSavedOrder(folderNames);
@@ -1288,6 +1197,57 @@ function showCurrentFolder() {
     if (
         folderNames.length === 0
     ) {
+
+        const driveLink =
+            getDriveLink(currentNode);
+
+        if (driveLink) {
+
+            const openBox =
+                document.createElement("div");
+
+            openBox.className =
+                "file-placeholder";
+
+            openBox.innerHTML = `
+                <div style="font-size:18px; margin-bottom:10px;">
+                    📁 Private Google Drive Folder
+                </div>
+                <div style="margin-bottom:18px;">
+                    Your authorized Google account is required.
+                </div>
+                <button
+                    type="button"
+                    id="openDriveButton"
+                    style="
+                        border:none;
+                        background:linear-gradient(135deg,#287dcc,#1769aa);
+                        color:white;
+                        padding:12px 20px;
+                        border-radius:9px;
+                        font-size:16px;
+                        font-weight:800;
+                        cursor:pointer;
+                    ">
+                    Open Files
+                </button>
+            `;
+
+            content.appendChild(openBox);
+
+            document
+                .getElementById("openDriveButton")
+                .addEventListener(
+                    "click",
+                    function() {
+                        window.location.href =
+                            driveLink;
+                    }
+                );
+
+            return;
+
+        }
 
         const empty =
             document.createElement("div");
@@ -1319,20 +1279,14 @@ function showCurrentFolder() {
                 folderName;
 
             folder.innerHTML = `
-
                 <span class="drag-handle"
                       title="Drag to move">
-
                     ⋮⋮
-
                 </span>
 
                 <div class="folder-title">
-
                     ${escapeHTML(folderName)}
-
                 </div>
-
             `;
 
             folder.addEventListener(
@@ -1363,7 +1317,12 @@ function showCurrentFolder() {
 
 }
 
-/* OPEN FOLDER */
+/* =========================================================
+   OPEN FOLDER
+   TWO CONDITIONS:
+   1. Normal folder -> website opens the folder.
+   2. Folder containing __DRIVE__ -> private Google Drive.
+   ========================================================= */
 
 function openFolder(folderName) {
 
@@ -1372,13 +1331,67 @@ function openFolder(folderName) {
             folderName
         );
 
+    let node =
+        database;
+
+    for (
+        let i = 0;
+        i < newPath.length;
+        i++
+    ) {
+
+        if (
+            !node ||
+            typeof node !== "object" ||
+            !Object.prototype.hasOwnProperty.call(
+                node,
+                newPath[i]
+            )
+        ) {
+
+            node = null;
+            break;
+
+        }
+
+        node =
+            node[newPath[i]];
+
+    }
+
+    /*
+       CONDITION 1:
+       If this folder has a Google Drive link,
+       open the Drive folder.
+    */
+
+    const driveLink =
+        getDriveLink(node);
+
+    if (driveLink) {
+
+        window.location.href =
+            driveLink;
+
+        return;
+
+    }
+
+    /*
+       CONDITION 2:
+       Otherwise continue using the normal
+       website folder system.
+    */
+
     setURLPath(
         newPath
     );
 
 }
 
-/* PHONE / BROWSER BACK */
+/* =========================================================
+   PHONE / BROWSER BACK
+   ========================================================= */
 
 window.addEventListener(
     "hashchange",
@@ -1407,7 +1420,9 @@ window.addEventListener(
     }
 );
 
-/* SEARCH TREE */
+/* =========================================================
+   SEARCH TREE
+   ========================================================= */
 
 function searchTree(
     node,
@@ -1426,6 +1441,15 @@ function searchTree(
     Object.keys(node).forEach(
         function(name) {
 
+            /*
+               Do not show the internal Drive property
+               in search results.
+            */
+
+            if (name === "__DRIVE__") {
+                return;
+            }
+
             const newPath =
                 path.concat(name);
 
@@ -1438,6 +1462,7 @@ function searchTree(
                 results.push({
 
                     name: name,
+
                     path: newPath
 
                 });
@@ -1463,7 +1488,9 @@ function searchTree(
 
 }
 
-/* SEARCH */
+/* =========================================================
+   SEARCH
+   ========================================================= */
 
 function performSearch(text) {
 
@@ -1490,13 +1517,9 @@ function performSearch(text) {
     content.innerHTML = "";
 
     pathDisplay.innerHTML = `
-
         <span class="path-item">
-
             Search Results
-
         </span>
-
     `;
 
     updateBackButton();
@@ -1532,29 +1555,21 @@ function performSearch(text) {
                 "folder";
 
             item.innerHTML = `
-
                 <div>
-
                     <div class="folder-title">
-
                         ${escapeHTML(
                             result.name
                         )}
-
                     </div>
 
                     <div class="result-path">
-
                         ${escapeHTML(
                             result.path.join(
                                 " → "
                             )
                         )}
-
                     </div>
-
                 </div>
-
             `;
 
             item.addEventListener(
@@ -1563,6 +1578,50 @@ function performSearch(text) {
 
                     searchBox.value =
                         "";
+
+                    /*
+                       If the search result itself is
+                       the Drive-linked folder, open Drive.
+                    */
+
+                    let node =
+                        database;
+
+                    for (
+                        let i = 0;
+                        i < result.path.length;
+                        i++
+                    ) {
+
+                        if (
+                            !node ||
+                            !Object.prototype.hasOwnProperty.call(
+                                node,
+                                result.path[i]
+                            )
+                        ) {
+
+                            node = null;
+                            break;
+
+                        }
+
+                        node =
+                            node[result.path[i]];
+
+                    }
+
+                    const driveLink =
+                        getDriveLink(node);
+
+                    if (driveLink) {
+
+                        window.location.href =
+                            driveLink;
+
+                        return;
+
+                    }
 
                     setURLPath(
                         result.path
@@ -1580,7 +1639,9 @@ function performSearch(text) {
 
 }
 
-/* SEARCH EVENT */
+/* =========================================================
+   SEARCH EVENT
+   ========================================================= */
 
 searchBox.addEventListener(
     "input",
@@ -1593,7 +1654,9 @@ searchBox.addEventListener(
     }
 );
 
-/* START APPLICATION */
+/* =========================================================
+   START APPLICATION
+   ========================================================= */
 
 const initialPath =
     decodePath();
