@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PCB REPAIR DATA</title>
 
 <style>
-
-/* ================================
-   GENERAL
-================================ */
-
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
     font-family: Arial, sans-serif;
     background: #eef2f7;
     color: #1f2937;
 }
 
 
-/* ================================
-   HEADER
-================================ */
+/* HEADER */
 
 header {
     background: #334155;
@@ -51,16 +47,14 @@ header p {
 }
 
 
-/* ================================
-   SEARCH
-================================ */
+/* SEARCH */
 
 .search-area {
     background: white;
     padding: 14px;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: 0 2px 7px rgba(0,0,0,.10);
 }
 
@@ -69,12 +63,9 @@ header p {
     max-width: 700px;
     display: block;
     margin: auto;
-
     padding: 14px 16px;
-
     border: 2px solid #cbd5e1;
     border-radius: 10px;
-
     font-size: 16px;
     outline: none;
 }
@@ -84,212 +75,147 @@ header p {
 }
 
 
-/* ================================
-   MAIN
-================================ */
+/* MAIN */
 
 .container {
-    max-width: 1100px;
+    width: 100%;
+    max-width: 1150px;
     margin: auto;
     padding: 15px;
+    min-height: 500px;
 }
 
 
-/* ================================
-   TREE
-================================ */
+/* TREE */
 
 .path {
     background: #e0e7ff;
-
     border-left: 6px solid #2563eb;
-
     padding: 14px 15px;
-
     border-radius: 10px;
-
     margin-bottom: 14px;
-
     font-size: 15px;
-
     font-weight: 900;
-
     color: #334155;
-
     line-height: 1.8;
-
     word-break: break-word;
-
-    box-shadow:
-        0 3px 8px rgba(15,23,42,.10);
-}
-
-.path-home {
-    font-weight: 900;
-    color: #2563eb;
-    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(15,23,42,.10);
 }
 
 .path-item {
-    font-weight: 900;
     color: #2563eb;
+    font-weight: 900;
     cursor: pointer;
 }
 
-.path-home:hover,
 .path-item:hover {
     text-decoration: underline;
 }
 
 .path-arrow {
-    font-weight: 900;
     color: #64748b;
+    font-weight: 900;
     padding: 0 5px;
 }
 
 
-/* ================================
-   BACK BUTTON
-================================ */
+/* BACK */
 
 .back-button {
     display: none;
-
     border: none;
-
     background: #2563eb;
     color: white;
-
     padding: 11px 18px;
-
     border-radius: 9px;
-
     font-size: 16px;
     font-weight: 800;
-
     margin-bottom: 12px;
-
     cursor: pointer;
-
-    box-shadow:
-        0 4px 9px rgba(37,99,235,.20);
 }
 
 .back-button:hover {
     background: #1d4ed8;
 }
 
-.back-button:active {
-    transform: scale(.97);
-}
 
+/* BOX AREA */
 
-/* ================================
-   BOX GRID
-================================ */
-
-.folder-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 15px;
-
+.folder-area {
+    position: relative;
     width: 100%;
+    min-height: 430px;
+    padding: 5px;
 }
 
 
-/* ================================
-   FOLDER BOX
-================================ */
+/*
+   Boxes are positioned freely.
+   The default positions are automatically created.
+*/
 
 .folder {
+    position: absolute;
 
+    width: 210px;
     min-height: 125px;
 
-    /*
-       Clearly visible professional
-       box colour.
-    */
+    background: #dbe7f4;
 
-    background: #e8edf5;
-
-    padding: 20px 14px;
+    border: 2px solid #a9bdd4;
 
     border-radius: 16px;
 
-    border: 2px solid #b8c5d6;
-
     box-shadow:
-        0 5px 13px rgba(30,41,59,.13);
-
-    cursor: grab;
+        0 5px 13px rgba(30,41,59,.14);
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
 
-    transition:
-        transform .18s ease,
-        box-shadow .18s ease,
-        background .18s ease,
-        border-color .18s ease;
+    padding: 18px 12px;
+
+    cursor: grab;
 
     user-select: none;
 
     touch-action: none;
+
+    transition:
+        box-shadow .15s ease,
+        transform .15s ease,
+        background .15s ease;
 }
-
-
-/* ================================
-   BOX HOVER
-================================ */
 
 .folder:hover {
-
-    background: #dfe6f0;
-
-    border-color: #7c9ac0;
+    background: #cfdeef;
 
     box-shadow:
-        0 8px 19px rgba(30,64,175,.17);
+        0 8px 18px rgba(30,64,175,.18);
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-2px);
 }
-
-
-/* ================================
-   DRAGGING
-================================ */
 
 .folder.dragging {
+    cursor: grabbing;
 
-    opacity: .55;
+    transform: scale(.97);
 
-    transform: scale(.96);
+    opacity: .75;
 
-}
-
-.folder.drag-over {
-
-    border-color: #2563eb;
+    z-index: 9999;
 
     box-shadow:
-        0 0 0 4px rgba(37,99,235,.15);
+        0 15px 30px rgba(15,23,42,.25);
 }
 
 
-/* ================================
-   FOLDER NAME
-================================ */
+/* FOLDER NAME */
 
 .folder-title {
+    color: #2563eb;
 
     font-size: 20px;
 
@@ -297,23 +223,13 @@ header p {
 
     font-weight: 900;
 
-    /*
-       Dark blue.
-       Not deep navy.
-    */
-
-    color: #2563eb !important;
-
     word-break: break-word;
 }
 
 
-/* ================================
-   SEARCH RESULT PATH
-================================ */
+/* SEARCH RESULT */
 
 .result-path {
-
     margin-top: 8px;
 
     font-size: 13px;
@@ -326,13 +242,10 @@ header p {
 }
 
 
-/* ================================
-   EMPTY / NO RESULT
-================================ */
+/* EMPTY */
 
 .file-placeholder,
 .no-results {
-
     background: white;
 
     padding: 30px 20px;
@@ -349,15 +262,16 @@ header p {
 }
 
 
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 
 footer {
+    width: 100%;
 
     text-align: center;
 
-    padding: 30px 15px;
+    padding: 35px 15px 45px;
+
+    margin-top: 30px;
 
     color: #64748b;
 
@@ -367,9 +281,7 @@ footer {
 }
 
 
-/* ================================
-   MOBILE — 3 BOXES
-================================ */
+/* MOBILE */
 
 @media (max-width: 700px) {
 
@@ -377,37 +289,27 @@ footer {
         padding: 12px;
     }
 
-    .folder-grid {
-
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-
-        gap: 9px;
-    }
-
     .folder {
+        width: calc((100vw - 45px) / 3);
 
-        min-height: 110px;
+        min-height: 115px;
 
-        padding: 14px 6px;
+        padding: 14px 7px;
 
         border-radius: 13px;
     }
 
     .folder-title {
-
         font-size: 16px;
+    }
 
-        line-height: 1.3;
-
-        color: #2563eb !important;
+    .folder-area {
+        min-height: 500px;
     }
 }
 
 
-/* ================================
-   SMALL MOBILE
-================================ */
+/* SMALL MOBILE */
 
 @media (max-width: 430px) {
 
@@ -419,59 +321,20 @@ footer {
         font-size: 13px;
     }
 
-    .folder-grid {
-
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-
-        gap: 7px;
-    }
-
     .folder {
+        width: calc((100vw - 38px) / 3);
 
         min-height: 105px;
 
         padding: 12px 5px;
-
-        border-radius: 12px;
     }
 
     .folder-title {
-
         font-size: 14px;
-
-        line-height: 1.3;
-
-        color: #2563eb !important;
-    }
-
-    .path {
-        font-size: 14px;
-    }
-}
-
-
-/* ================================
-   VERY SMALL MOBILE
-================================ */
-
-@media (max-width: 340px) {
-
-    .folder {
-
-        min-height: 95px;
-    }
-
-    .folder-title {
-
-        font-size: 12px;
-
-        color: #2563eb !important;
     }
 }
 
 </style>
-
 </head>
 
 
@@ -501,7 +364,6 @@ footer {
 
 <div class="container">
 
-
     <button
         id="backButton"
         class="back-button"
@@ -518,7 +380,9 @@ footer {
     </div>
 
 
-    <div id="content"></div>
+    <div
+        id="content">
+    </div>
 
 </div>
 
@@ -542,13 +406,10 @@ function makeFolders(names) {
     const result = {};
 
     names.forEach(function(name) {
-
         result[name] = {};
-
     });
 
     return result;
-
 }
 
 
@@ -557,56 +418,45 @@ function makeFolders(names) {
 ========================================================= */
 
 const acTypes = [
-
     "Inverter Window",
     "Inverter Split",
     "Inverter Cassette",
     "Inverter Ductable",
-
     "Non Inverter Window",
     "Non Inverter Split",
     "Non Inverter Cassette",
     "Non Inverter Ductable"
-
 ];
 
 
 const fridgeTypes = [
-
     "Inverter Single Door",
     "Inverter Double Door",
     "Inverter Triple Door",
     "Inverter Side by Side",
-
     "Non Inverter Single Door",
     "Non Inverter Double Door",
     "Non Inverter Triple Door",
     "Non Inverter Side by Side"
-
 ];
 
 
 const washingMachineTypes = [
-
     "Inverter Top Load",
     "Inverter Front Load",
-
     "Non Inverter Top Load",
     "Non Inverter Front Load"
-
 ];
 
 
 const microwaveTypes = [
-
     "Inverter",
     "Non Inverter"
-
 ];
 
 
 /* =========================================================
-   AC
+   DATABASE
 ========================================================= */
 
 const AC = {
@@ -621,21 +471,17 @@ const AC = {
         makeFolders(acTypes),
 
     "Inverter AC": {
-
         "Window": {},
         "Split": {},
         "Cassette": {},
         "Ductable": {}
-
     },
 
     "Non Inverter AC": {
-
         "Window": {},
         "Split": {},
         "Cassette": {},
         "Ductable": {}
-
     },
 
     "PDF":
@@ -652,13 +498,8 @@ const AC = {
 
     "Test Points":
         makeFolders(acTypes)
-
 };
 
-
-/* =========================================================
-   FRIDGE
-========================================================= */
 
 const Fridge = {
 
@@ -672,12 +513,10 @@ const Fridge = {
         makeFolders(fridgeTypes),
 
     "Inverter PCB": {
-
         "Inverter Single Door": {},
         "Inverter Double Door": {},
         "Inverter Triple Door": {},
         "Inverter Side by Side": {}
-
     },
 
     "Photos":
@@ -694,13 +533,8 @@ const Fridge = {
 
     "Wiring Details":
         makeFolders(fridgeTypes)
-
 };
 
-
-/* =========================================================
-   WASHING MACHINE
-========================================================= */
 
 const WashingMachine = {
 
@@ -724,13 +558,8 @@ const WashingMachine = {
 
     "Wiring Details":
         makeFolders(washingMachineTypes)
-
 };
 
-
-/* =========================================================
-   MICROWAVE
-========================================================= */
 
 const MicrowaveOven = {
 
@@ -739,13 +568,8 @@ const MicrowaveOven = {
 
     "MW Oven Wiring":
         makeFolders(microwaveTypes)
-
 };
 
-
-/* =========================================================
-   INDUCTION
-========================================================= */
 
 const InductionCooktop = {
 
@@ -756,13 +580,8 @@ const InductionCooktop = {
     "Test Points": {},
     "Wiring Details": {},
     "PDF": {}
-
 };
 
-
-/* =========================================================
-   CHIMNEY
-========================================================= */
 
 const ChimneyPCB = {
 
@@ -773,13 +592,8 @@ const ChimneyPCB = {
     "Test Points": {},
     "Wiring Details": {},
     "PDF": {}
-
 };
 
-
-/* =========================================================
-   RO
-========================================================= */
 
 const ROPCB = {
 
@@ -792,13 +606,8 @@ const ROPCB = {
     "Wiring Details": {},
     "Sensor Details": {},
     "PDF": {}
-
 };
 
-
-/* =========================================================
-   CIRCUIT DIAGRAMS
-========================================================= */
 
 const CircuitDiagrams = {
 
@@ -819,13 +628,8 @@ const CircuitDiagrams = {
     "Chimney PCB": {},
 
     "R O PCB": {}
-
 };
 
-
-/* =========================================================
-   PCB TEST POINTS
-========================================================= */
 
 const PCBTestPoints = {
 
@@ -837,13 +641,8 @@ const PCBTestPoints = {
 
     "Washing Machine":
         makeFolders(washingMachineTypes)
-
 };
 
-
-/* =========================================================
-   PHOTOS
-========================================================= */
 
 const Photos = {
 
@@ -865,13 +664,8 @@ const Photos = {
     "R O PCB": {},
 
     "Misc": {}
-
 };
 
-
-/* =========================================================
-   VIDEOS
-========================================================= */
 
 const Videos = {
 
@@ -893,76 +687,56 @@ const Videos = {
     "R O PCB": {},
 
     "Misc": {}
-
 };
 
-
-/* =========================================================
-   SOFTWARE DATA
-========================================================= */
 
 const SoftwareData = {
 
     "EEPROM Data": {
 
         "AC": {
-
             "Inverter Indoor PCB": {},
             "Non Inverter Indoor PCB": {},
             "Inverter ODU PCB": {},
             "Non Inverter ODU PCB": {}
-
         },
 
         "Fridge": {
 
             "Single Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Double Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Triple Door": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Side by Side": {
-
                 "Inverter": {},
                 "Non Inverter": {}
-
             },
 
             "Fridge Signal Card": {},
 
             "Fridge Inverter Card": {}
-
         },
 
         "Washing Machine": {
-
             "Inverter Top Load": {},
             "Inverter Front Load": {},
             "Non Inverter Top Load": {},
             "Non Inverter Front Load": {}
-
         }
-
     },
 
     "MCU Data": {}
-
 };
 
 
@@ -972,51 +746,35 @@ const SoftwareData = {
 
 const database = {
 
-    "AC":
-        AC,
+    "AC": AC,
 
-    "Fridge":
-        Fridge,
+    "Fridge": Fridge,
 
-    "Washing Machine":
-        WashingMachine,
+    "Washing Machine": WashingMachine,
 
-    "Microwave Oven":
-        MicrowaveOven,
+    "Microwave Oven": MicrowaveOven,
 
-    "Induction Cooktop":
-        InductionCooktop,
+    "Induction Cooktop": InductionCooktop,
 
-    "Chimney PCB":
-        ChimneyPCB,
+    "Chimney PCB": ChimneyPCB,
 
-    "R O PCB":
-        ROPCB,
+    "R O PCB": ROPCB,
 
-    "Circuit Diagrams":
-        CircuitDiagrams,
+    "Circuit Diagrams": CircuitDiagrams,
 
-    "Electronic Components":
-        {},
+    "Electronic Components": {},
 
-    "Error Codes":
-        {},
+    "Error Codes": {},
 
-    "PCB Test Points":
-        PCBTestPoints,
+    "PCB Test Points": PCBTestPoints,
 
-    "PDF":
-        {},
+    "PDF": {},
 
-    "Photos":
-        Photos,
+    "Photos": Photos,
 
-    "Software Data":
-        SoftwareData,
+    "Software Data": SoftwareData,
 
-    "Videos":
-        Videos
-
+    "Videos": Videos
 };
 
 
@@ -1047,142 +805,141 @@ const searchBox =
 
 
 /* =========================================================
-   SAVED BOX ORDER
+   STORAGE
 ========================================================= */
 
-const STORAGE_KEY =
-    "pcb_repair_saved_box_order_v1";
+const POSITION_KEY =
+    "pcb_repair_box_positions_v3";
 
 
-function getSavedData() {
+function getPositions() {
 
     try {
 
-        const saved =
+        return JSON.parse(
             localStorage.getItem(
-                STORAGE_KEY
-            );
-
-        if (!saved) {
-            return {};
-        }
-
-        return JSON.parse(saved);
+                POSITION_KEY
+            )
+        ) || {};
 
     } catch (error) {
 
         return {};
 
     }
-
 }
 
 
-function saveSavedData(data) {
+function savePositions(data) {
 
-    try {
-
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(data)
-        );
-
-    } catch (error) {
-
-        console.log(
-            "Could not save box arrangement."
-        );
-
-    }
-
+    localStorage.setItem(
+        POSITION_KEY,
+        JSON.stringify(data)
+    );
 }
 
 
-function getCurrentFolderKey() {
+function getFolderKey() {
 
-    if (currentPath.length === 0) {
-
-        return "HOME";
-
-    }
-
-    return currentPath.join(" / ");
-
+    return currentPath.length
+        ? currentPath.join(" / ")
+        : "ROOT";
 }
 
 
-function getSavedOrder() {
+/* =========================================================
+   DEFAULT POSITION
+========================================================= */
 
-    const data =
-        getSavedData();
+function getDefaultPosition(
+    index
+) {
 
-    return data[
-        getCurrentFolderKey()
-    ] || [];
+    const gapX = 225;
+    const gapY = 150;
 
+    const column =
+        index % 3;
+
+    const row =
+        Math.floor(index / 3);
+
+    return {
+        x: column * gapX,
+        y: row * gapY
+    };
 }
 
 
-function saveCurrentOrder(order) {
+/* =========================================================
+   GET BOX POSITION
+========================================================= */
 
-    const data =
-        getSavedData();
+function getPosition(
+    folderName,
+    index
+) {
 
-    data[
-        getCurrentFolderKey()
-    ] = order;
+    const all =
+        getPositions();
 
-    saveSavedData(data);
-
-}
-
-
-function applySavedOrder(names) {
-
-    const saved =
-        getSavedOrder();
+    const page =
+        all[getFolderKey()] || {};
 
     if (
-        !Array.isArray(saved) ||
-        saved.length === 0
+        page[folderName] &&
+        typeof page[folderName].x === "number"
     ) {
 
-        return names;
+        return page[folderName];
 
     }
 
-
-    const result = [];
-
-
-    saved.forEach(function(name) {
-
-        if (
-            names.includes(name)
-        ) {
-
-            result.push(name);
-
-        }
-
-    });
+    return getDefaultPosition(index);
+}
 
 
-    names.forEach(function(name) {
+/* =========================================================
+   SAVE BOX POSITION
+========================================================= */
 
-        if (
-            !result.includes(name)
-        ) {
+function savePosition(
+    folderName,
+    x,
+    y
+) {
 
-            result.push(name);
+    const all =
+        getPositions();
 
-        }
+    const key =
+        getFolderKey();
 
-    });
+    if (!all[key]) {
+        all[key] = {};
+    }
+
+    all[key][folderName] = {
+        x: x,
+        y: y
+    };
+
+    savePositions(all);
+}
 
 
-    return result;
+/* =========================================================
+   ESCAPE
+========================================================= */
 
+function escapeHTML(text) {
+
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 
@@ -1192,13 +949,11 @@ function applySavedOrder(names) {
 
 function encodePath(path) {
 
-    return path
-        .map(function(item) {
+    return path.map(function(item) {
 
-            return encodeURIComponent(item);
+        return encodeURIComponent(item);
 
-        })
-        .join("/");
+    }).join("/");
 
 }
 
@@ -1208,80 +963,23 @@ function decodePath() {
     const hash =
         window.location.hash;
 
-    if (
-        !hash ||
-        hash === "#"
-    ) {
-
+    if (!hash || hash === "#") {
         return [];
-
     }
 
-
-    const raw =
-        hash.substring(1);
-
-    if (!raw) {
-
-        return [];
-
-    }
-
-
-    return raw
+    return hash
+        .substring(1)
         .split("/")
         .map(function(item) {
-
             return decodeURIComponent(item);
-
         });
-
 }
 
 
 function setURLPath(path) {
 
-    const newHash =
-        encodePath(path);
-
-    const oldHash =
-        window.location.hash.substring(1);
-
-
-    if (oldHash === newHash) {
-
-        rebuildFromPath(path);
-
-        showCurrentFolder();
-
-        return;
-
-    }
-
-
     window.location.hash =
-        newHash;
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(text) {
-
-    return String(text)
-
-        .replace(/&/g, "&amp;")
-
-        .replace(/</g, "&lt;")
-
-        .replace(/>/g, "&gt;")
-
-        .replace(/"/g, "&quot;")
-
-        .replace(/'/g, "&#039;");
+        encodePath(path);
 
 }
 
@@ -1292,11 +990,9 @@ function escapeHTML(text) {
 
 function rebuildFromPath(path) {
 
-    currentNode =
-        database;
+    currentNode = database;
 
     currentPath = [];
-
 
     for (
         let i = 0;
@@ -1304,9 +1000,7 @@ function rebuildFromPath(path) {
         i++
     ) {
 
-        const name =
-            path[i];
-
+        const name = path[i];
 
         if (
             !currentNode ||
@@ -1316,15 +1010,13 @@ function rebuildFromPath(path) {
             )
         ) {
 
-            currentNode =
-                database;
+            currentNode = database;
 
             currentPath = [];
 
             return;
 
         }
-
 
         currentNode =
             currentNode[name];
@@ -1342,28 +1034,45 @@ function rebuildFromPath(path) {
 
 function updatePath() {
 
-    let html = `
+    /*
+       ROOT deliberately has no HOME text.
+    */
 
-        <span
-            class="path-home"
-            data-index="-1">
+    if (
+        currentPath.length === 0
+    ) {
 
-            HOME
+        pathDisplay.innerHTML = "";
 
-        </span>
+        pathDisplay.style.display =
+            "none";
 
-    `;
+        return;
+
+    }
+
+
+    pathDisplay.style.display =
+        "block";
+
+
+    let html = "";
 
 
     currentPath.forEach(
         function(name, index) {
 
+            if (index > 0) {
+
+                html += `
+                    <span class="path-arrow">
+                        →
+                    </span>
+                `;
+
+            }
+
             html += `
-
-                <span class="path-arrow">
-                    →
-                </span>
-
                 <span
                     class="path-item"
                     data-index="${index}">
@@ -1371,7 +1080,6 @@ function updatePath() {
                     ${escapeHTML(name)}
 
                 </span>
-
             `;
 
         }
@@ -1382,360 +1090,364 @@ function updatePath() {
         html;
 
 
-    const home =
-        pathDisplay.querySelector(
-            ".path-home"
-        );
+    pathDisplay
+        .querySelectorAll(".path-item")
+        .forEach(function(item) {
 
+            item.addEventListener(
+                "click",
+                function() {
 
-    if (home) {
+                    const index =
+                        Number(
+                            item.dataset.index
+                        );
 
-        home.addEventListener(
-            "click",
-            function() {
-
-                setURLPath([]);
-
-            }
-        );
-
-    }
-
-
-    const items =
-        pathDisplay.querySelectorAll(
-            ".path-item"
-        );
-
-
-    items.forEach(function(item) {
-
-        item.addEventListener(
-            "click",
-            function() {
-
-                const index =
-                    Number(
-                        item.dataset.index
+                    setURLPath(
+                        currentPath.slice(
+                            0,
+                            index + 1
+                        )
                     );
 
+                }
+            );
 
-                setURLPath(
-                    currentPath.slice(
-                        0,
-                        index + 1
-                    )
-                );
-
-            }
-        );
-
-    });
+        });
 
 }
 
 
 /* =========================================================
-   BACK BUTTON
+   BACK
 ========================================================= */
 
 function updateBackButton() {
 
-    if (
-        currentPath.length === 0
-    ) {
-
-        backButton.style.display =
-            "none";
-
-    } else {
-
-        backButton.style.display =
-            "inline-block";
-
-    }
+    backButton.style.display =
+        currentPath.length
+        ? "inline-block"
+        : "none";
 
 }
 
 
-/* =========================================================
-   SAVE GRID ORDER
-========================================================= */
+backButton.addEventListener(
+    "click",
+    function() {
 
-function saveGridOrder() {
+        const parent =
+            currentPath.slice(
+                0,
+                -1
+            );
 
-    const grid =
-        document.getElementById(
-            "folderGrid"
-        );
-
-
-    if (!grid) {
-
-        return;
+        setURLPath(parent);
 
     }
-
-
-    const order =
-        Array.from(
-            grid.children
-        ).map(function(item) {
-
-            return item.dataset.folder;
-
-        });
-
-
-    saveCurrentOrder(order);
-
-}
+);
 
 
 /* =========================================================
-   CREATE FOLDER BOX
+   DRAG BOX
 ========================================================= */
 
-function createFolderBox(
-    folderName
+function enableDragging(
+    box,
+    folderName,
+    startX,
+    startY
 ) {
 
-    const folder =
+    let dragging = false;
+
+    let offsetX = 0;
+    let offsetY = 0;
+
+    function start(
+        clientX,
+        clientY
+    ) {
+
+        dragging = true;
+
+        box.classList.add(
+            "dragging"
+        );
+
+        const rect =
+            box.getBoundingClientRect();
+
+        offsetX =
+            clientX - rect.left;
+
+        offsetY =
+            clientY - rect.top;
+
+        box.setPointerCapture?.(
+            event.pointerId
+        );
+
+    }
+
+
+    function move(
+        clientX,
+        clientY
+    ) {
+
+        if (!dragging) {
+            return;
+        }
+
+        const area =
+            box.parentElement
+                .getBoundingClientRect();
+
+        let x =
+            clientX -
+            area.left -
+            offsetX;
+
+        let y =
+            clientY -
+            area.top -
+            offsetY;
+
+
+        const maxX =
+            Math.max(
+                0,
+                area.width -
+                box.offsetWidth
+            );
+
+
+        x =
+            Math.max(
+                0,
+                Math.min(x, maxX)
+            );
+
+
+        y =
+            Math.max(
+                0,
+                y
+            );
+
+
+        box.style.left =
+            x + "px";
+
+        box.style.top =
+            y + "px";
+
+
+        savePosition(
+            folderName,
+            x,
+            y
+        );
+
+    }
+
+
+    function stop() {
+
+        if (!dragging) {
+            return;
+        }
+
+        dragging = false;
+
+        box.classList.remove(
+            "dragging"
+        );
+
+    }
+
+
+    box.addEventListener(
+        "pointerdown",
+        function(e) {
+
+            if (
+                e.pointerType === "mouse" &&
+                e.button !== 0
+            ) {
+                return;
+            }
+
+            start(
+                e.clientX,
+                e.clientY
+            );
+
+            box.setPointerCapture(
+                e.pointerId
+            );
+
+        }
+    );
+
+
+    box.addEventListener(
+        "pointermove",
+        function(e) {
+
+            move(
+                e.clientX,
+                e.clientY
+            );
+
+        }
+    );
+
+
+    box.addEventListener(
+        "pointerup",
+        function() {
+
+            stop();
+
+        }
+    );
+
+
+    box.addEventListener(
+        "pointercancel",
+        function() {
+
+            stop();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CREATE BOX
+========================================================= */
+
+function createBox(
+    name,
+    index
+) {
+
+    const box =
         document.createElement("div");
 
-
-    folder.className =
+    box.className =
         "folder";
 
 
-    folder.dataset.folder =
-        folderName;
+    box.dataset.folder =
+        name;
 
 
-    folder.draggable =
-        true;
+    const position =
+        getPosition(
+            name,
+            index
+        );
 
 
-    folder.innerHTML = `
+    box.style.left =
+        position.x + "px";
+
+    box.style.top =
+        position.y + "px";
+
+
+    box.innerHTML = `
 
         <div class="folder-title">
 
-            ${escapeHTML(folderName)}
+            ${escapeHTML(name)}
 
         </div>
 
     `;
 
 
-    /* CLICK */
+    let moved = false;
 
-    folder.addEventListener(
+    let downX = 0;
+    let downY = 0;
+
+
+    box.addEventListener(
+        "pointerdown",
+        function(e) {
+
+            downX =
+                e.clientX;
+
+            downY =
+                e.clientY;
+
+            moved = false;
+
+        }
+    );
+
+
+    box.addEventListener(
+        "pointermove",
+        function(e) {
+
+            if (
+                Math.abs(
+                    e.clientX - downX
+                ) > 6 ||
+                Math.abs(
+                    e.clientY - downY
+                ) > 6
+            ) {
+
+                moved = true;
+
+            }
+
+        }
+    );
+
+
+    box.addEventListener(
         "click",
         function() {
 
-            if (
-                folder.dataset.justDragged
-                === "true"
-            ) {
+            if (moved) {
 
-                folder.dataset.justDragged =
-                    "false";
+                moved = false;
 
                 return;
 
             }
 
-
-            openFolder(
-                folderName
-            );
+            openFolder(name);
 
         }
     );
 
 
-    /* DRAG START */
-
-    folder.addEventListener(
-        "dragstart",
-        function(event) {
-
-            folder.classList.add(
-                "dragging"
-            );
-
-            folder.dataset.justDragged =
-                "false";
-
-            event.dataTransfer.effectAllowed =
-                "move";
-
-            event.dataTransfer.setData(
-                "text/plain",
-                folderName
-            );
-
-        }
+    enableDragging(
+        box,
+        name,
+        position.x,
+        position.y
     );
 
 
-    /* DRAG END */
-
-    folder.addEventListener(
-        "dragend",
-        function() {
-
-            folder.classList.remove(
-                "dragging"
-            );
-
-            saveGridOrder();
-
-            folder.dataset.justDragged =
-                "true";
-
-        }
-    );
-
-
-    /* DRAG OVER */
-
-    folder.addEventListener(
-        "dragover",
-        function(event) {
-
-            event.preventDefault();
-
-            folder.classList.add(
-                "drag-over"
-            );
-
-        }
-    );
-
-
-    /* DRAG LEAVE */
-
-    folder.addEventListener(
-        "dragleave",
-        function() {
-
-            folder.classList.remove(
-                "drag-over"
-            );
-
-        }
-    );
-
-
-    /* DROP */
-
-    folder.addEventListener(
-        "drop",
-        function(event) {
-
-            event.preventDefault();
-
-            folder.classList.remove(
-                "drag-over"
-            );
-
-
-            const draggedName =
-                event.dataTransfer.getData(
-                    "text/plain"
-                );
-
-
-            if (
-                !draggedName ||
-                draggedName === folderName
-            ) {
-
-                return;
-
-            }
-
-
-            const grid =
-                document.getElementById(
-                    "folderGrid"
-                );
-
-
-            if (!grid) {
-
-                return;
-
-            }
-
-
-            const dragged =
-                Array.from(
-                    grid.children
-                ).find(function(item) {
-
-                    return (
-                        item.dataset.folder
-                        === draggedName
-                    );
-
-                });
-
-
-            if (!dragged) {
-
-                return;
-
-            }
-
-
-            const boxes =
-                Array.from(
-                    grid.children
-                );
-
-
-            const targetIndex =
-                boxes.indexOf(folder);
-
-            const draggedIndex =
-                boxes.indexOf(dragged);
-
-
-            if (
-                draggedIndex <
-                targetIndex
-            ) {
-
-                grid.insertBefore(
-                    dragged,
-                    folder.nextSibling
-                );
-
-            } else {
-
-                grid.insertBefore(
-                    dragged,
-                    folder
-                );
-
-            }
-
-
-            saveGridOrder();
-
-        }
-    );
-
-
-    return folder;
+    return box;
 
 }
 
 
 /* =========================================================
-   SHOW CURRENT FOLDER
+   SHOW FOLDER
 ========================================================= */
 
 function showCurrentFolder() {
@@ -1747,15 +1459,13 @@ function showCurrentFolder() {
     updateBackButton();
 
 
-    const folderNames =
+    const names =
         Object.keys(
             currentNode
         );
 
 
-    if (
-        folderNames.length === 0
-    ) {
+    if (!names.length) {
 
         content.innerHTML = `
 
@@ -1772,29 +1482,34 @@ function showCurrentFolder() {
     }
 
 
-    const orderedNames =
-        applySavedOrder(
-            folderNames
-        );
-
-
-    const grid =
+    const area =
         document.createElement("div");
 
 
-    grid.className =
-        "folder-grid";
-
-    grid.id =
-        "folderGrid";
+    area.className =
+        "folder-area";
 
 
-    orderedNames.forEach(
-        function(folderName) {
+    const rows =
+        Math.ceil(
+            names.length / 3
+        );
 
-            grid.appendChild(
-                createFolderBox(
-                    folderName
+
+    area.style.minHeight =
+        Math.max(
+            430,
+            rows * 150 + 30
+        ) + "px";
+
+
+    names.forEach(
+        function(name, index) {
+
+            area.appendChild(
+                createBox(
+                    name,
+                    index
                 )
             );
 
@@ -1803,30 +1518,21 @@ function showCurrentFolder() {
 
 
     content.appendChild(
-        grid
+        area
     );
 
 }
 
 
 /* =========================================================
-   OPEN FOLDER
+   OPEN
 ========================================================= */
 
-function openFolder(
-    folderName
-) {
-
-    const newPath =
-        currentPath.concat(
-            folderName
-        );
-
+function openFolder(name) {
 
     setURLPath(
-        newPath
+        currentPath.concat(name)
     );
-
 
     window.scrollTo({
         top: 0,
@@ -1834,77 +1540,6 @@ function openFolder(
     });
 
 }
-
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
-backButton.addEventListener(
-    "click",
-    function() {
-
-        if (
-            currentPath.length === 0
-        ) {
-
-            return;
-
-        }
-
-
-        const parentPath =
-            currentPath.slice(
-                0,
-                currentPath.length - 1
-            );
-
-
-        setURLPath(
-            parentPath
-        );
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-);
-
-
-/* =========================================================
-   PHONE / BROWSER BACK
-========================================================= */
-
-window.addEventListener(
-    "hashchange",
-    function() {
-
-        const path =
-            decodePath();
-
-
-        rebuildFromPath(
-            path
-        );
-
-
-        searchBox.value =
-            "";
-
-
-        showCurrentFolder();
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-);
 
 
 /* =========================================================
@@ -1922,9 +1557,7 @@ function searchTree(
         !node ||
         typeof node !== "object"
     ) {
-
         return;
-
     }
 
 
@@ -1942,40 +1575,25 @@ function searchTree(
             ) {
 
                 results.push({
-
                     name: name,
-
                     path: newPath
-
                 });
 
             }
 
 
-            if (
-                node[name] &&
-                typeof node[name]
-                === "object"
-            ) {
-
-                searchTree(
-                    node[name],
-                    newPath,
-                    text,
-                    results
-                );
-
-            }
+            searchTree(
+                node[name],
+                newPath,
+                text,
+                results
+            );
 
         }
     );
 
 }
 
-
-/* =========================================================
-   PERFORM SEARCH
-========================================================= */
 
 function performSearch(text) {
 
@@ -2003,24 +1621,25 @@ function performSearch(text) {
     );
 
 
-    content.innerHTML =
-        "";
+    content.innerHTML = "";
+
+
+    pathDisplay.style.display =
+        "block";
 
 
     pathDisplay.innerHTML = `
 
         <span class="path-item">
 
-            SEARCH RESULTS
+            Search Results
 
         </span>
 
     `;
 
 
-    if (
-        results.length === 0
-    ) {
+    if (!results.length) {
 
         content.innerHTML = `
 
@@ -2037,26 +1656,33 @@ function performSearch(text) {
     }
 
 
-    const grid =
+    const area =
         document.createElement("div");
 
 
-    grid.className =
-        "folder-grid";
+    area.className =
+        "folder-area";
+
+
+    area.style.minHeight =
+        Math.max(
+            430,
+            Math.ceil(results.length / 3)
+            * 150 + 30
+        ) + "px";
 
 
     results.forEach(
-        function(result) {
+        function(result, index) {
 
-            const item =
-                document.createElement("div");
+            const box =
+                createBox(
+                    result.name,
+                    index
+                );
 
 
-            item.className =
-                "folder";
-
-
-            item.innerHTML = `
+            box.innerHTML = `
 
                 <div>
 
@@ -2083,7 +1709,7 @@ function performSearch(text) {
             `;
 
 
-            item.addEventListener(
+            box.addEventListener(
                 "click",
                 function() {
 
@@ -2098,8 +1724,8 @@ function performSearch(text) {
             );
 
 
-            grid.appendChild(
-                item
+            area.appendChild(
+                box
             );
 
         }
@@ -2107,7 +1733,7 @@ function performSearch(text) {
 
 
     content.appendChild(
-        grid
+        area
     );
 
 }
@@ -2124,6 +1750,35 @@ searchBox.addEventListener(
         performSearch(
             this.value
         );
+
+    }
+);
+
+
+/* =========================================================
+   HASH CHANGE
+========================================================= */
+
+window.addEventListener(
+    "hashchange",
+    function() {
+
+        const path =
+            decodePath();
+
+        rebuildFromPath(
+            path
+        );
+
+        searchBox.value =
+            "";
+
+        showCurrentFolder();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
     }
 );
@@ -2147,5 +1802,4 @@ showCurrentFolder();
 </script>
 
 </body>
-
 </html>
