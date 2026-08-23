@@ -24,7 +24,9 @@ body {
 }
 
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header {
     background: #1f2937;
@@ -46,26 +48,36 @@ header p {
 }
 
 
-/* SEARCH */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 .search-area {
     background: white;
     padding: 14px;
+
     position: sticky;
     top: 0;
+
     z-index: 100;
+
     box-shadow: 0 2px 7px rgba(0,0,0,.10);
 }
 
 .search-box {
     width: 95%;
     max-width: 700px;
+
     display: block;
     margin: auto;
+
     padding: 14px 16px;
+
     border: 2px solid #d1d5db;
     border-radius: 10px;
+
     font-size: 16px;
+
     outline: none;
 }
 
@@ -74,28 +86,39 @@ header p {
 }
 
 
-/* MAIN */
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
 
 .container {
-    max-width: 950px;
+    max-width: 1050px;
     margin: auto;
     padding: 15px;
 }
 
 
-/* TREE */
+/* =========================================================
+   TREE / BREADCRUMB
+   NO HOME
+========================================================= */
 
 .path {
     background: #dbeafe;
+
     border-left: 6px solid #2563eb;
+
     padding: 14px 15px;
+
     border-radius: 9px;
+
     margin-bottom: 14px;
 
-    font-size: 15px;
+    font-size: 16px;
+
     font-weight: 900;
 
-    color: #1e3a8a;
+    color: #111827;
+
     line-height: 1.7;
 
     word-break: break-word;
@@ -103,24 +126,28 @@ header p {
     box-shadow: 0 2px 5px rgba(0,0,0,.08);
 }
 
-.path-home {
-    font-weight: 900;
-    color: #1d4ed8;
-}
+
+/* First folder */
 
 .path-item {
     font-weight: 900;
     color: #111827;
 }
 
+
+/* Arrow */
+
 .path-arrow {
     font-weight: 900;
     color: #2563eb;
-    padding: 0 5px;
+
+    padding: 0 7px;
 }
 
 
-/* BACK */
+/* =========================================================
+   BACK BUTTON
+========================================================= */
 
 .back-button {
     display: none;
@@ -128,6 +155,7 @@ header p {
     border: none;
 
     background: #2563eb;
+
     color: white;
 
     padding: 11px 18px;
@@ -135,6 +163,7 @@ header p {
     border-radius: 8px;
 
     font-size: 16px;
+
     font-weight: 800;
 
     margin-bottom: 12px;
@@ -147,101 +176,282 @@ header p {
 }
 
 
-/* FOLDERS */
+/* =========================================================
+   FOLDER GRID
+========================================================= */
+
+.folder-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   FOLDER BOX
+========================================================= */
 
 .folder {
+
     background: white;
 
-    margin: 11px 0;
-    padding: 19px 18px;
+    min-height: 115px;
 
-    border-radius: 11px;
+    padding: 20px 16px;
+
+    border-radius: 14px;
 
     border: 2px solid #dbe3ee;
 
-    box-shadow: 0 3px 8px rgba(0,0,0,.08);
+    box-shadow:
+        0 3px 8px rgba(0,0,0,.08);
 
     cursor: pointer;
 
-    transition: .15s ease;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    transition:
+        transform .15s ease,
+        border-color .15s ease,
+        box-shadow .15s ease;
+
+    user-select: none;
 }
+
+
+/* Hover */
 
 .folder:hover {
-    border-color: #93c5fd;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 5px 14px rgba(37,99,235,.16);
+
+    transform: translateY(-2px);
+
 }
+
+
+/* Touch */
 
 .folder:active {
-    transform: scale(.985);
+
+    transform: scale(.97);
+
 }
+
+
+/* Folder title */
 
 .folder-title {
+
     font-size: 18px;
+
     font-weight: 900;
+
+    line-height: 1.35;
+
     color: #111827;
+
+    word-break: break-word;
+
 }
 
 
-/* SEARCH PATH */
+/* =========================================================
+   CUSTOM ICON SUPPORT
+========================================================= */
+
+/*
+   Icons are OFF by default.
+
+   Later you can add icons through iconMap
+   without changing the folder structure.
+*/
+
+.custom-icon {
+
+    display: none;
+
+    font-size: 34px;
+
+    margin-bottom: 8px;
+}
+
+
+/* When an icon exists */
+
+.folder.has-icon {
+
+    flex-direction: column;
+
+}
+
+.folder.has-icon .custom-icon {
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   SEARCH RESULT
+========================================================= */
 
 .result-path {
-    margin-top: 7px;
+
+    margin-top: 8px;
+
     font-size: 13px;
+
     font-weight: 700;
+
     color: #4b5563;
+
     line-height: 1.5;
+
 }
 
 
-/* EMPTY */
+/* =========================================================
+   EMPTY FOLDER
+========================================================= */
 
 .file-placeholder,
 .no-results {
+
     background: white;
+
     padding: 30px 20px;
+
     text-align: center;
+
     border-radius: 11px;
+
     color: #6b7280;
+
     font-weight: 600;
+
 }
 
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
+
     text-align: center;
+
     padding: 30px 15px;
+
     color: #6b7280;
+
     font-size: 14px;
+
     font-weight: 600;
+
 }
 
 
-/* MOBILE */
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .folder-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
     header h1 {
+
         font-size: 25px;
+
     }
 
     header p {
+
         font-size: 14px;
+
     }
 
     .container {
+
         padding: 12px;
-    }
 
-    .folder {
-        padding: 18px 15px;
-    }
-
-    .folder-title {
-        font-size: 17px;
     }
 
     .path {
+
         font-size: 14px;
+
+        padding: 12px;
+
+    }
+
+    .folder-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+    }
+
+    .folder {
+
+        min-height: 105px;
+
+        padding: 16px 10px;
+
+        border-radius: 12px;
+
+    }
+
+    .folder-title {
+
+        font-size: 16px;
+
+    }
+
+}
+
+
+/* Very small phones */
+
+@media (max-width: 380px) {
+
+    .folder-grid {
+
+        grid-template-columns:
+            1fr;
+
     }
 
 }
@@ -277,6 +487,7 @@ footer {
 
 <div class="container">
 
+
     <button
         id="backButton"
         class="back-button"
@@ -291,12 +502,11 @@ footer {
         id="pathDisplay"
         class="path">
 
-        📁 Home
-
     </div>
 
 
     <div id="content"></div>
+
 
 </div>
 
@@ -328,6 +538,27 @@ function makeFolders(names) {
     return result;
 
 }
+
+
+/* =========================================================
+   CUSTOM ICON MAP
+========================================================= */
+
+/*
+   अभी icons खाली रखे गए हैं.
+
+   बाद में आप ऐसे icons add कर सकते हैं:
+
+   "AC": "❄️",
+   "Fridge": "🧊",
+   "Washing Machine": "🧺"
+
+   बिना folder structure बदले.
+*/
+
+const iconMap = {
+
+};
 
 
 /* =========================================================
@@ -932,6 +1163,17 @@ function escapeHTML(text) {
 
 
 /* =========================================================
+   GET ICON
+========================================================= */
+
+function getIcon(folderName) {
+
+    return iconMap[folderName] || "";
+
+}
+
+
+/* =========================================================
    REBUILD CURRENT NODE
 ========================================================= */
 
@@ -989,45 +1231,43 @@ function rebuildFromPath(path) {
 
 function updatePath() {
 
+    /*
+       HOME REMOVED COMPLETELY
+    */
+
     if (
         currentPath.length === 0
     ) {
 
-        pathDisplay.innerHTML = `
-
-            <span class="path-home">
-
-                📁 Home
-
-            </span>
-
-        `;
+        pathDisplay.innerHTML =
+            "";
 
         return;
 
     }
 
 
-    let html = `
-
-        <span class="path-home">
-
-            📁 Home
-
-        </span>
-
-    `;
+    let html = "";
 
 
-    currentPath.forEach(function(name) {
+    currentPath.forEach(function(name, index) {
+
+        if (index > 0) {
+
+            html += `
+
+                <span class="path-arrow">
+
+                    →
+
+                </span>
+
+            `;
+
+        }
+
 
         html += `
-
-            <span class="path-arrow">
-
-                →
-
-            </span>
 
             <span class="path-item">
 
@@ -1070,7 +1310,68 @@ function updateBackButton() {
 
 
 /* =========================================================
-   SHOW FOLDER
+   CREATE FOLDER BOX
+========================================================= */
+
+function createFolderBox(folderName) {
+
+    const folder =
+        document.createElement("div");
+
+
+    folder.className =
+        "folder";
+
+
+    const icon =
+        getIcon(folderName);
+
+
+    if (icon) {
+
+        folder.classList.add(
+            "has-icon"
+        );
+
+    }
+
+
+    folder.innerHTML = `
+
+        ${
+            icon
+            ? `<div class="custom-icon">
+                    ${escapeHTML(icon)}
+               </div>`
+            : ""
+        }
+
+        <div class="folder-title">
+
+            ${escapeHTML(folderName)}
+
+        </div>
+
+    `;
+
+
+    folder.addEventListener(
+        "click",
+        function() {
+
+            openFolder(folderName);
+
+        }
+    );
+
+
+    return folder;
+
+}
+
+
+/* =========================================================
+   SHOW CURRENT FOLDER
 ========================================================= */
 
 function showCurrentFolder() {
@@ -1095,7 +1396,7 @@ function showCurrentFolder() {
 
             <div class="file-placeholder">
 
-                📂 This folder is currently empty.
+                This folder is currently empty.
 
             </div>
 
@@ -1106,40 +1407,32 @@ function showCurrentFolder() {
     }
 
 
+    /*
+       BOX GRID
+    */
+
+    const grid =
+        document.createElement("div");
+
+
+    grid.className =
+        "folder-grid";
+
+
     folderNames.forEach(function(folderName) {
 
-        const folder =
-            document.createElement("div");
+        grid.appendChild(
 
+            createFolderBox(
+                folderName
+            )
 
-        folder.className =
-            "folder";
-
-
-        folder.innerHTML = `
-
-            <div class="folder-title">
-
-                📁 ${escapeHTML(folderName)}
-
-            </div>
-
-        `;
-
-
-        folder.addEventListener(
-            "click",
-            function() {
-
-                openFolder(folderName);
-
-            }
         );
 
-
-        content.appendChild(folder);
-
     });
+
+
+    content.appendChild(grid);
 
 }
 
@@ -1151,14 +1444,15 @@ function showCurrentFolder() {
 function openFolder(folderName) {
 
     const newPath =
-        currentPath.concat(folderName);
+        currentPath.concat(
+            folderName
+        );
 
 
     /*
-       Hash navigation creates a real browser
-       history entry.
-
-       Therefore phone Back works.
+       IMPORTANT:
+       Hash navigation is preserved.
+       Phone Back will continue working.
     */
 
     setURLPath(newPath);
@@ -1182,10 +1476,6 @@ backButton.addEventListener(
 
         }
 
-
-        /*
-           Remove one folder level.
-        */
 
         const parentPath =
             currentPath.slice(
@@ -1346,7 +1636,7 @@ function performSearch(text) {
 
         <span class="path-item">
 
-            🔎 Search Results
+            Search Results
 
         </span>
 
@@ -1375,6 +1665,14 @@ function performSearch(text) {
     }
 
 
+    const grid =
+        document.createElement("div");
+
+
+    grid.className =
+        "folder-grid";
+
+
     results.forEach(
         function(result) {
 
@@ -1388,21 +1686,25 @@ function performSearch(text) {
 
             item.innerHTML = `
 
-                <div class="folder-title">
+                <div>
 
-                    📁 ${escapeHTML(
-                        result.name
-                    )}
+                    <div class="folder-title">
 
-                </div>
+                        ${escapeHTML(
+                            result.name
+                        )}
 
-                <div class="result-path">
+                    </div>
 
-                    ${escapeHTML(
-                        result.path.join(
-                            " → "
-                        )
-                    )}
+                    <div class="result-path">
+
+                        ${escapeHTML(
+                            result.path.join(
+                                " → "
+                            )
+                        )}
+
+                    </div>
 
                 </div>
 
@@ -1425,10 +1727,13 @@ function performSearch(text) {
             );
 
 
-            content.appendChild(item);
+            grid.appendChild(item);
 
         }
     );
+
+
+    content.appendChild(grid);
 
 }
 
