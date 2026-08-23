@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PCB REPAIR DATA</title>
 
 <style>
+
+/* =========================================================
+   BASIC
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
 
-html,
 body {
     margin: 0;
-    padding: 0;
-    min-height: 100%;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #eef2f7;
-    color: #1f2937;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef4fb;
+    color: #26364a;
 }
 
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header {
-    background: #334155;
+    background: linear-gradient(135deg, #123b67, #1769aa);
     color: white;
     padding: 22px 15px;
     text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,.15);
 }
 
 header h1 {
     margin: 0;
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: .5px;
 }
 
 header p {
     margin: 8px 0 0;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
+    opacity: .95;
 }
 
 
-/* SEARCH */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 .search-area {
     background: white;
     padding: 14px;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 7px rgba(0,0,0,.10);
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,.10);
 }
 
 .search-box {
@@ -63,171 +70,335 @@ header p {
     max-width: 700px;
     display: block;
     margin: auto;
-    padding: 14px 16px;
-    border: 2px solid #cbd5e1;
-    border-radius: 10px;
+
+    padding: 14px 17px;
+
+    border: 2px solid #cbd8e8;
+    border-radius: 12px;
+
     font-size: 16px;
+    font-weight: 600;
+
+    color: #23415f;
+    background: #f8fbff;
+
     outline: none;
 }
 
 .search-box:focus {
-    border-color: #2563eb;
+    border-color: #2384d9;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(35,132,217,.12);
 }
 
 
-/* MAIN */
+/* =========================================================
+   MAIN
+========================================================= */
 
 .container {
-    width: 100%;
-    max-width: 1150px;
+    max-width: 1100px;
     margin: auto;
-    padding: 15px;
-    min-height: 500px;
+    padding: 16px;
 }
 
 
-/* TREE */
+/* =========================================================
+   CLICKABLE TREE / BREADCRUMB
+========================================================= */
 
 .path {
-    background: #e0e7ff;
-    border-left: 6px solid #2563eb;
-    padding: 14px 15px;
+    background: linear-gradient(135deg, #e5f2ff, #f3f9ff);
+
+    border-left: 6px solid #2384d9;
+
+    padding: 14px 16px;
+
     border-radius: 10px;
+
     margin-bottom: 14px;
-    font-size: 15px;
+
+    font-size: 16px;
     font-weight: 900;
-    color: #334155;
+
+    color: #174a7a;
+
     line-height: 1.8;
+
     word-break: break-word;
-    box-shadow: 0 3px 8px rgba(15,23,42,.10);
+
+    box-shadow: 0 3px 9px rgba(24,78,125,.10);
+}
+
+
+/* HOME / TREE ITEMS */
+
+.path-home {
+    color: #1769aa;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.path-home:hover {
+    color: #0b4e87;
+    text-decoration: underline;
 }
 
 .path-item {
-    color: #2563eb;
+    color: #2878b9;
     font-weight: 900;
     cursor: pointer;
 }
 
 .path-item:hover {
+    color: #0b5b98;
     text-decoration: underline;
 }
 
 .path-arrow {
-    color: #64748b;
+    color: #6b9bc4;
     font-weight: 900;
     padding: 0 5px;
 }
 
 
-/* BACK */
+/* =========================================================
+   BACK BUTTON
+========================================================= */
 
 .back-button {
     display: none;
+
     border: none;
-    background: #2563eb;
+
+    background: linear-gradient(135deg, #287dcc, #1769aa);
+
     color: white;
-    padding: 11px 18px;
+
+    padding: 11px 19px;
+
     border-radius: 9px;
+
     font-size: 16px;
     font-weight: 800;
-    margin-bottom: 12px;
+
+    margin-bottom: 13px;
+
     cursor: pointer;
+
+    box-shadow: 0 3px 8px rgba(23,105,170,.25);
 }
 
 .back-button:hover {
-    background: #1d4ed8;
+    background: linear-gradient(135deg, #1769aa, #0f568e);
+}
+
+.back-button:active {
+    transform: scale(.97);
 }
 
 
-/* BOX AREA */
+/* =========================================================
+   FOLDER GRID
+========================================================= */
 
-.folder-area {
-    position: relative;
-    width: 100%;
-    min-height: 430px;
-    padding: 5px;
+#content {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
 }
 
 
-/*
-   Boxes are positioned freely.
-   The default positions are automatically created.
-*/
+/* =========================================================
+   PROFESSIONAL FOLDER BOX
+========================================================= */
 
 .folder {
-    position: absolute;
+    min-height: 105px;
 
-    width: 210px;
-    min-height: 125px;
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #edf7ff
+    );
 
-    background: #dbe7f4;
+    border: 2px solid #b9d7ee;
 
-    border: 2px solid #a9bdd4;
+    border-radius: 14px;
 
-    border-radius: 16px;
-
-    box-shadow:
-        0 5px 13px rgba(30,41,59,.14);
+    padding: 20px 15px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
-    padding: 18px 12px;
+    cursor: pointer;
 
-    cursor: grab;
+    position: relative;
+
+    box-shadow:
+        0 4px 10px rgba(35,99,145,.10);
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        border-color .15s ease,
+        background .15s ease;
 
     user-select: none;
 
-    touch-action: none;
-
-    transition:
-        box-shadow .15s ease,
-        transform .15s ease,
-        background .15s ease;
+    touch-action: manipulation;
 }
 
+
+/* hover */
+
 .folder:hover {
-    background: #cfdeef;
+    border-color: #4c9bd2;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #e3f3ff
+    );
 
     box-shadow:
-        0 8px 18px rgba(30,64,175,.18);
+        0 7px 18px rgba(35,110,170,.18);
 
     transform: translateY(-2px);
 }
 
-.folder.dragging {
-    cursor: grabbing;
 
+/* click */
+
+.folder:active {
     transform: scale(.97);
-
-    opacity: .75;
-
-    z-index: 9999;
-
-    box-shadow:
-        0 15px 30px rgba(15,23,42,.25);
 }
 
 
-/* FOLDER NAME */
+/* =========================================================
+   FOLDER TEXT
+========================================================= */
 
 .folder-title {
-    color: #2563eb;
-
-    font-size: 20px;
+    font-size: 18px;
 
     line-height: 1.35;
 
     font-weight: 900;
 
-    word-break: break-word;
+    color: #1769aa;
+
+    word-break: normal;
+
+    overflow-wrap: anywhere;
 }
 
 
-/* SEARCH RESULT */
+/*
+   SPECIAL COLOUR CLASSES
+*/
+
+.folder:nth-child(4n+1) .folder-title {
+    color: #1769aa;
+}
+
+.folder:nth-child(4n+2) .folder-title {
+    color: #287a56;
+}
+
+.folder:nth-child(4n+3) .folder-title {
+    color: #8a5a12;
+}
+
+.folder:nth-child(4n+4) .folder-title {
+    color: #7651a8;
+}
+
+
+/* =========================================================
+   DRAG HANDLE
+========================================================= */
+
+.drag-handle {
+    position: absolute;
+
+    top: 7px;
+    right: 9px;
+
+    font-size: 13px;
+
+    color: #8aabc3;
+
+    cursor: grab;
+
+    opacity: .75;
+}
+
+.folder:active .drag-handle {
+    cursor: grabbing;
+}
+
+
+/* =========================================================
+   DRAGGING
+========================================================= */
+
+.folder.dragging {
+    opacity: .45;
+
+    border-color: #2384d9;
+
+    transform: scale(.97);
+}
+
+
+/* =========================================================
+   DROP TARGET
+========================================================= */
+
+.folder.drag-over {
+    border-color: #1769aa;
+
+    box-shadow:
+        0 0 0 3px rgba(35,132,217,.18);
+}
+
+
+/* =========================================================
+   EMPTY / SEARCH
+========================================================= */
+
+.file-placeholder,
+.no-results {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    color: #58718a;
+
+    font-weight: 700;
+
+    border: 2px solid #d5e3ef;
+}
+
+
+/* =========================================================
+   SEARCH RESULT PATH
+========================================================= */
 
 .result-path {
     margin-top: 8px;
@@ -236,105 +407,125 @@ header p {
 
     font-weight: 700;
 
-    color: #475569;
+    color: #5b7892;
 
     line-height: 1.5;
 }
 
 
-/* EMPTY */
-
-.file-placeholder,
-.no-results {
-    background: white;
-
-    padding: 30px 20px;
-
-    text-align: center;
-
-    border-radius: 12px;
-
-    color: #64748b;
-
-    font-weight: 700;
-
-    border: 2px solid #dbe3ee;
-}
-
-
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
-    width: 100%;
-
     text-align: center;
 
-    padding: 35px 15px 45px;
+    padding: 30px 15px;
 
-    margin-top: 30px;
-
-    color: #64748b;
+    color: #688198;
 
     font-size: 14px;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
-/* MOBILE */
+/* =========================================================
+   TABLET
+========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
 
-    .container {
-        padding: 12px;
+    #content {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
     }
 
-    .folder {
-        width: calc((100vw - 45px) / 3);
-
-        min-height: 115px;
-
-        padding: 14px 7px;
-
-        border-radius: 13px;
-    }
-
-    .folder-title {
-        font-size: 16px;
-    }
-
-    .folder-area {
-        min-height: 500px;
-    }
 }
 
 
-/* SMALL MOBILE */
+/* =========================================================
+   MOBILE
+   3 BOXES IN ONE ROW
+========================================================= */
 
-@media (max-width: 430px) {
+@media (max-width: 600px) {
 
     header h1 {
-        font-size: 23px;
+        font-size: 24px;
     }
 
     header p {
         font-size: 13px;
     }
 
+    .container {
+        padding: 11px;
+    }
+
+    .path {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    #content {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
     .folder {
-        width: calc((100vw - 38px) / 3);
 
         min-height: 105px;
 
-        padding: 12px 5px;
+        padding: 15px 7px;
+
+        border-radius: 12px;
+    }
+
+    .folder-title {
+
+        font-size: 15px;
+
+        line-height: 1.3;
+    }
+
+    .drag-handle {
+
+        font-size: 11px;
+
+        top: 5px;
+        right: 6px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    #content {
+        gap: 6px;
+    }
+
+    .folder {
+        min-height: 100px;
+        padding: 13px 5px;
     }
 
     .folder-title {
         font-size: 14px;
     }
+
 }
 
 </style>
+
 </head>
 
 
@@ -380,9 +571,7 @@ footer {
     </div>
 
 
-    <div
-        id="content">
-    </div>
+    <div id="content"></div>
 
 </div>
 
@@ -396,7 +585,6 @@ footer {
 
 <script>
 
-
 /* =========================================================
    FOLDER CREATOR
 ========================================================= */
@@ -406,10 +594,13 @@ function makeFolders(names) {
     const result = {};
 
     names.forEach(function(name) {
+
         result[name] = {};
+
     });
 
     return result;
+
 }
 
 
@@ -418,45 +609,56 @@ function makeFolders(names) {
 ========================================================= */
 
 const acTypes = [
+
     "Inverter Window",
     "Inverter Split",
     "Inverter Cassette",
     "Inverter Ductable",
+
     "Non Inverter Window",
     "Non Inverter Split",
     "Non Inverter Cassette",
     "Non Inverter Ductable"
+
 ];
 
 
 const fridgeTypes = [
+
     "Inverter Single Door",
     "Inverter Double Door",
     "Inverter Triple Door",
     "Inverter Side by Side",
+
     "Non Inverter Single Door",
     "Non Inverter Double Door",
     "Non Inverter Triple Door",
     "Non Inverter Side by Side"
+
 ];
 
 
 const washingMachineTypes = [
+
     "Inverter Top Load",
     "Inverter Front Load",
+
     "Non Inverter Top Load",
     "Non Inverter Front Load"
+
 ];
 
 
 const microwaveTypes = [
+
     "Inverter",
     "Non Inverter"
+
 ];
 
 
 /* =========================================================
-   DATABASE
+   AC
 ========================================================= */
 
 const AC = {
@@ -471,17 +673,21 @@ const AC = {
         makeFolders(acTypes),
 
     "Inverter AC": {
+
         "Window": {},
         "Split": {},
         "Cassette": {},
         "Ductable": {}
+
     },
 
     "Non Inverter AC": {
+
         "Window": {},
         "Split": {},
         "Cassette": {},
         "Ductable": {}
+
     },
 
     "PDF":
@@ -498,8 +704,13 @@ const AC = {
 
     "Test Points":
         makeFolders(acTypes)
+
 };
 
+
+/* =========================================================
+   FRIDGE
+========================================================= */
 
 const Fridge = {
 
@@ -513,10 +724,12 @@ const Fridge = {
         makeFolders(fridgeTypes),
 
     "Inverter PCB": {
+
         "Inverter Single Door": {},
         "Inverter Double Door": {},
         "Inverter Triple Door": {},
         "Inverter Side by Side": {}
+
     },
 
     "Photos":
@@ -533,8 +746,13 @@ const Fridge = {
 
     "Wiring Details":
         makeFolders(fridgeTypes)
+
 };
 
+
+/* =========================================================
+   WASHING MACHINE
+========================================================= */
 
 const WashingMachine = {
 
@@ -558,8 +776,13 @@ const WashingMachine = {
 
     "Wiring Details":
         makeFolders(washingMachineTypes)
+
 };
 
+
+/* =========================================================
+   MICROWAVE
+========================================================= */
 
 const MicrowaveOven = {
 
@@ -568,8 +791,13 @@ const MicrowaveOven = {
 
     "MW Oven Wiring":
         makeFolders(microwaveTypes)
+
 };
 
+
+/* =========================================================
+   INDUCTION
+========================================================= */
 
 const InductionCooktop = {
 
@@ -580,8 +808,13 @@ const InductionCooktop = {
     "Test Points": {},
     "Wiring Details": {},
     "PDF": {}
+
 };
 
+
+/* =========================================================
+   CHIMNEY
+========================================================= */
 
 const ChimneyPCB = {
 
@@ -592,8 +825,13 @@ const ChimneyPCB = {
     "Test Points": {},
     "Wiring Details": {},
     "PDF": {}
+
 };
 
+
+/* =========================================================
+   RO
+========================================================= */
 
 const ROPCB = {
 
@@ -606,8 +844,13 @@ const ROPCB = {
     "Wiring Details": {},
     "Sensor Details": {},
     "PDF": {}
+
 };
 
+
+/* =========================================================
+   CIRCUIT DIAGRAMS
+========================================================= */
 
 const CircuitDiagrams = {
 
@@ -628,8 +871,13 @@ const CircuitDiagrams = {
     "Chimney PCB": {},
 
     "R O PCB": {}
+
 };
 
+
+/* =========================================================
+   PCB TEST POINTS
+========================================================= */
 
 const PCBTestPoints = {
 
@@ -641,8 +889,13 @@ const PCBTestPoints = {
 
     "Washing Machine":
         makeFolders(washingMachineTypes)
+
 };
 
+
+/* =========================================================
+   PHOTOS
+========================================================= */
 
 const Photos = {
 
@@ -664,8 +917,13 @@ const Photos = {
     "R O PCB": {},
 
     "Misc": {}
+
 };
 
+
+/* =========================================================
+   VIDEOS
+========================================================= */
 
 const Videos = {
 
@@ -687,56 +945,75 @@ const Videos = {
     "R O PCB": {},
 
     "Misc": {}
+
 };
 
+
+/* =========================================================
+   SOFTWARE DATA
+========================================================= */
 
 const SoftwareData = {
 
     "EEPROM Data": {
 
         "AC": {
+
             "Inverter Indoor PCB": {},
             "Non Inverter Indoor PCB": {},
             "Inverter ODU PCB": {},
             "Non Inverter ODU PCB": {}
+
         },
 
         "Fridge": {
 
             "Single Door": {
+
                 "Inverter": {},
                 "Non Inverter": {}
+
             },
 
             "Double Door": {
+
                 "Inverter": {},
                 "Non Inverter": {}
+
             },
 
             "Triple Door": {
+
                 "Inverter": {},
                 "Non Inverter": {}
+
             },
 
             "Side by Side": {
+
                 "Inverter": {},
                 "Non Inverter": {}
+
             },
 
             "Fridge Signal Card": {},
-
             "Fridge Inverter Card": {}
+
         },
 
         "Washing Machine": {
+
             "Inverter Top Load": {},
             "Inverter Front Load": {},
             "Non Inverter Top Load": {},
             "Non Inverter Front Load": {}
+
         }
+
     },
 
     "MCU Data": {}
+
 };
 
 
@@ -747,17 +1024,11 @@ const SoftwareData = {
 const database = {
 
     "AC": AC,
-
     "Fridge": Fridge,
-
     "Washing Machine": WashingMachine,
-
     "Microwave Oven": MicrowaveOven,
-
     "Induction Cooktop": InductionCooktop,
-
     "Chimney PCB": ChimneyPCB,
-
     "R O PCB": ROPCB,
 
     "Circuit Diagrams": CircuitDiagrams,
@@ -775,6 +1046,7 @@ const database = {
     "Software Data": SoftwareData,
 
     "Videos": Videos
+
 };
 
 
@@ -805,155 +1077,35 @@ const searchBox =
 
 
 /* =========================================================
-   STORAGE
-========================================================= */
-
-const POSITION_KEY =
-    "pcb_repair_box_positions_v3";
-
-
-function getPositions() {
-
-    try {
-
-        return JSON.parse(
-            localStorage.getItem(
-                POSITION_KEY
-            )
-        ) || {};
-
-    } catch (error) {
-
-        return {};
-
-    }
-}
-
-
-function savePositions(data) {
-
-    localStorage.setItem(
-        POSITION_KEY,
-        JSON.stringify(data)
-    );
-}
-
-
-function getFolderKey() {
-
-    return currentPath.length
-        ? currentPath.join(" / ")
-        : "ROOT";
-}
-
-
-/* =========================================================
-   DEFAULT POSITION
-========================================================= */
-
-function getDefaultPosition(
-    index
-) {
-
-    const gapX = 225;
-    const gapY = 150;
-
-    const column =
-        index % 3;
-
-    const row =
-        Math.floor(index / 3);
-
-    return {
-        x: column * gapX,
-        y: row * gapY
-    };
-}
-
-
-/* =========================================================
-   GET BOX POSITION
-========================================================= */
-
-function getPosition(
-    folderName,
-    index
-) {
-
-    const all =
-        getPositions();
-
-    const page =
-        all[getFolderKey()] || {};
-
-    if (
-        page[folderName] &&
-        typeof page[folderName].x === "number"
-    ) {
-
-        return page[folderName];
-
-    }
-
-    return getDefaultPosition(index);
-}
-
-
-/* =========================================================
-   SAVE BOX POSITION
-========================================================= */
-
-function savePosition(
-    folderName,
-    x,
-    y
-) {
-
-    const all =
-        getPositions();
-
-    const key =
-        getFolderKey();
-
-    if (!all[key]) {
-        all[key] = {};
-    }
-
-    all[key][folderName] = {
-        x: x,
-        y: y
-    };
-
-    savePositions(all);
-}
-
-
-/* =========================================================
-   ESCAPE
+   ESCAPE HTML
 ========================================================= */
 
 function escapeHTML(text) {
 
     return String(text)
+
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
 
 
 /* =========================================================
-   URL
+   URL PATH
 ========================================================= */
 
 function encodePath(path) {
 
-    return path.map(function(item) {
+    return path
+        .map(function(item) {
 
-        return encodeURIComponent(item);
+            return encodeURIComponent(item);
 
-    }).join("/");
+        })
+        .join("/");
 
 }
 
@@ -967,19 +1119,38 @@ function decodePath() {
         return [];
     }
 
-    return hash
-        .substring(1)
+    const raw =
+        hash.substring(1);
+
+    if (!raw) {
+        return [];
+    }
+
+    return raw
         .split("/")
         .map(function(item) {
+
             return decodeURIComponent(item);
+
         });
+
 }
 
 
 function setURLPath(path) {
 
-    window.location.hash =
+    const newHash =
         encodePath(path);
+
+    if (
+        window.location.hash.substring(1)
+        === newHash
+    ) {
+        return;
+    }
+
+    window.location.hash =
+        newHash;
 
 }
 
@@ -990,9 +1161,11 @@ function setURLPath(path) {
 
 function rebuildFromPath(path) {
 
-    currentNode = database;
+    currentNode =
+        database;
 
     currentPath = [];
+
 
     for (
         let i = 0;
@@ -1000,7 +1173,8 @@ function rebuildFromPath(path) {
         i++
     ) {
 
-        const name = path[i];
+        const name =
+            path[i];
 
         if (
             !currentNode ||
@@ -1010,7 +1184,8 @@ function rebuildFromPath(path) {
             )
         ) {
 
-            currentNode = database;
+            currentNode =
+                database;
 
             currentPath = [];
 
@@ -1029,105 +1204,106 @@ function rebuildFromPath(path) {
 
 
 /* =========================================================
-   TREE
+   TREE / BREADCRUMB
+   EVERY ITEM IS CLICKABLE
 ========================================================= */
 
 function updatePath() {
 
-    /*
-       ROOT deliberately has no HOME text.
-    */
-
-    if (
-        currentPath.length === 0
-    ) {
-
-        pathDisplay.innerHTML = "";
-
-        pathDisplay.style.display =
-            "none";
-
-        return;
-
-    }
+    pathDisplay.innerHTML = "";
 
 
-    pathDisplay.style.display =
-        "block";
+    const home =
+        document.createElement("span");
 
+    home.className =
+        "path-home";
 
-    let html = "";
+    home.textContent =
+        "Home";
+
+    home.addEventListener(
+        "click",
+        function() {
+
+            setURLPath([]);
+
+        }
+    );
+
+    pathDisplay.appendChild(home);
 
 
     currentPath.forEach(
         function(name, index) {
 
-            if (index > 0) {
+            const arrow =
+                document.createElement("span");
 
-                html += `
-                    <span class="path-arrow">
-                        →
-                    </span>
-                `;
+            arrow.className =
+                "path-arrow";
 
-            }
+            arrow.textContent =
+                "→";
 
-            html += `
-                <span
-                    class="path-item"
-                    data-index="${index}">
-
-                    ${escapeHTML(name)}
-
-                </span>
-            `;
-
-        }
-    );
+            pathDisplay.appendChild(
+                arrow
+            );
 
 
-    pathDisplay.innerHTML =
-        html;
+            const item =
+                document.createElement("span");
+
+            item.className =
+                "path-item";
+
+            item.textContent =
+                name;
 
 
-    pathDisplay
-        .querySelectorAll(".path-item")
-        .forEach(function(item) {
+            /*
+               Touch/click any tree name
+               to directly go to that level.
+            */
 
             item.addEventListener(
                 "click",
                 function() {
 
-                    const index =
-                        Number(
-                            item.dataset.index
-                        );
-
-                    setURLPath(
+                    const targetPath =
                         currentPath.slice(
                             0,
                             index + 1
-                        )
+                        );
+
+                    setURLPath(
+                        targetPath
                     );
 
                 }
             );
 
-        });
+
+            pathDisplay.appendChild(
+                item
+            );
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   BACK
+   BACK BUTTON
 ========================================================= */
 
 function updateBackButton() {
 
     backButton.style.display =
-        currentPath.length
-        ? "inline-block"
-        : "none";
+        currentPath.length === 0
+        ? "none"
+        : "inline-block";
 
 }
 
@@ -1136,190 +1312,243 @@ backButton.addEventListener(
     "click",
     function() {
 
-        const parent =
+        if (
+            currentPath.length === 0
+        ) {
+            return;
+        }
+
+        const parentPath =
             currentPath.slice(
                 0,
-                -1
+                currentPath.length - 1
             );
 
-        setURLPath(parent);
+        setURLPath(
+            parentPath
+        );
 
     }
 );
 
 
 /* =========================================================
-   DRAG BOX
+   SAVED BOX ORDER
 ========================================================= */
 
-function enableDragging(
-    box,
-    folderName,
-    startX,
-    startY
-) {
+function getOrderKey() {
 
-    let dragging = false;
+    return "pcb-folder-order-" +
+        currentPath.join("|");
 
-    let offsetX = 0;
-    let offsetY = 0;
-
-    function start(
-        clientX,
-        clientY
-    ) {
-
-        dragging = true;
-
-        box.classList.add(
-            "dragging"
-        );
-
-        const rect =
-            box.getBoundingClientRect();
-
-        offsetX =
-            clientX - rect.left;
-
-        offsetY =
-            clientY - rect.top;
-
-        box.setPointerCapture?.(
-            event.pointerId
-        );
-
-    }
+}
 
 
-    function move(
-        clientX,
-        clientY
-    ) {
+function getSavedOrder(names) {
 
-        if (!dragging) {
-            return;
+    try {
+
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    getOrderKey()
+                )
+            );
+
+        if (!Array.isArray(saved)) {
+            return names;
         }
 
-        const area =
-            box.parentElement
-                .getBoundingClientRect();
+        const result = [];
 
-        let x =
-            clientX -
-            area.left -
-            offsetX;
-
-        let y =
-            clientY -
-            area.top -
-            offsetY;
-
-
-        const maxX =
-            Math.max(
-                0,
-                area.width -
-                box.offsetWidth
-            );
-
-
-        x =
-            Math.max(
-                0,
-                Math.min(x, maxX)
-            );
-
-
-        y =
-            Math.max(
-                0,
-                y
-            );
-
-
-        box.style.left =
-            x + "px";
-
-        box.style.top =
-            y + "px";
-
-
-        savePosition(
-            folderName,
-            x,
-            y
-        );
-
-    }
-
-
-    function stop() {
-
-        if (!dragging) {
-            return;
-        }
-
-        dragging = false;
-
-        box.classList.remove(
-            "dragging"
-        );
-
-    }
-
-
-    box.addEventListener(
-        "pointerdown",
-        function(e) {
+        saved.forEach(function(name) {
 
             if (
-                e.pointerType === "mouse" &&
-                e.button !== 0
+                names.includes(name) &&
+                !result.includes(name)
+            ) {
+
+                result.push(name);
+
+            }
+
+        });
+
+        names.forEach(function(name) {
+
+            if (!result.includes(name)) {
+                result.push(name);
+            }
+
+        });
+
+        return result;
+
+    } catch (error) {
+
+        return names;
+
+    }
+
+}
+
+
+function saveOrder() {
+
+    const names =
+        Array.from(
+            content.querySelectorAll(".folder")
+        ).map(function(folder) {
+
+            return folder.dataset.name;
+
+        });
+
+    localStorage.setItem(
+
+        getOrderKey(),
+
+        JSON.stringify(names)
+
+    );
+
+}
+
+
+/* =========================================================
+   DRAG AND DROP
+========================================================= */
+
+let draggedFolder = null;
+
+
+function enableDragging(folder) {
+
+    folder.draggable = true;
+
+
+    folder.addEventListener(
+        "dragstart",
+        function(event) {
+
+            draggedFolder =
+                folder;
+
+            folder.classList.add(
+                "dragging"
+            );
+
+            event.dataTransfer.effectAllowed =
+                "move";
+
+        }
+    );
+
+
+    folder.addEventListener(
+        "dragend",
+        function() {
+
+            folder.classList.remove(
+                "dragging"
+            );
+
+            document
+                .querySelectorAll(".folder")
+                .forEach(function(item) {
+
+                    item.classList.remove(
+                        "drag-over"
+                    );
+
+                });
+
+            draggedFolder = null;
+
+            saveOrder();
+
+        }
+    );
+
+
+    folder.addEventListener(
+        "dragover",
+        function(event) {
+
+            event.preventDefault();
+
+            if (
+                draggedFolder &&
+                draggedFolder !== folder
+            ) {
+
+                folder.classList.add(
+                    "drag-over"
+                );
+
+            }
+
+        }
+    );
+
+
+    folder.addEventListener(
+        "dragleave",
+        function() {
+
+            folder.classList.remove(
+                "drag-over"
+            );
+
+        }
+    );
+
+
+    folder.addEventListener(
+        "drop",
+        function(event) {
+
+            event.preventDefault();
+
+            folder.classList.remove(
+                "drag-over"
+            );
+
+
+            if (
+                !draggedFolder ||
+                draggedFolder === folder
             ) {
                 return;
             }
 
-            start(
-                e.clientX,
-                e.clientY
-            );
 
-            box.setPointerCapture(
-                e.pointerId
-            );
-
-        }
-    );
+            const rect =
+                folder.getBoundingClientRect();
 
 
-    box.addEventListener(
-        "pointermove",
-        function(e) {
-
-            move(
-                e.clientX,
-                e.clientY
-            );
-
-        }
-    );
+            const after =
+                event.clientY >
+                rect.top +
+                rect.height / 2;
 
 
-    box.addEventListener(
-        "pointerup",
-        function() {
+            if (after) {
 
-            stop();
+                folder.after(
+                    draggedFolder
+                );
 
-        }
-    );
+            } else {
+
+                folder.before(
+                    draggedFolder
+                );
+
+            }
 
 
-    box.addEventListener(
-        "pointercancel",
-        function() {
-
-            stop();
+            saveOrder();
 
         }
     );
@@ -1328,126 +1557,7 @@ function enableDragging(
 
 
 /* =========================================================
-   CREATE BOX
-========================================================= */
-
-function createBox(
-    name,
-    index
-) {
-
-    const box =
-        document.createElement("div");
-
-    box.className =
-        "folder";
-
-
-    box.dataset.folder =
-        name;
-
-
-    const position =
-        getPosition(
-            name,
-            index
-        );
-
-
-    box.style.left =
-        position.x + "px";
-
-    box.style.top =
-        position.y + "px";
-
-
-    box.innerHTML = `
-
-        <div class="folder-title">
-
-            ${escapeHTML(name)}
-
-        </div>
-
-    `;
-
-
-    let moved = false;
-
-    let downX = 0;
-    let downY = 0;
-
-
-    box.addEventListener(
-        "pointerdown",
-        function(e) {
-
-            downX =
-                e.clientX;
-
-            downY =
-                e.clientY;
-
-            moved = false;
-
-        }
-    );
-
-
-    box.addEventListener(
-        "pointermove",
-        function(e) {
-
-            if (
-                Math.abs(
-                    e.clientX - downX
-                ) > 6 ||
-                Math.abs(
-                    e.clientY - downY
-                ) > 6
-            ) {
-
-                moved = true;
-
-            }
-
-        }
-    );
-
-
-    box.addEventListener(
-        "click",
-        function() {
-
-            if (moved) {
-
-                moved = false;
-
-                return;
-
-            }
-
-            openFolder(name);
-
-        }
-    );
-
-
-    enableDragging(
-        box,
-        name,
-        position.x,
-        position.y
-    );
-
-
-    return box;
-
-}
-
-
-/* =========================================================
-   SHOW FOLDER
+   SHOW CURRENT FOLDER
 ========================================================= */
 
 function showCurrentFolder() {
@@ -1459,91 +1569,163 @@ function showCurrentFolder() {
     updateBackButton();
 
 
-    const names =
-        Object.keys(
-            currentNode
+    let folderNames =
+        Object.keys(currentNode);
+
+
+    folderNames =
+        getSavedOrder(folderNames);
+
+
+    if (
+        folderNames.length === 0
+    ) {
+
+        const empty =
+            document.createElement("div");
+
+        empty.className =
+            "file-placeholder";
+
+        empty.textContent =
+            "This folder is currently empty.";
+
+        content.appendChild(
+            empty
         );
-
-
-    if (!names.length) {
-
-        content.innerHTML = `
-
-            <div class="file-placeholder">
-
-                This folder is currently empty.
-
-            </div>
-
-        `;
 
         return;
 
     }
 
 
-    const area =
-        document.createElement("div");
+    folderNames.forEach(
+        function(folderName) {
+
+            const folder =
+                document.createElement("div");
 
 
-    area.className =
-        "folder-area";
+            folder.className =
+                "folder";
 
 
-    const rows =
-        Math.ceil(
-            names.length / 3
-        );
+            folder.dataset.name =
+                folderName;
 
 
-    area.style.minHeight =
-        Math.max(
-            430,
-            rows * 150 + 30
-        ) + "px";
+            folder.innerHTML = `
+
+                <span class="drag-handle"
+                      title="Drag to move">
+
+                    ⋮⋮
+
+                </span>
+
+                <div class="folder-title">
+
+                    ${escapeHTML(folderName)}
+
+                </div>
+
+            `;
 
 
-    names.forEach(
-        function(name, index) {
+            folder.addEventListener(
+                "click",
+                function(event) {
 
-            area.appendChild(
-                createBox(
-                    name,
-                    index
-                )
+                    /*
+                       Ignore click after dragging.
+                    */
+
+                    if (
+                        draggedFolder
+                    ) {
+                        return;
+                    }
+
+
+                    openFolder(
+                        folderName
+                    );
+
+                }
+            );
+
+
+            enableDragging(
+                folder
+            );
+
+
+            content.appendChild(
+                folder
             );
 
         }
     );
 
-
-    content.appendChild(
-        area
-    );
-
 }
 
 
 /* =========================================================
-   OPEN
+   OPEN FOLDER
 ========================================================= */
 
-function openFolder(name) {
+function openFolder(folderName) {
+
+    const newPath =
+        currentPath.concat(
+            folderName
+        );
 
     setURLPath(
-        currentPath.concat(name)
+        newPath
     );
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
 
 }
 
 
 /* =========================================================
-   SEARCH
+   PHONE / BROWSER BACK
+========================================================= */
+
+window.addEventListener(
+    "hashchange",
+    function() {
+
+        const path =
+            decodePath();
+
+
+        rebuildFromPath(
+            path
+        );
+
+
+        searchBox.value =
+            "";
+
+
+        showCurrentFolder();
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   SEARCH TREE
 ========================================================= */
 
 function searchTree(
@@ -1575,25 +1757,39 @@ function searchTree(
             ) {
 
                 results.push({
+
                     name: name,
+
                     path: newPath
+
                 });
 
             }
 
 
-            searchTree(
-                node[name],
-                newPath,
-                text,
-                results
-            );
+            if (
+                node[name] &&
+                typeof node[name] === "object"
+            ) {
+
+                searchTree(
+                    node[name],
+                    newPath,
+                    text,
+                    results
+                );
+
+            }
 
         }
     );
 
 }
 
+
+/* =========================================================
+   SEARCH
+========================================================= */
 
 function performSearch(text) {
 
@@ -1624,10 +1820,6 @@ function performSearch(text) {
     content.innerHTML = "";
 
 
-    pathDisplay.style.display =
-        "block";
-
-
     pathDisplay.innerHTML = `
 
         <span class="path-item">
@@ -1639,50 +1831,43 @@ function performSearch(text) {
     `;
 
 
-    if (!results.length) {
+    updateBackButton();
 
-        content.innerHTML = `
 
-            <div class="no-results">
+    if (
+        results.length === 0
+    ) {
 
-                No matching folder found.
+        const noResult =
+            document.createElement("div");
 
-            </div>
+        noResult.className =
+            "no-results";
 
-        `;
+        noResult.textContent =
+            "No matching folder found.";
+
+        content.appendChild(
+            noResult
+        );
 
         return;
 
     }
 
 
-    const area =
-        document.createElement("div");
-
-
-    area.className =
-        "folder-area";
-
-
-    area.style.minHeight =
-        Math.max(
-            430,
-            Math.ceil(results.length / 3)
-            * 150 + 30
-        ) + "px";
-
-
     results.forEach(
-        function(result, index) {
+        function(result) {
 
-            const box =
-                createBox(
-                    result.name,
-                    index
-                );
+            const item =
+                document.createElement("div");
 
 
-            box.innerHTML = `
+            item.className =
+                "folder";
+
+
+            item.innerHTML = `
 
                 <div>
 
@@ -1709,31 +1894,26 @@ function performSearch(text) {
             `;
 
 
-            box.addEventListener(
+            item.addEventListener(
                 "click",
                 function() {
+
+                    searchBox.value =
+                        "";
 
                     setURLPath(
                         result.path
                     );
 
-                    searchBox.value =
-                        "";
-
                 }
             );
 
 
-            area.appendChild(
-                box
+            content.appendChild(
+                item
             );
 
         }
-    );
-
-
-    content.appendChild(
-        area
     );
 
 }
@@ -1756,36 +1936,7 @@ searchBox.addEventListener(
 
 
 /* =========================================================
-   HASH CHANGE
-========================================================= */
-
-window.addEventListener(
-    "hashchange",
-    function() {
-
-        const path =
-            decodePath();
-
-        rebuildFromPath(
-            path
-        );
-
-        searchBox.value =
-            "";
-
-        showCurrentFolder();
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-);
-
-
-/* =========================================================
-   START
+   START APPLICATION
 ========================================================= */
 
 const initialPath =
