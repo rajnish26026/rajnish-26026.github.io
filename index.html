@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PCB REPAIR DATA</title>
 
@@ -127,8 +124,8 @@ header p {
     cursor: pointer;
 }
 
-.path-item:hover,
-.path-home:hover {
+.path-home:hover,
+.path-item:hover {
     text-decoration: underline;
 }
 
@@ -147,12 +144,10 @@ header p {
     display: none;
 
     border: none;
-
     background: #2563eb;
     color: white;
 
     padding: 11px 18px;
-
     border-radius: 8px;
 
     font-size: 16px;
@@ -179,7 +174,6 @@ header p {
 ========================================================= */
 
 .folder-grid {
-
     display: grid;
 
     grid-template-columns:
@@ -188,7 +182,6 @@ header p {
     gap: 15px;
 
     width: 100%;
-
 }
 
 
@@ -197,7 +190,6 @@ header p {
 ========================================================= */
 
 .folder {
-
     min-height: 125px;
 
     background:
@@ -221,7 +213,6 @@ header p {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -234,73 +225,64 @@ header p {
     user-select: none;
 
     touch-action: none;
-
 }
 
-
-/* HOVER */
-
 .folder:hover {
-
     border-color: #60a5fa;
 
     box-shadow:
         0 8px 20px rgba(37,99,235,.18);
 
     transform: translateY(-2px);
-
 }
-
-
-/* CLICK */
 
 .folder:active {
-
     cursor: grabbing;
-
 }
-
-
-/* DRAGGING */
 
 .folder.dragging {
-
     opacity: .45;
-
-    transform:
-        scale(.96);
-
+    transform: scale(.96);
 }
 
-
-/* DROP TARGET */
-
 .folder.drag-over {
-
     border-color: #2563eb;
 
     box-shadow:
         0 0 0 4px rgba(37,99,235,.14);
-
 }
 
 
 /* =========================================================
-   FOLDER TEXT
+   FOLDER NAME
+   THIS IS THE TEXT INSIDE THE BOXES
 ========================================================= */
 
 .folder-title {
-
     font-size: 20px;
-
     line-height: 1.35;
-
     font-weight: 900;
 
-    color: #1e40af;
+    /* DEEP BLUE FOR BOX TEXT */
+    color: #1e40af !important;
 
     word-break: break-word;
+}
 
+
+/* =========================================================
+   SEARCH RESULT PATH
+========================================================= */
+
+.result-path {
+    margin-top: 8px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #475569;
+
+    line-height: 1.5;
 }
 
 
@@ -309,7 +291,6 @@ header p {
 ========================================================= */
 
 .file-placeholder {
-
     background: white;
 
     padding: 35px 20px;
@@ -323,37 +304,6 @@ header p {
     font-weight: 700;
 
     border: 2px solid #e2e8f0;
-
-}
-
-
-/* =========================================================
-   SEARCH RESULTS
-========================================================= */
-
-.result-path {
-
-    margin-top: 8px;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    color: #475569;
-
-    line-height: 1.5;
-
-}
-
-
-/* Search results do not use drag mode */
-
-.search-result {
-
-    cursor: pointer;
-
-    min-height: auto;
-
 }
 
 
@@ -362,7 +312,6 @@ header p {
 ========================================================= */
 
 .no-results {
-
     background: white;
 
     padding: 30px;
@@ -374,7 +323,6 @@ header p {
     color: #64748b;
 
     font-weight: 700;
-
 }
 
 
@@ -383,7 +331,6 @@ header p {
 ========================================================= */
 
 footer {
-
     text-align: center;
 
     padding: 30px 15px;
@@ -393,7 +340,6 @@ footer {
     font-size: 14px;
 
     font-weight: 600;
-
 }
 
 
@@ -408,32 +354,29 @@ footer {
     }
 
     .folder-grid {
-
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
 
         gap: 9px;
-
     }
 
     .folder {
-
         min-height: 110px;
 
         padding: 14px 7px;
 
         border-radius: 13px;
-
     }
 
-    .folder-title {
+    /* DEEP BLUE BOX TEXT ON MOBILE TOO */
 
+    .folder-title {
         font-size: 16px;
 
         line-height: 1.3;
 
+        color: #1e40af !important;
     }
-
 }
 
 
@@ -452,34 +395,29 @@ footer {
     }
 
     .folder-grid {
-
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
 
         gap: 7px;
-
     }
 
     .folder {
-
         min-height: 105px;
 
         padding: 12px 5px;
-
     }
 
     .folder-title {
-
         font-size: 14px;
 
+        line-height: 1.3;
+
+        color: #1e40af !important;
     }
 
     .path {
-
         font-size: 14px;
-
     }
-
 }
 
 
@@ -489,18 +427,15 @@ footer {
 
 @media (max-width: 340px) {
 
-    .folder-title {
+    .folder {
+        min-height: 95px;
+    }
 
+    .folder-title {
         font-size: 12px;
 
+        color: #1e40af !important;
     }
-
-    .folder {
-
-        min-height: 95px;
-
-    }
-
 }
 
 </style>
@@ -534,7 +469,6 @@ footer {
 
 <div class="container">
 
-
     <button
         id="backButton"
         class="back-button"
@@ -551,10 +485,7 @@ footer {
     </div>
 
 
-    <div
-        id="content">
-    </div>
-
+    <div id="content"></div>
 
 </div>
 
@@ -577,13 +508,10 @@ function makeFolders(names) {
     const result = {};
 
     names.forEach(function(name) {
-
         result[name] = {};
-
     });
 
     return result;
-
 }
 
 
@@ -1007,50 +935,35 @@ const SoftwareData = {
 
 const database = {
 
-    "AC":
-        AC,
+    "AC": AC,
 
-    "Fridge":
-        Fridge,
+    "Fridge": Fridge,
 
-    "Washing Machine":
-        WashingMachine,
+    "Washing Machine": WashingMachine,
 
-    "Microwave Oven":
-        MicrowaveOven,
+    "Microwave Oven": MicrowaveOven,
 
-    "Induction Cooktop":
-        InductionCooktop,
+    "Induction Cooktop": InductionCooktop,
 
-    "Chimney PCB":
-        ChimneyPCB,
+    "Chimney PCB": ChimneyPCB,
 
-    "R O PCB":
-        ROPCB,
+    "R O PCB": ROPCB,
 
-    "Circuit Diagrams":
-        CircuitDiagrams,
+    "Circuit Diagrams": CircuitDiagrams,
 
-    "Electronic Components":
-        {},
+    "Electronic Components": {},
 
-    "Error Codes":
-        {},
+    "Error Codes": {},
 
-    "PCB Test Points":
-        PCBTestPoints,
+    "PCB Test Points": PCBTestPoints,
 
-    "PDF":
-        {},
+    "PDF": {},
 
-    "Photos":
-        Photos,
+    "Photos": Photos,
 
-    "Software Data":
-        SoftwareData,
+    "Software Data": SoftwareData,
 
-    "Videos":
-        Videos
+    "Videos": Videos
 
 };
 
@@ -1060,7 +973,6 @@ const database = {
 ========================================================= */
 
 let currentNode = database;
-
 let currentPath = [];
 
 
@@ -1082,16 +994,12 @@ const searchBox =
 
 
 /* =========================================================
-   STORAGE
+   LOCAL STORAGE
 ========================================================= */
 
 const STORAGE_KEY =
-    "pcb_repair_box_positions_v1";
+    "pcb_repair_box_positions_v2";
 
-
-/* =========================================================
-   LOAD SAVED POSITIONS
-========================================================= */
 
 function getSavedPositions() {
 
@@ -1103,75 +1011,47 @@ function getSavedPositions() {
             );
 
         if (!saved) {
-
             return {};
-
         }
 
         return JSON.parse(saved);
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         return {};
 
     }
-
 }
 
-
-/* =========================================================
-   SAVE POSITIONS
-========================================================= */
 
 function savePositions(positions) {
 
     try {
 
         localStorage.setItem(
-
             STORAGE_KEY,
-
             JSON.stringify(positions)
-
         );
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.log(
-            "Could not save box positions."
+            "Unable to save box arrangement."
         );
 
     }
-
 }
 
-
-/* =========================================================
-   CURRENT FOLDER STORAGE ID
-========================================================= */
 
 function getFolderStorageID() {
 
-    if (
-        currentPath.length === 0
-    ) {
-
+    if (currentPath.length === 0) {
         return "HOME";
-
     }
 
     return currentPath.join("||");
-
 }
 
-
-/* =========================================================
-   GET CURRENT ORDER
-========================================================= */
 
 function getSavedOrder() {
 
@@ -1182,13 +1062,8 @@ function getSavedOrder() {
         getFolderStorageID();
 
     return allPositions[folderID] || [];
-
 }
 
-
-/* =========================================================
-   SAVE CURRENT ORDER
-========================================================= */
 
 function saveCurrentOrder(order) {
 
@@ -1201,16 +1076,9 @@ function saveCurrentOrder(order) {
     allPositions[folderID] =
         order;
 
-    savePositions(
-        allPositions
-    );
-
+    savePositions(allPositions);
 }
 
-
-/* =========================================================
-   APPLY SAVED ORDER
-========================================================= */
 
 function applySavedOrder(names) {
 
@@ -1231,12 +1099,8 @@ function applySavedOrder(names) {
 
     savedOrder.forEach(function(name) {
 
-        if (
-            names.includes(name)
-        ) {
-
+        if (names.includes(name)) {
             ordered.push(name);
-
         }
 
     });
@@ -1244,90 +1108,59 @@ function applySavedOrder(names) {
 
     names.forEach(function(name) {
 
-        if (
-            !ordered.includes(name)
-        ) {
-
+        if (!ordered.includes(name)) {
             ordered.push(name);
-
         }
 
     });
 
 
     return ordered;
-
 }
 
 
 /* =========================================================
-   ENCODE PATH
+   PATH
 ========================================================= */
 
 function encodePath(path) {
 
     return path
         .map(function(item) {
-
             return encodeURIComponent(item);
-
         })
         .join("/");
-
 }
 
-
-/* =========================================================
-   DECODE PATH
-========================================================= */
 
 function decodePath() {
 
     const hash =
         window.location.hash;
 
-
-    if (
-        !hash ||
-        hash === "#"
-    ) {
-
+    if (!hash || hash === "#") {
         return [];
-
     }
-
 
     const raw =
         hash.substring(1);
 
-
     if (!raw) {
-
         return [];
-
     }
-
 
     return raw
         .split("/")
         .map(function(item) {
-
             return decodeURIComponent(item);
-
         });
-
 }
 
-
-/* =========================================================
-   CHANGE URL
-========================================================= */
 
 function setURLPath(path) {
 
     const newHash =
         encodePath(path);
-
 
     if (
         window.location.hash.substring(1)
@@ -1335,50 +1168,40 @@ function setURLPath(path) {
     ) {
 
         rebuildFromPath(path);
-
         showCurrentFolder();
 
         return;
 
     }
 
-
     window.location.hash =
         newHash;
-
 }
 
 
 /* =========================================================
-   ESCAPE HTML
+   SECURITY
 ========================================================= */
 
 function escapeHTML(text) {
 
     return String(text)
-
         .replace(/&/g, "&amp;")
-
         .replace(/</g, "&lt;")
-
         .replace(/>/g, "&gt;")
-
         .replace(/"/g, "&quot;")
-
         .replace(/'/g, "&#039;");
 
 }
 
 
 /* =========================================================
-   REBUILD NODE
+   REBUILD CURRENT NODE
 ========================================================= */
 
 function rebuildFromPath(path) {
 
-    currentNode =
-        database;
-
+    currentNode = database;
     currentPath = [];
 
 
@@ -1394,16 +1217,13 @@ function rebuildFromPath(path) {
 
         if (
             !currentNode ||
-
             !Object.prototype.hasOwnProperty.call(
                 currentNode,
                 name
             )
         ) {
 
-            currentNode =
-                database;
-
+            currentNode = database;
             currentPath = [];
 
             return;
@@ -1422,7 +1242,7 @@ function rebuildFromPath(path) {
 
 
 /* =========================================================
-   UPDATE BREADCRUMB
+   UPDATE TREE
 ========================================================= */
 
 function updatePath() {
@@ -1430,80 +1250,54 @@ function updatePath() {
     let html = "";
 
 
-    if (
-        currentPath.length === 0
-    ) {
+    html += `
 
-        html = `
+        <span
+            class="path-home"
+            data-path="">
 
-            <span
-                class="path-home"
-                data-path="">
+            HOME
 
-                HOME
+        </span>
 
-            </span>
-
-        `;
-
-    }
-
-    else {
-
-        html = `
-
-            <span
-                class="path-home"
-                data-path="">
-
-                HOME
-
-            </span>
-
-        `;
+    `;
 
 
-        currentPath.forEach(
-            function(name, index) {
+    currentPath.forEach(
+        function(name, index) {
 
-                const path =
-                    currentPath.slice(
-                        0,
-                        index + 1
-                    );
+            const path =
+                currentPath.slice(
+                    0,
+                    index + 1
+                );
 
 
-                html += `
+            html += `
 
-                    <span class="path-arrow">
+                <span class="path-arrow">
+                    →
+                </span>
 
-                        →
+                <span
+                    class="path-item"
+                    data-path="${escapeHTML(
+                        encodePath(path)
+                    )}">
 
-                    </span>
+                    ${escapeHTML(name)}
 
-                    <span
-                        class="path-item"
-                        data-path="${escapeHTML(
-                            encodePath(path)
-                        )}">
+                </span>
 
-                        ${escapeHTML(name)}
+            `;
 
-                    </span>
-
-                `;
-
-            }
-        );
-
-    }
+        }
+    );
 
 
     pathDisplay.innerHTML =
         html;
 
-
-    /* Home click */
 
     const home =
         pathDisplay.querySelector(
@@ -1525,8 +1319,6 @@ function updatePath() {
     }
 
 
-    /* Individual tree items */
-
     const items =
         pathDisplay.querySelectorAll(
             ".path-item"
@@ -1541,7 +1333,6 @@ function updatePath() {
 
                 const encoded =
                     item.dataset.path;
-
 
                 const path =
                     encoded
@@ -1566,21 +1357,17 @@ function updatePath() {
 
 
 /* =========================================================
-   UPDATE BACK BUTTON
+   BACK BUTTON
 ========================================================= */
 
 function updateBackButton() {
 
-    if (
-        currentPath.length === 0
-    ) {
+    if (currentPath.length === 0) {
 
         backButton.style.display =
             "none";
 
-    }
-
-    else {
+    } else {
 
         backButton.style.display =
             "inline-block";
@@ -1594,9 +1381,7 @@ function updateBackButton() {
    CREATE FOLDER BOX
 ========================================================= */
 
-function createFolderBox(
-    folderName
-) {
+function createFolderBox(folderName) {
 
     const folder =
         document.createElement("div");
@@ -1625,17 +1410,11 @@ function createFolderBox(
     `;
 
 
-    /* =====================================================
-       CLICK
-    ===================================================== */
+    /* CLICK */
 
     folder.addEventListener(
         "click",
         function() {
-
-            /*
-               Ignore click after dragging.
-            */
 
             if (
                 folder.dataset.wasDragged
@@ -1656,9 +1435,7 @@ function createFolderBox(
     );
 
 
-    /* =====================================================
-       DRAG START
-    ===================================================== */
+    /* DRAG START */
 
     folder.addEventListener(
         "dragstart",
@@ -1668,14 +1445,11 @@ function createFolderBox(
                 "dragging"
             );
 
-
             folder.dataset.wasDragged =
                 "false";
 
-
             event.dataTransfer.effectAllowed =
                 "move";
-
 
             event.dataTransfer.setData(
                 "text/plain",
@@ -1686,9 +1460,7 @@ function createFolderBox(
     );
 
 
-    /* =====================================================
-       DRAG END
-    ===================================================== */
+    /* DRAG END */
 
     folder.addEventListener(
         "dragend",
@@ -1699,6 +1471,7 @@ function createFolderBox(
             );
 
             saveGridOrder();
+
 
             setTimeout(function() {
 
@@ -1711,9 +1484,7 @@ function createFolderBox(
     );
 
 
-    /* =====================================================
-       DRAG OVER
-    ===================================================== */
+    /* DRAG OVER */
 
     folder.addEventListener(
         "dragover",
@@ -1729,9 +1500,7 @@ function createFolderBox(
     );
 
 
-    /* =====================================================
-       DRAG LEAVE
-    ===================================================== */
+    /* DRAG LEAVE */
 
     folder.addEventListener(
         "dragleave",
@@ -1745,16 +1514,13 @@ function createFolderBox(
     );
 
 
-    /* =====================================================
-       DROP
-    ===================================================== */
+    /* DROP */
 
     folder.addEventListener(
         "drop",
         function(event) {
 
             event.preventDefault();
-
 
             folder.classList.remove(
                 "drag-over"
@@ -1783,6 +1549,11 @@ function createFolderBox(
                 );
 
 
+            if (!grid) {
+                return;
+            }
+
+
             const dragged =
                 Array.from(
                     grid.children
@@ -1795,9 +1566,7 @@ function createFolderBox(
 
 
             if (!dragged) {
-
                 return;
-
             }
 
 
@@ -1810,14 +1579,12 @@ function createFolderBox(
             const targetIndex =
                 allItems.indexOf(folder);
 
-
             const draggedIndex =
                 allItems.indexOf(dragged);
 
 
             if (
-                draggedIndex <
-                targetIndex
+                draggedIndex < targetIndex
             ) {
 
                 grid.insertBefore(
@@ -1825,9 +1592,7 @@ function createFolderBox(
                     folder.nextSibling
                 );
 
-            }
-
-            else {
+            } else {
 
                 grid.insertBefore(
                     dragged,
@@ -1861,9 +1626,7 @@ function saveGridOrder() {
 
 
     if (!grid) {
-
         return;
-
     }
 
 
@@ -1890,9 +1653,7 @@ function showCurrentFolder() {
 
     content.innerHTML = "";
 
-
     updatePath();
-
     updateBackButton();
 
 
@@ -1900,9 +1661,7 @@ function showCurrentFolder() {
         Object.keys(currentNode);
 
 
-    if (
-        folderNames.length === 0
-    ) {
+    if (folderNames.length === 0) {
 
         content.innerHTML = `
 
@@ -1920,9 +1679,7 @@ function showCurrentFolder() {
 
 
     const orderedNames =
-        applySavedOrder(
-            folderNames
-        );
+        applySavedOrder(folderNames);
 
 
     const grid =
@@ -1931,7 +1688,6 @@ function showCurrentFolder() {
 
     grid.className =
         "folder-grid";
-
 
     grid.id =
         "folderGrid";
@@ -1945,18 +1701,13 @@ function showCurrentFolder() {
                     folderName
                 );
 
-
-            grid.appendChild(
-                folder
-            );
+            grid.appendChild(folder);
 
         }
     );
 
 
-    content.appendChild(
-        grid
-    );
+    content.appendChild(grid);
 
 }
 
@@ -1973,36 +1724,27 @@ function openFolder(folderName) {
         );
 
 
-    setURLPath(
-        newPath
-    );
+    setURLPath(newPath);
 
 
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
 
 }
 
 
 /* =========================================================
-   APP BACK BUTTON
+   APP BACK
 ========================================================= */
 
 backButton.addEventListener(
     "click",
     function() {
 
-        if (
-            currentPath.length === 0
-        ) {
-
+        if (currentPath.length === 0) {
             return;
-
         }
 
 
@@ -2013,17 +1755,12 @@ backButton.addEventListener(
             );
 
 
-        setURLPath(
-            parentPath
-        );
+        setURLPath(parentPath);
 
 
         window.scrollTo({
-
             top: 0,
-
             behavior: "smooth"
-
         });
 
     }
@@ -2042,24 +1779,18 @@ window.addEventListener(
             decodePath();
 
 
-        rebuildFromPath(
-            path
-        );
+        rebuildFromPath(path);
 
 
-        searchBox.value =
-            "";
+        searchBox.value = "";
 
 
         showCurrentFolder();
 
 
         window.scrollTo({
-
             top: 0,
-
             behavior: "smooth"
-
         });
 
     }
@@ -2117,15 +1848,10 @@ function searchTree(
             ) {
 
                 searchTree(
-
                     node[name],
-
                     newPath,
-
                     text,
-
                     results
-
                 );
 
             }
@@ -2159,15 +1885,10 @@ function performSearch(text) {
 
 
     searchTree(
-
         database,
-
         [],
-
         text,
-
         results
-
     );
 
 
@@ -2185,9 +1906,7 @@ function performSearch(text) {
     `;
 
 
-    if (
-        results.length === 0
-    ) {
+    if (results.length === 0) {
 
         content.innerHTML = `
 
@@ -2258,25 +1977,19 @@ function performSearch(text) {
                         result.path
                     );
 
-
-                    searchBox.value =
-                        "";
+                    searchBox.value = "";
 
                 }
             );
 
 
-            grid.appendChild(
-                item
-            );
+            grid.appendChild(item);
 
         }
     );
 
 
-    content.appendChild(
-        grid
-    );
+    content.appendChild(grid);
 
 }
 
@@ -2298,7 +2011,7 @@ searchBox.addEventListener(
 
 
 /* =========================================================
-   START APPLICATION
+   START
 ========================================================= */
 
 const initialPath =
@@ -2315,5 +2028,4 @@ showCurrentFolder();
 </script>
 
 </body>
-
 </html>
