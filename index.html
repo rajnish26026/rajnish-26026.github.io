@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -38,13 +37,12 @@ header h1 {
     margin: 0;
     font-size: 28px;
     font-weight: 800;
-    letter-spacing: .4px;
 }
 
 header p {
     margin: 8px 0 0;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* =========================
@@ -77,7 +75,7 @@ header p {
 }
 
 /* =========================
-   CONTAINER
+   MAIN CONTAINER
 ========================= */
 
 .container {
@@ -87,7 +85,7 @@ header p {
 }
 
 /* =========================
-   BREADCRUMB / TREE PATH
+   BREADCRUMB
 ========================= */
 
 .path {
@@ -134,7 +132,7 @@ header p {
     margin: 11px 0;
     padding: 19px 18px;
     border-radius: 11px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid #dbe3ee;
     box-shadow: 0 3px 8px rgba(0,0,0,.08);
     cursor: pointer;
     transition: .15s ease;
@@ -142,12 +140,11 @@ header p {
 
 .folder:hover {
     border-color: #93c5fd;
-    box-shadow: 0 4px 12px rgba(37,99,235,.13);
+    box-shadow: 0 4px 12px rgba(37,99,235,.14);
 }
 
 .folder:active {
     transform: scale(.985);
-    background: #f8fbff;
 }
 
 .folder-title {
@@ -167,7 +164,6 @@ header p {
     border-radius: 11px;
     color: #6b7280;
     font-weight: 600;
-    box-shadow: 0 2px 7px rgba(0,0,0,.07);
 }
 
 /* =========================
@@ -283,7 +279,7 @@ footer {
     <button
         id="backButton"
         class="back-button"
-        onclick="goBack()">
+        type="button">
 
         ← Back
 
@@ -314,10 +310,10 @@ footer {
 <script>
 
 /* =========================================================
-   COMMON HELPERS
+   FOLDER CREATOR
 ========================================================= */
 
-function emptyFolders(names) {
+function makeFolders(names) {
 
     const result = {};
 
@@ -350,13 +346,6 @@ const acTypes = [
 ];
 
 
-function acTypeFolders() {
-
-    return emptyFolders(acTypes);
-
-}
-
-
 /* =========================================================
    FRIDGE CATEGORIES
 ========================================================= */
@@ -375,13 +364,6 @@ const fridgeTypes = [
 ];
 
 
-function fridgeTypeFolders() {
-
-    return emptyFolders(fridgeTypes);
-
-}
-
-
 /* =========================================================
    WASHING MACHINE CATEGORIES
 ========================================================= */
@@ -396,41 +378,32 @@ const washingMachineTypes = [
 ];
 
 
-function washingMachineTypeFolders() {
-
-    return emptyFolders(washingMachineTypes);
-
-}
-
-
 /* =========================================================
    MICROWAVE CATEGORIES
 ========================================================= */
 
-function microwaveTypeFolders() {
+const microwaveTypes = [
 
-    return {
+    "Inverter",
+    "Non Inverter"
 
-        "Inverter": {},
-
-        "Non Inverter": {}
-
-    };
-
-}
+];
 
 
 /* =========================================================
    AC
 ========================================================= */
 
-const ac = {
+const AC = {
 
-    "Circuit Diagrams": acTypeFolders(),
+    "Circuit Diagrams":
+        makeFolders(acTypes),
 
-    "EEPROM BIN Files": acTypeFolders(),
+    "EEPROM BIN Files":
+        makeFolders(acTypes),
 
-    "Error Codes": acTypeFolders(),
+    "Error Codes":
+        makeFolders(acTypes),
 
     "Inverter AC": {
 
@@ -450,15 +423,20 @@ const ac = {
 
     },
 
-    "PDF": acTypeFolders(),
+    "PDF":
+        makeFolders(acTypes),
 
-    "Photos": acTypeFolders(),
+    "Photos":
+        makeFolders(acTypes),
 
-    "Remote Photos": acTypeFolders(),
+    "Remote Photos":
+        makeFolders(acTypes),
 
-    "Sensor Details": acTypeFolders(),
+    "Sensor Details":
+        makeFolders(acTypes),
 
-    "Test Points": acTypeFolders()
+    "Test Points":
+        makeFolders(acTypes)
 
 };
 
@@ -467,13 +445,16 @@ const ac = {
    FRIDGE
 ========================================================= */
 
-const fridge = {
+const Fridge = {
 
-    "Circuit Diagrams": fridgeTypeFolders(),
+    "Circuit Diagrams":
+        makeFolders(fridgeTypes),
 
-    "EEPROM BIN Files": fridgeTypeFolders(),
+    "EEPROM BIN Files":
+        makeFolders(fridgeTypes),
 
-    "Error Codes": fridgeTypeFolders(),
+    "Error Codes":
+        makeFolders(fridgeTypes),
 
     "Inverter PCB": {
 
@@ -484,39 +465,53 @@ const fridge = {
 
     },
 
-    "Photos": fridgeTypeFolders(),
+    "Photos":
+        makeFolders(fridgeTypes),
 
-    "Sensor Details": fridgeTypeFolders(),
+    "Sensor Details":
+        makeFolders(fridgeTypes),
 
-    "Signal PCB": fridgeTypeFolders(),
+    "Signal PCB":
+        makeFolders(fridgeTypes),
 
-    "Videos": fridgeTypeFolders(),
+    "Videos":
+        makeFolders(fridgeTypes),
 
-    "Wiring Details": fridgeTypeFolders()
+    "Wiring Details":
+        makeFolders(fridgeTypes)
 
 };
 
 
 /* =========================================================
    WASHING MACHINE
-   Remote Photos intentionally removed
+
+   IMPORTANT:
+   Remote Photos is intentionally NOT included.
 ========================================================= */
 
-const washingMachine = {
+const WashingMachine = {
 
-    "Circuit Diagrams": washingMachineTypeFolders(),
+    "Circuit Diagrams":
+        makeFolders(washingMachineTypes),
 
-    "EEPROM BIN Files": washingMachineTypeFolders(),
+    "EEPROM BIN Files":
+        makeFolders(washingMachineTypes),
 
-    "Error Codes": washingMachineTypeFolders(),
+    "Error Codes":
+        makeFolders(washingMachineTypes),
 
-    "Photos": washingMachineTypeFolders(),
+    "Photos":
+        makeFolders(washingMachineTypes),
 
-    "Test Points": washingMachineTypeFolders(),
+    "Test Points":
+        makeFolders(washingMachineTypes),
 
-    "Videos": washingMachineTypeFolders(),
+    "Videos":
+        makeFolders(washingMachineTypes),
 
-    "Wiring Details": washingMachineTypeFolders()
+    "Wiring Details":
+        makeFolders(washingMachineTypes)
 
 };
 
@@ -525,11 +520,13 @@ const washingMachine = {
    MICROWAVE OVEN
 ========================================================= */
 
-const microwaveOven = {
+const MicrowaveOven = {
 
-    "MW Oven Touch": microwaveTypeFolders(),
+    "MW Oven Touch":
+        makeFolders(microwaveTypes),
 
-    "MW Oven Wiring": microwaveTypeFolders()
+    "MW Oven Wiring":
+        makeFolders(microwaveTypes)
 
 };
 
@@ -538,7 +535,7 @@ const microwaveOven = {
    INDUCTION COOKTOP
 ========================================================= */
 
-const inductionCooktop = {
+const InductionCooktop = {
 
     "Circuit Diagrams": {},
 
@@ -561,7 +558,7 @@ const inductionCooktop = {
    CHIMNEY PCB
 ========================================================= */
 
-const chimneyPCB = {
+const ChimneyPCB = {
 
     "Circuit Diagrams": {},
 
@@ -584,7 +581,7 @@ const chimneyPCB = {
    R O PCB
 ========================================================= */
 
-const roPCB = {
+const ROPCB = {
 
     "Circuit Diagrams": {},
 
@@ -608,18 +605,22 @@ const roPCB = {
 
 
 /* =========================================================
-   CIRCUIT DIAGRAMS
+   CIRCUIT DIAGRAMS MAIN FOLDER
 ========================================================= */
 
-const circuitDiagrams = {
+const CircuitDiagrams = {
 
-    "AC": acTypeFolders(),
+    "AC":
+        makeFolders(acTypes),
 
-    "Fridge": fridgeTypeFolders(),
+    "Fridge":
+        makeFolders(fridgeTypes),
 
-    "Washing Machine": washingMachineTypeFolders(),
+    "Washing Machine":
+        makeFolders(washingMachineTypes),
 
-    "Microwave Oven": microwaveTypeFolders(),
+    "Microwave Oven":
+        makeFolders(microwaveTypes),
 
     "Induction Cooktop": {},
 
@@ -631,65 +632,19 @@ const circuitDiagrams = {
 
 
 /* =========================================================
-   BRAND LIST
-========================================================= */
-
-const brands = [
-
-    "LG",
-    "Samsung",
-    "Whirlpool",
-    "Godrej",
-    "Blue Star",
-    "IFB",
-    "Voltas",
-    "Hitachi",
-    "Haier",
-    "Daikin",
-    "Panasonic",
-    "Videocon",
-    "Mitsubishi HD",
-    "Mitsubishi Electric",
-    "O General",
-    "Lloyd",
-    "Sharp",
-    "Toshiba",
-    "Carrier",
-    "Reconnect / Amstard / Amazon Basics"
-
-];
-
-
-/* =========================================================
-   ERROR CODES
-========================================================= */
-
-function createBrandErrorCodes() {
-
-    const result = {};
-
-    brands.forEach(function(brand) {
-
-        result[brand] = {};
-
-    });
-
-    return result;
-
-}
-
-
-/* =========================================================
    PCB TEST POINTS
 ========================================================= */
 
-const pcbTestPoints = {
+const PCBTestPoints = {
 
-    "AC": acTypeFolders(),
+    "AC":
+        makeFolders(acTypes),
 
-    "Fridge": fridgeTypeFolders(),
+    "Fridge":
+        makeFolders(fridgeTypes),
 
-    "Washing Machine": washingMachineTypeFolders()
+    "Washing Machine":
+        makeFolders(washingMachineTypes)
 
 };
 
@@ -698,13 +653,16 @@ const pcbTestPoints = {
    PHOTOS
 ========================================================= */
 
-const photos = {
+const Photos = {
 
-    "AC": acTypeFolders(),
+    "AC":
+        makeFolders(acTypes),
 
-    "Fridge": fridgeTypeFolders(),
+    "Fridge":
+        makeFolders(fridgeTypes),
 
-    "Washing Machine": washingMachineTypeFolders(),
+    "Washing Machine":
+        makeFolders(washingMachineTypes),
 
     "Microwave Oven": {},
 
@@ -723,13 +681,16 @@ const photos = {
    VIDEOS
 ========================================================= */
 
-const videos = {
+const Videos = {
 
-    "AC": acTypeFolders(),
+    "AC":
+        makeFolders(acTypes),
 
-    "Fridge": fridgeTypeFolders(),
+    "Fridge":
+        makeFolders(fridgeTypes),
 
-    "Washing Machine": washingMachineTypeFolders(),
+    "Washing Machine":
+        makeFolders(washingMachineTypes),
 
     "Microwave Oven": {},
 
@@ -748,7 +709,7 @@ const videos = {
    SOFTWARE DATA
 ========================================================= */
 
-const softwareData = {
+const SoftwareData = {
 
     "EEPROM Data": {
 
@@ -815,46 +776,62 @@ const softwareData = {
 
 /* =========================================================
    MAIN DATABASE
-   EXACT REQUESTED ORDER
+
+   EXACT ORDER
 ========================================================= */
 
 const database = {
 
-    "AC": ac,
+    "AC":
+        AC,
 
-    "Fridge": fridge,
+    "Fridge":
+        Fridge,
 
-    "Washing Machine": washingMachine,
+    "Washing Machine":
+        WashingMachine,
 
-    "Microwave Oven": microwaveOven,
+    "Microwave Oven":
+        MicrowaveOven,
 
-    "Induction Cooktop": inductionCooktop,
+    "Induction Cooktop":
+        InductionCooktop,
 
-    "Chimney PCB": chimneyPCB,
+    "Chimney PCB":
+        ChimneyPCB,
 
-    "R O PCB": roPCB,
+    "R O PCB":
+        ROPCB,
 
-    "Circuit Diagrams": circuitDiagrams,
+    "Circuit Diagrams":
+        CircuitDiagrams,
 
-    "Electronic Components": {},
+    "Electronic Components":
+        {},
 
-    "Error Codes": createBrandErrorCodes(),
+    "Error Codes":
+        {},
 
-    "PCB Test Points": pcbTestPoints,
+    "PCB Test Points":
+        PCBTestPoints,
 
-    "PDF": {},
+    "PDF":
+        {},
 
-    "Photos": photos,
+    "Photos":
+        Photos,
 
-    "Software Data": softwareData,
+    "Software Data":
+        SoftwareData,
 
-    "Videos": videos
+    "Videos":
+        Videos
 
 };
 
 
 /* =========================================================
-   CURRENT LOCATION
+   APP STATE
 ========================================================= */
 
 let currentNode = database;
@@ -869,59 +846,46 @@ let currentPath = [];
 const content =
     document.getElementById("content");
 
-const backButton =
-    document.getElementById("backButton");
-
 const pathDisplay =
     document.getElementById("pathDisplay");
+
+const backButton =
+    document.getElementById("backButton");
 
 const searchBox =
     document.getElementById("searchBox");
 
 
 /* =========================================================
-   OBJECT CHECK
+   ESCAPE HTML
 ========================================================= */
 
-function isObject(value) {
+function escapeHTML(text) {
 
-    return value !== null &&
-           typeof value === "object";
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
 /* =========================================================
-   UPDATE BROWSER HISTORY
+   SHOW CURRENT FOLDER
 ========================================================= */
 
-function updateHistory() {
-
-    const encoded =
-        encodeURIComponent(
-            JSON.stringify(currentPath)
-        );
-
-    history.pushState(
-        { path: currentPath.slice() },
-        "",
-        "#" + encoded
-    );
-
-}
-
-
-/* =========================================================
-   DISPLAY CURRENT FOLDER
-========================================================= */
-
-function displayCurrentFolder() {
+function showCurrentFolder() {
 
     content.innerHTML = "";
 
+
+    /* Breadcrumb */
+
     if (currentPath.length === 0) {
 
-        pathDisplay.innerHTML =
+        pathDisplay.textContent =
             "📁 Home";
 
         backButton.style.display =
@@ -929,11 +893,9 @@ function displayCurrentFolder() {
 
     } else {
 
-        pathDisplay.innerHTML =
+        pathDisplay.textContent =
             "📁 " +
-            currentPath
-                .map(escapeHTML)
-                .join(" → ");
+            currentPath.join(" → ");
 
         backButton.style.display =
             "inline-block";
@@ -941,11 +903,15 @@ function displayCurrentFolder() {
     }
 
 
-    const keys =
+    /* Get current folders */
+
+    const folderNames =
         Object.keys(currentNode);
 
 
-    if (keys.length === 0) {
+    /* Empty folder */
+
+    if (folderNames.length === 0) {
 
         content.innerHTML = `
 
@@ -962,12 +928,52 @@ function displayCurrentFolder() {
     }
 
 
-    keys.forEach(function(name) {
+    /* IMPORTANT:
+       Display every folder */
 
-        createFolderElement(
-            name,
-            currentNode[name]
+    folderNames.forEach(function(folderName) {
+
+        const folder =
+            document.createElement("div");
+
+        folder.className =
+            "folder";
+
+
+        folder.innerHTML = `
+
+            <div class="folder-title">
+
+                📁 ${escapeHTML(folderName)}
+
+            </div>
+
+        `;
+
+
+        folder.addEventListener(
+            "click",
+            function() {
+
+                currentNode =
+                    currentNode[folderName];
+
+                currentPath.push(
+                    folderName
+                );
+
+                showCurrentFolder();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
         );
+
+
+        content.appendChild(folder);
 
     });
 
@@ -975,56 +981,10 @@ function displayCurrentFolder() {
 
 
 /* =========================================================
-   CREATE FOLDER
+   APP BACK
 ========================================================= */
 
-function createFolderElement(name, node) {
-
-    const folder =
-        document.createElement("div");
-
-    folder.className = "folder";
-
-
-    folder.innerHTML = `
-
-        <div class="folder-title">
-
-            📁 ${escapeHTML(name)}
-
-        </div>
-
-    `;
-
-
-    folder.onclick = function() {
-
-        currentNode = node;
-
-        currentPath.push(name);
-
-        updateHistory();
-
-        displayCurrentFolder();
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    };
-
-
-    content.appendChild(folder);
-
-}
-
-
-/* =========================================================
-   BACK
-========================================================= */
-
-function goBack(updateBrowserHistory = true) {
+function goBack() {
 
     if (currentPath.length === 0) {
 
@@ -1035,30 +995,19 @@ function goBack(updateBrowserHistory = true) {
 
     currentPath.pop();
 
+
     currentNode = database;
 
 
-    for (
-        let i = 0;
-        i < currentPath.length;
-        i++
-    ) {
+    currentPath.forEach(function(name) {
 
         currentNode =
-            currentNode[currentPath[i]];
+            currentNode[name];
 
-    }
+    });
 
 
-    if (updateBrowserHistory) {
-
-        history.back();
-
-    } else {
-
-        displayCurrentFolder();
-
-    }
+    showCurrentFolder();
 
 }
 
@@ -1069,112 +1018,92 @@ function goBack(updateBrowserHistory = true) {
 
 window.addEventListener(
     "popstate",
-    function(event) {
+    function() {
 
-        if (event.state &&
-            Array.isArray(event.state.path)) {
+        if (currentPath.length === 0) {
 
-            currentPath =
-                event.state.path.slice();
+            showCurrentFolder();
 
-        } else {
-
-            currentPath = [];
+            return;
 
         }
 
+        currentPath.pop();
 
         currentNode = database;
 
 
-        for (
-            let i = 0;
-            i < currentPath.length;
-            i++
-        ) {
+        currentPath.forEach(function(name) {
 
-            if (
-                currentNode[
-                    currentPath[i]
-                ] !== undefined
-            ) {
+            currentNode =
+                currentNode[name];
 
-                currentNode =
-                    currentNode[
-                        currentPath[i]
-                    ];
-
-            } else {
-
-                currentPath = [];
-
-                currentNode = database;
-
-                break;
-
-            }
-
-        }
+        });
 
 
-        displayCurrentFolder();
+        showCurrentFolder();
 
     }
 );
 
 
 /* =========================================================
-   GLOBAL SEARCH
+   SEARCH
 ========================================================= */
 
-function searchDatabase(
+function searchTree(
     node,
     path,
-    searchText,
+    text,
     results
 ) {
 
-    Object.keys(node).forEach(function(name) {
+    Object.keys(node).forEach(
+        function(name) {
 
-        const fullPath =
-            path.concat(name);
+            const newPath =
+                path.concat(name);
 
 
-        if (
-            name
-                .toLowerCase()
-                .includes(searchText)
-        ) {
+            if (
+                name
+                    .toLowerCase()
+                    .includes(text)
+            ) {
 
-            results.push({
+                results.push({
 
-                name: name,
+                    name: name,
 
-                path: fullPath
+                    path: newPath
 
-            });
+                });
+
+            }
+
+
+            if (
+                node[name] &&
+                typeof node[name] === "object"
+            ) {
+
+                searchTree(
+                    node[name],
+                    newPath,
+                    text,
+                    results
+                );
+
+            }
 
         }
-
-
-        if (isObject(node[name])) {
-
-            searchDatabase(
-                node[name],
-                fullPath,
-                searchText,
-                results
-            );
-
-        }
-
-    });
+    );
 
 }
 
 
 /* =========================================================
-   SEARCH
+   PERFORM SEARCH
 ========================================================= */
 
 function performSearch(text) {
@@ -1185,7 +1114,7 @@ function performSearch(text) {
 
     if (!text) {
 
-        displayCurrentFolder();
+        showCurrentFolder();
 
         return;
 
@@ -1195,7 +1124,7 @@ function performSearch(text) {
     const results = [];
 
 
-    searchDatabase(
+    searchTree(
         database,
         [],
         text,
@@ -1205,8 +1134,10 @@ function performSearch(text) {
 
     content.innerHTML = "";
 
-    pathDisplay.innerHTML =
+
+    pathDisplay.textContent =
         "🔎 Search Results";
+
 
     backButton.style.display =
         "inline-block";
@@ -1232,7 +1163,123 @@ function performSearch(text) {
     const heading =
         document.createElement("div");
 
+    heading.style.fontWeight =
+        "800";
+
     heading.style.marginBottom =
         "10px";
 
-    heading.style.fontWe
+    heading.textContent =
+        results.length +
+        " result(s) found";
+
+
+    content.appendChild(heading);
+
+
+    results.forEach(
+        function(result) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "result";
+
+
+            item.innerHTML = `
+
+                <div class="result-title">
+
+                    📁 ${escapeHTML(
+                        result.name
+                    )}
+
+                </div>
+
+                <div class="result-path">
+
+                    ${escapeHTML(
+                        result.path.join(" → ")
+                    )}
+
+                </div>
+
+            `;
+
+
+            item.addEventListener(
+                "click",
+                function() {
+
+                    openPath(
+                        result.path
+                    );
+
+                }
+            );
+
+
+            content.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   OPEN SEARCH RESULT
+========================================================= */
+
+function openPath(path) {
+
+    currentNode = database;
+
+    currentPath = [];
+
+
+    path.forEach(function(name) {
+
+        currentNode =
+            currentNode[name];
+
+        currentPath.push(name);
+
+    });
+
+
+    searchBox.value = "";
+
+    showCurrentFolder();
+
+}
+
+
+/* =========================================================
+   SEARCH EVENT
+========================================================= */
+
+searchBox.addEventListener(
+    "input",
+    function() {
+
+        performSearch(
+            this.value
+        );
+
+    }
+);
+
+
+/* =========================================================
+   START APP
+========================================================= */
+
+showCurrentFolder();
+
+</script>
+
+</body>
+
+</html>
