@@ -156,7 +156,6 @@ footer {
 
 <body>
 
-
 <header>
 
 <h1>PCB REPAIR DATA</h1>
@@ -180,7 +179,6 @@ footer {
 
 <div class="container">
 
-
 <button
     id="backButton"
     class="back-button"
@@ -191,9 +189,7 @@ footer {
 </button>
 
 
-<div
-    id="pathDisplay"
-    class="path">
+<div id="pathDisplay" class="path">
 
 📁 Home
 
@@ -201,7 +197,6 @@ footer {
 
 
 <div id="content"></div>
-
 
 </div>
 
@@ -213,9 +208,7 @@ PCB REPAIR DATABASE
 </footer>
 
 
-
 <script>
-
 
 /* =========================================================
    BRAND LIST
@@ -248,11 +241,328 @@ const brands = [
 
 
 /* =========================================================
-   CREATE BRAND FOLDERS
-   Each brand has its own Inverter / Non Inverter
+   AC TYPE CATEGORIES
 ========================================================= */
 
-function createBrandFoldersWithTypes() {
+const acTypes = [
+
+    "Inverter Window",
+    "Inverter Split",
+    "Inverter Cassette",
+    "Inverter Ductable",
+    "Non Inverter Window",
+    "Non Inverter Split",
+    "Non Inverter Cassette",
+    "Non Inverter Ductable"
+
+];
+
+
+function emptyFolders(names) {
+
+    const result = {};
+
+    names.forEach(function(name) {
+
+        result[name] = {};
+
+    });
+
+    return result;
+
+}
+
+
+/* =========================================================
+   AC TYPE FOLDERS
+========================================================= */
+
+function acTypeFolders() {
+
+    return emptyFolders(acTypes);
+
+}
+
+
+/* =========================================================
+   FRIDGE TYPE CATEGORIES
+========================================================= */
+
+const fridgeTypes = [
+
+    "Inverter Single Door",
+    "Inverter Double Door",
+    "Inverter Triple Door",
+    "Inverter Side by Side",
+    "Non Inverter Single Door",
+    "Non Inverter Double Door",
+    "Non Inverter Triple Door",
+    "Non Inverter Side by Side"
+
+];
+
+
+function fridgeTypeFolders() {
+
+    return emptyFolders(fridgeTypes);
+
+}
+
+
+/* =========================================================
+   WASHING MACHINE TYPE CATEGORIES
+========================================================= */
+
+const washingMachineTypes = [
+
+    "Inverter Top Load",
+    "Inverter Front Load",
+    "Non Inverter Top Load",
+    "Non Inverter Front Load"
+
+];
+
+
+function washingMachineTypeFolders() {
+
+    return emptyFolders(washingMachineTypes);
+
+}
+
+
+/* =========================================================
+   MICROWAVE CATEGORIES
+========================================================= */
+
+function microwaveTypeFolders() {
+
+    return {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    };
+
+}
+
+
+/* =========================================================
+   AC
+========================================================= */
+
+const ac = {
+
+    "Circuit Diagrams": acTypeFolders(),
+
+    "EEPROM BIN Files": acTypeFolders(),
+
+    "Error Codes": acTypeFolders(),
+
+    "Inverter AC": {
+
+        "Window": {},
+        "Split": {},
+        "Cassette": {},
+        "Ductable": {}
+
+    },
+
+    "Non Inverter AC": {
+
+        "Window": {},
+        "Split": {},
+        "Cassette": {},
+        "Ductable": {}
+
+    },
+
+    "PDF": acTypeFolders(),
+
+    "Photos": acTypeFolders(),
+
+    "Remote Photos": acTypeFolders(),
+
+    "Sensor Details": acTypeFolders(),
+
+    "Test Points": acTypeFolders()
+
+};
+
+
+/* =========================================================
+   FRIDGE
+========================================================= */
+
+const fridge = {
+
+    "Circuit Diagrams": fridgeTypeFolders(),
+
+    "EEPROM BIN Files": fridgeTypeFolders(),
+
+    "Error Codes": fridgeTypeFolders(),
+
+    "Inverter PCB": {
+
+        "Inverter Single Door": {},
+        "Inverter Double Door": {},
+        "Inverter Triple Door": {},
+        "Inverter Side by Side": {}
+
+    },
+
+    "Photos": fridgeTypeFolders(),
+
+    "Sensor Details": fridgeTypeFolders(),
+
+    "Signal PCB": fridgeTypeFolders(),
+
+    "Videos": fridgeTypeFolders(),
+
+    "Wiring Details": fridgeTypeFolders()
+
+};
+
+
+/* =========================================================
+   WASHING MACHINE
+========================================================= */
+
+const washingMachine = {
+
+    "Circuit Diagrams": washingMachineTypeFolders(),
+
+    "EEPROM BIN Files": washingMachineTypeFolders(),
+
+    "Error Codes": washingMachineTypeFolders(),
+
+    "Photos": washingMachineTypeFolders(),
+
+    "Remote Photos": washingMachineTypeFolders(),
+
+    "Test Points": washingMachineTypeFolders(),
+
+    "Videos": washingMachineTypeFolders(),
+
+    "Wiring Details": washingMachineTypeFolders()
+
+};
+
+
+/* =========================================================
+   MICROWAVE OVEN
+========================================================= */
+
+const microwaveOven = {
+
+    "MW Oven Touch": microwaveTypeFolders(),
+
+    "MW Oven Wiring": microwaveTypeFolders()
+
+};
+
+
+/* =========================================================
+   INDUCTION COOKTOP
+========================================================= */
+
+const inductionCooktop = {
+
+    "Circuit Diagrams": {},
+
+    "Error Codes": {},
+
+    "Photos": {},
+
+    "Videos": {},
+
+    "Test Points": {},
+
+    "Wiring Details": {},
+
+    "PDF": {}
+
+};
+
+
+/* =========================================================
+   CHIMNEY PCB
+========================================================= */
+
+const chimneyPCB = {
+
+    "Circuit Diagrams": {},
+
+    "Error Codes": {},
+
+    "Photos": {},
+
+    "Videos": {},
+
+    "Test Points": {},
+
+    "Wiring Details": {},
+
+    "PDF": {}
+
+};
+
+
+/* =========================================================
+   R O PCB
+========================================================= */
+
+const roPCB = {
+
+    "Circuit Diagrams": {},
+
+    "Error Codes": {},
+
+    "EEPROM BIN Files": {},
+
+    "Photos": {},
+
+    "Videos": {},
+
+    "Test Points": {},
+
+    "Wiring Details": {},
+
+    "Sensor Details": {},
+
+    "PDF": {}
+
+};
+
+
+/* =========================================================
+   CIRCUIT DIAGRAMS
+========================================================= */
+
+const circuitDiagrams = {
+
+    "AC": acTypeFolders(),
+
+    "Fridge": fridgeTypeFolders(),
+
+    "Washing Machine": washingMachineTypeFolders(),
+
+    "Microwave Oven": microwaveTypeFolders(),
+
+    "Induction Cooktop": {},
+
+    "Chimney": {},
+
+    "R O": {}
+
+};
+
+
+/* =========================================================
+   ERROR CODES
+========================================================= */
+
+function createBrandErrorCodes() {
 
     const result = {};
 
@@ -274,23 +584,18 @@ function createBrandFoldersWithTypes() {
 
 
 /* =========================================================
-   CREATE BRAND FOLDERS WITHOUT EXTRA LEVEL
-   Used by Photos and Videos
+   PCB TEST POINTS
 ========================================================= */
 
-function createBrandFolders() {
+const pcbTestPoints = {
 
-    const result = {};
+    "AC": acTypeFolders(),
 
-    brands.forEach(function(brand) {
+    "Fridge": fridgeTypeFolders(),
 
-        result[brand] = {};
+    "Washing Machine": washingMachineTypeFolders()
 
-    });
-
-    return result;
-
-}
+};
 
 
 /* =========================================================
@@ -299,36 +604,11 @@ function createBrandFolders() {
 
 const photos = {
 
-    "AC": createBrandFolders(),
+    "AC": acTypeFolders(),
 
-    "Fridge": createBrandFolders(),
+    "Fridge": fridgeTypeFolders(),
 
-    "Washing Machine": createBrandFolders(),
-
-    "Microwave Oven": {},
-
-    "Induction": {},
-
-    "RO": {},
-
-    "Chimney": {},
-
-    "Misc": {}
-
-};
-
-
-/* =========================================================
-   VIDEOS
-========================================================= */
-
-const videos = {
-
-    "AC": createBrandFolders(),
-
-    "Fridge": createBrandFolders(),
-
-    "Washing Machine": createBrandFolders(),
+    "Washing Machine": washingMachineTypeFolders(),
 
     "Microwave Oven": {},
 
@@ -341,16 +621,6 @@ const videos = {
     "Misc": {}
 
 };
-
-
-/* =========================================================
-   ERROR CODES
-   Every brand:
-   Inverter
-   Non Inverter
-========================================================= */
-
-const errorCodes = createBrandFoldersWithTypes();
 
 
 /* =========================================================
@@ -373,13 +643,11 @@ const softwareData = {
 
         },
 
-
         "Fridge": {
 
             "Single Door": {
 
                 "Inverter": {},
-
                 "Non Inverter": {}
 
             },
@@ -387,7 +655,6 @@ const softwareData = {
             "Double Door": {
 
                 "Inverter": {},
-
                 "Non Inverter": {}
 
             },
@@ -395,7 +662,6 @@ const softwareData = {
             "Triple Door": {
 
                 "Inverter": {},
-
                 "Non Inverter": {}
 
             },
@@ -403,7 +669,6 @@ const softwareData = {
             "Side by Side": {
 
                 "Inverter": {},
-
                 "Non Inverter": {}
 
             },
@@ -413,7 +678,6 @@ const softwareData = {
             "Fridge Inverter Card": {}
 
         },
-
 
         "Washing Machine": {
 
@@ -429,241 +693,86 @@ const softwareData = {
 
     },
 
-
     "MCU Data": {}
 
 };
 
 
 /* =========================================================
-   CIRCUIT DIAGRAMS
+   VIDEOS
 ========================================================= */
 
-const circuitDiagrams = {
+const videos = {
 
-    "AC": {
+    "AC": acTypeFolders(),
 
-        "Inverter": {},
+    "Fridge": fridgeTypeFolders(),
 
-        "Non Inverter": {}
+    "Washing Machine": washingMachineTypeFolders(),
 
-    },
+    "Microwave Oven": {},
 
+    "Induction": {},
 
-    "Fridge": {
-
-        "Inverter": {},
-
-        "Non Inverter": {}
-
-    },
-
-
-    "Washing Machine": {
-
-        "Inverter": {},
-
-        "Non Inverter": {}
-
-    },
-
-
-    "Microwave Oven": {
-
-        "Inverter": {},
-
-        "Non Inverter": {}
-
-    },
-
-
-    "Induction Cooktop": {},
+    "RO": {},
 
     "Chimney": {},
 
-    "R O": {}
-
-};
-
-
-/* =========================================================
-   PCB TEST POINTS
-========================================================= */
-
-const pcbTestPoints = {
-
-    "AC": {
-
-        "Inverter": {},
-
-        "Non Inverter": {}
-
-    },
-
-
-    "Fridge": {
-
-        "Inverter": {},
-
-        "Non Inverter": {}
-
-    },
-
-
-    "Washing Machine": {
-
-        "Inverter": {},
-
-        "Non Inverter": {}
-
-    }
-
-};
-
-
-/* =========================================================
-   FRIDGE
-========================================================= */
-
-const fridge = {
-
-    "Circuit Diagrams": {},
-
-    "EEPROM BIN Files": {},
-
-    "Error Codes": {},
-
-    "Inverter PCB": {},
-
-    "Photos": {},
-
-    "Sensor Details": {},
-
-    "Signal PCB": {},
-
-    "Videos": {},
-
-    "Wiring Details": {}
-
-};
-
-
-/* =========================================================
-   MICROWAVE OVEN
-========================================================= */
-
-const microwaveOven = {
-
-    "MW Oven Touch": {},
-
-    "MW Oven Wiring": {}
-
-};
-
-
-/* =========================================================
-   WASHING MACHINE
-========================================================= */
-
-const washingMachine = {
-
-    "Inverter Top Load": {},
-
-    "Inverter Front Load": {},
-
-    "Non Inverter Top Load": {},
-
-    "Non Inverter Front Load": {}
+    "Misc": {}
 
 };
 
 
 /* =========================================================
    COMPLETE MAIN FOLDER STRUCTURE
-   MAIN FOLDER SEQUENCE AS REQUESTED
+   ORDER LOCKED AS REQUESTED
 ========================================================= */
 
 const database = {
 
     /* 1 */
-    "AC": {
-
-        "Circuit Diagrams": {},
-
-        "EEPROM BIN Files": {},
-
-        "Error Codes": {},
-
-        "Inverter AC": {},
-
-        "Non Inverter AC": {},
-
-        "PDF": {},
-
-        "Photos": {},
-
-        "Remote Photos": {},
-
-        "Sensor Details": {},
-
-        "Test Points": {}
-
-    },
-
+    "AC": ac,
 
     /* 2 */
     "Fridge": fridge,
 
-
     /* 3 */
     "Washing Machine": washingMachine,
-
 
     /* 4 */
     "Microwave Oven": microwaveOven,
 
-
     /* 5 */
-    "Induction Cooktop": {},
-
+    "Induction Cooktop": inductionCooktop,
 
     /* 6 */
-    "Chimney PCB": {},
-
+    "Chimney PCB": chimneyPCB,
 
     /* 7 */
-    "R O PCB": {},
-
+    "R O PCB": roPCB,
 
     /* Remaining folders */
 
     /* 8 */
     "Circuit Diagrams": circuitDiagrams,
 
-
     /* 9 */
     "Electronic Components": {},
 
-
     /* 10 */
-    "Error Codes": errorCodes,
-
+    "Error Codes": createBrandErrorCodes(),
 
     /* 11 */
     "PCB Test Points": pcbTestPoints,
 
-
     /* 12 */
     "PDF": {},
-
 
     /* 13 */
     "Photos": photos,
 
-
     /* 14 */
     "Software Data": softwareData,
-
 
     /* 15 */
     "Videos": videos
@@ -717,7 +826,6 @@ function displayCurrentFolder() {
 
     content.innerHTML = "";
 
-
     pathDisplay.innerHTML =
         "📁 " +
         (
@@ -746,11 +854,11 @@ function displayCurrentFolder() {
 
         content.innerHTML = `
 
-        <div class="file-placeholder">
+            <div class="file-placeholder">
 
-            📂 This folder is currently empty.
+                📂 This folder is currently empty.
 
-        </div>
+            </div>
 
         `;
 
@@ -826,7 +934,6 @@ function goBack() {
 
     currentPath.pop();
 
-
     currentNode = database;
 
 
@@ -864,12 +971,11 @@ function searchDatabase(
             path.concat(name);
 
 
-        const nameMatch =
-            name.toLowerCase()
-            .includes(searchText);
-
-
-        if (nameMatch) {
+        if (
+            name
+                .toLowerCase()
+                .includes(searchText)
+        ) {
 
             results.push({
 
@@ -930,7 +1036,6 @@ function performSearch(text) {
 
     content.innerHTML = "";
 
-
     pathDisplay.innerHTML =
         "🔎 Search Results";
 
@@ -943,11 +1048,11 @@ function performSearch(text) {
 
         content.innerHTML = `
 
-        <div class="no-results">
+            <div class="no-results">
 
-            No matching folder found.
+                No matching folder found.
 
-        </div>
+            </div>
 
         `;
 
@@ -959,10 +1064,8 @@ function performSearch(text) {
     const heading =
         document.createElement("div");
 
-
     heading.style.marginBottom =
         "10px";
-
 
     heading.innerHTML =
         "<b>" +
@@ -977,7 +1080,6 @@ function performSearch(text) {
 
         const div =
             document.createElement("div");
-
 
         div.className = "result";
 
@@ -1089,14 +1191,13 @@ searchBox.addEventListener(
 
 
 /* =========================================================
-   START
+   START WEBSITE
 ========================================================= */
 
 displayCurrentFolder();
-
 
 </script>
 
 </body>
 
-</html>
+      </html>
