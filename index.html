@@ -8,7 +8,7 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>My PCB Repair Data</title>
+<title>PCB REPAIR DATA</title>
 
 <style>
 
@@ -37,6 +37,7 @@ header h1 {
 
 header p {
     margin: 8px 0 0;
+    font-size: 16px;
 }
 
 .search-area {
@@ -84,6 +85,7 @@ header p {
     border-radius: 7px;
     font-size: 15px;
     margin-bottom: 12px;
+    cursor: pointer;
 }
 
 .folder {
@@ -104,22 +106,12 @@ header p {
     font-weight: bold;
 }
 
-.folder-path {
-    margin-top: 6px;
-    color: #777;
-    font-size: 13px;
-}
-
 .file-placeholder {
     background: white;
     padding: 25px;
     text-align: center;
     border-radius: 10px;
     color: #777;
-}
-
-.search-results {
-    margin-top: 15px;
 }
 
 .result {
@@ -167,11 +159,9 @@ footer {
 
 <header>
 
-<h1>🔧 My PCB Repair Data</h1>
+<h1>PCB REPAIR DATA</h1>
 
-<p>
-Personal PCB Repair Database
-</p>
+<p>PCB REPAIR DATABASE</p>
 
 </header>
 
@@ -218,7 +208,7 @@ Personal PCB Repair Database
 
 <footer>
 
-My Personal PCB Repair Database
+PCB REPAIR DATABASE
 
 </footer>
 
@@ -228,8 +218,7 @@ My Personal PCB Repair Database
 
 
 /* =========================================================
-   MASTER BRAND LIST
-   Used by Error Codes, Photos and Videos
+   BRAND LIST
 ========================================================= */
 
 const brands = [
@@ -258,25 +247,50 @@ const brands = [
 ];
 
 
-
 /* =========================================================
-   BRAND FOLDER CREATOR
+   CREATE BRAND FOLDERS
+   Each brand has its own Inverter / Non Inverter
 ========================================================= */
 
-function brandFolders() {
+function createBrandFoldersWithTypes() {
 
-    return brands.map(function(brand) {
+    const result = {};
 
-        return {
-            name: brand,
-            type: "folder",
-            children: {}
+    brands.forEach(function(brand) {
+
+        result[brand] = {
+
+            "Inverter": {},
+
+            "Non Inverter": {}
+
         };
 
     });
 
+    return result;
+
 }
 
+
+/* =========================================================
+   CREATE BRAND FOLDERS WITHOUT EXTRA LEVEL
+   Used by Photos and Videos
+========================================================= */
+
+function createBrandFolders() {
+
+    const result = {};
+
+    brands.forEach(function(brand) {
+
+        result[brand] = {};
+
+    });
+
+    return result;
+
+}
 
 
 /* =========================================================
@@ -285,24 +299,23 @@ function brandFolders() {
 
 const photos = {
 
-    "AC": brandFolders(),
+    "AC": createBrandFolders(),
 
-    "Fridge": brandFolders(),
+    "Fridge": createBrandFolders(),
 
-    "Washing Machine": brandFolders(),
+    "Washing Machine": createBrandFolders(),
 
-    "Microwave Oven": [],
+    "Microwave Oven": {},
 
-    "Induction": [],
+    "Induction": {},
 
-    "RO": [],
+    "RO": {},
 
-    "Chimney": [],
+    "Chimney": {},
 
-    "Misc": []
+    "Misc": {}
 
 };
-
 
 
 /* =========================================================
@@ -311,38 +324,33 @@ const photos = {
 
 const videos = {
 
-    "AC": brandFolders(),
+    "AC": createBrandFolders(),
 
-    "Fridge": brandFolders(),
+    "Fridge": createBrandFolders(),
 
-    "Washing Machine": brandFolders(),
+    "Washing Machine": createBrandFolders(),
 
-    "Microwave Oven": [],
+    "Microwave Oven": {},
 
-    "Induction": [],
+    "Induction": {},
 
-    "RO": [],
+    "RO": {},
 
-    "Chimney": [],
+    "Chimney": {},
 
-    "Misc": []
+    "Misc": {}
 
 };
 
 
-
 /* =========================================================
    ERROR CODES
+   Every brand:
+   Inverter
+   Non Inverter
 ========================================================= */
 
-const errorCodes = {};
-
-brands.forEach(function(brand) {
-
-    errorCodes[brand] = [];
-
-});
-
+const errorCodes = createBrandFoldersWithTypes();
 
 
 /* =========================================================
@@ -355,13 +363,13 @@ const softwareData = {
 
         "AC": {
 
-            "Inverter Indoor PCB": [],
+            "Inverter Indoor PCB": {},
 
-            "Non Inverter Indoor PCB": [],
+            "Non Inverter Indoor PCB": {},
 
-            "Inverter ODU PCB": [],
+            "Inverter ODU PCB": {},
 
-            "Non Inverter ODU PCB": []
+            "Non Inverter ODU PCB": {}
 
         },
 
@@ -370,52 +378,52 @@ const softwareData = {
 
             "Single Door": {
 
-                "Inverter": [],
+                "Inverter": {},
 
-                "Non Inverter": []
+                "Non Inverter": {}
 
             },
 
             "Double Door": {
 
-                "Inverter": [],
+                "Inverter": {},
 
-                "Non Inverter": []
+                "Non Inverter": {}
 
             },
 
             "Triple Door": {
 
-                "Inverter": [],
+                "Inverter": {},
 
-                "Non Inverter": []
+                "Non Inverter": {}
 
             },
 
             "Side by Side": {
 
-                "Inverter": [],
+                "Inverter": {},
 
-                "Non Inverter": []
+                "Non Inverter": {}
 
             },
 
-            "Fridge Signal Card": [],
+            "Fridge Signal Card": {},
 
-            "Fridge Inverter Card": []
+            "Fridge Inverter Card": {}
 
         },
 
 
         "Washing Machine": {
 
-            "Inverter Top Load": [],
+            "Inverter Top Load": {},
 
-            "Non Inverter Top Load": [],
+            "Inverter Front Load": {},
 
-            "Inverter Front Load": [],
+            "Non Inverter Top Load": {},
 
-            "Non Inverter Front Load": []
+            "Non Inverter Front Load": {}
 
         }
 
@@ -427,22 +435,158 @@ const softwareData = {
 };
 
 
+/* =========================================================
+   CIRCUIT DIAGRAMS
+========================================================= */
+
+const circuitDiagrams = {
+
+    "AC": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    },
+
+
+    "Fridge": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    },
+
+
+    "Washing Machine": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    },
+
+
+    "Microwave Oven": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    },
+
+
+    "Induction Cooktop": {},
+
+    "Chimney": {},
+
+    "R O": {}
+
+};
+
+
+/* =========================================================
+   PCB TEST POINTS
+========================================================= */
+
+const pcbTestPoints = {
+
+    "AC": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    },
+
+
+    "Fridge": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    },
+
+
+    "Washing Machine": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    }
+
+};
+
+
+/* =========================================================
+   FRIDGE
+========================================================= */
+
+const fridge = {
+
+    "Circuit Diagrams": {},
+
+    "EEPROM BIN Files": {},
+
+    "Error Codes": {},
+
+    "Inverter PCB": {},
+
+    "Photos": {},
+
+    "Sensor Details": {},
+
+    "Signal PCB": {},
+
+    "Videos": {},
+
+    "Wiring Details": {}
+
+};
+
+
+/* =========================================================
+   MICROWAVE OVEN
+========================================================= */
+
+const microwaveOven = {
+
+    "MW Oven Touch": {},
+
+    "MW Oven Wiring": {}
+
+};
+
+
+/* =========================================================
+   WASHING MACHINE
+========================================================= */
+
+const washingMachine = {
+
+    "Inverter Top Load": {},
+
+    "Inverter Front Load": {},
+
+    "Non Inverter Top Load": {},
+
+    "Non Inverter Front Load": {}
+
+};
+
 
 /* =========================================================
    COMPLETE MAIN FOLDER STRUCTURE
+   MAIN FOLDER SEQUENCE AS REQUESTED
 ========================================================= */
 
 const database = {
 
-    "AC": {},
-
-    "Circuit Diagrams": {},
-
-    "Electronic Components": {},
-
-    "Error Codes": errorCodes,
-
-    "Fridge": {
+    /* 1 */
+    "AC": {
 
         "Circuit Diagrams": {},
 
@@ -450,50 +594,81 @@ const database = {
 
         "Error Codes": {},
 
-        "Inverter PCB": {},
+        "Inverter AC": {},
+
+        "Non Inverter AC": {},
+
+        "PDF": {},
 
         "Photos": {},
 
+        "Remote Photos": {},
+
         "Sensor Details": {},
 
-        "Signal PCB": {},
-
-        "Videos": {},
-
-        "Wiring Details": {}
+        "Test Points": {}
 
     },
 
 
-    "Microwave Oven": {
-
-        "MW Oven Touch": {},
-
-        "MW Oven Wiring": {}
-
-    },
+    /* 2 */
+    "Fridge": fridge,
 
 
-    "PCB Test Points": {},
+    /* 3 */
+    "Washing Machine": washingMachine,
 
-    "PDF": {},
 
-    "Photos": photos,
+    /* 4 */
+    "Microwave Oven": microwaveOven,
 
-    "Software Data": softwareData,
 
-    "Videos": videos,
-
-    "Washing Machine": {},
-
+    /* 5 */
     "Induction Cooktop": {},
 
+
+    /* 6 */
     "Chimney PCB": {},
 
-    "R O PCB": {}
+
+    /* 7 */
+    "R O PCB": {},
+
+
+    /* Remaining folders */
+
+    /* 8 */
+    "Circuit Diagrams": circuitDiagrams,
+
+
+    /* 9 */
+    "Electronic Components": {},
+
+
+    /* 10 */
+    "Error Codes": errorCodes,
+
+
+    /* 11 */
+    "PCB Test Points": pcbTestPoints,
+
+
+    /* 12 */
+    "PDF": {},
+
+
+    /* 13 */
+    "Photos": photos,
+
+
+    /* 14 */
+    "Software Data": softwareData,
+
+
+    /* 15 */
+    "Videos": videos
 
 };
-
 
 
 /* =========================================================
@@ -503,7 +678,6 @@ const database = {
 let currentNode = database;
 
 let currentPath = [];
-
 
 
 /* =========================================================
@@ -523,9 +697,8 @@ const searchBox =
     document.getElementById("searchBox");
 
 
-
 /* =========================================================
-   CHECK WHETHER SOMETHING IS A FOLDER
+   CHECK OBJECT
 ========================================================= */
 
 function isObject(value) {
@@ -536,7 +709,6 @@ function isObject(value) {
 }
 
 
-
 /* =========================================================
    DISPLAY CURRENT FOLDER
 ========================================================= */
@@ -545,11 +717,14 @@ function displayCurrentFolder() {
 
     content.innerHTML = "";
 
+
     pathDisplay.innerHTML =
         "📁 " +
-        (currentPath.length
-        ? currentPath.join(" → ")
-        : "Home");
+        (
+            currentPath.length
+            ? currentPath.join(" → ")
+            : "Home"
+        );
 
 
     if (currentPath.length === 0) {
@@ -563,7 +738,8 @@ function displayCurrentFolder() {
     }
 
 
-    const keys = Object.keys(currentNode);
+    const keys =
+        Object.keys(currentNode);
 
 
     if (keys.length === 0) {
@@ -572,12 +748,7 @@ function displayCurrentFolder() {
 
         <div class="file-placeholder">
 
-        📂 This folder is currently empty.
-
-        <br><br>
-
-        Files will appear here after we connect
-        your Appwrite storage.
+            📂 This folder is currently empty.
 
         </div>
 
@@ -600,9 +771,9 @@ function displayCurrentFolder() {
 }
 
 
-
 /* =========================================================
    CREATE FOLDER
+   NO "TAP TO OPEN"
 ========================================================= */
 
 function createFolderElement(name, node) {
@@ -618,12 +789,6 @@ function createFolderElement(name, node) {
         <div class="folder-title">
 
             📁 ${escapeHTML(name)}
-
-        </div>
-
-        <div class="folder-path">
-
-            Tap to open
 
         </div>
 
@@ -646,7 +811,6 @@ function createFolderElement(name, node) {
 }
 
 
-
 /* =========================================================
    BACK
 ========================================================= */
@@ -666,9 +830,11 @@ function goBack() {
     currentNode = database;
 
 
-    for (let i = 0;
-         i < currentPath.length;
-         i++) {
+    for (
+        let i = 0;
+        i < currentPath.length;
+        i++
+    ) {
 
         currentNode =
             currentNode[currentPath[i]];
@@ -679,7 +845,6 @@ function goBack() {
     displayCurrentFolder();
 
 }
-
 
 
 /* =========================================================
@@ -697,6 +862,7 @@ function searchDatabase(
 
         const fullPath =
             path.concat(name);
+
 
         const nameMatch =
             name.toLowerCase()
@@ -732,7 +898,6 @@ function searchDatabase(
 }
 
 
-
 /* =========================================================
    DISPLAY SEARCH RESULTS
 ========================================================= */
@@ -765,6 +930,7 @@ function performSearch(text) {
 
     content.innerHTML = "";
 
+
     pathDisplay.innerHTML =
         "🔎 Search Results";
 
@@ -781,11 +947,6 @@ function performSearch(text) {
 
             No matching folder found.
 
-            <br><br>
-
-            Your actual files will also become
-            searchable when Appwrite storage is connected.
-
         </div>
 
         `;
@@ -798,7 +959,10 @@ function performSearch(text) {
     const heading =
         document.createElement("div");
 
-    heading.style.marginBottom = "10px";
+
+    heading.style.marginBottom =
+        "10px";
+
 
     heading.innerHTML =
         "<b>" +
@@ -813,6 +977,7 @@ function performSearch(text) {
 
         const div =
             document.createElement("div");
+
 
         div.className = "result";
 
@@ -838,7 +1003,9 @@ function performSearch(text) {
 
         div.onclick = function() {
 
-            openSearchResult(result.path);
+            openSearchResult(
+                result.path
+            );
 
         };
 
@@ -848,7 +1015,6 @@ function performSearch(text) {
     });
 
 }
-
 
 
 /* =========================================================
@@ -862,14 +1028,18 @@ function openSearchResult(path) {
     currentPath = [];
 
 
-    for (let i = 0;
-         i < path.length;
-         i++) {
+    for (
+        let i = 0;
+        i < path.length;
+        i++
+    ) {
 
         currentNode =
             currentNode[path[i]];
 
-        currentPath.push(path[i]);
+        currentPath.push(
+            path[i]
+        );
 
     }
 
@@ -881,7 +1051,6 @@ function openSearchResult(path) {
 }
 
 
-
 /* =========================================================
    ESCAPE HTML
 ========================================================= */
@@ -889,14 +1058,18 @@ function openSearchResult(path) {
 function escapeHTML(text) {
 
     return text
+
         .replace(/&/g, "&amp;")
+
         .replace(/</g, "&lt;")
+
         .replace(/>/g, "&gt;")
+
         .replace(/"/g, "&quot;")
+
         .replace(/'/g, "&#039;");
 
 }
-
 
 
 /* =========================================================
@@ -907,15 +1080,16 @@ searchBox.addEventListener(
     "input",
     function() {
 
-        performSearch(this.value);
+        performSearch(
+            this.value
+        );
 
     }
 );
 
 
-
 /* =========================================================
-   START WEBSITE
+   START
 ========================================================= */
 
 displayCurrentFolder();
