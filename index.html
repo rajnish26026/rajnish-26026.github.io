@@ -24,7 +24,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #eef2f7;
-    color: #1f2937;
+    color: #1e293b;
 }
 
 
@@ -100,10 +100,11 @@ header p {
 
 
 /* =========================================================
-   TREE PATH
+   CLICKABLE TREE PATH
 ========================================================= */
 
 .path {
+
     background: #dbeafe;
 
     border-left: 6px solid #2563eb;
@@ -115,27 +116,77 @@ header p {
     margin-bottom: 15px;
 
     font-size: 16px;
+
     font-weight: 900;
 
-    color: #172554;
-
-    line-height: 1.6;
+    line-height: 1.8;
 
     word-break: break-word;
 
-    box-shadow: 0 3px 8px rgba(0,0,0,.08);
+    box-shadow:
+        0 3px 8px rgba(0,0,0,.08);
 }
 
-.path-item {
+
+/*
+   Every tree level is clickable.
+*/
+
+.path-link {
+
+    color: #1d4ed8;
+
     font-weight: 900;
-    color: #111827;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    padding: 3px 5px;
+
+    border-radius: 6px;
+
+    transition: .15s ease;
 }
+
+.path-link:hover {
+
+    background: #bfdbfe;
+
+    color: #1e40af;
+}
+
+.path-link:active {
+
+    transform: scale(.96);
+}
+
+
+/*
+   Current folder
+*/
+
+.path-current {
+
+    color: #1e293b;
+
+    font-weight: 900;
+
+    padding: 3px 5px;
+}
+
+
+/*
+   Arrow between tree levels
+*/
 
 .path-arrow {
-    font-weight: 900;
+
     color: #2563eb;
 
-    padding: 0 6px;
+    font-weight: 900;
+
+    padding: 0 5px;
 }
 
 
@@ -165,14 +216,17 @@ header p {
 
     cursor: pointer;
 
-    box-shadow: 0 3px 7px rgba(0,0,0,.15);
+    box-shadow:
+        0 3px 7px rgba(0,0,0,.15);
 }
 
 .back-button:hover {
+
     background: #1d4ed8;
 }
 
 .back-button:active {
+
     transform: scale(.97);
 }
 
@@ -206,7 +260,7 @@ header p {
 
     border-radius: 16px;
 
-    border: 2px solid rgba(255,255,255,.85);
+    border: 2px solid rgba(255,255,255,.9);
 
     box-shadow:
         0 5px 14px rgba(0,0,0,.12);
@@ -225,20 +279,20 @@ header p {
 
     -webkit-user-select: none;
 
-    touch-action: manipulation;
+    position: relative;
+
+    overflow: hidden;
 
     transition:
         transform .18s ease,
         box-shadow .18s ease,
         opacity .18s ease;
-
-    position: relative;
-
-    overflow: hidden;
 }
 
 
-/* subtle shine */
+/* =========================================================
+   BOX SHINE
+========================================================= */
 
 .folder::before {
 
@@ -257,13 +311,17 @@ header p {
     background:
         linear-gradient(
             120deg,
-            rgba(255,255,255,.28),
+            rgba(255,255,255,.30),
             transparent 60%
         );
 
     pointer-events: none;
 }
 
+
+/* =========================================================
+   HOVER
+========================================================= */
 
 .folder:hover {
 
@@ -273,7 +331,6 @@ header p {
     box-shadow:
         0 9px 20px rgba(0,0,0,.18);
 }
-
 
 .folder:active {
 
@@ -299,8 +356,12 @@ header p {
 
 
 /* =========================================================
-   FOLDER TITLE
+   FOLDER TEXT
 ========================================================= */
+
+/*
+   Deep navy instead of pure black.
+*/
 
 .folder-title {
 
@@ -314,7 +375,7 @@ header p {
 
     line-height: 1.35;
 
-    color: #111827;
+    color: #1e293b;
 
     max-width: 100%;
 
@@ -341,7 +402,7 @@ header p {
 
     border-radius: 14px;
 
-    color: #6b7280;
+    color: #64748b;
 
     font-size: 17px;
 
@@ -364,13 +425,15 @@ header p {
 
     font-weight: 700;
 
-    color: #374151;
+    color: #475569;
 
     line-height: 1.5;
 }
 
 
-/* Search results use smaller cards */
+/* =========================================================
+   SEARCH RESULT BOX
+========================================================= */
 
 .search-result {
 
@@ -388,7 +451,7 @@ footer {
 
     padding: 30px 15px;
 
-    color: #6b7280;
+    color: #64748b;
 
     font-size: 14px;
 
@@ -447,8 +510,9 @@ footer {
 
     }
 
+
     /*
-       THREE BOXES IN ONE ROW
+       THREE BOXES PER ROW
     */
 
     #content {
@@ -460,6 +524,7 @@ footer {
 
     }
 
+
     .folder {
 
         min-height: 135px;
@@ -470,6 +535,7 @@ footer {
 
     }
 
+
     .folder-title {
 
         font-size: 16px;
@@ -478,13 +544,15 @@ footer {
 
     }
 
+
     .path {
 
         font-size: 14px;
 
-        padding: 11px 12px;
+        padding: 11px 10px;
 
     }
+
 
     .back-button {
 
@@ -498,7 +566,7 @@ footer {
 
 
 /* =========================================================
-   SMALL MOBILE
+   SMALL PHONE
 ========================================================= */
 
 @media (max-width: 380px) {
@@ -568,13 +636,14 @@ footer {
 
 
     <!--
-       No Home text here.
-       Tree starts directly with the folders.
+       CLICKABLE TREE
+       Home is intentionally NOT displayed.
     -->
 
     <div
         id="pathDisplay"
-        class="path">
+        class="path"
+        style="display:none;">
     </div>
 
 
@@ -1081,7 +1150,7 @@ const database = {
 
 
 /* =========================================================
-   COLOR PALETTE
+   BOX COLOURS
 ========================================================= */
 
 const boxColors = [
@@ -1103,7 +1172,7 @@ const boxColors = [
 
 
 /* =========================================================
-   STATE
+   APP STATE
 ========================================================= */
 
 let currentNode = database;
@@ -1150,7 +1219,7 @@ function escapeHTML(text) {
 
 
 /* =========================================================
-   PATH ENCODING
+   ENCODE PATH
 ========================================================= */
 
 function encodePath(path) {
@@ -1169,7 +1238,7 @@ function encodePath(path) {
 
 
 /* =========================================================
-   PATH DECODING
+   DECODE PATH
 ========================================================= */
 
 function decodePath() {
@@ -1213,7 +1282,7 @@ function decodePath() {
 
 
 /* =========================================================
-   URL PATH
+   CHANGE URL
 ========================================================= */
 
 function setURLPath(path) {
@@ -1290,13 +1359,14 @@ function rebuildFromPath(path) {
 
 
 /* =========================================================
-   PATH DISPLAY
+   CLICKABLE TREE PATH
 ========================================================= */
 
 function updatePath() {
 
     /*
-       Home is intentionally NOT displayed.
+       At main screen there is no
+       Home text and no tree.
     */
 
     if (
@@ -1320,38 +1390,133 @@ function updatePath() {
     let html = "";
 
 
-    currentPath.forEach(function(name, index) {
+    currentPath.forEach(
+        function(name, index) {
 
-        if (index > 0) {
 
-            html += `
+            /*
+               Add arrow
+            */
 
-                <span class="path-arrow">
+            if (
+                index > 0
+            ) {
 
-                    →
+                html += `
 
-                </span>
+                    <span class="path-arrow">
 
-            `;
+                        →
+
+                    </span>
+
+                `;
+
+            }
+
+
+            /*
+               Current folder is not a link.
+            */
+
+            if (
+                index ===
+                currentPath.length - 1
+            ) {
+
+                html += `
+
+                    <span class="path-current">
+
+                        ${escapeHTML(name)}
+
+                    </span>
+
+                `;
+
+            }
+
+            /*
+               All previous levels
+               are clickable.
+            */
+
+            else {
+
+                const parentPath =
+                    currentPath.slice(
+                        0,
+                        index + 1
+                    );
+
+
+                html += `
+
+                    <span
+                        class="path-link"
+                        data-path="${escapeHTML(
+                            encodePath(parentPath)
+                        )}">
+
+                        ${escapeHTML(name)}
+
+                    </span>
+
+                `;
+
+            }
 
         }
-
-
-        html += `
-
-            <span class="path-item">
-
-                ${escapeHTML(name)}
-
-            </span>
-
-        `;
-
-    });
+    );
 
 
     pathDisplay.innerHTML =
         html;
+
+
+    /*
+       Add click event to every
+       previous tree level.
+    */
+
+    const links =
+        pathDisplay.querySelectorAll(
+            ".path-link"
+        );
+
+
+    links.forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function() {
+
+                const encoded =
+                    link.dataset.path;
+
+
+                const path =
+                    encoded
+
+                        .split("/")
+
+                        .map(function(item) {
+
+                            return decodeURIComponent(
+                                item
+                            );
+
+                        });
+
+
+                setURLPath(
+                    path
+                );
+
+            }
+        );
+
+    });
 
 }
 
@@ -1380,7 +1545,7 @@ function updateBackButton() {
 
 
 /* =========================================================
-   STORAGE KEY
+   STORAGE
 ========================================================= */
 
 function getStorageKey() {
@@ -1390,10 +1555,6 @@ function getStorageKey() {
 
 }
 
-
-/* =========================================================
-   GET SAVED ORDER
-========================================================= */
 
 function getSavedOrder(folderNames) {
 
@@ -1465,10 +1626,6 @@ function getSavedOrder(folderNames) {
 }
 
 
-/* =========================================================
-   SAVE ORDER
-========================================================= */
-
 function saveOrder(names) {
 
     try {
@@ -1484,7 +1641,7 @@ function saveOrder(names) {
     } catch (error) {
 
         console.log(
-            "Could not save folder order."
+            "Folder order could not be saved."
         );
 
     }
@@ -1498,10 +1655,6 @@ function saveOrder(names) {
 
 let draggedFolder = null;
 
-
-/* =========================================================
-   HANDLE DRAG START
-========================================================= */
 
 function handleDragStart(event) {
 
@@ -1526,13 +1679,11 @@ function handleDragStart(event) {
 }
 
 
-/* =========================================================
-   HANDLE DRAG END
-========================================================= */
-
 function handleDragEnd() {
 
-    if (draggedFolder) {
+    if (
+        draggedFolder
+    ) {
 
         draggedFolder.classList.remove(
             "dragging"
@@ -1548,10 +1699,6 @@ function handleDragEnd() {
 
 }
 
-
-/* =========================================================
-   HANDLE DRAG OVER
-========================================================= */
 
 function handleDragOver(event) {
 
@@ -1610,10 +1757,6 @@ function handleDragOver(event) {
 }
 
 
-/* =========================================================
-   SAVE CURRENT VISUAL ORDER
-========================================================= */
-
 function saveCurrentVisualOrder() {
 
     const names = [];
@@ -1669,6 +1812,10 @@ function showCurrentFolder() {
         Object.keys(currentNode);
 
 
+    /*
+       Empty folder
+    */
+
     if (
         folderNames.length === 0
     ) {
@@ -1696,15 +1843,18 @@ function showCurrentFolder() {
 
 
     /*
-       Apply saved user arrangement.
+       Apply saved arrangement.
     */
 
     folderNames =
-        getSavedOrder(folderNames);
+        getSavedOrder(
+            folderNames
+        );
 
 
     folderNames.forEach(
         function(folderName, index) {
+
 
             const folder =
                 document.createElement("div");
@@ -1723,8 +1873,7 @@ function showCurrentFolder() {
 
 
             /*
-               Different professional
-               background color.
+               Professional colours.
             */
 
             folder.style.background =
@@ -1745,16 +1894,13 @@ function showCurrentFolder() {
             `;
 
 
-            /* CLICK */
+            /*
+               OPEN FOLDER
+            */
 
             folder.addEventListener(
                 "click",
-                function(event) {
-
-                    /*
-                       Prevent accidental opening
-                       immediately after dragging.
-                    */
+                function() {
 
                     if (
                         folder.classList.contains(
@@ -1779,7 +1925,9 @@ function showCurrentFolder() {
             );
 
 
-            /* DRAG */
+            /*
+               DRAG START
+            */
 
             folder.addEventListener(
                 "dragstart",
@@ -1787,27 +1935,40 @@ function showCurrentFolder() {
             );
 
 
+            /*
+               DRAG END
+            */
+
             folder.addEventListener(
                 "dragend",
                 function() {
 
                     handleDragEnd();
 
+
                     folder.classList.add(
                         "was-dragged"
                     );
 
-                    setTimeout(function() {
 
-                        folder.classList.remove(
-                            "was-dragged"
-                        );
+                    setTimeout(
+                        function() {
 
-                    }, 300);
+                            folder.classList.remove(
+                                "was-dragged"
+                            );
+
+                        },
+                        300
+                    );
 
                 }
             );
 
+
+            /*
+               DRAG OVER
+            */
 
             folder.addEventListener(
                 "dragover",
@@ -2026,7 +2187,7 @@ function performSearch(text) {
 
     pathDisplay.innerHTML = `
 
-        <span class="path-item">
+        <span class="path-current">
 
             Search Results
 
