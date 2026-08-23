@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -23,10 +22,9 @@ body {
     color: #1f2937;
 }
 
-
-/* =========================================================
+/* =========================
    HEADER
-========================================================= */
+========================= */
 
 header {
     background: #1f2937;
@@ -47,37 +45,28 @@ header p {
     font-weight: 700;
 }
 
-
-/* =========================================================
+/* =========================
    SEARCH
-========================================================= */
+========================= */
 
 .search-area {
     background: white;
     padding: 14px;
-
     position: sticky;
     top: 0;
-
     z-index: 100;
-
     box-shadow: 0 2px 7px rgba(0,0,0,.10);
 }
 
 .search-box {
     width: 95%;
     max-width: 700px;
-
     display: block;
     margin: auto;
-
     padding: 14px 16px;
-
     border: 2px solid #d1d5db;
     border-radius: 10px;
-
     font-size: 16px;
-
     outline: none;
 }
 
@@ -85,26 +74,22 @@ header p {
     border-color: #2563eb;
 }
 
-
-/* =========================================================
-   MAIN CONTAINER
-========================================================= */
+/* =========================
+   MAIN
+========================= */
 
 .container {
-    max-width: 1050px;
+    max-width: 1100px;
     margin: auto;
     padding: 15px;
 }
 
-
-/* =========================================================
+/* =========================
    TREE / BREADCRUMB
-   NO HOME
-========================================================= */
+========================= */
 
 .path {
     background: #dbeafe;
-
     border-left: 6px solid #2563eb;
 
     padding: 14px 15px;
@@ -113,11 +98,10 @@ header p {
 
     margin-bottom: 14px;
 
-    font-size: 16px;
-
+    font-size: 15px;
     font-weight: 900;
 
-    color: #111827;
+    color: #1e3a8a;
 
     line-height: 1.7;
 
@@ -126,28 +110,25 @@ header p {
     box-shadow: 0 2px 5px rgba(0,0,0,.08);
 }
 
-
-/* First folder */
+.path-home {
+    font-weight: 900;
+    color: #1d4ed8;
+}
 
 .path-item {
     font-weight: 900;
     color: #111827;
 }
 
-
-/* Arrow */
-
 .path-arrow {
     font-weight: 900;
     color: #2563eb;
-
-    padding: 0 7px;
+    padding: 0 5px;
 }
 
-
-/* =========================================================
+/* =========================
    BACK BUTTON
-========================================================= */
+========================= */
 
 .back-button {
     display: none;
@@ -155,7 +136,6 @@ header p {
     border: none;
 
     background: #2563eb;
-
     color: white;
 
     padding: 11px 18px;
@@ -163,7 +143,6 @@ header p {
     border-radius: 8px;
 
     font-size: 16px;
-
     font-weight: 800;
 
     margin-bottom: 12px;
@@ -175,144 +154,144 @@ header p {
     transform: scale(.97);
 }
 
-
-/* =========================================================
+/* =========================
    FOLDER GRID
-========================================================= */
+========================= */
 
 .folder-grid {
-
     display: grid;
 
     grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(4, minmax(0, 1fr));
 
-    gap: 16px;
-
-    margin-top: 10px;
+    gap: 14px;
 }
 
-
-/* =========================================================
-   FOLDER BOX
-========================================================= */
+/* =========================
+   PROFESSIONAL FOLDER BOX
+========================= */
 
 .folder {
+    min-height: 120px;
 
-    background: white;
+    padding: 16px 10px;
 
-    min-height: 115px;
+    border-radius: 15px;
 
-    padding: 20px 16px;
+    border: 2px solid #d8e0ea;
 
-    border-radius: 14px;
-
-    border: 2px solid #dbe3ee;
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #f5f8fc
+    );
 
     box-shadow:
-        0 3px 8px rgba(0,0,0,.08);
+        0 5px 14px rgba(15,23,42,.10);
 
     cursor: pointer;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
 
     transition:
-        transform .15s ease,
-        border-color .15s ease,
-        box-shadow .15s ease;
+        transform .16s ease,
+        box-shadow .16s ease,
+        border-color .16s ease;
 
-    user-select: none;
+    overflow-wrap: anywhere;
 }
-
-
-/* Hover */
 
 .folder:hover {
+    transform: translateY(-3px);
 
-    border-color: #2563eb;
+    border-color: #60a5fa;
 
     box-shadow:
-        0 5px 14px rgba(37,99,235,.16);
-
-    transform: translateY(-2px);
-
+        0 9px 20px rgba(37,99,235,.16);
 }
-
-
-/* Touch */
 
 .folder:active {
-
     transform: scale(.97);
-
 }
 
-
-/* Folder title */
+/* =========================
+   FOLDER NAME
+========================= */
 
 .folder-title {
+    font-size: 19px;
 
-    font-size: 18px;
+    line-height: 1.18;
 
     font-weight: 900;
 
-    line-height: 1.35;
-
     color: #111827;
 
-    word-break: break-word;
+    text-transform: uppercase;
 
+    white-space: normal;
+
+    word-break: normal;
 }
 
+/* =========================
+   INDIVIDUAL BOX COLORS
+========================= */
 
-/* =========================================================
-   CUSTOM ICON SUPPORT
-========================================================= */
+.folder:nth-child(4n+1) {
 
-/*
-   Icons are OFF by default.
+    background: linear-gradient(
+        145deg,
+        #eff6ff,
+        #ffffff
+    );
 
-   Later you can add icons through iconMap
-   without changing the folder structure.
-*/
-
-.custom-icon {
-
-    display: none;
-
-    font-size: 34px;
-
-    margin-bottom: 8px;
+    border-color: #bfdbfe;
 }
 
+.folder:nth-child(4n+2) {
 
-/* When an icon exists */
+    background: linear-gradient(
+        145deg,
+        #ecfdf5,
+        #ffffff
+    );
 
-.folder.has-icon {
-
-    flex-direction: column;
-
+    border-color: #bbf7d0;
 }
 
-.folder.has-icon .custom-icon {
+.folder:nth-child(4n+3) {
 
-    display: block;
+    background: linear-gradient(
+        145deg,
+        #fff7ed,
+        #ffffff
+    );
 
+    border-color: #fed7aa;
 }
 
+.folder:nth-child(4n+4) {
 
-/* =========================================================
-   SEARCH RESULT
-========================================================= */
+    background: linear-gradient(
+        145deg,
+        #f5f3ff,
+        #ffffff
+    );
+
+    border-color: #ddd6fe;
+}
+
+/* =========================
+   SEARCH PATH
+========================= */
 
 .result-path {
-
     margin-top: 8px;
 
     font-size: 13px;
@@ -322,13 +301,11 @@ header p {
     color: #4b5563;
 
     line-height: 1.5;
-
 }
 
-
-/* =========================================================
-   EMPTY FOLDER
-========================================================= */
+/* =========================
+   EMPTY / SEARCH
+========================= */
 
 .file-placeholder,
 .no-results {
@@ -344,13 +321,11 @@ header p {
     color: #6b7280;
 
     font-weight: 600;
-
 }
 
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer {
 
@@ -363,72 +338,55 @@ footer {
     font-size: 14px;
 
     font-weight: 600;
-
 }
 
-
-/* =========================================================
+/* =========================
    TABLET
-========================================================= */
+========================= */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
     .folder-grid {
 
         grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+            repeat(3, minmax(0, 1fr));
 
     }
 
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
+/* =========================
+   MOBILE — 3 BOXES
+========================= */
 
 @media (max-width: 600px) {
 
     header h1 {
-
         font-size: 25px;
-
     }
 
     header p {
-
         font-size: 14px;
-
     }
 
     .container {
-
         padding: 12px;
-
-    }
-
-    .path {
-
-        font-size: 14px;
-
-        padding: 12px;
-
     }
 
     .folder-grid {
 
         grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+            repeat(3, minmax(0, 1fr));
 
-        gap: 12px;
+        gap: 9px;
 
     }
 
     .folder {
 
-        min-height: 105px;
+        min-height: 100px;
 
-        padding: 16px 10px;
+        padding: 12px 5px;
 
         border-radius: 12px;
 
@@ -438,19 +396,41 @@ footer {
 
         font-size: 16px;
 
+        line-height: 1.15;
+
+    }
+
+    .path {
+
+        font-size: 14px;
+
     }
 
 }
 
+/* =========================
+   VERY SMALL PHONES
+========================= */
 
-/* Very small phones */
-
-@media (max-width: 380px) {
+@media (max-width: 370px) {
 
     .folder-grid {
 
-        grid-template-columns:
-            1fr;
+        gap: 7px;
+
+    }
+
+    .folder {
+
+        min-height: 88px;
+
+        padding: 10px 3px;
+
+    }
+
+    .folder-title {
+
+        font-size: 14px;
 
     }
 
@@ -487,7 +467,6 @@ footer {
 
 <div class="container">
 
-
     <button
         id="backButton"
         class="back-button"
@@ -501,12 +480,10 @@ footer {
     <div
         id="pathDisplay"
         class="path">
-
     </div>
 
 
     <div id="content"></div>
-
 
 </div>
 
@@ -519,7 +496,6 @@ footer {
 
 
 <script>
-
 
 /* =========================================================
    FOLDER CREATOR
@@ -538,27 +514,6 @@ function makeFolders(names) {
     return result;
 
 }
-
-
-/* =========================================================
-   CUSTOM ICON MAP
-========================================================= */
-
-/*
-   अभी icons खाली रखे गए हैं.
-
-   बाद में आप ऐसे icons add कर सकते हैं:
-
-   "AC": "❄️",
-   "Fridge": "🧊",
-   "Washing Machine": "🧺"
-
-   बिना folder structure बदले.
-*/
-
-const iconMap = {
-
-};
 
 
 /* =========================================================
@@ -709,7 +664,6 @@ const Fridge = {
 
 /* =========================================================
    WASHING MACHINE
-   NO REMOTE PHOTOS
 ========================================================= */
 
 const WashingMachine = {
@@ -1163,12 +1117,14 @@ function escapeHTML(text) {
 
 
 /* =========================================================
-   GET ICON
+   FORMAT FOLDER NAME
+   Makes multi-word names stack naturally
 ========================================================= */
 
-function getIcon(folderName) {
+function formatFolderName(name) {
 
-    return iconMap[folderName] || "";
+    return escapeHTML(name)
+        .replace(/\s+/g, " ");
 
 }
 
@@ -1227,20 +1183,16 @@ function rebuildFromPath(path) {
 
 /* =========================================================
    UPDATE TREE
+   NO HOME TEXT
 ========================================================= */
 
 function updatePath() {
-
-    /*
-       HOME REMOVED COMPLETELY
-    */
 
     if (
         currentPath.length === 0
     ) {
 
-        pathDisplay.innerHTML =
-            "";
+        pathDisplay.innerHTML = "";
 
         return;
 
@@ -1257,9 +1209,7 @@ function updatePath() {
             html += `
 
                 <span class="path-arrow">
-
                     →
-
                 </span>
 
             `;
@@ -1270,9 +1220,7 @@ function updatePath() {
         html += `
 
             <span class="path-item">
-
                 ${escapeHTML(name)}
-
             </span>
 
         `;
@@ -1305,67 +1253,6 @@ function updateBackButton() {
             "inline-block";
 
     }
-
-}
-
-
-/* =========================================================
-   CREATE FOLDER BOX
-========================================================= */
-
-function createFolderBox(folderName) {
-
-    const folder =
-        document.createElement("div");
-
-
-    folder.className =
-        "folder";
-
-
-    const icon =
-        getIcon(folderName);
-
-
-    if (icon) {
-
-        folder.classList.add(
-            "has-icon"
-        );
-
-    }
-
-
-    folder.innerHTML = `
-
-        ${
-            icon
-            ? `<div class="custom-icon">
-                    ${escapeHTML(icon)}
-               </div>`
-            : ""
-        }
-
-        <div class="folder-title">
-
-            ${escapeHTML(folderName)}
-
-        </div>
-
-    `;
-
-
-    folder.addEventListener(
-        "click",
-        function() {
-
-            openFolder(folderName);
-
-        }
-    );
-
-
-    return folder;
 
 }
 
@@ -1407,9 +1294,7 @@ function showCurrentFolder() {
     }
 
 
-    /*
-       BOX GRID
-    */
+    /* GRID CONTAINER */
 
     const grid =
         document.createElement("div");
@@ -1421,13 +1306,36 @@ function showCurrentFolder() {
 
     folderNames.forEach(function(folderName) {
 
-        grid.appendChild(
+        const folder =
+            document.createElement("div");
 
-            createFolderBox(
-                folderName
-            )
 
+        folder.className =
+            "folder";
+
+
+        folder.innerHTML = `
+
+            <div class="folder-title">
+
+                ${formatFolderName(folderName)}
+
+            </div>
+
+        `;
+
+
+        folder.addEventListener(
+            "click",
+            function() {
+
+                openFolder(folderName);
+
+            }
         );
+
+
+        grid.appendChild(folder);
 
     });
 
@@ -1444,16 +1352,8 @@ function showCurrentFolder() {
 function openFolder(folderName) {
 
     const newPath =
-        currentPath.concat(
-            folderName
-        );
+        currentPath.concat(folderName);
 
-
-    /*
-       IMPORTANT:
-       Hash navigation is preserved.
-       Phone Back will continue working.
-    */
 
     setURLPath(newPath);
 
@@ -1690,7 +1590,7 @@ function performSearch(text) {
 
                     <div class="folder-title">
 
-                        ${escapeHTML(
+                        ${formatFolderName(
                             result.name
                         )}
 
@@ -1768,7 +1668,6 @@ rebuildFromPath(
 
 
 showCurrentFolder();
-
 
 </script>
 
