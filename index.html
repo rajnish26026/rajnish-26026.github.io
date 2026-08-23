@@ -13,7 +13,7 @@
 <style>
 
 /* =========================================================
-   BASIC
+   GLOBAL
 ========================================================= */
 
 * {
@@ -24,7 +24,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #eef2f7;
-    color: #1e293b;
+    color: #1f2937;
 }
 
 
@@ -33,7 +33,7 @@ body {
 ========================================================= */
 
 header {
-    background: #172033;
+    background: #1f2937;
     color: white;
     padding: 22px 15px;
     text-align: center;
@@ -42,8 +42,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 28px;
-    font-weight: 900;
-    letter-spacing: .5px;
+    font-weight: 800;
 }
 
 header p {
@@ -63,7 +62,7 @@ header p {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,.10);
+    box-shadow: 0 2px 7px rgba(0,0,0,.10);
 }
 
 .search-box {
@@ -71,15 +70,10 @@ header p {
     max-width: 700px;
     display: block;
     margin: auto;
-
     padding: 14px 16px;
-
     border: 2px solid #d1d5db;
-    border-radius: 12px;
-
-    font-size: 17px;
-    font-weight: 600;
-
+    border-radius: 10px;
+    font-size: 16px;
     outline: none;
 }
 
@@ -89,7 +83,7 @@ header p {
 
 
 /* =========================================================
-   MAIN CONTAINER
+   MAIN
 ========================================================= */
 
 .container {
@@ -100,92 +94,47 @@ header p {
 
 
 /* =========================================================
-   CLICKABLE TREE PATH
+   TREE / BREADCRUMB
 ========================================================= */
 
 .path {
-
     background: #dbeafe;
-
     border-left: 6px solid #2563eb;
+    padding: 14px 15px;
+    border-radius: 9px;
+    margin-bottom: 14px;
 
-    padding: 13px 15px;
-
-    border-radius: 10px;
-
-    margin-bottom: 15px;
-
-    font-size: 16px;
-
+    font-size: 15px;
     font-weight: 900;
 
-    line-height: 1.8;
+    color: #1e3a8a;
+    line-height: 1.7;
 
     word-break: break-word;
 
-    box-shadow:
-        0 3px 8px rgba(0,0,0,.08);
+    box-shadow: 0 2px 5px rgba(0,0,0,.08);
 }
 
-
-/*
-   Every tree level is clickable.
-*/
-
-.path-link {
-
+.path-home {
+    font-weight: 900;
     color: #1d4ed8;
-
-    font-weight: 900;
-
     cursor: pointer;
-
-    text-decoration: none;
-
-    padding: 3px 5px;
-
-    border-radius: 6px;
-
-    transition: .15s ease;
 }
 
-.path-link:hover {
-
-    background: #bfdbfe;
-
-    color: #1e40af;
-}
-
-.path-link:active {
-
-    transform: scale(.96);
-}
-
-
-/*
-   Current folder
-*/
-
-.path-current {
-
-    color: #1e293b;
-
+.path-item {
     font-weight: 900;
-
-    padding: 3px 5px;
+    color: #1e40af;
+    cursor: pointer;
 }
 
-
-/*
-   Arrow between tree levels
-*/
+.path-item:hover,
+.path-home:hover {
+    text-decoration: underline;
+}
 
 .path-arrow {
-
-    color: #2563eb;
-
     font-weight: 900;
-
+    color: #2563eb;
     padding: 0 5px;
 }
 
@@ -195,38 +144,32 @@ header p {
 ========================================================= */
 
 .back-button {
-
     display: none;
 
     border: none;
 
     background: #2563eb;
-
     color: white;
 
-    padding: 11px 20px;
+    padding: 11px 18px;
 
-    border-radius: 9px;
+    border-radius: 8px;
 
     font-size: 16px;
-
     font-weight: 800;
 
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 
     cursor: pointer;
 
-    box-shadow:
-        0 3px 7px rgba(0,0,0,.15);
+    box-shadow: 0 3px 8px rgba(37,99,235,.20);
 }
 
 .back-button:hover {
-
     background: #1d4ed8;
 }
 
 .back-button:active {
-
     transform: scale(.97);
 }
 
@@ -235,16 +178,17 @@ header p {
    FOLDER GRID
 ========================================================= */
 
-#content {
+.folder-grid {
 
     display: grid;
 
     grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+        repeat(3, minmax(0, 1fr));
 
     gap: 15px;
 
-    align-items: stretch;
+    width: 100%;
+
 }
 
 
@@ -254,18 +198,25 @@ header p {
 
 .folder {
 
-    min-height: 145px;
+    min-height: 125px;
 
-    padding: 18px 12px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f1f5ff
+        );
+
+    padding: 20px 14px;
 
     border-radius: 16px;
 
-    border: 2px solid rgba(255,255,255,.9);
+    border: 2px solid #cbd5e1;
 
     box-shadow:
-        0 5px 14px rgba(0,0,0,.12);
+        0 5px 14px rgba(15,23,42,.10);
 
-    cursor: pointer;
+    cursor: grab;
 
     display: flex;
 
@@ -275,73 +226,42 @@ header p {
 
     text-align: center;
 
-    user-select: none;
-
-    -webkit-user-select: none;
-
-    position: relative;
-
-    overflow: hidden;
-
     transition:
         transform .18s ease,
         box-shadow .18s ease,
-        opacity .18s ease;
+        border-color .18s ease;
+
+    user-select: none;
+
+    touch-action: none;
+
 }
 
 
-/* =========================================================
-   BOX SHINE
-========================================================= */
-
-.folder::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: -45%;
-
-    left: -25%;
-
-    width: 150%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(255,255,255,.30),
-            transparent 60%
-        );
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   HOVER
-========================================================= */
+/* HOVER */
 
 .folder:hover {
 
-    transform:
-        translateY(-4px);
+    border-color: #60a5fa;
 
     box-shadow:
-        0 9px 20px rgba(0,0,0,.18);
+        0 8px 20px rgba(37,99,235,.18);
+
+    transform: translateY(-2px);
+
 }
+
+
+/* CLICK */
 
 .folder:active {
 
-    transform:
-        scale(.97);
+    cursor: grabbing;
+
 }
 
 
-/* =========================================================
-   DRAGGING
-========================================================= */
+/* DRAGGING */
 
 .folder.dragging {
 
@@ -350,8 +270,18 @@ header p {
     transform:
         scale(.96);
 
+}
+
+
+/* DROP TARGET */
+
+.folder.drag-over {
+
+    border-color: #2563eb;
+
     box-shadow:
-        0 2px 5px rgba(0,0,0,.10);
+        0 0 0 4px rgba(37,99,235,.14);
+
 }
 
 
@@ -359,29 +289,18 @@ header p {
    FOLDER TEXT
 ========================================================= */
 
-/*
-   Deep navy instead of pure black.
-*/
-
 .folder-title {
-
-    position: relative;
-
-    z-index: 2;
 
     font-size: 20px;
 
-    font-weight: 900;
-
     line-height: 1.35;
 
-    color: #1e293b;
+    font-weight: 900;
 
-    max-width: 100%;
+    color: #1e40af;
 
     word-break: break-word;
 
-    overflow-wrap: anywhere;
 }
 
 
@@ -389,10 +308,7 @@ header p {
    EMPTY FOLDER
 ========================================================= */
 
-.file-placeholder,
-.no-results {
-
-    grid-column: 1 / -1;
+.file-placeholder {
 
     background: white;
 
@@ -404,22 +320,20 @@ header p {
 
     color: #64748b;
 
-    font-size: 17px;
-
     font-weight: 700;
 
-    box-shadow:
-        0 3px 9px rgba(0,0,0,.08);
+    border: 2px solid #e2e8f0;
+
 }
 
 
 /* =========================================================
-   SEARCH RESULT PATH
+   SEARCH RESULTS
 ========================================================= */
 
 .result-path {
 
-    margin-top: 9px;
+    margin-top: 8px;
 
     font-size: 13px;
 
@@ -428,16 +342,39 @@ header p {
     color: #475569;
 
     line-height: 1.5;
+
+}
+
+
+/* Search results do not use drag mode */
+
+.search-result {
+
+    cursor: pointer;
+
+    min-height: auto;
+
 }
 
 
 /* =========================================================
-   SEARCH RESULT BOX
+   NO RESULTS
 ========================================================= */
 
-.search-result {
+.no-results {
 
-    min-height: 125px;
+    background: white;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    color: #64748b;
+
+    font-weight: 700;
+
 }
 
 
@@ -456,32 +393,6 @@ footer {
     font-size: 14px;
 
     font-weight: 600;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 850px) {
-
-    #content {
-
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-
-        gap: 13px;
-    }
-
-    .folder {
-
-        min-height: 140px;
-    }
-
-    .folder-title {
-
-        font-size: 19px;
-    }
 
 }
 
@@ -490,32 +401,13 @@ footer {
    MOBILE
 ========================================================= */
 
-@media (max-width: 600px) {
-
-    header h1 {
-
-        font-size: 24px;
-
-    }
-
-    header p {
-
-        font-size: 14px;
-
-    }
+@media (max-width: 700px) {
 
     .container {
-
         padding: 12px;
-
     }
 
-
-    /*
-       THREE BOXES PER ROW
-    */
-
-    #content {
+    .folder-grid {
 
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
@@ -524,41 +416,21 @@ footer {
 
     }
 
-
     .folder {
 
-        min-height: 135px;
+        min-height: 110px;
 
-        padding: 12px 7px;
+        padding: 14px 7px;
 
         border-radius: 13px;
 
     }
 
-
     .folder-title {
 
         font-size: 16px;
 
-        line-height: 1.35;
-
-    }
-
-
-    .path {
-
-        font-size: 14px;
-
-        padding: 11px 10px;
-
-    }
-
-
-    .back-button {
-
-        font-size: 15px;
-
-        padding: 10px 16px;
+        line-height: 1.3;
 
     }
 
@@ -566,12 +438,23 @@ footer {
 
 
 /* =========================================================
-   SMALL PHONE
+   SMALL MOBILE
 ========================================================= */
 
-@media (max-width: 380px) {
+@media (max-width: 430px) {
 
-    #content {
+    header h1 {
+        font-size: 23px;
+    }
+
+    header p {
+        font-size: 13px;
+    }
+
+    .folder-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
 
         gap: 7px;
 
@@ -579,15 +462,42 @@ footer {
 
     .folder {
 
-        min-height: 125px;
+        min-height: 105px;
 
-        padding: 10px 5px;
+        padding: 12px 5px;
 
     }
 
     .folder-title {
 
         font-size: 14px;
+
+    }
+
+    .path {
+
+        font-size: 14px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 340px) {
+
+    .folder-title {
+
+        font-size: 12px;
+
+    }
+
+    .folder {
+
+        min-height: 95px;
 
     }
 
@@ -635,19 +545,15 @@ footer {
     </button>
 
 
-    <!--
-       CLICKABLE TREE
-       Home is intentionally NOT displayed.
-    -->
-
     <div
         id="pathDisplay"
-        class="path"
-        style="display:none;">
+        class="path">
     </div>
 
 
-    <div id="content"></div>
+    <div
+        id="content">
+    </div>
 
 
 </div>
@@ -1150,28 +1056,6 @@ const database = {
 
 
 /* =========================================================
-   BOX COLOURS
-========================================================= */
-
-const boxColors = [
-
-    "#dbeafe",
-    "#dcfce7",
-    "#fef3c7",
-    "#fce7f3",
-    "#ede9fe",
-    "#cffafe",
-    "#ffedd5",
-    "#e0e7ff",
-    "#d1fae5",
-    "#fef9c3",
-    "#fae8ff",
-    "#e0f2fe"
-
-];
-
-
-/* =========================================================
    APP STATE
 ========================================================= */
 
@@ -1198,22 +1082,180 @@ const searchBox =
 
 
 /* =========================================================
-   ESCAPE HTML
+   STORAGE
 ========================================================= */
 
-function escapeHTML(text) {
+const STORAGE_KEY =
+    "pcb_repair_box_positions_v1";
 
-    return String(text)
 
-        .replace(/&/g, "&amp;")
+/* =========================================================
+   LOAD SAVED POSITIONS
+========================================================= */
 
-        .replace(/</g, "&lt;")
+function getSavedPositions() {
 
-        .replace(/>/g, "&gt;")
+    try {
 
-        .replace(/"/g, "&quot;")
+        const saved =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
 
-        .replace(/'/g, "&#039;");
+        if (!saved) {
+
+            return {};
+
+        }
+
+        return JSON.parse(saved);
+
+    }
+
+    catch (error) {
+
+        return {};
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE POSITIONS
+========================================================= */
+
+function savePositions(positions) {
+
+    try {
+
+        localStorage.setItem(
+
+            STORAGE_KEY,
+
+            JSON.stringify(positions)
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "Could not save box positions."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CURRENT FOLDER STORAGE ID
+========================================================= */
+
+function getFolderStorageID() {
+
+    if (
+        currentPath.length === 0
+    ) {
+
+        return "HOME";
+
+    }
+
+    return currentPath.join("||");
+
+}
+
+
+/* =========================================================
+   GET CURRENT ORDER
+========================================================= */
+
+function getSavedOrder() {
+
+    const allPositions =
+        getSavedPositions();
+
+    const folderID =
+        getFolderStorageID();
+
+    return allPositions[folderID] || [];
+
+}
+
+
+/* =========================================================
+   SAVE CURRENT ORDER
+========================================================= */
+
+function saveCurrentOrder(order) {
+
+    const allPositions =
+        getSavedPositions();
+
+    const folderID =
+        getFolderStorageID();
+
+    allPositions[folderID] =
+        order;
+
+    savePositions(
+        allPositions
+    );
+
+}
+
+
+/* =========================================================
+   APPLY SAVED ORDER
+========================================================= */
+
+function applySavedOrder(names) {
+
+    const savedOrder =
+        getSavedOrder();
+
+    if (
+        !Array.isArray(savedOrder) ||
+        savedOrder.length === 0
+    ) {
+
+        return names;
+
+    }
+
+    const ordered = [];
+
+
+    savedOrder.forEach(function(name) {
+
+        if (
+            names.includes(name)
+        ) {
+
+            ordered.push(name);
+
+        }
+
+    });
+
+
+    names.forEach(function(name) {
+
+        if (
+            !ordered.includes(name)
+        ) {
+
+            ordered.push(name);
+
+        }
+
+    });
+
+
+    return ordered;
 
 }
 
@@ -1225,13 +1267,11 @@ function escapeHTML(text) {
 function encodePath(path) {
 
     return path
-
         .map(function(item) {
 
             return encodeURIComponent(item);
 
         })
-
         .join("/");
 
 }
@@ -1269,9 +1309,7 @@ function decodePath() {
 
 
     return raw
-
         .split("/")
-
         .map(function(item) {
 
             return decodeURIComponent(item);
@@ -1296,6 +1334,10 @@ function setURLPath(path) {
         === newHash
     ) {
 
+        rebuildFromPath(path);
+
+        showCurrentFolder();
+
         return;
 
     }
@@ -1303,6 +1345,27 @@ function setURLPath(path) {
 
     window.location.hash =
         newHash;
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
 
 }
 
@@ -1359,48 +1422,56 @@ function rebuildFromPath(path) {
 
 
 /* =========================================================
-   CLICKABLE TREE PATH
+   UPDATE BREADCRUMB
 ========================================================= */
 
 function updatePath() {
 
-    /*
-       At main screen there is no
-       Home text and no tree.
-    */
+    let html = "";
+
 
     if (
         currentPath.length === 0
     ) {
 
-        pathDisplay.innerHTML = "";
+        html = `
 
-        pathDisplay.style.display =
-            "none";
+            <span
+                class="path-home"
+                data-path="">
 
-        return;
+                HOME
+
+            </span>
+
+        `;
 
     }
 
+    else {
 
-    pathDisplay.style.display =
-        "block";
+        html = `
+
+            <span
+                class="path-home"
+                data-path="">
+
+                HOME
+
+            </span>
+
+        `;
 
 
-    let html = "";
+        currentPath.forEach(
+            function(name, index) {
 
+                const path =
+                    currentPath.slice(
+                        0,
+                        index + 1
+                    );
 
-    currentPath.forEach(
-        function(name, index) {
-
-
-            /*
-               Add arrow
-            */
-
-            if (
-                index > 0
-            ) {
 
                 html += `
 
@@ -1410,52 +1481,10 @@ function updatePath() {
 
                     </span>
 
-                `;
-
-            }
-
-
-            /*
-               Current folder is not a link.
-            */
-
-            if (
-                index ===
-                currentPath.length - 1
-            ) {
-
-                html += `
-
-                    <span class="path-current">
-
-                        ${escapeHTML(name)}
-
-                    </span>
-
-                `;
-
-            }
-
-            /*
-               All previous levels
-               are clickable.
-            */
-
-            else {
-
-                const parentPath =
-                    currentPath.slice(
-                        0,
-                        index + 1
-                    );
-
-
-                html += `
-
                     <span
-                        class="path-link"
+                        class="path-item"
                         data-path="${escapeHTML(
-                            encodePath(parentPath)
+                            encodePath(path)
                         )}">
 
                         ${escapeHTML(name)}
@@ -1465,53 +1494,68 @@ function updatePath() {
                 `;
 
             }
+        );
 
-        }
-    );
+    }
 
 
     pathDisplay.innerHTML =
         html;
 
 
-    /*
-       Add click event to every
-       previous tree level.
-    */
+    /* Home click */
 
-    const links =
-        pathDisplay.querySelectorAll(
-            ".path-link"
+    const home =
+        pathDisplay.querySelector(
+            ".path-home"
         );
 
 
-    links.forEach(function(link) {
+    if (home) {
 
-        link.addEventListener(
+        home.addEventListener(
+            "click",
+            function() {
+
+                setURLPath([]);
+
+            }
+        );
+
+    }
+
+
+    /* Individual tree items */
+
+    const items =
+        pathDisplay.querySelectorAll(
+            ".path-item"
+        );
+
+
+    items.forEach(function(item) {
+
+        item.addEventListener(
             "click",
             function() {
 
                 const encoded =
-                    link.dataset.path;
+                    item.dataset.path;
 
 
                 const path =
                     encoded
-
                         .split("/")
-
-                        .map(function(item) {
+                        .map(function(value) {
 
                             return decodeURIComponent(
-                                item
+                                value
                             );
 
                         });
 
 
-                setURLPath(
-                    path
-                );
+                setURLPath(path);
 
             }
         );
@@ -1522,7 +1566,7 @@ function updatePath() {
 
 
 /* =========================================================
-   BACK BUTTON
+   UPDATE BACK BUTTON
 ========================================================= */
 
 function updateBackButton() {
@@ -1534,7 +1578,9 @@ function updateBackButton() {
         backButton.style.display =
             "none";
 
-    } else {
+    }
+
+    else {
 
         backButton.style.display =
             "inline-block";
@@ -1545,251 +1591,293 @@ function updateBackButton() {
 
 
 /* =========================================================
-   STORAGE
+   CREATE FOLDER BOX
 ========================================================= */
 
-function getStorageKey() {
+function createFolderBox(
+    folderName
+) {
 
-    return "pcb_folder_order_" +
-        currentPath.join("||");
-
-}
+    const folder =
+        document.createElement("div");
 
 
-function getSavedOrder(folderNames) {
+    folder.className =
+        "folder";
 
-    try {
 
-        const saved =
-            localStorage.getItem(
-                getStorageKey()
+    folder.draggable =
+        true;
+
+
+    folder.dataset.folder =
+        folderName;
+
+
+    folder.innerHTML = `
+
+        <div class="folder-title">
+
+            ${escapeHTML(folderName)}
+
+        </div>
+
+    `;
+
+
+    /* =====================================================
+       CLICK
+    ===================================================== */
+
+    folder.addEventListener(
+        "click",
+        function() {
+
+            /*
+               Ignore click after dragging.
+            */
+
+            if (
+                folder.dataset.wasDragged
+                === "true"
+            ) {
+
+                folder.dataset.wasDragged =
+                    "false";
+
+                return;
+
+            }
+
+
+            openFolder(folderName);
+
+        }
+    );
+
+
+    /* =====================================================
+       DRAG START
+    ===================================================== */
+
+    folder.addEventListener(
+        "dragstart",
+        function(event) {
+
+            folder.classList.add(
+                "dragging"
             );
 
 
-        if (!saved) {
-
-            return folderNames;
-
-        }
+            folder.dataset.wasDragged =
+                "false";
 
 
-        const savedNames =
-            JSON.parse(saved);
+            event.dataTransfer.effectAllowed =
+                "move";
 
 
-        if (
-            !Array.isArray(savedNames)
-        ) {
-
-            return folderNames;
+            event.dataTransfer.setData(
+                "text/plain",
+                folderName
+            );
 
         }
+    );
 
 
-        const result = [];
+    /* =====================================================
+       DRAG END
+    ===================================================== */
+
+    folder.addEventListener(
+        "dragend",
+        function() {
+
+            folder.classList.remove(
+                "dragging"
+            );
+
+            saveGridOrder();
+
+            setTimeout(function() {
+
+                folder.dataset.wasDragged =
+                    "true";
+
+            }, 50);
+
+        }
+    );
 
 
-        savedNames.forEach(function(name) {
+    /* =====================================================
+       DRAG OVER
+    ===================================================== */
+
+    folder.addEventListener(
+        "dragover",
+        function(event) {
+
+            event.preventDefault();
+
+            folder.classList.add(
+                "drag-over"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       DRAG LEAVE
+    ===================================================== */
+
+    folder.addEventListener(
+        "dragleave",
+        function() {
+
+            folder.classList.remove(
+                "drag-over"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       DROP
+    ===================================================== */
+
+    folder.addEventListener(
+        "drop",
+        function(event) {
+
+            event.preventDefault();
+
+
+            folder.classList.remove(
+                "drag-over"
+            );
+
+
+            const draggedName =
+                event.dataTransfer.getData(
+                    "text/plain"
+                );
+
 
             if (
-                folderNames.includes(name)
+                !draggedName ||
+                draggedName === folderName
             ) {
 
-                result.push(name);
+                return;
 
             }
 
-        });
+
+            const grid =
+                document.getElementById(
+                    "folderGrid"
+                );
 
 
-        folderNames.forEach(function(name) {
+            const dragged =
+                Array.from(
+                    grid.children
+                ).find(function(item) {
 
-            if (
-                !result.includes(name)
-            ) {
+                    return item.dataset.folder
+                        === draggedName;
 
-                result.push(name);
+                });
+
+
+            if (!dragged) {
+
+                return;
 
             }
 
-        });
+
+            const allItems =
+                Array.from(
+                    grid.children
+                );
 
 
-        return result;
-
-    } catch (error) {
-
-        return folderNames;
-
-    }
-
-}
+            const targetIndex =
+                allItems.indexOf(folder);
 
 
-function saveOrder(names) {
+            const draggedIndex =
+                allItems.indexOf(dragged);
 
-    try {
 
-        localStorage.setItem(
+            if (
+                draggedIndex <
+                targetIndex
+            ) {
 
-            getStorageKey(),
+                grid.insertBefore(
+                    dragged,
+                    folder.nextSibling
+                );
 
-            JSON.stringify(names)
+            }
 
-        );
+            else {
 
-    } catch (error) {
+                grid.insertBefore(
+                    dragged,
+                    folder
+                );
 
-        console.log(
-            "Folder order could not be saved."
-        );
+            }
 
-    }
+
+            saveGridOrder();
+
+        }
+    );
+
+
+    return folder;
 
 }
 
 
 /* =========================================================
-   DRAG AND DROP
+   SAVE GRID ORDER
 ========================================================= */
 
-let draggedFolder = null;
+function saveGridOrder() {
 
-
-function handleDragStart(event) {
-
-    draggedFolder =
-        event.currentTarget;
-
-
-    draggedFolder.classList.add(
-        "dragging"
-    );
-
-
-    event.dataTransfer.effectAllowed =
-        "move";
-
-
-    event.dataTransfer.setData(
-        "text/plain",
-        draggedFolder.dataset.name
-    );
-
-}
-
-
-function handleDragEnd() {
-
-    if (
-        draggedFolder
-    ) {
-
-        draggedFolder.classList.remove(
-            "dragging"
+    const grid =
+        document.getElementById(
+            "folderGrid"
         );
 
-    }
 
-
-    draggedFolder = null;
-
-
-    saveCurrentVisualOrder();
-
-}
-
-
-function handleDragOver(event) {
-
-    event.preventDefault();
-
-
-    if (
-        !draggedFolder
-    ) {
+    if (!grid) {
 
         return;
 
     }
 
 
-    const target =
-        event.currentTarget;
+    const order =
+        Array.from(
+            grid.children
+        ).map(function(item) {
+
+            return item.dataset.folder;
+
+        });
 
 
-    if (
-        target === draggedFolder
-    ) {
-
-        return;
-
-    }
-
-
-    const rect =
-        target.getBoundingClientRect();
-
-
-    const middle =
-        rect.left +
-        rect.width / 2;
-
-
-    if (
-        event.clientX < middle
-    ) {
-
-        content.insertBefore(
-            draggedFolder,
-            target
-        );
-
-    } else {
-
-        content.insertBefore(
-            draggedFolder,
-            target.nextSibling
-        );
-
-    }
-
-}
-
-
-function saveCurrentVisualOrder() {
-
-    const names = [];
-
-
-    const folders =
-        content.querySelectorAll(
-            ".folder"
-        );
-
-
-    folders.forEach(function(folder) {
-
-        if (
-            folder.dataset.name
-        ) {
-
-            names.push(
-                folder.dataset.name
-            );
-
-        }
-
-    });
-
-
-    if (
-        names.length > 0
-    ) {
-
-        saveOrder(names);
-
-    }
+    saveCurrentOrder(order);
 
 }
 
@@ -1808,179 +1896,66 @@ function showCurrentFolder() {
     updateBackButton();
 
 
-    let folderNames =
+    const folderNames =
         Object.keys(currentNode);
 
-
-    /*
-       Empty folder
-    */
 
     if (
         folderNames.length === 0
     ) {
 
-        const empty =
-            document.createElement("div");
+        content.innerHTML = `
 
+            <div class="file-placeholder">
 
-        empty.className =
-            "file-placeholder";
+                This folder is currently empty.
 
+            </div>
 
-        empty.textContent =
-            "This folder is currently empty.";
-
-
-        content.appendChild(
-            empty
-        );
-
+        `;
 
         return;
 
     }
 
 
-    /*
-       Apply saved arrangement.
-    */
-
-    folderNames =
-        getSavedOrder(
+    const orderedNames =
+        applySavedOrder(
             folderNames
         );
 
 
-    folderNames.forEach(
-        function(folderName, index) {
+    const grid =
+        document.createElement("div");
 
+
+    grid.className =
+        "folder-grid";
+
+
+    grid.id =
+        "folderGrid";
+
+
+    orderedNames.forEach(
+        function(folderName) {
 
             const folder =
-                document.createElement("div");
+                createFolderBox(
+                    folderName
+                );
 
 
-            folder.className =
-                "folder";
-
-
-            folder.dataset.name =
-                folderName;
-
-
-            folder.draggable =
-                true;
-
-
-            /*
-               Professional colours.
-            */
-
-            folder.style.background =
-                boxColors[
-                    index %
-                    boxColors.length
-                ];
-
-
-            folder.innerHTML = `
-
-                <div class="folder-title">
-
-                    ${escapeHTML(folderName)}
-
-                </div>
-
-            `;
-
-
-            /*
-               OPEN FOLDER
-            */
-
-            folder.addEventListener(
-                "click",
-                function() {
-
-                    if (
-                        folder.classList.contains(
-                            "was-dragged"
-                        )
-                    ) {
-
-                        folder.classList.remove(
-                            "was-dragged"
-                        );
-
-                        return;
-
-                    }
-
-
-                    openFolder(
-                        folderName
-                    );
-
-                }
-            );
-
-
-            /*
-               DRAG START
-            */
-
-            folder.addEventListener(
-                "dragstart",
-                handleDragStart
-            );
-
-
-            /*
-               DRAG END
-            */
-
-            folder.addEventListener(
-                "dragend",
-                function() {
-
-                    handleDragEnd();
-
-
-                    folder.classList.add(
-                        "was-dragged"
-                    );
-
-
-                    setTimeout(
-                        function() {
-
-                            folder.classList.remove(
-                                "was-dragged"
-                            );
-
-                        },
-                        300
-                    );
-
-                }
-            );
-
-
-            /*
-               DRAG OVER
-            */
-
-            folder.addEventListener(
-                "dragover",
-                handleDragOver
-            );
-
-
-            content.appendChild(
+            grid.appendChild(
                 folder
             );
 
         }
+    );
+
+
+    content.appendChild(
+        grid
     );
 
 }
@@ -2001,6 +1976,15 @@ function openFolder(folderName) {
     setURLPath(
         newPath
     );
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
 
 }
 
@@ -2032,6 +2016,15 @@ backButton.addEventListener(
         setURLPath(
             parentPath
         );
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
 
     }
 );
@@ -2181,53 +2174,46 @@ function performSearch(text) {
     content.innerHTML = "";
 
 
-    pathDisplay.style.display =
-        "block";
-
-
     pathDisplay.innerHTML = `
 
-        <span class="path-current">
+        <span class="path-item">
 
-            Search Results
+            SEARCH RESULTS
 
         </span>
 
     `;
 
 
-    backButton.style.display =
-        "none";
-
-
     if (
         results.length === 0
     ) {
 
-        const empty =
-            document.createElement("div");
+        content.innerHTML = `
 
+            <div class="no-results">
 
-        empty.className =
-            "no-results";
+                No matching folder found.
 
+            </div>
 
-        empty.textContent =
-            "No matching folder found.";
-
-
-        content.appendChild(
-            empty
-        );
-
+        `;
 
         return;
 
     }
 
 
+    const grid =
+        document.createElement("div");
+
+
+    grid.className =
+        "folder-grid";
+
+
     results.forEach(
-        function(result, index) {
+        function(result) {
 
             const item =
                 document.createElement("div");
@@ -2235,13 +2221,6 @@ function performSearch(text) {
 
             item.className =
                 "folder search-result";
-
-
-            item.style.background =
-                boxColors[
-                    index %
-                    boxColors.length
-                ];
 
 
             item.innerHTML = `
@@ -2275,22 +2254,28 @@ function performSearch(text) {
                 "click",
                 function() {
 
-                    searchBox.value =
-                        "";
-
                     setURLPath(
                         result.path
                     );
+
+
+                    searchBox.value =
+                        "";
 
                 }
             );
 
 
-            content.appendChild(
+            grid.appendChild(
                 item
             );
 
         }
+    );
+
+
+    content.appendChild(
+        grid
     );
 
 }
