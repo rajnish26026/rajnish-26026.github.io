@@ -19,9 +19,13 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f2f4f7;
-    color: #222;
+    background: #eef2f7;
+    color: #1f2937;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 header {
     background: #1f2937;
@@ -32,13 +36,20 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 27px;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: .4px;
 }
 
 header p {
     margin: 8px 0 0;
     font-size: 16px;
+    font-weight: 600;
 }
+
+/* =========================
+   SEARCH
+========================= */
 
 .search-area {
     background: white;
@@ -46,92 +57,144 @@ header p {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+    box-shadow: 0 2px 7px rgba(0,0,0,.10);
 }
 
 .search-box {
     width: 95%;
-    max-width: 650px;
+    max-width: 700px;
     display: block;
     margin: auto;
-    padding: 14px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 14px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
     font-size: 16px;
+    outline: none;
 }
 
+.search-box:focus {
+    border-color: #2563eb;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
 .container {
-    max-width: 900px;
+    max-width: 950px;
     margin: auto;
     padding: 15px;
 }
 
+/* =========================
+   BREADCRUMB / TREE PATH
+========================= */
+
 .path {
-    background: white;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    font-size: 14px;
-    color: #555;
+    background: #dbeafe;
+    border-left: 5px solid #2563eb;
+    padding: 14px 15px;
+    border-radius: 9px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #1e3a8a;
+    line-height: 1.5;
     word-break: break-word;
+    box-shadow: 0 2px 5px rgba(0,0,0,.08);
 }
+
+/* =========================
+   BACK BUTTON
+========================= */
 
 .back-button {
     display: none;
     border: none;
     background: #2563eb;
     color: white;
-    padding: 11px 16px;
-    border-radius: 7px;
-    font-size: 15px;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
     margin-bottom: 12px;
     cursor: pointer;
 }
 
+.back-button:active {
+    transform: scale(.97);
+}
+
+/* =========================
+   FOLDER CARDS
+========================= */
+
 .folder {
     background: white;
-    margin: 10px 0;
-    padding: 18px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,.09);
+    margin: 11px 0;
+    padding: 19px 18px;
+    border-radius: 11px;
+    border: 2px solid #e5e7eb;
+    box-shadow: 0 3px 8px rgba(0,0,0,.08);
     cursor: pointer;
+    transition: .15s ease;
+}
+
+.folder:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 4px 12px rgba(37,99,235,.13);
 }
 
 .folder:active {
-    transform: scale(.99);
+    transform: scale(.985);
+    background: #f8fbff;
 }
 
 .folder-title {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 800;
+    color: #111827;
 }
+
+/* =========================
+   EMPTY FOLDER
+========================= */
 
 .file-placeholder {
     background: white;
-    padding: 25px;
+    padding: 30px 20px;
     text-align: center;
-    border-radius: 10px;
-    color: #777;
+    border-radius: 11px;
+    color: #6b7280;
+    font-weight: 600;
+    box-shadow: 0 2px 7px rgba(0,0,0,.07);
 }
+
+/* =========================
+   SEARCH RESULTS
+========================= */
 
 .result {
     background: white;
-    padding: 16px;
+    padding: 17px;
     margin: 10px 0;
-    border-radius: 9px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.08);
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
     cursor: pointer;
 }
 
 .result-title {
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: 800;
+    font-size: 17px;
 }
 
 .result-path {
-    margin-top: 6px;
+    margin-top: 7px;
     font-size: 13px;
-    color: #666;
+    font-weight: 600;
+    color: #4b5563;
+    line-height: 1.5;
 }
 
 .no-results {
@@ -142,11 +205,48 @@ header p {
     color: #777;
 }
 
+/* =========================
+   FOOTER
+========================= */
+
 footer {
     text-align: center;
     padding: 30px 15px;
-    color: #777;
+    color: #6b7280;
     font-size: 14px;
+    font-weight: 600;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .folder {
+        padding: 18px 15px;
+    }
+
+    .folder-title {
+        font-size: 17px;
+    }
+
+    .path {
+        font-size: 14px;
+    }
+
 }
 
 </style>
@@ -156,54 +256,57 @@ footer {
 
 <body>
 
+
 <header>
 
-<h1>PCB REPAIR DATA</h1>
+    <h1>PCB REPAIR DATA</h1>
 
-<p>PCB REPAIR DATABASE</p>
+    <p>PCB REPAIR DATABASE</p>
 
 </header>
 
 
 <div class="search-area">
 
-<input
-    id="searchBox"
-    class="search-box"
-    type="search"
-    placeholder="Search anywhere: IC, error code, brand, model..."
-    autocomplete="off">
+    <input
+        id="searchBox"
+        class="search-box"
+        type="search"
+        placeholder="Search IC, error code, brand, model..."
+        autocomplete="off">
 
 </div>
 
 
 <div class="container">
 
-<button
-    id="backButton"
-    class="back-button"
-    onclick="goBack()">
+    <button
+        id="backButton"
+        class="back-button"
+        onclick="goBack()">
 
-← Back
+        ← Back
 
-</button>
-
-
-<div id="pathDisplay" class="path">
-
-📁 Home
-
-</div>
+    </button>
 
 
-<div id="content"></div>
+    <div
+        id="pathDisplay"
+        class="path">
+
+        📁 Home
+
+    </div>
+
+
+    <div id="content"></div>
 
 </div>
 
 
 <footer>
 
-PCB REPAIR DATABASE
+    PCB REPAIR DATABASE
 
 </footer>
 
@@ -211,52 +314,8 @@ PCB REPAIR DATABASE
 <script>
 
 /* =========================================================
-   BRAND LIST
+   COMMON HELPERS
 ========================================================= */
-
-const brands = [
-
-    "LG",
-    "Samsung",
-    "Whirlpool",
-    "Godrej",
-    "Blue Star",
-    "IFB",
-    "Voltas",
-    "Hitachi",
-    "Haier",
-    "Daikin",
-    "Panasonic",
-    "Videocon",
-    "Mitsubishi HD",
-    "Mitsubishi Electric",
-    "O General",
-    "Lloyd",
-    "Sharp",
-    "Toshiba",
-    "Carrier",
-    "Reconnect / Amstard / Amazon Basics"
-
-];
-
-
-/* =========================================================
-   AC TYPE CATEGORIES
-========================================================= */
-
-const acTypes = [
-
-    "Inverter Window",
-    "Inverter Split",
-    "Inverter Cassette",
-    "Inverter Ductable",
-    "Non Inverter Window",
-    "Non Inverter Split",
-    "Non Inverter Cassette",
-    "Non Inverter Ductable"
-
-];
-
 
 function emptyFolders(names) {
 
@@ -274,8 +333,22 @@ function emptyFolders(names) {
 
 
 /* =========================================================
-   AC TYPE FOLDERS
+   AC CATEGORIES
 ========================================================= */
+
+const acTypes = [
+
+    "Inverter Window",
+    "Inverter Split",
+    "Inverter Cassette",
+    "Inverter Ductable",
+    "Non Inverter Window",
+    "Non Inverter Split",
+    "Non Inverter Cassette",
+    "Non Inverter Ductable"
+
+];
+
 
 function acTypeFolders() {
 
@@ -285,7 +358,7 @@ function acTypeFolders() {
 
 
 /* =========================================================
-   FRIDGE TYPE CATEGORIES
+   FRIDGE CATEGORIES
 ========================================================= */
 
 const fridgeTypes = [
@@ -310,7 +383,7 @@ function fridgeTypeFolders() {
 
 
 /* =========================================================
-   WASHING MACHINE TYPE CATEGORIES
+   WASHING MACHINE CATEGORIES
 ========================================================= */
 
 const washingMachineTypes = [
@@ -426,6 +499,7 @@ const fridge = {
 
 /* =========================================================
    WASHING MACHINE
+   Remote Photos intentionally removed
 ========================================================= */
 
 const washingMachine = {
@@ -437,8 +511,6 @@ const washingMachine = {
     "Error Codes": washingMachineTypeFolders(),
 
     "Photos": washingMachineTypeFolders(),
-
-    "Remote Photos": washingMachineTypeFolders(),
 
     "Test Points": washingMachineTypeFolders(),
 
@@ -551,11 +623,41 @@ const circuitDiagrams = {
 
     "Induction Cooktop": {},
 
-    "Chimney": {},
+    "Chimney PCB": {},
 
-    "R O": {}
+    "R O PCB": {}
 
 };
+
+
+/* =========================================================
+   BRAND LIST
+========================================================= */
+
+const brands = [
+
+    "LG",
+    "Samsung",
+    "Whirlpool",
+    "Godrej",
+    "Blue Star",
+    "IFB",
+    "Voltas",
+    "Hitachi",
+    "Haier",
+    "Daikin",
+    "Panasonic",
+    "Videocon",
+    "Mitsubishi HD",
+    "Mitsubishi Electric",
+    "O General",
+    "Lloyd",
+    "Sharp",
+    "Toshiba",
+    "Carrier",
+    "Reconnect / Amstard / Amazon Basics"
+
+];
 
 
 /* =========================================================
@@ -568,13 +670,7 @@ function createBrandErrorCodes() {
 
     brands.forEach(function(brand) {
 
-        result[brand] = {
-
-            "Inverter": {},
-
-            "Non Inverter": {}
-
-        };
+        result[brand] = {};
 
     });
 
@@ -612,11 +708,36 @@ const photos = {
 
     "Microwave Oven": {},
 
-    "Induction": {},
+    "Induction Cooktop": {},
 
-    "RO": {},
+    "Chimney PCB": {},
 
-    "Chimney": {},
+    "R O PCB": {},
+
+    "Misc": {}
+
+};
+
+
+/* =========================================================
+   VIDEOS
+========================================================= */
+
+const videos = {
+
+    "AC": acTypeFolders(),
+
+    "Fridge": fridgeTypeFolders(),
+
+    "Washing Machine": washingMachineTypeFolders(),
+
+    "Microwave Oven": {},
+
+    "Induction Cooktop": {},
+
+    "Chimney PCB": {},
+
+    "R O PCB": {},
 
     "Misc": {}
 
@@ -634,11 +755,8 @@ const softwareData = {
         "AC": {
 
             "Inverter Indoor PCB": {},
-
             "Non Inverter Indoor PCB": {},
-
             "Inverter ODU PCB": {},
-
             "Non Inverter ODU PCB": {}
 
         },
@@ -682,11 +800,8 @@ const softwareData = {
         "Washing Machine": {
 
             "Inverter Top Load": {},
-
             "Inverter Front Load": {},
-
             "Non Inverter Top Load": {},
-
             "Non Inverter Front Load": {}
 
         }
@@ -699,82 +814,40 @@ const softwareData = {
 
 
 /* =========================================================
-   VIDEOS
-========================================================= */
-
-const videos = {
-
-    "AC": acTypeFolders(),
-
-    "Fridge": fridgeTypeFolders(),
-
-    "Washing Machine": washingMachineTypeFolders(),
-
-    "Microwave Oven": {},
-
-    "Induction": {},
-
-    "RO": {},
-
-    "Chimney": {},
-
-    "Misc": {}
-
-};
-
-
-/* =========================================================
-   COMPLETE MAIN FOLDER STRUCTURE
-   ORDER LOCKED AS REQUESTED
+   MAIN DATABASE
+   EXACT REQUESTED ORDER
 ========================================================= */
 
 const database = {
 
-    /* 1 */
     "AC": ac,
 
-    /* 2 */
     "Fridge": fridge,
 
-    /* 3 */
     "Washing Machine": washingMachine,
 
-    /* 4 */
     "Microwave Oven": microwaveOven,
 
-    /* 5 */
     "Induction Cooktop": inductionCooktop,
 
-    /* 6 */
     "Chimney PCB": chimneyPCB,
 
-    /* 7 */
     "R O PCB": roPCB,
 
-    /* Remaining folders */
-
-    /* 8 */
     "Circuit Diagrams": circuitDiagrams,
 
-    /* 9 */
     "Electronic Components": {},
 
-    /* 10 */
     "Error Codes": createBrandErrorCodes(),
 
-    /* 11 */
     "PCB Test Points": pcbTestPoints,
 
-    /* 12 */
     "PDF": {},
 
-    /* 13 */
     "Photos": photos,
 
-    /* 14 */
     "Software Data": softwareData,
 
-    /* 15 */
     "Videos": videos
 
 };
@@ -807,13 +880,33 @@ const searchBox =
 
 
 /* =========================================================
-   CHECK OBJECT
+   OBJECT CHECK
 ========================================================= */
 
 function isObject(value) {
 
     return value !== null &&
            typeof value === "object";
+
+}
+
+
+/* =========================================================
+   UPDATE BROWSER HISTORY
+========================================================= */
+
+function updateHistory() {
+
+    const encoded =
+        encodeURIComponent(
+            JSON.stringify(currentPath)
+        );
+
+    history.pushState(
+        { path: currentPath.slice() },
+        "",
+        "#" + encoded
+    );
 
 }
 
@@ -826,22 +919,24 @@ function displayCurrentFolder() {
 
     content.innerHTML = "";
 
-    pathDisplay.innerHTML =
-        "📁 " +
-        (
-            currentPath.length
-            ? currentPath.join(" → ")
-            : "Home"
-        );
-
-
     if (currentPath.length === 0) {
 
-        backButton.style.display = "none";
+        pathDisplay.innerHTML =
+            "📁 Home";
+
+        backButton.style.display =
+            "none";
 
     } else {
 
-        backButton.style.display = "inline-block";
+        pathDisplay.innerHTML =
+            "📁 " +
+            currentPath
+                .map(escapeHTML)
+                .join(" → ");
+
+        backButton.style.display =
+            "inline-block";
 
     }
 
@@ -881,7 +976,6 @@ function displayCurrentFolder() {
 
 /* =========================================================
    CREATE FOLDER
-   NO "TAP TO OPEN"
 ========================================================= */
 
 function createFolderElement(name, node) {
@@ -909,7 +1003,14 @@ function createFolderElement(name, node) {
 
         currentPath.push(name);
 
+        updateHistory();
+
         displayCurrentFolder();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
     };
 
@@ -923,7 +1024,7 @@ function createFolderElement(name, node) {
    BACK
 ========================================================= */
 
-function goBack() {
+function goBack(updateBrowserHistory = true) {
 
     if (currentPath.length === 0) {
 
@@ -949,9 +1050,77 @@ function goBack() {
     }
 
 
-    displayCurrentFolder();
+    if (updateBrowserHistory) {
+
+        history.back();
+
+    } else {
+
+        displayCurrentFolder();
+
+    }
 
 }
+
+
+/* =========================================================
+   PHONE / BROWSER BACK BUTTON
+========================================================= */
+
+window.addEventListener(
+    "popstate",
+    function(event) {
+
+        if (event.state &&
+            Array.isArray(event.state.path)) {
+
+            currentPath =
+                event.state.path.slice();
+
+        } else {
+
+            currentPath = [];
+
+        }
+
+
+        currentNode = database;
+
+
+        for (
+            let i = 0;
+            i < currentPath.length;
+            i++
+        ) {
+
+            if (
+                currentNode[
+                    currentPath[i]
+                ] !== undefined
+            ) {
+
+                currentNode =
+                    currentNode[
+                        currentPath[i]
+                    ];
+
+            } else {
+
+                currentPath = [];
+
+                currentNode = database;
+
+                break;
+
+            }
+
+        }
+
+
+        displayCurrentFolder();
+
+    }
+);
 
 
 /* =========================================================
@@ -1005,7 +1174,7 @@ function searchDatabase(
 
 
 /* =========================================================
-   DISPLAY SEARCH RESULTS
+   SEARCH
 ========================================================= */
 
 function performSearch(text) {
@@ -1039,7 +1208,6 @@ function performSearch(text) {
     pathDisplay.innerHTML =
         "🔎 Search Results";
 
-
     backButton.style.display =
         "inline-block";
 
@@ -1067,137 +1235,4 @@ function performSearch(text) {
     heading.style.marginBottom =
         "10px";
 
-    heading.innerHTML =
-        "<b>" +
-        results.length +
-        "</b> result(s) found";
-
-
-    content.appendChild(heading);
-
-
-    results.forEach(function(result) {
-
-        const div =
-            document.createElement("div");
-
-        div.className = "result";
-
-
-        div.innerHTML = `
-
-            <div class="result-title">
-
-                📁 ${escapeHTML(result.name)}
-
-            </div>
-
-            <div class="result-path">
-
-                ${escapeHTML(
-                    result.path.join(" → ")
-                )}
-
-            </div>
-
-        `;
-
-
-        div.onclick = function() {
-
-            openSearchResult(
-                result.path
-            );
-
-        };
-
-
-        content.appendChild(div);
-
-    });
-
-}
-
-
-/* =========================================================
-   OPEN SEARCH RESULT
-========================================================= */
-
-function openSearchResult(path) {
-
-    currentNode = database;
-
-    currentPath = [];
-
-
-    for (
-        let i = 0;
-        i < path.length;
-        i++
-    ) {
-
-        currentNode =
-            currentNode[path[i]];
-
-        currentPath.push(
-            path[i]
-        );
-
-    }
-
-
-    searchBox.value = "";
-
-    displayCurrentFolder();
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(text) {
-
-    return text
-
-        .replace(/&/g, "&amp;")
-
-        .replace(/</g, "&lt;")
-
-        .replace(/>/g, "&gt;")
-
-        .replace(/"/g, "&quot;")
-
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =========================================================
-   SEARCH EVENT
-========================================================= */
-
-searchBox.addEventListener(
-    "input",
-    function() {
-
-        performSearch(
-            this.value
-        );
-
-    }
-);
-
-
-/* =========================================================
-   START WEBSITE
-========================================================= */
-
-displayCurrentFolder();
-
-</script>
-
-</body>
-
-      </html>
+    heading.style.fontWe
