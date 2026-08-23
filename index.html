@@ -1,35 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html><html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>PCB REPAIR DATA</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PCB REPAIR DATA</title><style>
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    min-height: 100%;
+}
+
 body {
     margin: 0;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     background: #eef2f7;
     color: #1f2937;
+
     -webkit-user-select: none;
     user-select: none;
+
+    display: flex;
+    flex-direction: column;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 header {
     background: #1f2937;
     color: white;
     padding: 22px 15px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 header h1 {
@@ -44,13 +50,21 @@ header p {
     font-weight: 700;
 }
 
+
+/* =========================
+   SEARCH
+========================= */
+
 .search-area {
     background: white;
     padding: 14px;
     position: sticky;
     top: 0;
     z-index: 100;
+
     box-shadow: 0 2px 7px rgba(0,0,0,.10);
+
+    flex-shrink: 0;
 }
 
 .search-box {
@@ -58,11 +72,15 @@ header p {
     max-width: 700px;
     display: block;
     margin: auto;
+
     padding: 14px 16px;
+
     border: 2px solid #d1d5db;
     border-radius: 10px;
+
     font-size: 16px;
     outline: none;
+
     -webkit-user-select: text;
     user-select: text;
 }
@@ -71,11 +89,27 @@ header p {
     border-color: #2563eb;
 }
 
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
 .container {
+    width: 100%;
     max-width: 1100px;
-    margin: auto;
+
+    margin: 0 auto;
+
     padding: 15px;
+
+    /*
+       Important:
+       allows the home page and
+       long folders to scroll normally.
+    */
+    flex: 1 0 auto;
 }
+
 
 /* =========================
    CLICKABLE TREE
@@ -83,24 +117,49 @@ header p {
 
 .path {
     background: #dbeafe;
+
     border-left: 6px solid #2563eb;
+
     padding: 14px 15px;
+
     border-radius: 9px;
+
     margin-bottom: 14px;
+
     font-size: 15px;
     font-weight: 900;
+
     color: #1e3a8a;
+
     line-height: 1.7;
+
     word-break: break-word;
-    box-shadow: 0 2px 5px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.08);
 }
+
+
+/*
+   Tree is completely hidden
+   on the Home page.
+*/
+.path:empty {
+    display: none;
+}
+
 
 .path-item {
     display: inline-block;
+
     font-weight: 900;
-    color: #111827;
+
+    color: #1e40af;
+
     cursor: pointer;
+
     padding: 2px 5px;
+
     border-radius: 6px;
 }
 
@@ -111,9 +170,12 @@ header p {
 
 .path-arrow {
     font-weight: 900;
+
     color: #2563eb;
+
     padding: 0 4px;
 }
+
 
 /* =========================
    BACK BUTTON
@@ -121,14 +183,21 @@ header p {
 
 .back-button {
     display: none;
+
     border: none;
+
     background: #2563eb;
     color: white;
+
     padding: 11px 18px;
+
     border-radius: 8px;
+
     font-size: 16px;
     font-weight: 800;
+
     margin-bottom: 12px;
+
     cursor: pointer;
 }
 
@@ -136,16 +205,26 @@ header p {
     transform: scale(.97);
 }
 
+
 /* =========================
    FOLDER GRID
 ========================= */
 
 .folder-grid {
     display: grid;
+
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
+
     gap: 14px;
+
+    /*
+       Extra bottom space so the
+       last row never feels hidden.
+    */
+    padding-bottom: 20px;
 }
+
 
 /* =========================
    FOLDER BOX
@@ -153,16 +232,22 @@ header p {
 
 .folder {
     min-height: 120px;
+
     padding: 16px 10px;
 
     border-radius: 15px;
+
     border: 2px solid #d8e0ea;
 
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #f5f8fc
-    );
+    /*
+       Professional light box colours.
+    */
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f5f8fc
+        );
 
     box-shadow:
         0 5px 14px rgba(15,23,42,.10);
@@ -170,6 +255,7 @@ header p {
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -182,6 +268,9 @@ header p {
 
     overflow-wrap: anywhere;
 
+    /*
+       Required for mobile dragging.
+    */
     touch-action: none;
 
     position: relative;
@@ -200,86 +289,106 @@ header p {
     transform: scale(.97);
 }
 
+
 /* =========================
    FOLDER TEXT
 ========================= */
 
 .folder-title {
     font-size: 19px;
+
     line-height: 1.18;
+
     font-weight: 900;
-    color: #111827;
+
+    /*
+       DARK BLUE — NOT BLACK
+    */
+    color: #1e40af;
 
     text-transform: uppercase;
 
     white-space: normal;
+
     word-break: normal;
 
     pointer-events: none;
 }
 
+
 /* =========================
-   PROFESSIONAL COLORS
+   BOX COLOURS
 ========================= */
 
-.folder:nth-child(4n+1) {
-    background: linear-gradient(
-        145deg,
-        #eff6ff,
-        #ffffff
-    );
+/*
+   These are the box background
+   colours. Text remains dark blue
+   in every box.
+*/
 
-    border-color: #bfdbfe;
+.folder:nth-child(4n+1) {
+    background:
+        linear-gradient(
+            145deg,
+            #e8f2ff,
+            #f8fbff
+        );
+
+    border-color: #b8d5f5;
 }
 
 .folder:nth-child(4n+1) .folder-title {
-    color: #1d4ed8;
+    color: #1e40af;
 }
 
 
 .folder:nth-child(4n+2) {
-    background: linear-gradient(
-        145deg,
-        #ecfdf5,
-        #ffffff
-    );
+    background:
+        linear-gradient(
+            145deg,
+            #e8f8ef,
+            #f9fffb
+        );
 
-    border-color: #bbf7d0;
+    border-color: #b7dfc7;
 }
 
 .folder:nth-child(4n+2) .folder-title {
-    color: #047857;
+    color: #1e40af;
 }
 
 
 .folder:nth-child(4n+3) {
-    background: linear-gradient(
-        145deg,
-        #fff7ed,
-        #ffffff
-    );
+    background:
+        linear-gradient(
+            145deg,
+            #fff1e3,
+            #fffaf5
+        );
 
-    border-color: #fed7aa;
+    border-color: #f1cda7;
 }
 
 .folder:nth-child(4n+3) .folder-title {
-    color: #c2410c;
+    color: #1e40af;
 }
 
 
 .folder:nth-child(4n+4) {
-    background: linear-gradient(
-        145deg,
-        #f5f3ff,
-        #ffffff
-    );
+    background:
+        linear-gradient(
+            145deg,
+            #f0ecff,
+            #faf9ff
+        );
 
-    border-color: #ddd6fe;
+    border-color: #d3c8ef;
 }
 
 .folder:nth-child(4n+4) .folder-title {
-    color: #6d28d9;
+    color: #1e40af;
 }
+
 
 /* =========================
    DRAGGING
@@ -287,16 +396,20 @@ header p {
 
 .folder.dragging {
     opacity: .45;
+
     transform: scale(.96);
+
     box-shadow:
         0 15px 30px rgba(0,0,0,.20);
 }
 
 .folder.drag-over {
     border-color: #2563eb !important;
+
     box-shadow:
         0 0 0 4px rgba(37,99,235,.18);
 }
+
 
 /* =========================
    SEARCH PATH
@@ -304,12 +417,18 @@ header p {
 
 .result-path {
     margin-top: 8px;
+
     font-size: 12px;
+
     font-weight: 700;
+
     color: #4b5563;
+
     line-height: 1.4;
+
     pointer-events: none;
 }
+
 
 /* =========================
    EMPTY / SEARCH
@@ -318,24 +437,45 @@ header p {
 .file-placeholder,
 .no-results {
     background: white;
+
     padding: 30px 20px;
+
     text-align: center;
+
     border-radius: 11px;
+
     color: #6b7280;
+
     font-weight: 600;
 }
+
 
 /* =========================
    FOOTER
 ========================= */
 
 footer {
+    width: 100%;
+
     text-align: center;
-    padding: 30px 15px;
+
+    padding: 28px 15px;
+
+    margin-top: auto;
+
     color: #6b7280;
+
     font-size: 14px;
+
     font-weight: 600;
+
+    background: #f8fafc;
+
+    border-top: 1px solid #dbe3ee;
+
+    flex-shrink: 0;
 }
+
 
 /* =========================
    TABLET
@@ -349,6 +489,7 @@ footer {
     }
 
 }
+
 
 /* =========================
    MOBILE
@@ -368,6 +509,10 @@ footer {
         padding: 12px;
     }
 
+    /*
+       Exactly 3 boxes per row
+       on mobile.
+    */
     .folder-grid {
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
@@ -377,12 +522,15 @@ footer {
 
     .folder {
         min-height: 100px;
+
         padding: 12px 5px;
+
         border-radius: 12px;
     }
 
     .folder-title {
         font-size: 16px;
+
         line-height: 1.15;
     }
 
@@ -390,7 +538,13 @@ footer {
         font-size: 14px;
     }
 
+    footer {
+        padding:
+            25px 12px;
+    }
+
 }
+
 
 /* =========================
    VERY SMALL PHONES
@@ -404,6 +558,7 @@ footer {
 
     .folder {
         min-height: 88px;
+
         padding: 10px 3px;
     }
 
@@ -413,66 +568,45 @@ footer {
 
 }
 
-</style>
+</style></head><body><header><h1>PCB REPAIR DATA</h1>
 
-</head>
+<p>PCB REPAIR DATABASE</p>
+
+</header><div class="search-area"><input
+    id="searchBox"
+    class="search-box"
+    type="search"
+    placeholder="Search IC, error code, brand, model..."
+    autocomplete="off">
+
+</div><div class="container"><button
+    id="backButton"
+    class="back-button"
+    type="button">
+
+    ← Back
+
+</button>
 
 
-<body>
+<!--
+   Empty on Home.
+   Tree appears only after
+   entering a folder.
+-->
 
-
-<header>
-
-    <h1>PCB REPAIR DATA</h1>
-
-    <p>PCB REPAIR DATABASE</p>
-
-</header>
-
-
-<div class="search-area">
-
-    <input
-        id="searchBox"
-        class="search-box"
-        type="search"
-        placeholder="Search IC, error code, brand, model..."
-        autocomplete="off">
-
+<div
+    id="pathDisplay"
+    class="path">
 </div>
 
 
-<div class="container">
+<div id="content"></div>
 
-    <button
-        id="backButton"
-        class="back-button"
-        type="button">
+</div><footer>PCB REPAIR DATABASE
 
-        ← Back
+</footer><script>
 
-    </button>
-
-
-    <div
-        id="pathDisplay"
-        class="path">
-    </div>
-
-
-    <div id="content"></div>
-
-</div>
-
-
-<footer>
-
-    PCB REPAIR DATABASE
-
-</footer>
-
-
-<script>
 
 /* =========================================================
    FOLDER CREATOR
@@ -483,10 +617,13 @@ function makeFolders(names) {
     const result = {};
 
     names.forEach(function(name) {
+
         result[name] = {};
+
     });
 
     return result;
+
 }
 
 
@@ -1057,6 +1194,7 @@ function getOrderedNames(node, path) {
     const key =
         getOrderKey(path);
 
+
     if (
         !orders[key] ||
         !Array.isArray(orders[key])
@@ -1065,6 +1203,7 @@ function getOrderedNames(node, path) {
         return names;
 
     }
+
 
     const saved =
         orders[key];
@@ -1116,6 +1255,7 @@ function saveCurrentOrder() {
             )
         );
 
+
     const names =
         boxes.map(function(box) {
 
@@ -1127,9 +1267,11 @@ function saveCurrentOrder() {
     const orders =
         getSavedOrders();
 
+
     orders[
         getOrderKey(currentPath)
     ] = names;
+
 
     saveOrders(orders);
 
@@ -1210,6 +1352,8 @@ function setURLPath(path) {
         === newHash
     ) {
 
+        showCurrentFolder();
+
         return;
 
     }
@@ -1286,6 +1430,7 @@ function rebuildFromPath(path) {
         currentNode =
             currentNode[name];
 
+
         currentPath.push(name);
 
     }
@@ -1299,44 +1444,64 @@ function rebuildFromPath(path) {
 
 function updatePath() {
 
+    /*
+       HOME PAGE:
+       Completely empty.
+       No Home text.
+       No folder icon.
+    */
+
     if (
         currentPath.length === 0
     ) {
 
         pathDisplay.innerHTML = "";
 
+        pathDisplay.style.display =
+            "none";
+
         return;
 
     }
 
 
+    pathDisplay.style.display =
+        "block";
+
+
     let html = "";
 
 
-    currentPath.forEach(function(name, index) {
+    currentPath.forEach(
+        function(name, index) {
 
-        if (index > 0) {
+            if (index > 0) {
+
+                html += `
+
+                    <span class="path-arrow">
+                        →
+                    </span>
+
+                `;
+
+            }
+
 
             html += `
-                <span class="path-arrow">→</span>
+
+                <span
+                    class="path-item"
+                    data-path-index="${index}">
+
+                    ${escapeHTML(name)}
+
+                </span>
+
             `;
 
         }
-
-
-        html += `
-
-            <span
-                class="path-item"
-                data-path-index="${index}">
-
-                ${escapeHTML(name)}
-
-            </span>
-
-        `;
-
-    });
+    );
 
 
     pathDisplay.innerHTML =
@@ -1438,6 +1603,7 @@ let dragStartX = 0;
 let dragStartY = 0;
 
 let isDragging = false;
+
 let holdTimer = null;
 
 
@@ -1470,6 +1636,7 @@ function clearDragState() {
 
 
     draggedFolder = null;
+
     isDragging = false;
 
 }
@@ -1549,7 +1716,9 @@ function moveDraggedFolder(x, y) {
         rect.width / 2;
 
 
-    if (x < middle) {
+    if (
+        x < middle
+    ) {
 
         target.parentNode.insertBefore(
             draggedFolder,
@@ -1591,6 +1760,7 @@ function startDrag(folder, event) {
 
     isDragging =
         true;
+
 
     folder.classList.add(
         "dragging"
@@ -1669,6 +1839,7 @@ function setupDrag(folder) {
                     dragStartX
                 );
 
+
             const dy =
                 Math.abs(
                     event.clientY -
@@ -1734,7 +1905,10 @@ function setupDrag(folder) {
 
             }
 
-            /* Normal tap opens folder */
+
+            /*
+               Normal tap opens folder.
+            */
 
             openFolder(
                 folder.dataset.name
@@ -1804,37 +1978,41 @@ function showCurrentFolder() {
         "folder-grid";
 
 
-    folderNames.forEach(function(folderName) {
+    folderNames.forEach(
+        function(folderName) {
 
-        const folder =
-            document.createElement("div");
-
-
-        folder.className =
-            "folder";
+            const folder =
+                document.createElement("div");
 
 
-        folder.dataset.name =
-            folderName;
+            folder.className =
+                "folder";
 
 
-        folder.innerHTML = `
-
-            <div class="folder-title">
-
-                ${escapeHTML(folderName)}
-
-            </div>
-
-        `;
+            folder.dataset.name =
+                folderName;
 
 
-        setupDrag(folder);
+            folder.innerHTML = `
+
+                <div class="folder-title">
+
+                    ${escapeHTML(folderName)}
+
+                </div>
+
+            `;
 
 
-        grid.appendChild(folder);
+            setupDrag(folder);
 
-    });
+
+            grid.appendChild(
+                folder
+            );
+
+        }
+    );
 
 
     content.appendChild(
@@ -2007,6 +2185,10 @@ function performSearch(text) {
     content.innerHTML = "";
 
 
+    pathDisplay.style.display =
+        "block";
+
+
     pathDisplay.innerHTML = `
 
         <span class="path-item">
@@ -2148,8 +2330,5 @@ rebuildFromPath(
 
 showCurrentFolder();
 
-</script>
-
-</body>
-
+</script></body>
 </html>
