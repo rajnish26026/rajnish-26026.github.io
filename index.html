@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -10,6 +11,10 @@
 <title>PCB REPAIR DATA</title>
 
 <style>
+
+/* =========================================================
+   BASIC
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -22,12 +27,13 @@ body {
     color: #1f2937;
 }
 
-/* =========================
+
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header {
-    background: #1f2937;
+    background: #172033;
     color: white;
     padding: 22px 15px;
     text-align: center;
@@ -36,7 +42,8 @@ header {
 header h1 {
     margin: 0;
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: .5px;
 }
 
 header p {
@@ -45,9 +52,10 @@ header p {
     font-weight: 700;
 }
 
-/* =========================
+
+/* =========================================================
    SEARCH
-========================= */
+========================================================= */
 
 .search-area {
     background: white;
@@ -55,7 +63,7 @@ header p {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 7px rgba(0,0,0,.10);
+    box-shadow: 0 2px 8px rgba(0,0,0,.10);
 }
 
 .search-box {
@@ -63,10 +71,15 @@ header p {
     max-width: 700px;
     display: block;
     margin: auto;
+
     padding: 14px 16px;
+
     border: 2px solid #d1d5db;
-    border-radius: 10px;
-    font-size: 16px;
+    border-radius: 12px;
+
+    font-size: 17px;
+    font-weight: 600;
+
     outline: none;
 }
 
@@ -74,9 +87,10 @@ header p {
     border-color: #2563eb;
 }
 
-/* =========================
-   MAIN
-========================= */
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
 
 .container {
     max-width: 1100px;
@@ -84,35 +98,32 @@ header p {
     padding: 15px;
 }
 
-/* =========================
-   TREE / BREADCRUMB
-========================= */
+
+/* =========================================================
+   TREE PATH
+========================================================= */
 
 .path {
     background: #dbeafe;
+
     border-left: 6px solid #2563eb;
 
-    padding: 14px 15px;
+    padding: 13px 15px;
 
-    border-radius: 9px;
+    border-radius: 10px;
 
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 900;
 
-    color: #1e3a8a;
+    color: #172554;
 
-    line-height: 1.7;
+    line-height: 1.6;
 
     word-break: break-word;
 
-    box-shadow: 0 2px 5px rgba(0,0,0,.08);
-}
-
-.path-home {
-    font-weight: 900;
-    color: #1d4ed8;
+    box-shadow: 0 3px 8px rgba(0,0,0,.08);
 }
 
 .path-item {
@@ -123,209 +134,253 @@ header p {
 .path-arrow {
     font-weight: 900;
     color: #2563eb;
-    padding: 0 5px;
+
+    padding: 0 6px;
 }
 
-/* =========================
+
+/* =========================================================
    BACK BUTTON
-========================= */
+========================================================= */
 
 .back-button {
+
     display: none;
 
     border: none;
 
     background: #2563eb;
+
     color: white;
 
-    padding: 11px 18px;
+    padding: 11px 20px;
 
-    border-radius: 8px;
+    border-radius: 9px;
 
     font-size: 16px;
+
     font-weight: 800;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 
     cursor: pointer;
+
+    box-shadow: 0 3px 7px rgba(0,0,0,.15);
+}
+
+.back-button:hover {
+    background: #1d4ed8;
 }
 
 .back-button:active {
     transform: scale(.97);
 }
 
-/* =========================
-   FOLDER GRID
-========================= */
 
-.folder-grid {
+/* =========================================================
+   FOLDER GRID
+========================================================= */
+
+#content {
+
     display: grid;
 
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
 
-    gap: 14px;
+    gap: 15px;
+
+    align-items: stretch;
 }
 
-/* =========================
-   PROFESSIONAL FOLDER BOX
-========================= */
+
+/* =========================================================
+   FOLDER BOX
+========================================================= */
 
 .folder {
-    min-height: 120px;
 
-    padding: 16px 10px;
+    min-height: 145px;
 
-    border-radius: 15px;
+    padding: 18px 12px;
 
-    border: 2px solid #d8e0ea;
+    border-radius: 16px;
 
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #f5f8fc
-    );
+    border: 2px solid rgba(255,255,255,.85);
 
     box-shadow:
-        0 5px 14px rgba(15,23,42,.10);
+        0 5px 14px rgba(0,0,0,.12);
 
     cursor: pointer;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    touch-action: manipulation;
+
     transition:
-        transform .16s ease,
-        box-shadow .16s ease,
-        border-color .16s ease;
+        transform .18s ease,
+        box-shadow .18s ease,
+        opacity .18s ease;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* subtle shine */
+
+.folder::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -45%;
+
+    left: -25%;
+
+    width: 150%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.28),
+            transparent 60%
+        );
+
+    pointer-events: none;
+}
+
+
+.folder:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 9px 20px rgba(0,0,0,.18);
+}
+
+
+.folder:active {
+
+    transform:
+        scale(.97);
+}
+
+
+/* =========================================================
+   DRAGGING
+========================================================= */
+
+.folder.dragging {
+
+    opacity: .45;
+
+    transform:
+        scale(.96);
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.10);
+}
+
+
+/* =========================================================
+   FOLDER TITLE
+========================================================= */
+
+.folder-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    line-height: 1.35;
+
+    color: #111827;
+
+    max-width: 100%;
+
+    word-break: break-word;
 
     overflow-wrap: anywhere;
 }
 
-.folder:hover {
-    transform: translateY(-3px);
 
-    border-color: #60a5fa;
+/* =========================================================
+   EMPTY FOLDER
+========================================================= */
+
+.file-placeholder,
+.no-results {
+
+    grid-column: 1 / -1;
+
+    background: white;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border-radius: 14px;
+
+    color: #6b7280;
+
+    font-size: 17px;
+
+    font-weight: 700;
 
     box-shadow:
-        0 9px 20px rgba(37,99,235,.16);
+        0 3px 9px rgba(0,0,0,.08);
 }
 
-.folder:active {
-    transform: scale(.97);
-}
 
-/* =========================
-   FOLDER NAME
-========================= */
-
-.folder-title {
-    font-size: 19px;
-
-    line-height: 1.18;
-
-    font-weight: 900;
-
-    color: #111827;
-
-    text-transform: uppercase;
-
-    white-space: normal;
-
-    word-break: normal;
-}
-
-/* =========================
-   INDIVIDUAL BOX COLORS
-========================= */
-
-.folder:nth-child(4n+1) {
-
-    background: linear-gradient(
-        145deg,
-        #eff6ff,
-        #ffffff
-    );
-
-    border-color: #bfdbfe;
-}
-
-.folder:nth-child(4n+2) {
-
-    background: linear-gradient(
-        145deg,
-        #ecfdf5,
-        #ffffff
-    );
-
-    border-color: #bbf7d0;
-}
-
-.folder:nth-child(4n+3) {
-
-    background: linear-gradient(
-        145deg,
-        #fff7ed,
-        #ffffff
-    );
-
-    border-color: #fed7aa;
-}
-
-.folder:nth-child(4n+4) {
-
-    background: linear-gradient(
-        145deg,
-        #f5f3ff,
-        #ffffff
-    );
-
-    border-color: #ddd6fe;
-}
-
-/* =========================
-   SEARCH PATH
-========================= */
+/* =========================================================
+   SEARCH RESULT PATH
+========================================================= */
 
 .result-path {
-    margin-top: 8px;
+
+    margin-top: 9px;
 
     font-size: 13px;
 
     font-weight: 700;
 
-    color: #4b5563;
+    color: #374151;
 
     line-height: 1.5;
 }
 
-/* =========================
-   EMPTY / SEARCH
-========================= */
 
-.file-placeholder,
-.no-results {
+/* Search results use smaller cards */
 
-    background: white;
+.search-result {
 
-    padding: 30px 20px;
-
-    text-align: center;
-
-    border-radius: 11px;
-
-    color: #6b7280;
-
-    font-weight: 600;
+    min-height: 125px;
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
 
@@ -340,40 +395,63 @@ footer {
     font-weight: 600;
 }
 
-/* =========================
+
+/* =========================================================
    TABLET
-========================= */
+========================================================= */
 
 @media (max-width: 850px) {
 
-    .folder-grid {
+    #content {
 
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
 
+        gap: 13px;
+    }
+
+    .folder {
+
+        min-height: 140px;
+    }
+
+    .folder-title {
+
+        font-size: 19px;
     }
 
 }
 
-/* =========================
-   MOBILE — 3 BOXES
-========================= */
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
     header h1 {
-        font-size: 25px;
+
+        font-size: 24px;
+
     }
 
     header p {
+
         font-size: 14px;
+
     }
 
     .container {
+
         padding: 12px;
+
     }
 
-    .folder-grid {
+    /*
+       THREE BOXES IN ONE ROW
+    */
+
+    #content {
 
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
@@ -384,11 +462,11 @@ footer {
 
     .folder {
 
-        min-height: 100px;
+        min-height: 135px;
 
-        padding: 12px 5px;
+        padding: 12px 7px;
 
-        border-radius: 12px;
+        border-radius: 13px;
 
     }
 
@@ -396,7 +474,7 @@ footer {
 
         font-size: 16px;
 
-        line-height: 1.15;
+        line-height: 1.35;
 
     }
 
@@ -404,17 +482,28 @@ footer {
 
         font-size: 14px;
 
+        padding: 11px 12px;
+
+    }
+
+    .back-button {
+
+        font-size: 15px;
+
+        padding: 10px 16px;
+
     }
 
 }
 
-/* =========================
-   VERY SMALL PHONES
-========================= */
 
-@media (max-width: 370px) {
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-    .folder-grid {
+@media (max-width: 380px) {
+
+    #content {
 
         gap: 7px;
 
@@ -422,9 +511,9 @@ footer {
 
     .folder {
 
-        min-height: 88px;
+        min-height: 125px;
 
-        padding: 10px 3px;
+        padding: 10px 5px;
 
     }
 
@@ -467,6 +556,7 @@ footer {
 
 <div class="container">
 
+
     <button
         id="backButton"
         class="back-button"
@@ -477,6 +567,11 @@ footer {
     </button>
 
 
+    <!--
+       No Home text here.
+       Tree starts directly with the folders.
+    -->
+
     <div
         id="pathDisplay"
         class="path">
@@ -484,6 +579,7 @@ footer {
 
 
     <div id="content"></div>
+
 
 </div>
 
@@ -985,7 +1081,29 @@ const database = {
 
 
 /* =========================================================
-   APP STATE
+   COLOR PALETTE
+========================================================= */
+
+const boxColors = [
+
+    "#dbeafe",
+    "#dcfce7",
+    "#fef3c7",
+    "#fce7f3",
+    "#ede9fe",
+    "#cffafe",
+    "#ffedd5",
+    "#e0e7ff",
+    "#d1fae5",
+    "#fef9c3",
+    "#fae8ff",
+    "#e0f2fe"
+
+];
+
+
+/* =========================================================
+   STATE
 ========================================================= */
 
 let currentNode = database;
@@ -1011,24 +1129,47 @@ const searchBox =
 
 
 /* =========================================================
-   ENCODE PATH
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   PATH ENCODING
 ========================================================= */
 
 function encodePath(path) {
 
     return path
+
         .map(function(item) {
 
             return encodeURIComponent(item);
 
         })
+
         .join("/");
 
 }
 
 
 /* =========================================================
-   DECODE PATH
+   PATH DECODING
 ========================================================= */
 
 function decodePath() {
@@ -1059,7 +1200,9 @@ function decodePath() {
 
 
     return raw
+
         .split("/")
+
         .map(function(item) {
 
             return decodeURIComponent(item);
@@ -1070,7 +1213,7 @@ function decodePath() {
 
 
 /* =========================================================
-   CHANGE URL PATH
+   URL PATH
 ========================================================= */
 
 function setURLPath(path) {
@@ -1096,41 +1239,7 @@ function setURLPath(path) {
 
 
 /* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(text) {
-
-    return String(text)
-
-        .replace(/&/g, "&amp;")
-
-        .replace(/</g, "&lt;")
-
-        .replace(/>/g, "&gt;")
-
-        .replace(/"/g, "&quot;")
-
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =========================================================
-   FORMAT FOLDER NAME
-   Makes multi-word names stack naturally
-========================================================= */
-
-function formatFolderName(name) {
-
-    return escapeHTML(name)
-        .replace(/\s+/g, " ");
-
-}
-
-
-/* =========================================================
-   REBUILD CURRENT NODE
+   REBUILD NODE
 ========================================================= */
 
 function rebuildFromPath(path) {
@@ -1173,7 +1282,6 @@ function rebuildFromPath(path) {
         currentNode =
             currentNode[name];
 
-
         currentPath.push(name);
 
     }
@@ -1182,11 +1290,14 @@ function rebuildFromPath(path) {
 
 
 /* =========================================================
-   UPDATE TREE
-   NO HOME TEXT
+   PATH DISPLAY
 ========================================================= */
 
 function updatePath() {
+
+    /*
+       Home is intentionally NOT displayed.
+    */
 
     if (
         currentPath.length === 0
@@ -1194,9 +1305,16 @@ function updatePath() {
 
         pathDisplay.innerHTML = "";
 
+        pathDisplay.style.display =
+            "none";
+
         return;
 
     }
+
+
+    pathDisplay.style.display =
+        "block";
 
 
     let html = "";
@@ -1209,7 +1327,9 @@ function updatePath() {
             html += `
 
                 <span class="path-arrow">
+
                     →
+
                 </span>
 
             `;
@@ -1220,7 +1340,9 @@ function updatePath() {
         html += `
 
             <span class="path-item">
+
                 ${escapeHTML(name)}
+
             </span>
 
         `;
@@ -1235,7 +1357,7 @@ function updatePath() {
 
 
 /* =========================================================
-   UPDATE BACK BUTTON
+   BACK BUTTON
 ========================================================= */
 
 function updateBackButton() {
@@ -1258,6 +1380,278 @@ function updateBackButton() {
 
 
 /* =========================================================
+   STORAGE KEY
+========================================================= */
+
+function getStorageKey() {
+
+    return "pcb_folder_order_" +
+        currentPath.join("||");
+
+}
+
+
+/* =========================================================
+   GET SAVED ORDER
+========================================================= */
+
+function getSavedOrder(folderNames) {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                getStorageKey()
+            );
+
+
+        if (!saved) {
+
+            return folderNames;
+
+        }
+
+
+        const savedNames =
+            JSON.parse(saved);
+
+
+        if (
+            !Array.isArray(savedNames)
+        ) {
+
+            return folderNames;
+
+        }
+
+
+        const result = [];
+
+
+        savedNames.forEach(function(name) {
+
+            if (
+                folderNames.includes(name)
+            ) {
+
+                result.push(name);
+
+            }
+
+        });
+
+
+        folderNames.forEach(function(name) {
+
+            if (
+                !result.includes(name)
+            ) {
+
+                result.push(name);
+
+            }
+
+        });
+
+
+        return result;
+
+    } catch (error) {
+
+        return folderNames;
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE ORDER
+========================================================= */
+
+function saveOrder(names) {
+
+    try {
+
+        localStorage.setItem(
+
+            getStorageKey(),
+
+            JSON.stringify(names)
+
+        );
+
+    } catch (error) {
+
+        console.log(
+            "Could not save folder order."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   DRAG AND DROP
+========================================================= */
+
+let draggedFolder = null;
+
+
+/* =========================================================
+   HANDLE DRAG START
+========================================================= */
+
+function handleDragStart(event) {
+
+    draggedFolder =
+        event.currentTarget;
+
+
+    draggedFolder.classList.add(
+        "dragging"
+    );
+
+
+    event.dataTransfer.effectAllowed =
+        "move";
+
+
+    event.dataTransfer.setData(
+        "text/plain",
+        draggedFolder.dataset.name
+    );
+
+}
+
+
+/* =========================================================
+   HANDLE DRAG END
+========================================================= */
+
+function handleDragEnd() {
+
+    if (draggedFolder) {
+
+        draggedFolder.classList.remove(
+            "dragging"
+        );
+
+    }
+
+
+    draggedFolder = null;
+
+
+    saveCurrentVisualOrder();
+
+}
+
+
+/* =========================================================
+   HANDLE DRAG OVER
+========================================================= */
+
+function handleDragOver(event) {
+
+    event.preventDefault();
+
+
+    if (
+        !draggedFolder
+    ) {
+
+        return;
+
+    }
+
+
+    const target =
+        event.currentTarget;
+
+
+    if (
+        target === draggedFolder
+    ) {
+
+        return;
+
+    }
+
+
+    const rect =
+        target.getBoundingClientRect();
+
+
+    const middle =
+        rect.left +
+        rect.width / 2;
+
+
+    if (
+        event.clientX < middle
+    ) {
+
+        content.insertBefore(
+            draggedFolder,
+            target
+        );
+
+    } else {
+
+        content.insertBefore(
+            draggedFolder,
+            target.nextSibling
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE CURRENT VISUAL ORDER
+========================================================= */
+
+function saveCurrentVisualOrder() {
+
+    const names = [];
+
+
+    const folders =
+        content.querySelectorAll(
+            ".folder"
+        );
+
+
+    folders.forEach(function(folder) {
+
+        if (
+            folder.dataset.name
+        ) {
+
+            names.push(
+                folder.dataset.name
+            );
+
+        }
+
+    });
+
+
+    if (
+        names.length > 0
+    ) {
+
+        saveOrder(names);
+
+    }
+
+}
+
+
+/* =========================================================
    SHOW CURRENT FOLDER
 ========================================================= */
 
@@ -1271,7 +1665,7 @@ function showCurrentFolder() {
     updateBackButton();
 
 
-    const folderNames =
+    let folderNames =
         Object.keys(currentNode);
 
 
@@ -1279,68 +1673,154 @@ function showCurrentFolder() {
         folderNames.length === 0
     ) {
 
-        content.innerHTML = `
+        const empty =
+            document.createElement("div");
 
-            <div class="file-placeholder">
 
-                This folder is currently empty.
+        empty.className =
+            "file-placeholder";
 
-            </div>
 
-        `;
+        empty.textContent =
+            "This folder is currently empty.";
+
+
+        content.appendChild(
+            empty
+        );
+
 
         return;
 
     }
 
 
-    /* GRID CONTAINER */
+    /*
+       Apply saved user arrangement.
+    */
 
-    const grid =
-        document.createElement("div");
-
-
-    grid.className =
-        "folder-grid";
+    folderNames =
+        getSavedOrder(folderNames);
 
 
-    folderNames.forEach(function(folderName) {
+    folderNames.forEach(
+        function(folderName, index) {
 
-        const folder =
-            document.createElement("div");
-
-
-        folder.className =
-            "folder";
+            const folder =
+                document.createElement("div");
 
 
-        folder.innerHTML = `
-
-            <div class="folder-title">
-
-                ${formatFolderName(folderName)}
-
-            </div>
-
-        `;
+            folder.className =
+                "folder";
 
 
-        folder.addEventListener(
-            "click",
-            function() {
-
-                openFolder(folderName);
-
-            }
-        );
+            folder.dataset.name =
+                folderName;
 
 
-        grid.appendChild(folder);
+            folder.draggable =
+                true;
 
-    });
+
+            /*
+               Different professional
+               background color.
+            */
+
+            folder.style.background =
+                boxColors[
+                    index %
+                    boxColors.length
+                ];
 
 
-    content.appendChild(grid);
+            folder.innerHTML = `
+
+                <div class="folder-title">
+
+                    ${escapeHTML(folderName)}
+
+                </div>
+
+            `;
+
+
+            /* CLICK */
+
+            folder.addEventListener(
+                "click",
+                function(event) {
+
+                    /*
+                       Prevent accidental opening
+                       immediately after dragging.
+                    */
+
+                    if (
+                        folder.classList.contains(
+                            "was-dragged"
+                        )
+                    ) {
+
+                        folder.classList.remove(
+                            "was-dragged"
+                        );
+
+                        return;
+
+                    }
+
+
+                    openFolder(
+                        folderName
+                    );
+
+                }
+            );
+
+
+            /* DRAG */
+
+            folder.addEventListener(
+                "dragstart",
+                handleDragStart
+            );
+
+
+            folder.addEventListener(
+                "dragend",
+                function() {
+
+                    handleDragEnd();
+
+                    folder.classList.add(
+                        "was-dragged"
+                    );
+
+                    setTimeout(function() {
+
+                        folder.classList.remove(
+                            "was-dragged"
+                        );
+
+                    }, 300);
+
+                }
+            );
+
+
+            folder.addEventListener(
+                "dragover",
+                handleDragOver
+            );
+
+
+            content.appendChild(
+                folder
+            );
+
+        }
+    );
 
 }
 
@@ -1352,10 +1832,14 @@ function showCurrentFolder() {
 function openFolder(folderName) {
 
     const newPath =
-        currentPath.concat(folderName);
+        currentPath.concat(
+            folderName
+        );
 
 
-    setURLPath(newPath);
+    setURLPath(
+        newPath
+    );
 
 }
 
@@ -1384,7 +1868,9 @@ backButton.addEventListener(
             );
 
 
-        setURLPath(parentPath);
+        setURLPath(
+            parentPath
+        );
 
     }
 );
@@ -1402,7 +1888,9 @@ window.addEventListener(
             decodePath();
 
 
-        rebuildFromPath(path);
+        rebuildFromPath(
+            path
+        );
 
 
         searchBox.value =
@@ -1532,6 +2020,10 @@ function performSearch(text) {
     content.innerHTML = "";
 
 
+    pathDisplay.style.display =
+        "block";
+
+
     pathDisplay.innerHTML = `
 
         <span class="path-item">
@@ -1543,45 +2035,52 @@ function performSearch(text) {
     `;
 
 
-    updateBackButton();
+    backButton.style.display =
+        "none";
 
 
     if (
         results.length === 0
     ) {
 
-        content.innerHTML = `
+        const empty =
+            document.createElement("div");
 
-            <div class="no-results">
 
-                No matching folder found.
+        empty.className =
+            "no-results";
 
-            </div>
 
-        `;
+        empty.textContent =
+            "No matching folder found.";
+
+
+        content.appendChild(
+            empty
+        );
+
 
         return;
 
     }
 
 
-    const grid =
-        document.createElement("div");
-
-
-    grid.className =
-        "folder-grid";
-
-
     results.forEach(
-        function(result) {
+        function(result, index) {
 
             const item =
                 document.createElement("div");
 
 
             item.className =
-                "folder";
+                "folder search-result";
+
+
+            item.style.background =
+                boxColors[
+                    index %
+                    boxColors.length
+                ];
 
 
             item.innerHTML = `
@@ -1590,7 +2089,7 @@ function performSearch(text) {
 
                     <div class="folder-title">
 
-                        ${formatFolderName(
+                        ${escapeHTML(
                             result.name
                         )}
 
@@ -1615,25 +2114,23 @@ function performSearch(text) {
                 "click",
                 function() {
 
+                    searchBox.value =
+                        "";
+
                     setURLPath(
                         result.path
                     );
-
-
-                    searchBox.value =
-                        "";
 
                 }
             );
 
 
-            grid.appendChild(item);
+            content.appendChild(
+                item
+            );
 
         }
     );
-
-
-    content.appendChild(grid);
 
 }
 
