@@ -514,7 +514,10 @@ const database = {
 
     "Circuit Diagrams": CircuitDiagrams,
 
-    "Electronic Components": {},
+    "Electronic Components": {
+        "Components List": {},
+        "Dealer Visiting Card": {}
+    },
 
     "Error Codes": {},
 
@@ -529,6 +532,90 @@ const database = {
     "Videos": Videos
 
 };
+
+/* =========================================================
+   GOOGLE DRIVE LINKS
+   =========================================================
+   Add an entry here to make a folder open a private Google
+   Drive folder instead of browsing further in the app.
+
+   Key   = the folder's location in the tree, written as
+           "Top Level/Next Level/.../Folder Name" (must match
+           the exact names shown in the app).
+   Value = the Google Drive folder URL to open.
+
+   One Drive link can be reused for multiple app folders, as
+   with the Fridge entries below.
+   ========================================================= */
+
+const DRIVE_LINKS = {
+
+    "Fridge/Inverter/Single Door/Circuit Diagrams":
+        "https://drive.google.com/drive/folders/1lcbp_INP5x7S3nxbcU8zOH14l3rl1Bry",
+
+    "Fridge/Inverter/Double Door/Circuit Diagrams":
+        "https://drive.google.com/drive/folders/1lcbp_INP5x7S3nxbcU8zOH14l3rl1Bry",
+
+    "Induction Cooktop/Circuit Diagrams":
+        "https://drive.google.com/drive/folders/10uqWfszT6xj7vR_D6SMmvaJ24Bb4Tuqv",
+
+    "Washing Machine/Non Inverter/Top Load/Wiring Details":
+        "https://drive.google.com/drive/folders/1at3R_wZSHId5ZresCWGxoqK99yGrI-qh",
+
+    "Electronic Components/Components List":
+        "https://drive.google.com/drive/folders/1h7M20Ckcr6pxx6mqsGkY5Zq5emG-ZofH",
+
+    "Electronic Components/Dealer Visiting Card":
+        "https://drive.google.com/drive/folders/1I4E3fmmzMwHGwUQkzAB7QwvVD4w4W5yB",
+
+    "Induction Cooktop/Error Codes":
+        "https://drive.google.com/drive/folders/1O6gbBf41As6DUSDWTPCIMjHoOCbZuKmf"
+
+};
+
+/*
+   Applies every entry in DRIVE_LINKS to the database.
+   If a folder in the path doesn't exist yet, it's created
+   automatically so you don't have to hand-edit the tree above
+   just to add a link.
+*/
+function attachDriveLinks() {
+
+    Object.keys(DRIVE_LINKS).forEach(function(pathString) {
+
+        const parts =
+            pathString.split("/");
+
+        let node =
+            database;
+
+        parts.forEach(function(part, index) {
+
+            if (
+                !node[part] ||
+                typeof node[part] !== "object"
+            ) {
+                node[part] = {};
+            }
+
+            if (index === parts.length - 1) {
+
+                node[part].__DRIVE__ =
+                    DRIVE_LINKS[pathString];
+
+            } else {
+
+                node = node[part];
+
+            }
+
+        });
+
+    });
+
+}
+
+attachDriveLinks();
 
 /* =========================================================
    FOLDER COLOR THEMES
