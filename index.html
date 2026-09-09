@@ -3,254 +3,284 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PCB REPAIR DATA</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f8;
-    color: #222;
+    background: #eef4fb;
+    color: #26364a;
 }
 
 header {
-    background: #111827;
+    background: linear-gradient(135deg, #123b67, #1769aa);
     color: white;
+    padding: 22px 15px;
     text-align: center;
-    padding: 14px 10px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    box-shadow: 0 3px 12px rgba(0,0,0,.15);
 }
 
 header h1 {
     margin: 0;
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: .5px;
 }
 
 header p {
-    margin: 4px 0 0;
-    font-size: 13px;
-    color: #d1d5db;
-    font-weight: 600;
+    margin: 8px 0 0;
+    font-size: 15px;
+    font-weight: 700;
+    opacity: .95;
 }
 
 .search-area {
+    background: white;
+    padding: 14px;
     position: sticky;
-    top: 72px;
-    z-index: 900;
-    background: #f4f6f8;
-    padding: 10px;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,.10);
 }
 
-#searchBox {
-    width: 100%;
-    padding: 13px 15px;
-    border: 1px solid #cbd5e1;
+.search-box {
+    width: 95%;
+    max-width: 700px;
+    display: block;
+    margin: auto;
+    padding: 14px 17px;
+    border: 2px solid #cbd8e8;
     border-radius: 12px;
     font-size: 16px;
+    font-weight: 600;
+    color: #23415f;
+    background: #f8fbff;
     outline: none;
+}
+
+.search-box:focus {
+    border-color: #2384d9;
     background: white;
+    box-shadow: 0 0 0 3px rgba(35,132,217,.12);
 }
 
-#searchBox:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37,99,235,.12);
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 16px;
 }
 
-.toolbar {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
+.path {
+    background: linear-gradient(135deg, #e5f2ff, #f3f9ff);
+    border-left: 6px solid #2384d9;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #174a7a;
+    line-height: 1.8;
+    word-break: break-word;
+    box-shadow: 0 3px 9px rgba(24,78,125,.10);
 }
 
-button {
-    border: none;
-    border-radius: 9px;
-    padding: 9px 13px;
-    font-size: 14px;
-    font-weight: bold;
+.path-item {
+    color: #2878b9;
+    font-weight: 900;
     cursor: pointer;
 }
 
-#backBtn {
-    background: #374151;
+.path-item:hover {
+    color: #0b5b98;
+    text-decoration: underline;
+}
+
+.path-arrow {
+    color: #6b9bc4;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.back-button {
+    display: none;
+    border: none;
+    background: linear-gradient(135deg, #287dcc, #1769aa);
     color: white;
+    padding: 11px 19px;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 13px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(23,105,170,.25);
 }
 
-#refreshBtn {
-    background: #2563eb;
-    color: white;
+.back-button:hover {
+    background: linear-gradient(135deg, #1769aa, #0f568e);
 }
 
-#path {
-    padding: 8px 12px;
-    font-size: 13px;
-    font-weight: bold;
-    color: #374151;
-    overflow-x: auto;
-    white-space: nowrap;
+.back-button:active {
+    transform: scale(.97);
 }
 
-#folderGrid {
+#content {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    padding: 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
 }
 
 .folder {
-    min-height: 82px;
+    min-height: 105px;
+    background: linear-gradient(145deg, #ffffff, #edf7ff);
+    border: 2px solid #b9d7ee;
     border-radius: 14px;
-    padding: 13px 9px;
+    padding: 20px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-weight: 800;
-    font-size: 14px;
     cursor: pointer;
-    box-shadow: 0 2px 7px rgba(0,0,0,.12);
+    position: relative;
+    box-shadow: 0 4px 10px rgba(35,99,145,.10);
+    transition: transform .15s ease, box-shadow .15s ease,
+                border-color .15s ease, background .15s ease;
     user-select: none;
-    word-break: break-word;
-    transition: transform .12s ease;
+    touch-action: manipulation;
+}
+
+.folder:hover {
+    box-shadow: 0 7px 18px rgba(35,110,170,.18);
+    transform: translateY(-2px);
+    filter: brightness(0.98);
 }
 
 .folder:active {
     transform: scale(.97);
 }
 
+.folder-title {
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 900;
+    word-break: normal;
+    overflow-wrap: anywhere;
+}
+
+.drag-handle {
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    font-size: 13px;
+    color: #8aabc3;
+    cursor: grab;
+    opacity: .75;
+}
+
+.folder:active .drag-handle {
+    cursor: grabbing;
+}
+
 .folder.dragging {
     opacity: .45;
+    transform: scale(.97);
 }
 
+.folder.drag-over {
+    box-shadow: 0 0 0 3px rgba(35,132,217,.35);
+}
+
+.file-placeholder,
 .no-results {
-    padding: 25px 15px;
+    grid-column: 1 / -1;
+    background: white;
+    padding: 35px 20px;
     text-align: center;
-    color: #6b7280;
-    font-weight: bold;
+    border-radius: 12px;
+    color: #58718a;
+    font-weight: 700;
+    border: 2px solid #d5e3ef;
 }
 
-/* Folder colours */
-
-.root-folder {
-    background: #dbeafe;
-    color: #1e3a8a;
+.result-path {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #5b7892;
+    line-height: 1.5;
 }
 
-.ac-folder {
-    background: #d1fae5;
-    color: #065f46;
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #688198;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.fridge-folder {
-    background: #dbeafe;
-    color: #1e40af;
-}
-
-.wm-folder {
-    background: #fef3c7;
-    color: #92400e;
-}
-
-.mw-folder {
-    background: #fce7f3;
-    color: #9d174d;
-}
-
-.induction-folder {
-    background: #ede9fe;
-    color: #5b21b6;
-}
-
-.chimney-folder {
-    background: #fee2e2;
-    color: #991b1b;
-}
-
-.ro-folder {
-    background: #cffafe;
-    color: #155e75;
-}
-
-.circuit-folder {
-    background: #e0e7ff;
-    color: #3730a3;
-}
-
-.component-folder {
-    background: #dcfce7;
-    color: #166534;
-}
-
-.error-folder {
-    background: #fee2e2;
-    color: #b91c1c;
-}
-
-.testpoint-folder {
-    background: #fef9c3;
-    color: #854d0e;
-}
-
-.pdf-folder {
-    background: #f3e8ff;
-    color: #6b21a8;
-}
-
-.photo-folder {
-    background: #fce7f3;
-    color: #be185d;
-}
-
-.software-folder {
-    background: #e0f2fe;
-    color: #0369a1;
-}
-
-.video-folder {
-    background: #ffedd5;
-    color: #c2410c;
-}
-
-@media (max-width: 900px) {
-    #folderGrid {
-        grid-template-columns: repeat(3, 1fr);
+@media (max-width: 850px) {
+    #content {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 600px) {
+
     header h1 {
-        font-size: 21px;
+        font-size: 24px;
     }
 
-    #folderGrid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 9px;
-        padding: 8px;
+    header p {
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 11px;
+    }
+
+    .path {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    #content {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
     }
 
     .folder {
-        min-height: 75px;
-        font-size: 12px;
-        padding: 9px 6px;
+        min-height: 105px;
+        padding: 15px 7px;
+        border-radius: 12px;
     }
 
-    .search-area {
-        top: 66px;
+    .folder-title {
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+    .drag-handle {
+        font-size: 11px;
+        top: 5px;
+        right: 6px;
     }
 }
 
 @media (max-width: 380px) {
-    #folderGrid {
-        grid-template-columns: repeat(2, 1fr);
+
+    #content {
+        gap: 6px;
+    }
+
+    .folder {
+        min-height: 100px;
+        padding: 13px 5px;
+    }
+
+    .folder-title {
+        font-size: 14px;
     }
 }
 </style>
@@ -264,27 +294,459 @@ button {
 </header>
 
 <div class="search-area">
-
     <input
-        type="search"
         id="searchBox"
-        placeholder="Search IC, error code, brand, model, circuit diagram..."
-        autocomplete="off"
-    >
+        class="search-box"
+        type="search"
+        placeholder="Search IC, error code, brand, model..."
+        autocomplete="off">
+</div>
 
-    <div class="toolbar">
-        <button id="backBtn" onclick="goBack()">⬅ Back</button>
-        <button id="refreshBtn" onclick="refreshPage()">🔄 Refresh</button>
-    </div>
+<div class="container">
+
+    <button id="backButton" class="back-button" type="button">
+        ← Back
+    </button>
+
+    <div id="pathDisplay" class="path"></div>
+
+    <div id="content"></div>
 
 </div>
 
-<div id="path"></div>
-
-<div id="folderGrid"></div>
-
+<footer>
+    PCB REPAIR DATABASE
+</footer>
 
 <script>
+
+/* =========================================================
+   FOLDER CREATOR
+   ========================================================= */
+
+function makeFolders(names) {
+
+    const result = {};
+
+    names.forEach(function(name) {
+        result[name] = {};
+    });
+
+    return result;
+}
+
+
+/* =========================================================
+   APPLIANCE TREE
+   ========================================================= */
+
+function buildApplianceTree(subtypes, categories) {
+
+    const tree = {};
+
+    ["Inverter", "Non Inverter"].forEach(function(mode) {
+
+        const typeBranch = {};
+
+        subtypes.forEach(function(subtype) {
+
+            typeBranch[subtype] =
+                makeFolders(categories);
+
+        });
+
+        tree[mode] = typeBranch;
+
+    });
+
+    return tree;
+}
+
+
+/* =========================================================
+   TYPE ONLY TREE
+   ========================================================= */
+
+function buildTypeOnlyTree(subtypes) {
+
+    const tree = {};
+
+    ["Inverter", "Non Inverter"].forEach(function(mode) {
+
+        tree[mode] =
+            makeFolders(subtypes);
+
+    });
+
+    return tree;
+}
+
+
+/* =========================================================
+   SHARED LISTS
+   ========================================================= */
+
+const acSubtypes = [
+    "Window",
+    "Split",
+    "Cassette",
+    "Ductable"
+];
+
+const acCategories = [
+    "Circuit Diagrams",
+    "EEPROM BIN Files",
+    "Error Codes",
+    "PDF",
+    "Photos",
+    "Remote Photos",
+    "Sensor Details",
+    "Test Points"
+];
+
+
+const fridgeSubtypes = [
+    "Single Door",
+    "Double Door",
+    "Triple Door",
+    "Side by Side"
+];
+
+const fridgeCategories = [
+    "Circuit Diagrams",
+    "EEPROM BIN Files",
+    "Error Codes",
+    "Photos",
+    "Sensor Details",
+    "Signal PCB",
+    "Videos",
+    "Wiring Details"
+];
+
+
+const wmSubtypes = [
+    "Top Load",
+    "Front Load"
+];
+
+const wmCategories = [
+    "Circuit Diagrams",
+    "EEPROM BIN Files",
+    "Error Codes",
+    "Photos",
+    "Test Points",
+    "Videos",
+    "Wiring Details"
+];
+
+const microwaveModes = [
+    "Inverter",
+    "Non Inverter"
+];
+
+
+/* =========================================================
+   MAIN APPLIANCE TREES
+   ========================================================= */
+
+const AC =
+    buildApplianceTree(
+        acSubtypes,
+        acCategories
+    );
+
+const Fridge =
+    buildApplianceTree(
+        fridgeSubtypes,
+        fridgeCategories
+    );
+
+const WashingMachine =
+    buildApplianceTree(
+        wmSubtypes,
+        wmCategories
+    );
+
+
+/* =========================================================
+   MICROWAVE OVEN
+   ========================================================= */
+
+const MicrowaveOven = {
+
+    "MW Oven Touch": {
+
+        "Inverter": {},
+
+        "Non Inverter": {
+
+            "__DRIVE__":
+                "https://drive.google.com/drive/folders/1LCCNv6xJHYWrOpGqF5QbeSAMSSonWUks"
+
+        }
+
+    },
+
+    "MW Oven Wiring": {
+
+        "Inverter": {},
+
+        "Non Inverter": {}
+
+    }
+
+};
+
+
+/* =========================================================
+   INDUCTION / CHIMNEY / RO
+   ========================================================= */
+
+const InductionCooktop = {
+
+    "Circuit Diagrams": {},
+    "Error Codes": {},
+    "Photos": {},
+    "Videos": {},
+    "Test Points": {},
+    "Wiring Details": {},
+    "PDF": {}
+
+};
+
+
+const ChimneyPCB = {
+
+    "Circuit Diagrams": {},
+    "Error Codes": {},
+    "Photos": {},
+    "Videos": {},
+    "Test Points": {},
+    "Wiring Details": {},
+    "PDF": {}
+
+};
+
+
+const ROPCB = {
+
+    "Circuit Diagrams": {},
+    "Error Codes": {},
+    "EEPROM BIN Files": {},
+    "Photos": {},
+    "Videos": {},
+    "Test Points": {},
+    "Wiring Details": {},
+    "Sensor Details": {},
+    "PDF": {}
+
+};
+
+
+/* =========================================================
+   CATEGORY-FIRST VIEWS
+   ========================================================= */
+
+const CircuitDiagrams = {
+
+    "AC":
+        buildTypeOnlyTree(acSubtypes),
+
+    "Fridge":
+        buildTypeOnlyTree(fridgeSubtypes),
+
+    "Washing Machine":
+        buildTypeOnlyTree(wmSubtypes),
+
+    "Microwave Oven":
+        makeFolders(microwaveModes),
+
+    "Induction Cooktop": {},
+
+    "Chimney PCB": {},
+
+    "R O PCB": {}
+
+};
+
+
+const PCBTestPoints = {
+
+    "AC":
+        buildTypeOnlyTree(acSubtypes),
+
+    "Fridge":
+        buildTypeOnlyTree(fridgeSubtypes),
+
+    "Washing Machine":
+        buildTypeOnlyTree(wmSubtypes)
+
+};
+
+
+const Photos = {
+
+    "AC":
+        buildTypeOnlyTree(acSubtypes),
+
+    "Fridge":
+        buildTypeOnlyTree(fridgeSubtypes),
+
+    "Washing Machine":
+        buildTypeOnlyTree(wmSubtypes),
+
+    "Microwave Oven": {},
+
+    "Induction Cooktop": {},
+
+    "Chimney PCB": {},
+
+    "R O PCB": {},
+
+    "Misc": {}
+
+};
+
+
+const Videos = {
+
+    "AC":
+        buildTypeOnlyTree(acSubtypes),
+
+    "Fridge":
+        buildTypeOnlyTree(fridgeSubtypes),
+
+    "Washing Machine":
+        buildTypeOnlyTree(wmSubtypes),
+
+    "Microwave Oven": {},
+
+    "Induction Cooktop": {},
+
+    "Chimney PCB": {},
+
+    "R O PCB": {},
+
+    "Misc": {}
+
+};
+
+
+/* =========================================================
+   SOFTWARE DATA
+   ========================================================= */
+
+const SoftwareData = {
+
+    "EEPROM Data": {
+
+        "AC": {
+
+            "Indoor PCB": {
+                "Inverter": {},
+                "Non Inverter": {}
+            },
+
+            "ODU PCB": {
+                "Inverter": {},
+                "Non Inverter": {}
+            }
+
+        },
+
+        "Fridge": {
+
+            "Single Door": {
+                "Inverter": {},
+                "Non Inverter": {}
+            },
+
+            "Double Door": {
+                "Inverter": {},
+                "Non Inverter": {}
+            },
+
+            "Triple Door": {
+                "Inverter": {},
+                "Non Inverter": {}
+            },
+
+            "Side by Side": {
+                "Inverter": {},
+                "Non Inverter": {}
+            },
+
+            "Fridge Signal Card": {},
+
+            "Fridge Inverter Card": {}
+
+        },
+
+        "Washing Machine": {
+
+            "Top Load": {
+                "Inverter": {},
+                "Non Inverter": {}
+            },
+
+            "Front Load": {
+                "Inverter": {},
+                "Non Inverter": {}
+            }
+
+        }
+
+    },
+
+    "MCU Data": {}
+
+};
+
+
+/* =========================================================
+   MAIN DATABASE
+   ========================================================= */
+
+const database = {
+
+    "AC": AC,
+
+    "Fridge": Fridge,
+
+    "Washing Machine": WashingMachine,
+
+    "Microwave Oven": MicrowaveOven,
+
+    "Induction Cooktop": InductionCooktop,
+
+    "Chimney PCB": ChimneyPCB,
+
+    "R O PCB": ROPCB,
+
+    "Circuit Diagrams": CircuitDiagrams,
+
+    "Electronic Components": {
+
+        "Components List": {},
+
+        "Dealer Visiting Card": {}
+
+    },
+
+    "Error Codes": {},
+
+    "PCB Test Points": PCBTestPoints,
+
+    "PDF": {},
+
+    "Photos": Photos,
+
+    "Software Data": SoftwareData,
+
+    "Videos": Videos
+
+};
+
 
 /* =========================================================
    GOOGLE DRIVE LINKS
@@ -292,514 +754,1103 @@ button {
 
 const DRIVE_LINKS = {
 
-    /* ---------------- AC ---------------- */
-
-    "AC|Circuit Diagrams":
-        "https://drive.google.com/drive/folders/1V_hVJfZJsu4oQTvxzJmMfpkBVPrgCYBJ",
-
-    "AC|Compressor Details":
-        "https://drive.google.com/drive/folders/1F9Fobp_HK1Ko_p1vxjjWuk5L_HyIlUUj",
-
-    "AC|EEPROM BIN Files":
-        "https://drive.google.com/drive/folders/1GSyHcW7r0F60amDCxyOPetlQMAA3X7zK",
-
-    "AC|Error Codes":
-        "https://drive.google.com/drive/folders/1U55KOBmiPFPsvjTuJaIwWR96Y-lUnclr",
-
-    "AC|Inverter AC|Cassette Inverter AC":
-        "https://drive.google.com/drive/folders/1Jd7Qc2QbHI3JdXPmbImFh46FrAGVMcma",
-
-    "AC|Inverter AC|Ductable Inverter AC":
-        "https://drive.google.com/drive/folders/1a_rwccmFaf5ULR84YxdoJbIeNWvGabk8",
-
-    "AC|Inverter AC|Split Inverter AC":
-        "https://drive.google.com/drive/folders/1uiLtrSJmS7aJDVAKyk-3t-hxh-4kdPkY",
-
-    "AC|Inverter AC|Tower Inverter AC":
-        "https://drive.google.com/drive/folders/1pfHzK1tgoEVDYNu_mX8ANxBfXV_evcjn",
-
-    "AC|Inverter AC|Window Inverter AC":
-        "https://drive.google.com/drive/folders/1kid4SYkr7Wv6K7b38GmYHrNG6W8BiX6q",
-
-    "AC|IPM Number Details":
-        "https://drive.google.com/drive/folders/1yRZKTwUPEI5HN-MMS9x_BXBvozOP3f3s",
-
-    "AC|Motor Details|Indoor Motor":
-        "https://drive.google.com/drive/folders/13s_shFadc3zH7cH-fhzJ7gMeN4uqu7-M",
-
-    "AC|Motor Details|Outdoor Motor":
-        "https://drive.google.com/drive/folders/1IUsTk4V-yubZMlXIennaCuR5OZSpjWzZ",
-
-    "AC|Non Inverter AC|Cassette AC":
-        "https://drive.google.com/drive/folders/1-8KjGxOcJcqEIX9Uondgg4ZeBUDTSCCl",
-
-    "AC|Non Inverter AC|Ductable AC":
-        "https://drive.google.com/drive/folders/1A1PK_arOq-dHVKooRPfg2_oXXO5lVJmu",
-
-    "AC|Non Inverter AC|Split AC":
-        "https://drive.google.com/drive/folders/1mS_KH5bDbgktNMj28pvRzjVWijssfCHB",
-
-    "AC|Non Inverter AC|Tower AC":
-        "https://drive.google.com/drive/folders/1cRR5lUsy9AKBu0rVq-PXlCira0HHav2D",
-
-    "AC|Non Inverter AC|Window AC":
-        "https://drive.google.com/drive/folders/1T8-Zx5D9HzqnvokgvwRtK6SmtpZ29Oi8",
-
-
-    /* ---------------- EXISTING LINKS ---------------- */
-
-    "Fridge|Inverter|Single Door|Circuit Diagrams":
+    "Fridge/Inverter/Single Door/Circuit Diagrams":
         "https://drive.google.com/drive/folders/1lcbp_INP5x7S3nxbcU8zOH14l3rl1Bry",
 
-    "Fridge|Inverter|Double Door|Circuit Diagrams":
+    "Fridge/Inverter/Double Door/Circuit Diagrams":
         "https://drive.google.com/drive/folders/1lcbp_INP5x7S3nxbcU8zOH14l3rl1Bry",
 
-    "Induction Cooktop|Circuit Diagrams":
+    "Induction Cooktop/Circuit Diagrams":
         "https://drive.google.com/drive/folders/10uqWfszT6xj7vR_D6SMmvaJ24Bb4Tuqv",
 
-    "Washing Machine|Non Inverter|Top Load|Wiring Details":
+    "Washing Machine/Non Inverter/Top Load/Wiring Details":
         "https://drive.google.com/drive/folders/1at3R_wZSHId5ZresCWGxoqK99yGrI-qh",
 
-    "Electronic Components|Components List":
+    "Electronic Components/Components List":
         "https://drive.google.com/drive/folders/1h7M20Ckcr6pxx6mqsGkY5Zq5emG-ZofH",
 
-    "Electronic Components|Dealer Visiting Card":
+    "Electronic Components/Dealer Visiting Card":
         "https://drive.google.com/drive/folders/1I4E3fmmzMwHGwUQkzAB7QwvVD4w4W5yB",
 
-    "Induction Cooktop|Error Codes":
-        "https://drive.google.com/drive/folders/1O6gbBf41As6DUSDWTPCIMjHoOCbZuKmf",
+    "Induction Cooktop/Error Codes":
+        "https://drive.google.com/drive/folders/1O6gbBf41As6DUSDWTPCIMjHoOCbZuKmf"
 
-    "Microwave Oven|MW Oven Touch|Non Inverter":
-        "https://drive.google.com/drive/folders/1LCCNv6xJHYWrOpGqF5QbeSAMSSonWUks"
 };
 
 
 /* =========================================================
-   DATABASE / FOLDER TREE
+   ATTACH DRIVE LINKS
    ========================================================= */
 
-const database = {
+function attachDriveLinks() {
+
+    Object.keys(DRIVE_LINKS).forEach(function(pathString) {
+
+        const parts =
+            pathString.split("/");
+
+        let node =
+            database;
+
+        parts.forEach(function(part, index) {
+
+            if (
+                !node[part] ||
+                typeof node[part] !== "object"
+            ) {
+
+                node[part] = {};
+
+            }
+
+            if (
+                index === parts.length - 1
+            ) {
+
+                node[part].__DRIVE__ =
+                    DRIVE_LINKS[pathString];
+
+            } else {
+
+                node =
+                    node[part];
+
+            }
+
+        });
+
+    });
+
+}
+
+attachDriveLinks();
+
+
+/* =========================================================
+   FOLDER COLORS
+   ========================================================= */
+
+const ROOT_COLORS = {
 
     "AC": {
-        "Circuit Diagrams": {},
-        "Compressor Details": {},
-        "EEPROM BIN Files": {},
-
-        "Error Codes": {},
-
-        "Inverter AC": {
-            "Cassette Inverter AC": {},
-            "Ductable Inverter AC": {},
-            "Split Inverter AC": {},
-            "Tower Inverter AC": {},
-            "Window Inverter AC": {}
-        },
-
-        "IPM Number Details": {},
-
-        "Motor Details": {
-            "Indoor Motor": {},
-            "Outdoor Motor": {}
-        },
-
-        "Non Inverter AC": {
-            "Cassette AC": {},
-            "Ductable AC": {},
-            "Split AC": {},
-            "Tower AC": {},
-            "Window AC": {}
-        }
+        bg: "#e3f2fd",
+        border: "#64b5f6",
+        text: "#0d47a1"
     },
-
 
     "Fridge": {
-
-        "Inverter": {
-            "Single Door": {
-                "Circuit Diagrams": {}
-            },
-
-            "Double Door": {
-                "Circuit Diagrams": {}
-            },
-
-            "Triple Door": {},
-            "Side by Side": {}
-        },
-
-        "Non Inverter": {
-            "Single Door": {},
-            "Double Door": {},
-            "Triple Door": {},
-            "Side by Side": {}
-        },
-
-        "Circuit Diagrams": {},
-        "EEPROM BIN Files": {},
-        "Error Codes": {},
-        "Photos": {},
-        "Sensor Details": {},
-        "Signal PCB": {},
-        "Videos": {},
-        "Wiring Details": {}
+        bg: "#e8f5e9",
+        border: "#66bb6a",
+        text: "#1b5e20"
     },
-
 
     "Washing Machine": {
-
-        "Inverter": {
-            "Top Load": {},
-            "Front Load": {}
-        },
-
-        "Non Inverter": {
-            "Top Load": {
-                "Wiring Details": {}
-            },
-            "Front Load": {}
-        },
-
-        "Circuit Diagrams": {},
-        "EEPROM BIN Files": {},
-        "Error Codes": {},
-        "Photos": {},
-        "Test Points": {},
-        "Videos": {},
-        "Wiring Details": {}
+        bg: "#f3e5f5",
+        border: "#ab47bc",
+        text: "#4a148c"
     },
-
 
     "Microwave Oven": {
-
-        "Inverter": {},
-
-        "Non Inverter": {},
-
-        "MW Oven Touch": {
-            "Non Inverter": {}
-        },
-
-        "MW Oven Wiring": {}
+        bg: "#fff3e0",
+        border: "#ffa726",
+        text: "#e65100"
     },
-
 
     "Induction Cooktop": {
-        "Circuit Diagrams": {},
-        "Error Codes": {},
-        "Photos": {},
-        "Videos": {},
-        "Test Points": {},
-        "Wiring Details": {},
-        "PDF": {}
+        bg: "#e0f7fa",
+        border: "#26c6da",
+        text: "#006064"
     },
-
 
     "Chimney PCB": {
-        "Circuit Diagrams": {},
-        "Error Codes": {},
-        "Photos": {},
-        "Videos": {},
-        "Test Points": {},
-        "Wiring Details": {},
-        "PDF": {}
+        bg: "#fdeceb",
+        border: "#ef5350",
+        text: "#b71c1c"
     },
-
 
     "R O PCB": {
-        "Circuit Diagrams": {},
-        "EEPROM BIN Files": {},
-        "Error Codes": {},
-        "Photos": {},
-        "Sensor Details": {},
-        "Test Points": {},
-        "Videos": {},
-        "Wiring Details": {},
-        "PDF": {}
+        bg: "#e1f5fe",
+        border: "#29b6f6",
+        text: "#01579b"
     },
 
-
-    "Circuit Diagrams": {},
+    "Circuit Diagrams": {
+        bg: "#e8eaf6",
+        border: "#5c6bc0",
+        text: "#1a237e"
+    },
 
     "Electronic Components": {
-        "Components List": {},
-        "Dealer Visiting Card": {}
+        bg: "#fffde7",
+        border: "#fdd835",
+        text: "#795900"
     },
 
-    "Error Codes": {},
+    "Error Codes": {
+        bg: "#fce4ec",
+        border: "#ec407a",
+        text: "#880e4f"
+    },
 
-    "PCB Test Points": {},
+    "PCB Test Points": {
+        bg: "#efebe9",
+        border: "#8d6e63",
+        text: "#3e2723"
+    },
 
-    "PDF": {},
+    "PDF": {
+        bg: "#eceff1",
+        border: "#78909c",
+        text: "#263238"
+    },
 
-    "Photos": {},
-
+    "Photos": {
+        bg: "#f9fbe7",
+        border: "#c0ca33",
+        text: "#33691e"
+    },
 
     "Software Data": {
-
-        "EEPROM Data": {
-
-            "AC": {
-
-                "Inverter Indoor PCB": {},
-                "Non Inverter Indoor PCB": {},
-                "Inverter ODU PCB": {},
-                "Non Inverter ODU PCB": {}
-            },
-
-            "Fridge": {
-                "Inverter Single Door": {},
-                "Inverter Double Door": {},
-                "Inverter Triple Door": {},
-                "Inverter Side by Side": {},
-                "Non Inverter Single Door": {},
-                "Non Inverter Double Door": {},
-                "Non Inverter Triple Door": {},
-                "Non Inverter Side by Side": {},
-
-                "Fridge Signal Card": {},
-                "Fridge Inverter Card": {}
-            },
-
-            "Washing Machine": {
-                "Inverter Top Load": {},
-                "Inverter Front Load": {},
-                "Non Inverter Top Load": {},
-                "Non Inverter Front Load": {}
-            }
-        },
-
-        "MCU Data": {}
+        bg: "#eceef5",
+        border: "#5c6b8a",
+        text: "#20293d"
     },
 
+    "Videos": {
+        bg: "#fbe9e7",
+        border: "#ff7043",
+        text: "#bf360c"
+    }
 
-    "Videos": {}
+};
+
+
+const CATEGORY_COLORS =
+    Object.assign({}, ROOT_COLORS, {
+
+        "EEPROM BIN Files": {
+            bg: "#f1f8e9",
+            border: "#9ccc65",
+            text: "#33691e"
+        },
+
+        "EEPROM Data": {
+            bg: "#eaf6f6",
+            border: "#26a69a",
+            text: "#004d40"
+        },
+
+        "MCU Data": {
+            bg: "#e6f4ea",
+            border: "#43a047",
+            text: "#1b5e20"
+        },
+
+        "Sensor Details": {
+            bg: "#e0f2f1",
+            border: "#4db6ac",
+            text: "#004d40"
+        },
+
+        "Remote Photos": {
+            bg: "#fff8e1",
+            border: "#ffca28",
+            text: "#8d6e00"
+        },
+
+        "Wiring Details": {
+            bg: "#efe6dd",
+            border: "#a1887f",
+            text: "#4e342e"
+        },
+
+        "Signal PCB": {
+            bg: "#e8f0fe",
+            border: "#7986cb",
+            text: "#1a237e"
+        },
+
+        "Test Points": {
+            bg: "#f3f0ff",
+            border: "#9575cd",
+            text: "#311b92"
+        },
+
+        "Indoor PCB": {
+            bg: "#e3f2fd",
+            border: "#64b5f6",
+            text: "#0d47a1"
+        },
+
+        "ODU PCB": {
+            bg: "#e1f5fe",
+            border: "#4fc3f7",
+            text: "#01579b"
+        }
+
+    });
+
+
+const TYPE_COLORS = {
+
+    "Inverter": {
+        bg: "#e8f8f0",
+        border: "#2ecc71",
+        text: "#0f6e3f"
+    },
+
+    "Non Inverter": {
+        bg: "#f3f2ee",
+        border: "#b0a99a",
+        text: "#5a5346"
+    }
+
+};
+
+
+const DEFAULT_THEME = {
+
+    bg: "#edf7ff",
+    border: "#b9d7ee",
+    text: "#1769aa"
+
 };
 
 
 /* =========================================================
-   DRIVE LINK ATTACHMENT
+   MIX COLORS
    ========================================================= */
 
-function normalizeKey(parts) {
-    return parts.join("|")
-        .toLowerCase()
-        .replace(/\s+/g, " ")
-        .trim();
+function mixWithWhite(hex, amount) {
+
+    const num =
+        parseInt(
+            hex.replace("#", ""),
+            16
+        );
+
+    let r =
+        (num >> 16) & 255;
+
+    let g =
+        (num >> 8) & 255;
+
+    let b =
+        num & 255;
+
+    r =
+        Math.round(
+            r + (255 - r) * amount
+        );
+
+    g =
+        Math.round(
+            g + (255 - g) * amount
+        );
+
+    b =
+        Math.round(
+            b + (255 - b) * amount
+        );
+
+    return "#" +
+        [r, g, b]
+            .map(function(v) {
+                return v
+                    .toString(16)
+                    .padStart(2, "0");
+            })
+            .join("");
+
 }
-
-function attachDriveLinks(obj, path = []) {
-
-    Object.keys(obj).forEach(function(name) {
-
-        const currentPath = [...path, name];
-
-        let link = null;
-
-        const exactKey = currentPath.join("|");
-
-        if (DRIVE_LINKS[exactKey]) {
-            link = DRIVE_LINKS[exactKey];
-        }
-
-        if (link) {
-            obj[name].__DRIVE__ = link;
-        }
-
-        attachDriveLinks(obj[name], currentPath);
-    });
-}
-
-attachDriveLinks(database);
 
 
 /* =========================================================
-   NAVIGATION
+   GET FOLDER THEME
    ========================================================= */
 
-let currentFolder = database;
-let currentPath = [];
+function getFolderTheme(name, path) {
 
-const folderGrid = document.getElementById("folderGrid");
-const pathDisplay = document.getElementById("path");
-const searchBox = document.getElementById("searchBox");
+    if (CATEGORY_COLORS[name]) {
+        return CATEGORY_COLORS[name];
+    }
+
+    if (TYPE_COLORS[name]) {
+        return TYPE_COLORS[name];
+    }
+
+    if (path.length === 0) {
+
+        return ROOT_COLORS[name] ||
+            DEFAULT_THEME;
+
+    }
+
+    const rootTheme =
+        ROOT_COLORS[path[0]];
+
+    if (rootTheme) {
+
+        return {
+
+            bg:
+                mixWithWhite(
+                    rootTheme.border,
+                    0.82
+                ),
+
+            border:
+                mixWithWhite(
+                    rootTheme.border,
+                    0.35
+                ),
+
+            text:
+                rootTheme.text
+
+        };
+
+    }
+
+    return DEFAULT_THEME;
+
+}
 
 
 /* =========================================================
-   LOCAL STORAGE ORDER
+   APP STATE
    ========================================================= */
 
-function getStorageKey(path) {
-    return "pcb-order-" + path.join("/");
+let currentNode =
+    database;
+
+let currentPath =
+    [];
+
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const content =
+    document.getElementById("content");
+
+const pathDisplay =
+    document.getElementById("pathDisplay");
+
+const backButton =
+    document.getElementById("backButton");
+
+const searchBox =
+    document.getElementById("searchBox");
+
+
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
 }
 
-function applySavedOrder(obj, path) {
 
-    const key = getStorageKey(path);
+/* =========================================================
+   URL PATH
+   ========================================================= */
 
-    const saved = localStorage.getItem(key);
+function encodePath(path) {
 
-    if (!saved) return Object.keys(obj);
+    return path
+        .map(function(item) {
+
+            return encodeURIComponent(item);
+
+        })
+        .join("/");
+
+}
+
+
+function decodePath() {
+
+    const hash =
+        window.location.hash;
+
+    if (
+        !hash ||
+        hash === "#"
+    ) {
+
+        return [];
+
+    }
+
+    const raw =
+        hash.substring(1);
+
+    if (!raw) {
+        return [];
+    }
+
+    return raw
+        .split("/")
+        .map(function(item) {
+
+            return decodeURIComponent(item);
+
+        });
+
+}
+
+
+function setURLPath(path) {
+
+    const newHash =
+        encodePath(path);
+
+    if (
+        window.location.hash.substring(1)
+        === newHash
+    ) {
+
+        return;
+
+    }
+
+    window.location.hash =
+        newHash;
+
+}
+
+
+/* =========================================================
+   REBUILD NODE
+   ========================================================= */
+
+function rebuildFromPath(path) {
+
+    currentNode =
+        database;
+
+    currentPath =
+        [];
+
+    for (
+        let i = 0;
+        i < path.length;
+        i++
+    ) {
+
+        const name =
+            path[i];
+
+        if (
+            !currentNode ||
+            !Object.prototype.hasOwnProperty.call(
+                currentNode,
+                name
+            )
+        ) {
+
+            currentNode =
+                database;
+
+            currentPath =
+                [];
+
+            return;
+
+        }
+
+        currentNode =
+            currentNode[name];
+
+        currentPath.push(name);
+
+    }
+
+}
+
+
+/* =========================================================
+   DRIVE LINK
+   ========================================================= */
+
+function getDriveLink(node) {
+
+    if (
+        node &&
+        typeof node === "object" &&
+        typeof node.__DRIVE__ === "string" &&
+        node.__DRIVE__.trim() !== ""
+    ) {
+
+        return node.__DRIVE__;
+
+    }
+
+    return null;
+
+}
+
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+function updatePath() {
+
+    pathDisplay.innerHTML = "";
+
+    if (
+        currentPath.length === 0
+    ) {
+
+        return;
+
+    }
+
+    currentPath.forEach(
+        function(name, index) {
+
+            if (index > 0) {
+
+                const arrow =
+                    document.createElement("span");
+
+                arrow.className =
+                    "path-arrow";
+
+                arrow.textContent =
+                    "→";
+
+                pathDisplay.appendChild(
+                    arrow
+                );
+
+            }
+
+            const item =
+                document.createElement("span");
+
+            item.className =
+                "path-item";
+
+            item.textContent =
+                name;
+
+            item.addEventListener(
+                "click",
+                function() {
+
+                    const targetPath =
+                        currentPath.slice(
+                            0,
+                            index + 1
+                        );
+
+                    setURLPath(
+                        targetPath
+                    );
+
+                }
+            );
+
+            pathDisplay.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+function updateBackButton() {
+
+    backButton.style.display =
+        currentPath.length === 0
+        ? "none"
+        : "inline-block";
+
+}
+
+
+backButton.addEventListener(
+    "click",
+    function() {
+
+        if (
+            currentPath.length === 0
+        ) {
+
+            return;
+
+        }
+
+        const parentPath =
+            currentPath.slice(
+                0,
+                currentPath.length - 1
+            );
+
+        setURLPath(
+            parentPath
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SAVED BOX ORDER
+   ========================================================= */
+
+function getOrderKey() {
+
+    return "pcb-folder-order-" +
+        currentPath.join("|");
+
+}
+
+
+function getSavedOrder(names) {
 
     try {
 
-        const savedOrder = JSON.parse(saved);
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    getOrderKey()
+                )
+            );
 
-        const existing = Object.keys(obj);
+        if (
+            !Array.isArray(saved)
+        ) {
 
-        const ordered = [];
+            return names;
 
-        savedOrder.forEach(function(name) {
-            if (existing.includes(name)) {
-                ordered.push(name);
+        }
+
+        const result = [];
+
+        saved.forEach(function(name) {
+
+            if (
+                names.includes(name) &&
+                !result.includes(name)
+            ) {
+
+                result.push(name);
+
             }
+
         });
 
-        existing.forEach(function(name) {
-            if (!ordered.includes(name)) {
-                ordered.push(name);
+        names.forEach(function(name) {
+
+            if (
+                !result.includes(name)
+            ) {
+
+                result.push(name);
+
             }
+
         });
 
-        return ordered;
+        return result;
 
-    } catch (e) {
+    } catch (error) {
 
-        return Object.keys(obj);
+        return names;
+
     }
+
+}
+
+
+function saveOrder() {
+
+    const names =
+        Array.from(
+            content.querySelectorAll(
+                ".folder"
+            )
+        ).map(function(folder) {
+
+            return folder.dataset.name;
+
+        });
+
+    localStorage.setItem(
+        getOrderKey(),
+        JSON.stringify(names)
+    );
+
 }
 
 
 /* =========================================================
-   FOLDER COLOUR
+   DRAG AND DROP
    ========================================================= */
 
-function getFolderClass(name, path) {
-
-    const lower = name.toLowerCase();
-
-    if (path.length === 1) {
-
-        if (lower === "ac") return "ac-folder";
-        if (lower === "fridge") return "fridge-folder";
-        if (lower.includes("washing")) return "wm-folder";
-        if (lower.includes("microwave")) return "mw-folder";
-        if (lower.includes("induction")) return "induction-folder";
-        if (lower.includes("chimney")) return "chimney-folder";
-        if (lower.includes("r o")) return "ro-folder";
-        if (lower.includes("circuit")) return "circuit-folder";
-        if (lower.includes("electronic")) return "component-folder";
-        if (lower.includes("error")) return "error-folder";
-        if (lower.includes("test")) return "testpoint-folder";
-        if (lower.includes("pdf")) return "pdf-folder";
-        if (lower.includes("photo")) return "photo-folder";
-        if (lower.includes("software")) return "software-folder";
-        if (lower.includes("video")) return "video-folder";
-    }
-
-    if (lower.includes("error")) return "error-folder";
-    if (lower.includes("circuit")) return "circuit-folder";
-    if (lower.includes("pdf")) return "pdf-folder";
-    if (lower.includes("photo")) return "photo-folder";
-    if (lower.includes("video")) return "video-folder";
-    if (lower.includes("test")) return "testpoint-folder";
-    if (lower.includes("software")) return "software-folder";
-    if (lower.includes("component")) return "component-folder";
-
-    return "root-folder";
-}
+let draggedFolder =
+    null;
 
 
-/* =========================================================
-   SHOW FOLDER
-   ========================================================= */
+function enableDragging(folder) {
 
-function showFolder(obj, path) {
+    folder.draggable =
+        true;
 
-    currentFolder = obj;
-    currentPath = path;
+    folder.addEventListener(
+        "dragstart",
+        function(event) {
 
-    folderGrid.innerHTML = "";
+            draggedFolder =
+                folder;
 
-    updatePath();
+            folder.classList.add(
+                "dragging"
+            );
 
-    const names = applySavedOrder(obj, path);
+            event.dataTransfer.effectAllowed =
+                "move";
 
-    if (names.length === 0) {
+        }
+    );
 
-        folderGrid.innerHTML =
-            '<div class="no-results">No folders found.</div>';
 
-        return;
-    }
+    folder.addEventListener(
+        "dragend",
+        function() {
 
-    names.forEach(function(name) {
+            folder.classList.remove(
+                "dragging"
+            );
 
-        if (name === "__DRIVE__") return;
+            document
+                .querySelectorAll(".folder")
+                .forEach(function(item) {
 
-        const folder = obj[name];
+                    item.classList.remove(
+                        "drag-over"
+                    );
 
-        const div = document.createElement("div");
+                });
 
-        div.className =
-            "folder " +
-            getFolderClass(name, path);
+            draggedFolder =
+                null;
 
-        div.textContent = name;
+            saveOrder();
 
-        div.draggable = true;
+        }
+    );
 
-        div.dataset.name = name;
 
-        div.addEventListener("click", function() {
+    folder.addEventListener(
+        "dragover",
+        function(event) {
 
-            openFolder(name, folder);
-        });
+            event.preventDefault();
 
-        div.addEventListener("dragstart", function() {
+            if (
+                draggedFolder &&
+                draggedFolder !== folder
+            ) {
 
-            div.classList.add("dragging");
-        });
+                folder.classList.add(
+                    "drag-over"
+                );
 
-        div.addEventListener("dragend", function() {
+            }
 
-            div.classList.remove("dragging");
+        }
+    );
 
-            saveCurrentOrder();
-        });
 
-        div.addEventListener("dragover", function(e) {
+    folder.addEventListener(
+        "dragleave",
+        function() {
 
-            e.preventDefault();
+            folder.classList.remove(
+                "drag-over"
+            );
 
-            const dragging =
-                document.querySelector(".dragging");
+        }
+    );
 
-            if (!dragging || dragging === div) return;
+
+    folder.addEventListener(
+        "drop",
+        function(event) {
+
+            event.preventDefault();
+
+            folder.classList.remove(
+                "drag-over"
+            );
+
+            if (
+                !draggedFolder ||
+                draggedFolder === folder
+            ) {
+
+                return;
+
+            }
 
             const rect =
-                div.getBoundingClientRect();
+                folder.getBoundingClientRect();
 
-            const middle =
-                rect.top + rect.height / 2;
+            const after =
+                event.clientY >
+                rect.top +
+                rect.height / 2;
 
-            if (e.clientY < middle) {
+            if (after) {
 
-                div.parentNode.insertBefore(
-                    dragging,
-                    div
+                folder.after(
+                    draggedFolder
                 );
 
             } else {
 
-                div.parentNode.insertBefore(
-                    dragging,
-                    div.nextSibling
+                folder.before(
+                    draggedFolder
                 );
+
             }
+
+            saveOrder();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SHOW CURRENT FOLDER
+   ========================================================= */
+
+function showCurrentFolder() {
+
+    content.innerHTML = "";
+
+    updatePath();
+
+    updateBackButton();
+
+    let folderNames =
+        Object.keys(
+            currentNode
+        );
+
+    folderNames =
+        folderNames.filter(function(name) {
+
+            return name !== "__DRIVE__";
+
         });
 
-        folderGrid.appendChild(div);
-    });
+    folderNames =
+        getSavedOrder(
+            folderNames
+        );
+
+
+    if (
+        folderNames.length === 0
+    ) {
+
+        const driveLink =
+            getDriveLink(
+                currentNode
+            );
+
+        if (driveLink) {
+
+            const openBox =
+                document.createElement("div");
+
+            openBox.className =
+                "file-placeholder";
+
+            openBox.innerHTML = `
+
+                <div style="
+                    font-size:18px;
+                    margin-bottom:10px;
+                ">
+                    📁 Private Google Drive Folder
+                </div>
+
+                <div style="
+                    margin-bottom:18px;
+                ">
+                    Your authorized Google account is required.
+                </div>
+
+                <button
+                    type="button"
+                    id="openDriveButton"
+                    style="
+                        border:none;
+                        background:linear-gradient(
+                            135deg,
+                            #287dcc,
+                            #1769aa
+                        );
+                        color:white;
+                        padding:12px 20px;
+                        border-radius:9px;
+                        font-size:16px;
+                        font-weight:800;
+                        cursor:pointer;
+                    ">
+                    Open Files
+                </button>
+            `;
+
+            content.appendChild(
+                openBox
+            );
+
+            document
+                .getElementById(
+                    "openDriveButton"
+                )
+                .addEventListener(
+                    "click",
+                    function() {
+
+                        window.location.href =
+                            driveLink;
+
+                    }
+                );
+
+            return;
+
+        }
+
+
+        const empty =
+            document.createElement("div");
+
+        empty.className =
+            "file-placeholder";
+
+        empty.textContent =
+            "This folder is currently empty.";
+
+        content.appendChild(
+            empty
+        );
+
+        return;
+
+    }
+
+
+    folderNames.forEach(
+        function(folderName) {
+
+            const folder =
+                document.createElement("div");
+
+            folder.className =
+                "folder";
+
+            folder.dataset.name =
+                folderName;
+
+            const theme =
+                getFolderTheme(
+                    folderName,
+                    currentPath
+                );
+
+            folder.style.background =
+                "linear-gradient(145deg, " +
+                mixWithWhite(
+                    theme.bg,
+                    0.35
+                ) +
+                ", " +
+                theme.bg +
+                ")";
+
+            folder.style.borderColor =
+                theme.border;
+
+
+            folder.innerHTML = `
+
+                <span
+                    class="drag-handle"
+                    title="Drag to move">
+                    ⋮⋮
+                </span>
+
+                <div
+                    class="folder-title"
+                    style="color:${theme.text};">
+
+                    ${escapeHTML(folderName)}
+
+                </div>
+            `;
+
+
+            folder.addEventListener(
+                "click",
+                function() {
+
+                    if (draggedFolder) {
+
+                        return;
+
+                    }
+
+                    openFolder(
+                        folderName
+                    );
+
+                }
+            );
+
+
+            enableDragging(
+                folder
+            );
+
+            content.appendChild(
+                folder
+            );
+
+        }
+    );
+
 }
 
 
@@ -807,382 +1858,572 @@ function showFolder(obj, path) {
    OPEN FOLDER
    ========================================================= */
 
-function openFolder(name, folder) {
+function openFolder(folderName) {
 
-    const drive =
-        folder.__DRIVE__;
-
-    const children =
-        Object.keys(folder)
-            .filter(k => k !== "__DRIVE__");
-
-    /*
-       If folder contains subfolders,
-       navigate inside website first.
-    */
-
-    if (children.length > 0) {
-
-        currentPath.push(name);
-
-        showFolder(folder, currentPath);
-
-        return;
-    }
-
-
-    /*
-       Leaf folder:
-       Open Google Drive if linked.
-    */
-
-    if (drive) {
-
-        window.open(
-            drive,
-            "_blank"
+    const newPath =
+        currentPath.concat(
+            folderName
         );
 
-        return;
-    }
+    let node =
+        database;
 
 
-    /*
-       If no Drive link but folder is empty,
-       still show it.
-    */
+    for (
+        let i = 0;
+        i < newPath.length;
+        i++
+    ) {
 
-    currentPath.push(name);
+        if (
+            !node ||
+            typeof node !== "object" ||
+            !Object.prototype.hasOwnProperty.call(
+                node,
+                newPath[i]
+            )
+        ) {
 
-    showFolder(folder, currentPath);
-}
+            node =
+                null;
 
+            break;
 
-/* =========================================================
-   PATH
-   ========================================================= */
-
-function updatePath() {
-
-    if (currentPath.length === 0) {
-
-        pathDisplay.textContent =
-            "PCB REPAIR DATA";
-
-        return;
-    }
-
-    pathDisplay.textContent =
-        "PCB REPAIR DATA  /  " +
-        currentPath.join("  /  ");
-}
-
-
-/* =========================================================
-   BACK
-   ========================================================= */
-
-function goBack() {
-
-    if (currentPath.length === 0) {
-        return;
-    }
-
-    currentPath.pop();
-
-    let obj = database;
-
-    currentPath.forEach(function(name) {
-
-        obj = obj[name];
-    });
-
-    showFolder(obj, currentPath);
-}
-
-
-/* =========================================================
-   PHONE BACK BUTTON / BROWSER HISTORY
-   ========================================================= */
-
-function updateHistory() {
-
-    location.hash =
-        encodeURIComponent(
-            currentPath.join("|")
-        );
-}
-
-window.addEventListener("popstate", function() {
-
-    const hash =
-        decodeURIComponent(
-            location.hash.replace("#", "")
-        );
-
-    if (!hash) {
-
-        showFolder(database, []);
-
-        return;
-    }
-
-    const parts =
-        hash.split("|").filter(Boolean);
-
-    let obj = database;
-    let valid = true;
-
-    parts.forEach(function(name) {
-
-        if (obj[name]) {
-
-            obj = obj[name];
-
-        } else {
-
-            valid = false;
         }
-    });
 
-    if (valid) {
+        node =
+            node[newPath[i]];
 
-        currentPath = parts;
-
-        showFolder(obj, currentPath);
-
-    } else {
-
-        showFolder(database, []);
     }
-});
+
+
+    const driveLink =
+        getDriveLink(node);
+
+
+    if (driveLink) {
+
+        window.location.href =
+            driveLink;
+
+        return;
+
+    }
+
+
+    setURLPath(
+        newPath
+    );
+
+}
+
+
+/* =========================================================
+   PHONE / BROWSER BACK
+   ========================================================= */
+
+window.addEventListener(
+    "hashchange",
+    function() {
+
+        const path =
+            decodePath();
+
+        rebuildFromPath(
+            path
+        );
+
+        searchBox.value =
+            "";
+
+        showCurrentFolder();
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   SEARCH NORMALIZATION
+   ========================================================= */
+
+/*
+   This makes searching flexible.
+
+   Examples:
+
+   "Top Load"
+   "topload"
+   "TOP LOAD"
+
+   are treated similarly.
+
+   Punctuation is also ignored.
+*/
+
+function normalizeSearchText(text) {
+
+    return String(text)
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+}
+
+
+/*
+   Create a version with spaces removed.
+
+   "top load"
+   becomes:
+   "topload"
+*/
+
+function compactSearchText(text) {
+
+    return normalizeSearchText(text)
+        .replace(/\s/g, "");
+
+}
+
+
+/* =========================================================
+   SEARCH MATCH
+   ========================================================= */
+
+/*
+   The complete folder path is searched.
+
+   Example path:
+
+   Fridge
+   Inverter
+   Single Door
+   Circuit Diagrams
+
+   Combined:
+
+   "fridge inverter single door circuit diagrams"
+
+   Search:
+
+   "inverter fridge circuit diagrams single door"
+
+   Every search word must be present somewhere
+   in the complete path.
+
+   Therefore the order does NOT matter.
+*/
+
+function pathMatchesSearch(path, searchText) {
+
+    const normalizedPath =
+        normalizeSearchText(
+            path.join(" ")
+        );
+
+    const compactPath =
+        compactSearchText(
+            normalizedPath
+        );
+
+    const searchWords =
+        normalizeSearchText(
+            searchText
+        )
+        .split(" ")
+        .filter(function(word) {
+
+            return word.length > 0;
+
+        });
+
+
+    /*
+       Every search word must occur somewhere
+       in the complete path.
+    */
+
+    const allWordsMatch =
+        searchWords.every(
+            function(word) {
+
+                return normalizedPath
+                    .includes(word);
+
+            }
+        );
+
+
+    if (allWordsMatch) {
+
+        return true;
+
+    }
+
+
+    /*
+       Also support searches where spaces
+       were removed.
+
+       Example:
+
+       "topload"
+       matches
+       "Top Load"
+    */
+
+    const compactSearch =
+        searchWords.join("");
+
+
+    if (
+        compactSearch &&
+        compactPath.includes(
+            compactSearch
+        )
+    ) {
+
+        return true;
+
+    }
+
+
+    return false;
+
+}
+
+
+/* =========================================================
+   SEARCH TREE
+   ========================================================= */
+
+function searchTree(
+    node,
+    path,
+    searchText,
+    results
+) {
+
+    if (
+        !node ||
+        typeof node !== "object"
+    ) {
+
+        return;
+
+    }
+
+
+    Object.keys(node).forEach(
+        function(name) {
+
+            if (
+                name === "__DRIVE__"
+            ) {
+
+                return;
+
+            }
+
+
+            const newPath =
+                path.concat(
+                    name
+                );
+
+
+            /*
+               IMPORTANT:
+
+               Search the COMPLETE path,
+               not only the current folder name.
+            */
+
+            if (
+                pathMatchesSearch(
+                    newPath,
+                    searchText
+                )
+            ) {
+
+                results.push({
+
+                    name:
+                        name,
+
+                    path:
+                        newPath
+
+                });
+
+            }
+
+
+            if (
+                node[name] &&
+                typeof node[name] === "object"
+            ) {
+
+                searchTree(
+                    node[name],
+                    newPath,
+                    searchText,
+                    results
+                );
+
+            }
+
+        }
+    );
+
+}
 
 
 /* =========================================================
    SEARCH
    ========================================================= */
 
-function cleanSearchText(text) {
+function performSearch(text) {
 
-    return text
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "")
-        .trim();
-}
+    text =
+        text.trim();
 
 
-function searchDatabase(query) {
+    if (!text) {
 
-    const q =
-        cleanSearchText(query);
-
-    if (!q) {
-
-        showFolder(currentFolder, currentPath);
+        showCurrentFolder();
 
         return;
+
     }
+
 
     const results = [];
 
-    function walk(obj, path) {
 
-        Object.keys(obj).forEach(function(name) {
+    searchTree(
+        database,
+        [],
+        text,
+        results
+    );
 
-            if (name === "__DRIVE__") return;
 
-            const folder =
-                obj[name];
+    content.innerHTML = "";
 
-            const newPath =
-                [...path, name];
 
-            const fullText =
-                cleanSearchText(
-                    newPath.join(" ")
-                );
+    pathDisplay.innerHTML = `
 
-            if (fullText.includes(q)) {
+        <span class="path-item">
+            Search Results
+        </span>
 
-                results.push({
-                    name: name,
-                    path: newPath,
-                    folder: folder
-                });
-            }
+    `;
 
-            walk(folder, newPath);
-        });
-    }
 
-    walk(database, []);
+    updateBackButton();
 
-    folderGrid.innerHTML = "";
 
-    pathDisplay.textContent =
-        "Search results for: " + query;
+    if (
+        results.length === 0
+    ) {
 
-    if (results.length === 0) {
-
-        folderGrid.innerHTML =
-            '<div class="no-results">No matching folder found.</div>';
-
-        return;
-    }
-
-    results.forEach(function(result) {
-
-        const div =
+        const noResult =
             document.createElement("div");
 
-        div.className =
-            "folder " +
-            getFolderClass(
-                result.name,
-                result.path
-            );
+        noResult.className =
+            "no-results";
 
-        div.textContent =
-            result.path.join("  /  ");
+        noResult.textContent =
+            "No matching folder found.";
 
-        div.addEventListener("click", function() {
+        content.appendChild(
+            noResult
+        );
 
-            const folder =
-                result.folder;
+        return;
 
-            const drive =
-                folder.__DRIVE__;
+    }
 
-            const children =
-                Object.keys(folder)
-                    .filter(
-                        k => k !== "__DRIVE__"
-                    );
 
-            if (drive && children.length === 0) {
+    results.forEach(
+        function(result) {
 
-                window.open(
-                    drive,
-                    "_blank"
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "folder";
+
+
+            const theme =
+                getFolderTheme(
+                    result.name,
+                    result.path.slice(
+                        0,
+                        -1
+                    )
                 );
 
-                return;
-            }
 
-            currentPath =
-                result.path;
+            item.style.background =
+                "linear-gradient(145deg, " +
+                mixWithWhite(
+                    theme.bg,
+                    0.35
+                ) +
+                ", " +
+                theme.bg +
+                ")";
 
-            currentFolder =
-                folder;
 
-            showFolder(
-                folder,
-                currentPath
+            item.style.borderColor =
+                theme.border;
+
+
+            item.innerHTML = `
+
+                <div>
+
+                    <div
+                        class="folder-title"
+                        style="color:${theme.text};">
+
+                        ${escapeHTML(
+                            result.name
+                        )}
+
+                    </div>
+
+
+                    <div class="result-path">
+
+                        ${escapeHTML(
+                            result.path.join(
+                                " → "
+                            )
+                        )}
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            item.addEventListener(
+                "click",
+                function() {
+
+                    searchBox.value =
+                        "";
+
+
+                    let node =
+                        database;
+
+
+                    for (
+                        let i = 0;
+                        i < result.path.length;
+                        i++
+                    ) {
+
+                        if (
+                            !node ||
+                            !Object.prototype.hasOwnProperty.call(
+                                node,
+                                result.path[i]
+                            )
+                        ) {
+
+                            node =
+                                null;
+
+                            break;
+
+                        }
+
+
+                        node =
+                            node[
+                                result.path[i]
+                            ];
+
+                    }
+
+
+                    const driveLink =
+                        getDriveLink(
+                            node
+                        );
+
+
+                    if (driveLink) {
+
+                        window.location.href =
+                            driveLink;
+
+                        return;
+
+                    }
+
+
+                    setURLPath(
+                        result.path
+                    );
+
+                }
             );
-        });
 
-        folderGrid.appendChild(div);
-    });
+
+            content.appendChild(
+                item
+            );
+
+        }
+    );
+
 }
 
+
+/* =========================================================
+   SEARCH EVENT
+   ========================================================= */
 
 searchBox.addEventListener(
     "input",
     function() {
 
-        searchDatabase(
-            searchBox.value
+        performSearch(
+            this.value
         );
+
     }
 );
 
 
 /* =========================================================
-   SAVE DRAG ORDER
+   START APPLICATION
    ========================================================= */
 
-function saveCurrentOrder() {
+const initialPath =
+    decodePath();
 
-    if (currentPath.length === 0) {
-        return;
-    }
+rebuildFromPath(
+    initialPath
+);
 
-    const names =
-        Array.from(
-            folderGrid.children
-        )
-        .map(
-            el => el.dataset.name
-        )
-        .filter(Boolean);
-
-    localStorage.setItem(
-        getStorageKey(currentPath),
-        JSON.stringify(names)
-    );
-}
-
-
-/* =========================================================
-   REFRESH
-   ========================================================= */
-
-function refreshPage() {
-
-    location.reload();
-}
-
-
-/* =========================================================
-   INITIAL LOAD
-   ========================================================= */
-
-showFolder(database, []);
-
-
-/* =========================================================
-   RESTORE HASH PATH
-   ========================================================= */
-
-if (location.hash) {
-
-    const hash =
-        decodeURIComponent(
-            location.hash.replace("#", "")
-        );
-
-    if (hash) {
-
-        const parts =
-            hash.split("|")
-                .filter(Boolean);
-
-        let obj = database;
-        let valid = true;
-
-        parts.forEach(function(name) {
-
-            if (obj[name]) {
-
-                obj = obj[name];
-
-            } else {
-
-                valid = false;
-            }
-        });
-
-        if (valid) {
-
-            currentPath = parts;
-
-            showFolder(
-                obj,
-                currentPath
-            );
-        }
-    }
-}
+showCurrentFolder();
 
 </script>
 
