@@ -337,135 +337,158 @@ function makeFolders(names) {
 
 
 /* =========================================================
-   APPLIANCE TREE
+   AC TREE
    ========================================================= */
 
-function buildApplianceTree(subtypes, categories) {
+const AC = {
 
-    const tree = {};
+    "Circuit Diagrams": {},
 
-    ["Inverter", "Non Inverter"].forEach(function(mode) {
+    "Compressor Details": {},
 
-        const typeBranch = {};
+    "EEPROM BIN Files": {},
 
-        subtypes.forEach(function(subtype) {
+    "Error Codes": {},
 
-            typeBranch[subtype] =
-                makeFolders(categories);
+    "Inverter AC": {
 
-        });
+        "Cassette Inverter AC": {},
 
-        tree[mode] = typeBranch;
+        "Ductable Inverter AC": {},
 
-    });
+        "Split Inverter AC": {},
 
-    return tree;
-}
+        "Tower Inverter AC": {},
+
+        "Window Inverter AC": {}
+
+    },
+
+    "IPM Number Details": {},
+
+    "Motor Details": {
+
+        "Indoor Motor": {},
+
+        "Outdoor Motor": {}
+
+    },
+
+    "Non Inverter AC": {
+
+        "Cassette AC": {},
+
+        "Ductable AC": {},
+
+        "Split AC": {},
+
+        "Tower AC": {},
+
+        "Window AC": {}
+
+    }
+
+};
 
 
 /* =========================================================
-   TYPE ONLY TREE
+   FRIDGE
    ========================================================= */
 
-function buildTypeOnlyTree(subtypes) {
+const Fridge = {
 
-    const tree = {};
+    "Inverter": {
 
-    ["Inverter", "Non Inverter"].forEach(function(mode) {
+        "Single Door": {
 
-        tree[mode] =
-            makeFolders(subtypes);
+            "Circuit Diagrams": {}
 
-    });
+        },
 
-    return tree;
-}
+        "Double Door": {
+
+            "Circuit Diagrams": {}
+
+        },
+
+        "Triple Door": {},
+
+        "Side by Side": {}
+
+    },
+
+    "Non Inverter": {
+
+        "Single Door": {},
+
+        "Double Door": {},
+
+        "Triple Door": {},
+
+        "Side by Side": {}
+
+    },
+
+    "Circuit Diagrams": {},
+
+    "EEPROM BIN Files": {},
+
+    "Error Codes": {},
+
+    "Photos": {},
+
+    "Sensor Details": {},
+
+    "Signal PCB": {},
+
+    "Videos": {},
+
+    "Wiring Details": {}
+
+};
 
 
 /* =========================================================
-   SHARED LISTS
+   WASHING MACHINE
    ========================================================= */
 
-const acSubtypes = [
-    "Window",
-    "Split",
-    "Cassette",
-    "Ductable"
-];
+const WashingMachine = {
 
-const acCategories = [
-    "Circuit Diagrams",
-    "EEPROM BIN Files",
-    "Error Codes",
-    "PDF",
-    "Photos",
-    "Remote Photos",
-    "Sensor Details",
-    "Test Points"
-];
+    "Inverter": {
 
+        "Top Load": {},
 
-const fridgeSubtypes = [
-    "Single Door",
-    "Double Door",
-    "Triple Door",
-    "Side by Side"
-];
+        "Front Load": {}
 
-const fridgeCategories = [
-    "Circuit Diagrams",
-    "EEPROM BIN Files",
-    "Error Codes",
-    "Photos",
-    "Sensor Details",
-    "Signal PCB",
-    "Videos",
-    "Wiring Details"
-];
+    },
 
+    "Non Inverter": {
 
-const wmSubtypes = [
-    "Top Load",
-    "Front Load"
-];
+        "Top Load": {
 
-const wmCategories = [
-    "Circuit Diagrams",
-    "EEPROM BIN Files",
-    "Error Codes",
-    "Photos",
-    "Test Points",
-    "Videos",
-    "Wiring Details"
-];
+            "Wiring Details": {}
 
-const microwaveModes = [
-    "Inverter",
-    "Non Inverter"
-];
+        },
 
+        "Front Load": {}
 
-/* =========================================================
-   MAIN APPLIANCE TREES
-   ========================================================= */
+    },
 
-const AC =
-    buildApplianceTree(
-        acSubtypes,
-        acCategories
-    );
+    "Circuit Diagrams": {},
 
-const Fridge =
-    buildApplianceTree(
-        fridgeSubtypes,
-        fridgeCategories
-    );
+    "EEPROM BIN Files": {},
 
-const WashingMachine =
-    buildApplianceTree(
-        wmSubtypes,
-        wmCategories
-    );
+    "Error Codes": {},
+
+    "Photos": {},
+
+    "Test Points": {},
+
+    "Videos": {},
+
+    "Wiring Details": {}
+
+};
 
 
 /* =========================================================
@@ -499,67 +522,91 @@ const MicrowaveOven = {
 
 
 /* =========================================================
-   INDUCTION / CHIMNEY / RO
+   INDUCTION COOKTOP
    ========================================================= */
 
 const InductionCooktop = {
 
     "Circuit Diagrams": {},
+
     "Error Codes": {},
+
     "Photos": {},
+
     "Videos": {},
+
     "Test Points": {},
+
     "Wiring Details": {},
-    "PDF": {}
 
-};
-
-
-const ChimneyPCB = {
-
-    "Circuit Diagrams": {},
-    "Error Codes": {},
-    "Photos": {},
-    "Videos": {},
-    "Test Points": {},
-    "Wiring Details": {},
-    "PDF": {}
-
-};
-
-
-const ROPCB = {
-
-    "Circuit Diagrams": {},
-    "Error Codes": {},
-    "EEPROM BIN Files": {},
-    "Photos": {},
-    "Videos": {},
-    "Test Points": {},
-    "Wiring Details": {},
-    "Sensor Details": {},
     "PDF": {}
 
 };
 
 
 /* =========================================================
-   CATEGORY-FIRST VIEWS
+   CHIMNEY PCB
+   ========================================================= */
+
+const ChimneyPCB = {
+
+    "Circuit Diagrams": {},
+
+    "Error Codes": {},
+
+    "Photos": {},
+
+    "Videos": {},
+
+    "Test Points": {},
+
+    "Wiring Details": {},
+
+    "PDF": {}
+
+};
+
+
+/* =========================================================
+   R O PCB
+   ========================================================= */
+
+const ROPCB = {
+
+    "Circuit Diagrams": {},
+
+    "EEPROM BIN Files": {},
+
+    "Error Codes": {},
+
+    "Photos": {},
+
+    "Sensor Details": {},
+
+    "Test Points": {},
+
+    "Videos": {},
+
+    "Wiring Details": {},
+
+    "PDF": {}
+
+};
+
+
+/* =========================================================
+   CATEGORY VIEWS
    ========================================================= */
 
 const CircuitDiagrams = {
 
-    "AC":
-        buildTypeOnlyTree(acSubtypes),
+    "AC": {},
 
-    "Fridge":
-        buildTypeOnlyTree(fridgeSubtypes),
+    "Fridge": {},
 
-    "Washing Machine":
-        buildTypeOnlyTree(wmSubtypes),
+    "Washing Machine": {},
 
-    "Microwave Oven":
-        makeFolders(microwaveModes),
+    "Microwave Oven": {},
 
     "Induction Cooktop": {},
 
@@ -572,28 +619,22 @@ const CircuitDiagrams = {
 
 const PCBTestPoints = {
 
-    "AC":
-        buildTypeOnlyTree(acSubtypes),
+    "AC": {},
 
-    "Fridge":
-        buildTypeOnlyTree(fridgeSubtypes),
+    "Fridge": {},
 
-    "Washing Machine":
-        buildTypeOnlyTree(wmSubtypes)
+    "Washing Machine": {}
 
 };
 
 
 const Photos = {
 
-    "AC":
-        buildTypeOnlyTree(acSubtypes),
+    "AC": {},
 
-    "Fridge":
-        buildTypeOnlyTree(fridgeSubtypes),
+    "Fridge": {},
 
-    "Washing Machine":
-        buildTypeOnlyTree(wmSubtypes),
+    "Washing Machine": {},
 
     "Microwave Oven": {},
 
@@ -610,14 +651,11 @@ const Photos = {
 
 const Videos = {
 
-    "AC":
-        buildTypeOnlyTree(acSubtypes),
+    "AC": {},
 
-    "Fridge":
-        buildTypeOnlyTree(fridgeSubtypes),
+    "Fridge": {},
 
-    "Washing Machine":
-        buildTypeOnlyTree(wmSubtypes),
+    "Washing Machine": {},
 
     "Microwave Oven": {},
 
@@ -643,13 +681,19 @@ const SoftwareData = {
         "AC": {
 
             "Indoor PCB": {
+
                 "Inverter": {},
+
                 "Non Inverter": {}
+
             },
 
             "ODU PCB": {
+
                 "Inverter": {},
+
                 "Non Inverter": {}
+
             }
 
         },
@@ -657,23 +701,35 @@ const SoftwareData = {
         "Fridge": {
 
             "Single Door": {
+
                 "Inverter": {},
+
                 "Non Inverter": {}
+
             },
 
             "Double Door": {
+
                 "Inverter": {},
+
                 "Non Inverter": {}
+
             },
 
             "Triple Door": {
+
                 "Inverter": {},
+
                 "Non Inverter": {}
+
             },
 
             "Side by Side": {
+
                 "Inverter": {},
+
                 "Non Inverter": {}
+
             },
 
             "Fridge Signal Card": {},
@@ -685,13 +741,19 @@ const SoftwareData = {
         "Washing Machine": {
 
             "Top Load": {
+
                 "Inverter": {},
+
                 "Non Inverter": {}
+
             },
 
             "Front Load": {
+
                 "Inverter": {},
+
                 "Non Inverter": {}
+
             }
 
         }
@@ -753,6 +815,62 @@ const database = {
    ========================================================= */
 
 const DRIVE_LINKS = {
+
+    /* ================= AC ================= */
+
+    "AC/Circuit Diagrams":
+        "https://drive.google.com/drive/folders/1V_hVJfZJsu4oQTvxzJmMfpkBVPrgCYBJ",
+
+    "AC/Compressor Details":
+        "https://drive.google.com/drive/folders/1F9Fobp_HK1Ko_p1vxjjWuk5L_HyIlUUj",
+
+    "AC/EEPROM BIN Files":
+        "https://drive.google.com/drive/folders/1GSyHcW7r0F60amDCxyOPetlQMAA3X7zK",
+
+    "AC/Error Codes":
+        "https://drive.google.com/drive/folders/1U55KOBmiPFPsvjTuJaIwWR96Y-lUnclr",
+
+    "AC/Inverter AC/Cassette Inverter AC":
+        "https://drive.google.com/drive/folders/1Jd7Qc2QbHI3JdXPmbImFh46FrAGVMcma",
+
+    "AC/Inverter AC/Ductable Inverter AC":
+        "https://drive.google.com/drive/folders/1a_rwccmFaf5ULR84YxdoJbIeNWvGabk8",
+
+    "AC/Inverter AC/Split Inverter AC":
+        "https://drive.google.com/drive/folders/1uiLtrSJmS7aJDVAKyk-3t-hxh-4kdPkY",
+
+    "AC/Inverter AC/Tower Inverter AC":
+        "https://drive.google.com/drive/folders/1pfHzK1tgoEVDYNu_mX8ANxBfXV_evcjn",
+
+    "AC/Inverter AC/Window Inverter AC":
+        "https://drive.google.com/drive/folders/1kid4SYkr7Wv6K7b38GmYHrNG6W8BiX6q",
+
+    "AC/IPM Number Details":
+        "https://drive.google.com/drive/folders/1yRZKTwUPEI5HN-MMS9x_BXBvozOP3f3s",
+
+    "AC/Motor Details/Indoor Motor":
+        "https://drive.google.com/drive/folders/13s_shFadc3zH7cH-fhzJ7gMeN4uqu7-M",
+
+    "AC/Motor Details/Outdoor Motor":
+        "https://drive.google.com/drive/folders/1IUsTk4V-yubZMlXIennaCuR5OZSpjWzZ",
+
+    "AC/Non Inverter AC/Cassette AC":
+        "https://drive.google.com/drive/folders/1-8KjGxOcJcqEIX9Uondgg4ZeBUDTSCCl",
+
+    "AC/Non Inverter AC/Ductable AC":
+        "https://drive.google.com/drive/folders/1A1PK_arOq-dHVKooRPfg2_oXXO5lVJmu",
+
+    "AC/Non Inverter AC/Split AC":
+        "https://drive.google.com/drive/folders/1mS_KH5bDbgktNMj28pvRzjVWijssfCHB",
+
+    "AC/Non Inverter AC/Tower AC":
+        "https://drive.google.com/drive/folders/1cRR5lUsy9AKBu0rVq-PXlCira0HHav2D",
+
+    "AC/Non Inverter AC/Window AC":
+        "https://drive.google.com/drive/folders/1T8-Zx5D9HzqnvokgvwRtK6SmtpZ29Oi8",
+
+
+    /* ================= EXISTING LINKS ================= */
 
     "Fridge/Inverter/Single Door/Circuit Diagrams":
         "https://drive.google.com/drive/folders/1lcbp_INP5x7S3nxbcU8zOH14l3rl1Bry",
@@ -986,6 +1104,36 @@ const CATEGORY_COLORS =
             bg: "#e1f5fe",
             border: "#4fc3f7",
             text: "#01579b"
+        },
+
+        "Compressor Details": {
+            bg: "#fff8e1",
+            border: "#ffb300",
+            text: "#7a5200"
+        },
+
+        "IPM Number Details": {
+            bg: "#fce4ec",
+            border: "#ec407a",
+            text: "#880e4f"
+        },
+
+        "Motor Details": {
+            bg: "#e8eaf6",
+            border: "#7986cb",
+            text: "#1a237e"
+        },
+
+        "Inverter AC": {
+            bg: "#e8f5e9",
+            border: "#66bb6a",
+            text: "#1b5e20"
+        },
+
+        "Non Inverter AC": {
+            bg: "#f3f2ee",
+            border: "#9e9e9e",
+            text: "#4e4e4e"
         }
 
     });
@@ -1056,9 +1204,11 @@ function mixWithWhite(hex, amount) {
     return "#" +
         [r, g, b]
             .map(function(v) {
+
                 return v
                     .toString(16)
                     .padStart(2, "0");
+
             })
             .join("");
 
@@ -1701,13 +1851,13 @@ function showCurrentFolder() {
                     font-size:18px;
                     margin-bottom:10px;
                 ">
-                    📁 Private Google Drive Folder
+                    📁 Google Drive Folder
                 </div>
 
                 <div style="
                     margin-bottom:18px;
                 ">
-                    Your authorized Google account is required.
+                    Open this folder to view your repair data.
                 </div>
 
                 <button
@@ -1727,7 +1877,7 @@ function showCurrentFolder() {
                         font-weight:800;
                         cursor:pointer;
                     ">
-                    Open Files
+                    Open Google Drive
                 </button>
             `;
 
@@ -1827,9 +1977,7 @@ function showCurrentFolder() {
                 function() {
 
                     if (draggedFolder) {
-
                         return;
-
                     }
 
                     openFolder(
@@ -1892,7 +2040,9 @@ function openFolder(folderName) {
         }
 
         node =
-            node[newPath[i]];
+            node[
+                newPath[i]
+            ];
 
     }
 
@@ -1954,20 +2104,6 @@ window.addEventListener(
    SEARCH NORMALIZATION
    ========================================================= */
 
-/*
-   This makes searching flexible.
-
-   Examples:
-
-   "Top Load"
-   "topload"
-   "TOP LOAD"
-
-   are treated similarly.
-
-   Punctuation is also ignored.
-*/
-
 function normalizeSearchText(text) {
 
     return String(text)
@@ -1978,14 +2114,6 @@ function normalizeSearchText(text) {
 
 }
 
-
-/*
-   Create a version with spaces removed.
-
-   "top load"
-   becomes:
-   "topload"
-*/
 
 function compactSearchText(text) {
 
@@ -1998,30 +2126,6 @@ function compactSearchText(text) {
 /* =========================================================
    SEARCH MATCH
    ========================================================= */
-
-/*
-   The complete folder path is searched.
-
-   Example path:
-
-   Fridge
-   Inverter
-   Single Door
-   Circuit Diagrams
-
-   Combined:
-
-   "fridge inverter single door circuit diagrams"
-
-   Search:
-
-   "inverter fridge circuit diagrams single door"
-
-   Every search word must be present somewhere
-   in the complete path.
-
-   Therefore the order does NOT matter.
-*/
 
 function pathMatchesSearch(path, searchText) {
 
@@ -2047,11 +2151,6 @@ function pathMatchesSearch(path, searchText) {
         });
 
 
-    /*
-       Every search word must occur somewhere
-       in the complete path.
-    */
-
     const allWordsMatch =
         searchWords.every(
             function(word) {
@@ -2069,17 +2168,6 @@ function pathMatchesSearch(path, searchText) {
 
     }
 
-
-    /*
-       Also support searches where spaces
-       were removed.
-
-       Example:
-
-       "topload"
-       matches
-       "Top Load"
-    */
 
     const compactSearch =
         searchWords.join("");
@@ -2140,13 +2228,6 @@ function searchTree(
                     name
                 );
 
-
-            /*
-               IMPORTANT:
-
-               Search the COMPLETE path,
-               not only the current folder name.
-            */
 
             if (
                 pathMatchesSearch(
